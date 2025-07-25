@@ -131,7 +131,7 @@
   import { markRaw, computed, defineComponent, onMounted, ref } from 'vue';
 
   // import UsersCRUD0 from '@/viewsShare/UserManage/UsersCRUD.vue';
-  import QxRoleRightRelationCRUD0 from '@/views/UserManage_GP/QxRoleRightRelationCRUD.vue';
+  import QxRoleRightRelationCRUD0 from '@/viewsShare/UserManage_GP/QxRoleRightRelationCRUD.vue';
 
   import QxUsersCRUD0 from '@/viewsShare/UserManage_GP/QxUsersCRUD.vue';
   import QxRolesCRUD0 from '@/viewsShare/UserManage_GP/QxRolesCRUD.vue';
