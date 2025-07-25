@@ -21,7 +21,7 @@
  * XzClg(XzClg)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
  * Created by pyf on 2025年07月25日.
- * 注意:该类必须与调用界面处于同一个包2,否则调用不成功!
+ * 注意:该类必须与调用界面处于同一个包3,否则调用不成功!
  **/
 import axios from 'axios';
 import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
