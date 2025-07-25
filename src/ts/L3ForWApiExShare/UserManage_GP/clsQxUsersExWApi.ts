@@ -767,6 +767,7 @@ export async function QxUsersEx_FuncMapKeyCollegeName(
       clsXzClgEN.con_CollegeName,
       XzClgCollegeName,
       enumComparisonOp.Like_03,
+      '',
     );
     return arrIdXzCollege;
   } catch (e) {

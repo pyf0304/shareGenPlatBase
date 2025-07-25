@@ -1,8 +1,8 @@
 ﻿/**
  * 类名:clsXzClgWApi
  * 表名:XzClg(00140122)
- * 版本:2025.06.13.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/15 13:08:23
+ * 版本:2025.07.25.1(服务器:WIN-SRV103-116)
+ * 日期:2025/07/25 15:44:20
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
@@ -20,7 +20,7 @@
 /**
  * XzClg(XzClg)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
- * Created by pyf on 2025年06月15日.
+ * Created by pyf on 2025年07月25日.
  * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from 'axios';
@@ -281,7 +281,7 @@ export async function XzClg_UpdateObjInLstCache(objXzClg: clsXzClgEN, strIdSchoo
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-15
+ * 日期:2025-07-25
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -293,7 +293,7 @@ export function XzClg_SortFunDefa(a: clsXzClgEN, b: clsXzClgEN): number {
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-15
+ * 日期:2025-07-25
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -307,7 +307,7 @@ export function XzClg_SortFunDefa2Fld(a: clsXzClgEN, b: clsXzClgEN): number {
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-15
+ * 日期:2025-07-25
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -561,7 +561,7 @@ export async function XzClg_GetNameByIdXzCollegeCache(strIdXzCollege: string, st
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-06-15
+ * 日期:2025-07-25
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -649,7 +649,7 @@ export async function XzClg_FilterFunByKey(strKey: string, value: any) {
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2025-06-15
+ * 日期:2025-07-25
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_func)
  * @param strInFldName:输入字段名
  * @param strOutFldName:输出字段名
@@ -684,11 +684,11 @@ export async function XzClg_func(
     console.error(strMsg);
     throw new Error(strMsg);
   }
-  if (clsXzClgEN.AttributeName.indexOf(strOutFldName) == -1) {
+  if (clsXzClgEN._AttributeName.indexOf(strOutFldName) == -1) {
     const strMsg = Format(
       '输出字段名:[{0}]不正确,不在输出字段范围之内!({1})',
       strOutFldName,
-      clsXzClgEN.AttributeName.join(','),
+      clsXzClgEN._AttributeName.join(','),
     );
     console.error(strMsg);
     throw new Error(strMsg);
@@ -706,7 +706,7 @@ export async function XzClg_func(
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2025-06-15
+ * 日期:2025-07-25
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_funcKey)
  * @param strInFldName:输入字段名
  * @param strInValue:输入字段值
@@ -1060,14 +1060,14 @@ export async function XzClg_GetObjLstClientCache(strIdSchool: string) {
   const strThisFuncName = 'GetObjLstClientCache';
   //初始化列表缓存
   let strWhereCond = '1=1';
-  if (IsNullOrEmpty(clsXzClgEN.WhereFormat) == false) {
-    strWhereCond = Format(clsXzClgEN.WhereFormat, strIdSchool);
+  if (IsNullOrEmpty(clsXzClgEN._WhereFormat) == false) {
+    strWhereCond = Format(clsXzClgEN._WhereFormat, strIdSchool);
   } else {
     strWhereCond = Format("IdSchool='{0}'", strIdSchool);
   }
   const strKey = Format('{0}_{1}', clsXzClgEN._CurrTabName, strIdSchool);
-  if (IsNullOrEmpty(clsXzClgEN.CacheAddiCondition) == false) {
-    strWhereCond += Format(' and {0}', clsXzClgEN.CacheAddiCondition);
+  if (IsNullOrEmpty(clsXzClgEN._CacheAddiCondition) == false) {
+    strWhereCond += Format(' and {0}', clsXzClgEN._CacheAddiCondition);
   }
   if (strKey == '') {
     console.error('关键字为空!不正确');
@@ -1110,14 +1110,14 @@ export async function XzClg_GetObjLstlocalStorage(strIdSchool: string) {
   const strThisFuncName = 'GetObjLstlocalStorage';
   //初始化列表缓存
   let strWhereCond = '1=1';
-  if (IsNullOrEmpty(clsXzClgEN.WhereFormat) == false) {
-    strWhereCond = Format(clsXzClgEN.WhereFormat, strIdSchool);
+  if (IsNullOrEmpty(clsXzClgEN._WhereFormat) == false) {
+    strWhereCond = Format(clsXzClgEN._WhereFormat, strIdSchool);
   } else {
     strWhereCond = Format("{0}='{1}'", clsXzClgEN.con_IdSchool, strIdSchool);
   }
   const strKey = Format('{0}_{1}', clsXzClgEN._CurrTabName, strIdSchool);
-  if (IsNullOrEmpty(clsXzClgEN.CacheAddiCondition) == false) {
-    strWhereCond += Format(' and {0}', clsXzClgEN.CacheAddiCondition);
+  if (IsNullOrEmpty(clsXzClgEN._CacheAddiCondition) == false) {
+    strWhereCond += Format(' and {0}', clsXzClgEN._CacheAddiCondition);
   }
   if (strKey == '') {
     console.error('关键字为空!不正确');
@@ -1255,14 +1255,14 @@ export async function XzClg_GetObjLstsessionStorage(strIdSchool: string) {
   const strThisFuncName = 'GetObjLstsessionStorage';
   //初始化列表缓存
   let strWhereCond = '1=1';
-  if (IsNullOrEmpty(clsXzClgEN.WhereFormat) == false) {
-    strWhereCond = Format(clsXzClgEN.WhereFormat, strIdSchool);
+  if (IsNullOrEmpty(clsXzClgEN._WhereFormat) == false) {
+    strWhereCond = Format(clsXzClgEN._WhereFormat, strIdSchool);
   } else {
     strWhereCond = Format("{0}='{1}'", clsXzClgEN.con_IdSchool, strIdSchool);
   }
   const strKey = Format('{0}_{1}', clsXzClgEN._CurrTabName, strIdSchool);
-  if (IsNullOrEmpty(clsXzClgEN.CacheAddiCondition) == false) {
-    strWhereCond += Format(' and {0}', clsXzClgEN.CacheAddiCondition);
+  if (IsNullOrEmpty(clsXzClgEN._CacheAddiCondition) == false) {
+    strWhereCond += Format(' and {0}', clsXzClgEN._CacheAddiCondition);
   }
   if (strKey == '') {
     console.error('关键字为空!不正确');
@@ -1342,7 +1342,7 @@ export async function XzClg_GetObjLstCache(strIdSchool: string): Promise<Array<c
     throw strMsg;
   }
   let arrXzClgObjLstCache;
-  switch (clsXzClgEN.CacheModeId) {
+  switch (clsXzClgEN._CacheModeId) {
     case '04': //sessionStorage
       arrXzClgObjLstCache = await XzClg_GetObjLstsessionStorage(strIdSchool);
       break;
@@ -1367,7 +1367,7 @@ export async function XzClg_GetObjLstCache(strIdSchool: string): Promise<Array<c
 export async function XzClg_GetObjLstPureCache(strIdSchool: string) {
   //const strThisFuncName = "GetObjLstPureCache";
   let arrXzClgObjLstCache;
-  switch (clsXzClgEN.CacheModeId) {
+  switch (clsXzClgEN._CacheModeId) {
     case '04': //sessionStorage
       arrXzClgObjLstCache = await XzClg_GetObjLstsessionStoragePureCache(strIdSchool);
       break;
@@ -2858,7 +2858,7 @@ export function XzClg_ReFreshCache(strIdSchool: string): void {
   console.trace(strMsg);
   // 静态的对象列表,用于清空相关缓存,针对记录较少,作为参数表可以使用
   const strKey = Format('{0}_{1}', clsXzClgEN._CurrTabName, strIdSchool);
-  switch (clsXzClgEN.CacheModeId) {
+  switch (clsXzClgEN._CacheModeId) {
     case '04': //sessionStorage
       sessionStorage.removeItem(strKey);
       break;
@@ -2895,7 +2895,7 @@ export function XzClg_ReFreshThisCache(strIdSchool: string): void {
   }
   if (clsSysPara4WebApi.spSetRefreshCacheOn == true) {
     const strKey = Format('{0}_{1}', clsXzClgEN._CurrTabName, strIdSchool);
-    switch (clsXzClgEN.CacheModeId) {
+    switch (clsXzClgEN._CacheModeId) {
       case '04': //sessionStorage
         sessionStorage.removeItem(strKey);
         break;
@@ -2932,17 +2932,35 @@ export function XzClg_GetLastRefreshTime(): string {
  * @param objDDL:需要绑定当前表的下拉框
 
  * @param strUserType:
+ * @param strUserTypeId:
  * @param strIdSchool:
 */
-export async function XzClg_BindDdl_IdXzCollegeByUserTypeInDivCache(
+export async function XzClg_BindDdl_IdXzCollegeByUserTypeIdInDivCache(
   objDiv: HTMLDivElement,
   strDdlName: string,
   strUserType: string,
+  strUserTypeId: string,
   strIdSchool: string,
 ) {
   if (IsNullOrEmpty(strUserType) == true) {
     const strMsg = Format(
-      '参数:[strUserType]不能为空！(In clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeInDiv)',
+      '参数:[strUserType]不能为空！(In clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeIdInDiv)',
+    );
+    console.error(strMsg);
+    throw strMsg;
+  }
+
+  if (IsNullOrEmpty(strUserTypeId) == true) {
+    const strMsg = Format(
+      '参数:[strUserTypeId]不能为空！(In clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeIdInDiv)',
+    );
+    console.error(strMsg);
+    throw strMsg;
+  }
+  if (strUserTypeId.length != 2) {
+    const strMsg = Format(
+      '缓存分类变量:[strUserTypeId]的长度:[{0}]不正确！(clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeIdInDiv)',
+      strUserTypeId.length,
     );
     console.error(strMsg);
     throw strMsg;
@@ -2950,14 +2968,14 @@ export async function XzClg_BindDdl_IdXzCollegeByUserTypeInDivCache(
 
   if (IsNullOrEmpty(strIdSchool) == true) {
     const strMsg = Format(
-      '参数:[strIdSchool]不能为空！(In clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeInDiv)',
+      '参数:[strIdSchool]不能为空！(In clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeIdInDiv)',
     );
     console.error(strMsg);
     throw strMsg;
   }
   if (strIdSchool.length != 4) {
     const strMsg = Format(
-      '缓存分类变量:[strIdSchool]的长度:[{0}]不正确！(clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeInDiv)',
+      '缓存分类变量:[strIdSchool]的长度:[{0}]不正确！(clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeIdInDiv)',
       strIdSchool.length,
     );
     console.error(strMsg);
@@ -2966,22 +2984,26 @@ export async function XzClg_BindDdl_IdXzCollegeByUserTypeInDivCache(
 
   const objDdl = document.getElementById(strDdlName);
   if (objDdl == null) {
-    const strMsg = Format('下拉框：{0} 不存在!(In BindDdl_IdXzCollegeByUserTypeInDiv)', strDdlName);
+    const strMsg = Format(
+      '下拉框：{0} 不存在!(In BindDdl_IdXzCollegeByUserTypeIdInDiv)',
+      strDdlName,
+    );
     alert(strMsg);
     console.error(strMsg);
     throw strMsg;
   }
   //为数据源于表的下拉框设置内容
-  //console.log("开始：BindDdl_IdXzCollegeByUserTypeInDivCache");
-  const arrObjLstSel = await XzClg_GetObjLstCache(strIdSchool);
+  //console.log("开始：BindDdl_IdXzCollegeByUserTypeIdInDivCache");
+  let arrObjLstSel = await XzClg_GetObjLstCache(strIdSchool);
   if (arrObjLstSel == null) return;
+  arrObjLstSel = arrObjLstSel.filter((x) => x.userTypeId == strUserTypeId);
   BindDdl_ObjLstInDivObj(
     objDiv,
     strDdlName,
     arrObjLstSel,
     clsXzClgEN.con_IdXzCollege,
     clsXzClgEN.con_CollegeName,
-    'XzClg...',
+    '选XzClg...',
   );
 }
 /**
@@ -3033,7 +3055,6 @@ export async function XzClg_BindDdl_IdXzCollegeByIdSchoolInDivCache(
     'XzClg...',
   );
 }
-//(IsNeedGC == false)该表下拉框功能不需要生成;
 
 /**
  * 绑定基于Web的下拉框,在某一层下的下拉框
@@ -3041,12 +3062,33 @@ export async function XzClg_BindDdl_IdXzCollegeByIdSchoolInDivCache(
  * @param objDDL:需要绑定当前表的下拉框
 
  * @param strUserType:
+ * @param strUserTypeId:
  * @param strIdSchool:
 */
-export async function XzClg_GetArrXzClgByUserType(strUserType: string, strIdSchool: string) {
+export async function XzClg_GetArrXzClgByUserTypeIdCache(
+  strUserType: string,
+  strUserTypeId: string,
+  strIdSchool: string,
+) {
   if (IsNullOrEmpty(strUserType) == true) {
     const strMsg = Format(
-      '参数:[strUserType]不能为空！(In clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeInDiv)',
+      '参数:[strUserType]不能为空！(In clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeIdInDiv)',
+    );
+    console.error(strMsg);
+    throw strMsg;
+  }
+
+  if (IsNullOrEmpty(strUserTypeId) == true) {
+    const strMsg = Format(
+      '参数:[strUserTypeId]不能为空！(In clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeIdInDiv)',
+    );
+    console.error(strMsg);
+    throw strMsg;
+  }
+  if (strUserTypeId.length != 2) {
+    const strMsg = Format(
+      '缓存分类变量:[strUserTypeId]的长度:[{0}]不正确！(clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeIdInDiv)',
+      strUserTypeId.length,
     );
     console.error(strMsg);
     throw strMsg;
@@ -3054,14 +3096,14 @@ export async function XzClg_GetArrXzClgByUserType(strUserType: string, strIdScho
 
   if (IsNullOrEmpty(strIdSchool) == true) {
     const strMsg = Format(
-      '参数:[strIdSchool]不能为空！(In clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeInDiv)',
+      '参数:[strIdSchool]不能为空！(In clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeIdInDiv)',
     );
     console.error(strMsg);
     throw strMsg;
   }
   if (strIdSchool.length != 4) {
     const strMsg = Format(
-      '缓存分类变量:[strIdSchool]的长度:[{0}]不正确！(clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeInDiv)',
+      '缓存分类变量:[strIdSchool]的长度:[{0}]不正确！(clsXzClgWApi.BindDdl_IdXzCollegeByUserTypeIdInDiv)',
       strIdSchool.length,
     );
     console.error(strMsg);
@@ -3069,13 +3111,14 @@ export async function XzClg_GetArrXzClgByUserType(strUserType: string, strIdScho
   }
 
   //为数据源于表的下拉框设置内容
-  //console.log("开始：BindDdl_IdXzCollegeByUserTypeInDivCache");
+  //console.log("开始：BindDdl_IdXzCollegeByUserTypeIdInDivCache");
   const arrXzClg = new Array<clsXzClgEN>();
-  const arrObjLstSel = await XzClg_GetObjLstCache(strIdSchool);
+  let arrObjLstSel = await XzClg_GetObjLstCache(strIdSchool);
   if (arrObjLstSel == null) return null;
+  arrObjLstSel = arrObjLstSel.filter((x) => x.userTypeId == strUserTypeId);
   const obj0 = new clsXzClgEN();
   obj0.idXzCollege = '0';
-  obj0.collegeName = '选xzClg...';
+  obj0.collegeName = '选XzClg...';
   arrXzClg.push(obj0);
   arrObjLstSel.forEach((x) => arrXzClg.push(x));
   return arrXzClg;
@@ -3117,7 +3160,6 @@ export async function XzClg_GetArrXzClgByIdSchool(strIdSchool: string) {
   arrObjLstSel.forEach((x) => arrXzClg.push(x));
   return arrXzClg;
 }
-//(IsNeedGC == false)该表下拉框功能不需要生成;
 
 /**
  * 检查对象字段值是否合法,1)检查是否可空;2)检查字段值长度是否超长,如果出错就抛出错误.
@@ -3635,7 +3677,7 @@ export function XzClg_CheckProperty4Update(pobjXzClgEN: clsXzClgEN) {
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-06-15
+ * 日期:2025-07-25
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -3656,7 +3698,7 @@ export function XzClg_GetJSONStrByObj(pobjXzClgEN: clsXzClgEN): string {
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-06-15
+ * 日期:2025-07-25
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -3677,7 +3719,7 @@ export function XzClg_GetObjLstByJSONStr(strJSON: string): Array<clsXzClgEN> {
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-06-15
+ * 日期:2025-07-25
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrXzClgObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -3695,7 +3737,7 @@ export function XzClg_GetObjLstByJSONObjLst(arrXzClgObjLstS: Array<clsXzClgEN>):
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-06-15
+ * 日期:2025-07-25
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象

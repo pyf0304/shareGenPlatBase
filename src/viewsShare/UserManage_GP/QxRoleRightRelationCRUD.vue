@@ -145,7 +145,7 @@
   } from '@/viewsShare/UserManage_GP/QxRoleRightRelationVueShare';
   import { QxRoleRightRelationCRUDEx } from '@/viewsShare/UserManage_GP/QxRoleRightRelationCRUDEx';
   import QxRoleRightRelation_EditCom from '@/viewsShare/UserManage_GP/QxRoleRightRelation_Edit.vue';
-  import QxRoleRightRelation_ListCom from '@/views/UserManage_GP/QxRoleRightRelation_List.vue';
+  import QxRoleRightRelation_ListCom from '@/viewsShare/UserManage_GP/QxRoleRightRelation_List.vue';
   import {
     GetCheckedKeyIdsInDivObj,
     GetFirstCheckedKeyIdInDivObj,

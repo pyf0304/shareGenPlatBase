@@ -94,7 +94,7 @@ export async function XzClgEx_GetObjExLstByPagerAsync(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsXzClgEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsXzClgEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrXzClgExObjLst) {
       await XzClgEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -169,7 +169,7 @@ export function XzClgEx_FuncMapByFldName(strFldName: string, objXzClgEx: clsXzCl
   console.log(objXzClgEx);
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsXzClgEN.AttributeName;
+  const arrFldName = clsXzClgEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

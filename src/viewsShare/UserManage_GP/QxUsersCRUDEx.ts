@@ -214,6 +214,8 @@ export default class QxUsersCRUDEx extends QxUsersCRUD implements IShowList {
       divVarSet.refDivQuery,
       'ddlIdXzCollege',
       enumUserType.UniversityUser_05,
+      '',
+      '',
     ); //
   }
   public async SetDdl_idGradeBaseInDiv() {
