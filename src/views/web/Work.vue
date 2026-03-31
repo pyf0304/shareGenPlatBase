@@ -449,9 +449,9 @@
     setup() {
       const activeTabId = ref('menu1');
       const refPageHead = ref();
-      const mySystemName = ref('作业-游戏化教育平台');
+      const mySystemName = ref('作业-通用用户权限管理平台');
 
-      const sysTitle = ref('首页-游戏化教育平台');
+      const sysTitle = ref('首页-通用用户权限管理平台');
 
       const UserName = ref('pyf');
 

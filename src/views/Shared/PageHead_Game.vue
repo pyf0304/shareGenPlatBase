@@ -3,7 +3,9 @@
     <div id="Index_Layout" class="top">
       <div class="top_con">
         <div class="top_title">
-          <a id="web_Title" class="web_Title" style="color: white" href="index">游戏化教育平台</a>
+          <a id="web_Title" class="web_Title" style="color: white" href="index"
+            >通用用户权限管理平台</a
+          >
           &nbsp;&nbsp;<a id="indexTitle" class="sub_Title" style="color: white">{{ indexTitle }}</a>
         </div>
 
@@ -215,7 +217,7 @@
         // 切换按钮的显示和隐藏
         // visible.value = !visible.value;
       };
-      const mySystemName = ref('游戏化教学平台');
+      const mySystemName = ref('通用用户权限管理平台');
       const focusPaper = ref('关注论文');
       const selectedValue = ref();
       const refDivLayout_Head = ref();

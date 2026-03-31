@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 类名:clsPageDispModeWApi
  * 表名:PageDispMode(01120908)
  * 版本:2025.02.27.1(服务器:WIN-SRV103-116)
@@ -7,7 +7,7 @@
  * 生成服务器IP:
  工程名称:问卷调查(0112)
  应用类型:Vue应用InCore-TS(30)
- CM工程:游戏化教育平台(000041, 变量首字母小写)-全部函数集
+ CM工程:通用用户权限管理平台(000041, 变量首字母小写)-全部函数集
  * 相关数据库:103.116.76.183,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:菜单管理(PrjMenu)
@@ -3316,3 +3316,4 @@ export function PageDispMode_GetObjFromJsonObj(
   ObjectAssign(objPageDispModeENT, objPageDispModeENS);
   return objPageDispModeENT;
 }
+

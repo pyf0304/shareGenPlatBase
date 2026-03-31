@@ -1,11 +1,11 @@
-﻿/**
+/**
  * 类名:XzSchool_EditEx(界面:XzSchoolCRUD,01120260)
  * 表名:XzSchool(01120029)
  * 版本:2025.01.04.1(服务器:WIN-SRV103-116)
  * 日期:2025/02/15 05:48:45
  * 生成者:
  工程名称:问卷调查(0112)
- CM工程:游戏化教育平台(000041, 变量首字母小写)-全部函数集
+ CM工程:通用用户权限管理平台(000041, 变量首字母小写)-全部函数集
  * 相关数据库:103.116.76.183,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  * 模块中文名:系统设置(SystemSet)
@@ -74,3 +74,4 @@ export default class XzSchool_EditEx extends XzSchool_Edit {
     }
   }
 }
+

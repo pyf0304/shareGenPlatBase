@@ -1,11 +1,11 @@
-﻿/**
+/**
  * 类名:LoginLog_DetailEx(界面:LoginLogCRUD)
  * 表名:LoginLog(01120357)
  * 版本:2024.08.18.1(服务器:WIN-SRV103-116)
  * 日期:2024/08/22 09:21:01
  * 生成者:
  工程名称:问卷调查(0112)
- CM工程:游戏化教育平台(变量首字母小写)-全部函数集
+ CM工程:通用用户权限管理平台(变量首字母小写)-全部函数集
  * 相关数据库:103.116.76.183,9433EduHigh_Jsie
  * PrjDataBaseId:0170
  * 模块中文名:日志管理(LogManage)
@@ -47,3 +47,4 @@ export default class LoginLog_DetailEx extends LoginLog_Detail {
     }
   }
 }
+

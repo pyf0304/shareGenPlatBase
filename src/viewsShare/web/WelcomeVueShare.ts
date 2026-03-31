@@ -1,14 +1,14 @@
-﻿/**
+/**
  * 类名:ge_UserCreditsLogVueShare(界面:ge_UserCreditsLogCRUD,01120209)
  * 表名:ge_UserCreditsLog(01120883)
  * 版本:2024.11.01.1(服务器:WIN-SRV103-116)
  * 日期:2024/11/07 17:25:11
  * 生成者:
  工程名称:问卷调查(0112)
- CM工程:游戏化教育平台(000041, 变量首字母小写)-全部函数集
+ CM工程:通用用户权限管理平台(000041, 变量首字母小写)-全部函数集
  * 相关数据库:103.116.76.183,9433EduHigh_Jsie
  * PrjDataBaseId:0170
- * 模块中文名:游戏化学习(GameLearn)
+ * 模块中文名:通用用户权限管理(UserPermissionShare)
  * 框架-层名:Vue共享(TS)(Vue_Share_TS,0264)
  * 编程语言:TypeScript
  **/
@@ -75,3 +75,4 @@ export { qryVarSet };
 //功能区变量定义
 const featureVarSet = reactive({});
 export { featureVarSet };
+

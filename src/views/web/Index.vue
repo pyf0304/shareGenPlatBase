@@ -1,155 +1,56 @@
 ﻿<template>
-  <div id="divLayout" ref="refDivLayout" class="divComContainer">
+  <div id="divLayout" ref="refDivLayout" class="index-page">
     <PageHead_Game ref="refPageHead" :title="''"></PageHead_Game>
-    <!-- 网页图片切换 -->
-    <div class="slider">
-      <div id="demo" class="carousel slide" data-ride="carousel">
-        <!-- 指示符 -->
-        <ul class="carousel-indicators">
-          <li data-target="#demo" data-slide-to="0" class="active"></li>
-          <li data-target="#demo" data-slide-to="1"></li>
-          <li data-target="#demo" data-slide-to="2"></li>
-        </ul>
 
-        <!-- 轮播图片 -->
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="@/assets/css/index/img/p1.jpg" />
-          </div>
-          <div class="carousel-item">
-            <img src="@/assets/css/index/img/p2.jpg" />
-          </div>
-          <div class="carousel-item">
-            <img src="@/assets/css/index/img/p5.jpg" />
-          </div>
+    <main class="index-main">
+      <section class="hero-panel">
+        <p class="hero-tag">Shared Module</p>
+        <h1 class="hero-title">通用用户与权限管理</h1>
+        <p class="hero-desc">
+          当前首页仅保留登录与系统设置相关入口，用于作为共享能力模块的统一测试页面。
+          其他项目接入后，可通过系统设置进入用户、角色、权限、菜单等管理界面进行联调与验证。
+        </p>
+        <div class="hero-actions">
+          <button class="primary-btn" type="button" @click="openLogin">登录 / 切换账号</button>
+          <button class="secondary-btn" type="button" @click="goSystemSettings">
+            进入系统设置
+          </button>
         </div>
+      </section>
 
-        <!-- 左右切换按钮 -->
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </a>
-      </div>
-    </div>
+      <section class="summary-grid">
+        <article class="summary-card">
+          <h2>建议使用方式</h2>
+          <p>先通过页头或当前页面完成登录，再从系统设置入口测试后台管理功能。</p>
+        </article>
+        <article class="summary-card">
+          <h2>当前保留能力</h2>
+          <p>登录、注册、角色切换、教学班切换，以及系统设置相关管理页面入口。</p>
+        </article>
+        <article class="summary-card">
+          <h2>已移除展示内容</h2>
+          <p>基础知识、知识测评、学习闯关、知识图谱、习题集、作业、社区等业务化入口。</p>
+        </article>
+      </section>
 
-    <!-- 网页内容信息 -->
-    <div class="content">
-      <div class="box1">
-        <div class="ExpressLane1">
-          <ul class="list_ul1">
-            <li>
-              <a href="javascript:void(0)" class="icon-7" @click="liMenu_Click(1)">
-                <div class="iconLeft">
-                  <i></i>
-                  <label>基础知识</label>
-                </div>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              </a>
-            </li>
+      <section class="guide-panel">
+        <h2>测试流程</h2>
+        <ol class="guide-list">
+          <li>点击“登录 / 切换账号”，完成账号登录。</li>
+          <li>如账号具备多个角色，可在页头切换角色后再继续验证。</li>
+          <li>点击“进入系统设置”，测试用户、角色、权限和菜单相关界面。</li>
+        </ol>
+      </section>
+    </main>
 
-            <li>
-              <a href="javascript:void(0)" class="icon-1" @click="liMenu_Click(2)">
-                <div class="iconLeft">
-                  <i></i>
-                  <label>知识测评</label>
-                </div>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              </a>
-            </li>
-
-            <li>
-              <a href="javascript:void(0)" class="icon-9" @click="liMenu_Click(3)">
-                <div class="iconLeft">
-                  <i></i>
-                  <label>冲关游戏</label>
-                </div>
-                <span> &nbsp;&nbsp;&nbsp;&nbsp; </span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="icon-9" @click="liMenu_Click(10)">
-                <div class="iconLeft">
-                  <i></i>
-                  <label>漂流瓶游戏</label>
-                </div>
-                <span> &nbsp;&nbsp;&nbsp;&nbsp; </span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="icon-4" @click="liMenu_Click(4)">
-                <div class="iconLeft">
-                  <i></i>
-                  <label>成就激励</label>
-                </div>
-                <span> &nbsp;&nbsp;&nbsp;&nbsp; </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="box2">
-        <div class="ExpressLane2">
-          <ul class="list_ul1">
-            <li>
-              <a href="javascript:void(0)" class="icon-3" @click="liMenu_Click(5)">
-                <i></i>
-                <label>知识图谱</label>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="icon-5" @click="liMenu_Click(6)">
-                <i></i>
-                <label>习题集</label>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="icon-2" @click="liMenu_Click(7)">
-                <i></i>
-                <label>作业</label>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="icon-8" @click="liMenu_Click(8)">
-                <i></i>
-                <label>学习社区</label>
-                <span> &nbsp;&nbsp;&nbsp;&nbsp; </span>
-              </a>
-            </li>
-
-            <li>
-              <a href="javascript:void(0)" class="icon-6" @click="liMenu_Click(9)">
-                <i></i>
-                <label>系统设置</label>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
     <PageEnd_Game :title="''"></PageEnd_Game>
   </div>
 </template>
 <script lang="ts">
-  import 'jquery/dist/jquery.min';
-  import 'bootstrap/dist/js/bootstrap.min';
-  import 'bootstrap/dist/css/bootstrap.css';
-  import '@/assets/css/index/css/index.css';
-  import '@/assets/css/index/css/slider.css';
-
   import { defineComponent, onMounted, ref } from 'vue';
 
   import PageEnd_Game from '@/views/Shared/PageEnd_Game.vue';
   import PageHead_Game from '@/views/Shared/PageHead_Game.vue';
-
-  import { Login } from '@/viewsShare/UserManage/Login';
-  import router from '@/router';
 
   import { Index } from '@/views/web/Index';
   export default defineComponent({
@@ -160,16 +61,11 @@
       PageHead_Game,
     },
     setup() {
+      const refDivLayout = ref();
       const refPageHead = ref();
-      const mySystemName = ref('游戏化教学平台');
-
-      const wfmRegisterStuRef = ref();
-
-      const sysTitle = ref('首页-游戏化教育平台');
 
       onMounted(() => {
         Index.vuebtn_Click = btn_Click;
-        // userStore.getIdXzMajor = '00000468';
         window_onload();
       });
 
@@ -187,6 +83,18 @@
       function liMenu_Click(key: number) {
         const objPage = new Index();
         objPage.liMenu_Click(key);
+      }
+
+      function openLogin() {
+        if (refPageHead.value?.btn_Click != null) {
+          refPageHead.value.btn_Click('login', '');
+          return;
+        }
+        Index.btn_Click('login', '');
+      }
+
+      function goSystemSettings() {
+        liMenu_Click(9);
       }
 
       function btn_Click(strCommandName: string, strKeyId: string) {
@@ -211,97 +119,179 @@
           case 'UpdateRecord':
           case 'UpdateRecordInTab':
             break;
-
-          case 'liPaper':
-            router.push('/about');
-            console.log("router.push('/about');");
-            // router.push({ name: 'myabout' });
-            // console.log("router.push({ name: 'myabout' });");
-            break;
           default:
             break;
         }
         Index.btn_Click(strCommandName, strKeyId);
       }
       return {
-        wfmRegisterStuRef,
+        refDivLayout,
         btn_Click,
-
-        sysTitle,
-
-        mySystemName,
         refPageHead,
         liMenu_Click,
+        openLogin,
+        goSystemSettings,
       };
     },
   });
 </script>
 <style scoped>
-  .box3 {
-    padding: 3px 10px 10px 10px;
-    background-color: white;
-    border-left: solid 1px #dbdcde;
-    border-right: solid 1px #dededf;
-    border-bottom: solid 1px #dbdcde;
-    border-radius: 7px 4px 4px 2px;
-    margin-bottom: 5px;
+  .index-page {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top left, rgba(196, 225, 255, 0.9), transparent 30%),
+      linear-gradient(180deg, #eef5fb 0%, #f7f9fc 48%, #eef2f7 100%);
   }
 
-  .box4 {
-    padding: 10px 10px 0px 10px;
-    background-color: white;
-    border-left: solid 1px #dbdcde;
-    border-right: solid 1px #dededf;
-    border-bottom: solid 1px #dbdcde;
-    border-radius: 7px 4px 4px 2px;
-    margin-bottom: 8px;
-  }
-
-  .row {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-right: 0px;
-    margin-left: 0px;
-    padding-top: 5px;
-    background-color: white;
-    /*border-left: solid 1px #dbdcde;
-            border-right: solid 1px #dededf;*/
-    /*border-bottom: solid 1px #dbdcde;*/
-    border-radius: 4px 4px 4px 2px;
-    line-height: 3;
-  }
-
-  .alert {
-    position: relative;
-    padding: 0.55rem 1.25rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid transparent;
-    border-radius: 0.25rem;
-  }
-
-  .carousel-inner img {
-    width: 100%;
-    height: 320px;
-  }
-
-  .slider {
-    width: 100%;
-    /*min-width: 1000px;*/
-    height: 325px;
-    position: relative;
-    overflow: hidden;
-    /*background: #fff;*/
-    text-align: center;
-  }
-
-  #demo {
-    width: 80%;
-    height: 325px;
+  .index-main {
+    width: min(1120px, calc(100% - 32px));
     margin: 0 auto;
-    /*margin-top: 2px;*/
-    /*top: 10px;*/
+    padding: 40px 0 56px;
+  }
+
+  .hero-panel {
+    padding: 40px;
+    border: 1px solid rgba(29, 74, 122, 0.12);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 24px 60px rgba(18, 54, 92, 0.12);
+    backdrop-filter: blur(6px);
+  }
+
+  .hero-tag {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #2f6f9f;
+  }
+
+  .hero-title {
+    margin: 0;
+    font-size: 40px;
+    line-height: 1.15;
+    color: #16324f;
+  }
+
+  .hero-desc {
+    max-width: 760px;
+    margin: 20px 0 0;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #4d6279;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    min-width: 170px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease;
+    cursor: pointer;
+  }
+
+  .primary-btn {
+    color: #fff;
+    background: linear-gradient(135deg, #2468a2 0%, #1d4f7d 100%);
+    box-shadow: 0 12px 24px rgba(29, 79, 125, 0.24);
+  }
+
+  .secondary-btn {
+    color: #1d4f7d;
+    background: rgba(36, 104, 162, 0.12);
+    border: 1px solid rgba(36, 104, 162, 0.22);
+  }
+
+  .primary-btn:hover,
+  .secondary-btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .summary-card,
+  .guide-panel {
+    padding: 24px;
+    border: 1px solid rgba(29, 74, 122, 0.1);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 14px 34px rgba(22, 50, 79, 0.08);
+  }
+
+  .summary-card h2,
+  .guide-panel h2 {
+    margin: 0 0 12px;
+    font-size: 20px;
+    color: #16324f;
+  }
+
+  .summary-card p,
+  .guide-list {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #566b80;
+  }
+
+  .guide-panel {
+    margin-top: 24px;
+  }
+
+  .guide-list {
+    padding-left: 20px;
+  }
+
+  .guide-list li + li {
+    margin-top: 10px;
+  }
+
+  @media (max-width: 900px) {
+    .summary-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-panel {
+      padding: 28px 22px;
+    }
+
+    .hero-title {
+      font-size: 30px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .index-main {
+      width: calc(100% - 24px);
+      padding: 24px 0 40px;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      width: 100%;
+    }
   }
 </style>
 

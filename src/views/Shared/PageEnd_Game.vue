@@ -4,7 +4,9 @@
       <div class="foot">
         <div class="fleft">
           <span class="flogo"
-            ><a href="javascript:void(0)" title="游戏化教育平台">游戏化教育平台</a></span
+            ><a href="javascript:void(0)" title="通用用户权限管理平台"
+              >通用用户权限管理平台</a
+            ></span
           >
           <ul class="flist">
             <li id="flfirst">
@@ -14,7 +16,7 @@
               <a href="https://www.sh-tz.com/" target="_blank">上海泰泽</a>
             </li>
           </ul>
-          <div class="copyright"> Copyright &#169; 2021 游戏化教育平台v1 </div>
+          <div class="copyright"> Copyright &#169; 2021 通用用户权限管理平台 v1 </div>
         </div>
         <div class="fright">
           <ul class="rlist">

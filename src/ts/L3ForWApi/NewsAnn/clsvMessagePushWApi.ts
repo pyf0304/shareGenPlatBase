@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 类名:clsvMessagePushWApi
  * 表名:vMessagePush(01120282)
  * 版本:2024.01.29.1(服务器:WIN-SRV103-116)
@@ -6,7 +6,7 @@
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:问卷调查(0112)
- CM工程:游戏化教育平台(变量首字母小写)-全部函数集
+ CM工程:通用用户权限管理平台(变量首字母小写)-全部函数集
  * 相关数据库:103.116.76.183,9433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:新闻公告(NewsAnn)
@@ -2341,3 +2341,4 @@ export function vMessagePush_GetObjFromJsonObj(
   ObjectAssign(objvMessagePushENT, objvMessagePushENS);
   return objvMessagePushENT;
 }
+

@@ -14,7 +14,7 @@ import { Ref } from 'vue';
 import router from '@/router';
 import { refLogin_Edit } from '@/viewsShare/web/LoginVueShare';
 import { enumQxRoles } from '@/ts/L0Entity/UserManage_GP/clsQxRolesEN';
-import { ca, de } from 'element-plus/es/locale';
+// import { ca, de } from 'element-plus/es/locale';
 
 declare function Reload(): void;
 

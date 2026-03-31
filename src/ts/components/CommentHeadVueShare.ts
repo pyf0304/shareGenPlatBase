@@ -1,14 +1,14 @@
-﻿/**
+/**
  * 类名:BadgeTypeVueShare(界面:BadgeTypeCRUD,01120206)
  * 表名:BadgeType(01120880)
  * 版本:2024.11.23.1(服务器:WIN-SRV103-116)
  * 日期:2024/11/23 17:41:18
  * 生成者:
  工程名称:问卷调查(0112)
- CM工程:游戏化教育平台(000041, 变量首字母小写)-全部函数集
+ CM工程:通用用户权限管理平台(000041, 变量首字母小写)-全部函数集
  * 相关数据库:103.116.76.183,9433EduHigh_Jsie
  * PrjDataBaseId:0170
- * 模块中文名:游戏化学习(GameLearn)
+ * 模块中文名:通用用户权限管理(UserPermissionShare)
  * 框架-层名:Vue共享(TS)(Vue_Share_TS,0264)
  * 编程语言:TypeScript
  **/
@@ -69,3 +69,4 @@ export { qryVarSet };
 //功能区变量定义
 const featureVarSet = reactive({});
 export { featureVarSet };
+

@@ -1,11 +1,11 @@
-﻿/**
+/**
  * 类名:clsUserExamBatchRelaEN
  * 表名:UserExamBatchRela(01120980)
  * 版本:2025.01.04.1(服务器:WIN-SRV103-116)
  * 日期:2025/02/13 16:45:49
  * 生成者:pyf
  工程名称:问卷调查(0112)
- CM工程:游戏化教育平台(000041, 变量首字母小写)-全部函数集
+ CM工程:通用用户权限管理平台(000041, 变量首字母小写)-全部函数集
  * 相关数据库:103.116.76.183,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage)
@@ -412,3 +412,4 @@ export class clsUserExamBatchRelaEN extends clsGeneralTab {
     return instance.hasOwnProperty(propName);
   }
 }
+

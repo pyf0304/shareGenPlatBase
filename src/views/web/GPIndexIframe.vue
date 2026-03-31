@@ -37,12 +37,12 @@
         <!-- <div> -->
         <nav class="navbar navbar-light bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand" href="javascript:void(0)">游戏化学习平台</a>
+            <a class="navbar-brand" href="javascript:void(0)">通用用户权限管理平台</a>
           </div>
         </nav>
         <div class="container-fluid">
           <ul class="nav flex-column">
-            <li class="nav-item" v-for="(module, index) in menu" :key="index">
+            <li class="nav-item" v-for="(module, index) in AllMenu" :key="index">
               <a
                 class="nav-link module-name"
                 :class="{ active: module.active }"
@@ -141,6 +141,7 @@
   import QxRoleMenusCRUD0 from '@/viewsShare/MenuManage_GP/QxRoleMenusCRUD.vue';
   import QxPotenceTypeCRUD0 from '@/viewsShare/PotenceMan/QxPotenceTypeCRUD.vue';
   import QxPrjPotenceCRUD0 from '@/viewsShare/PotenceMan/QxPrjPotenceCRUD.vue';
+  import QxCmProjectCRUD0 from '@/views/SysManage/QxCmProjectCRUD.vue';
 
   // import PersonalKnowledgeView0 from '@/views/GradEduTopic/PersonalKnowledgeView.vue';
   // import gs_UserConfig0 from '@/views/GradEduTools/gs_UserConfig.vue';
@@ -191,7 +192,7 @@
       const userStore = useUserStore();
       const qxRoleMenusStore = useQxRoleMenusStore();
       const route = useRoute(); // 获取当前路由信息
-      const strTitle = ref('游戏化学习-后台管理');
+      const strTitle = ref('通用用户权限管理-后台管理');
 
       // const About = markRaw(About0);
       const menuSetId = ref('');
@@ -206,6 +207,7 @@
       const QxRoleMenusCRUD = markRaw(QxRoleMenusCRUD0);
       const QxPotenceTypeCRUD = markRaw(QxPotenceTypeCRUD0);
       const QxPrjPotenceCRUD = markRaw(QxPrjPotenceCRUD0);
+      const QxCmProjectCRUD = markRaw(QxCmProjectCRUD0);
 
       // const PersonalKnowledgeView = markRaw(PersonalKnowledgeView0);
       // const gs_UserConfig = markRaw(gs_UserConfig0);
@@ -216,16 +218,12 @@
 
       const Welcome = markRaw(Welcome0);
       // 菜单数据
-      const menu = ref([
+      const AllMenu = ref([
         {
-          name: '用户管理',
+          name: '用户',
           active: false,
           items: [
-            // { name: '用户维护', title: '', active: false, component: UsersCRUD, paras: '' },
-            // <a @click="xadmin.add_tab('用户维护','../UserManage/Users_QUDI')">
             { name: '平台用户维护', title: '', active: false, component: QxUsersCRUD, paras: '' },
-            { name: '平台角色维护', title: '', active: false, component: QxRolesCRUD, paras: '' },
-
             {
               name: '用户角色关系维护',
               title: '',
@@ -233,22 +231,22 @@
               component: QxUserRoleRelationCRUD,
               paras: '',
             },
+            { name: '学校维护', title: '', active: false, component: XzSchoolCRUD, paras: '' },
+          ],
+        },
 
-            {
-              name: '工程菜单维护',
-              title: '',
-              active: false,
-              component: QxPrjMenusCRUD,
-              paras: 'EditTabName=QxPrjMenus',
-            },
-            {
-              name: '角色菜单',
-              title: '',
-              active: false,
-              component: QxRoleMenusCRUD,
-              paras: 'EditTabName=QxRoleMenus',
-            },
-            // <a @click="xadmin.add_tab('用户维护','../UserManage/Users_QUDI')">
+        {
+          name: '角色',
+          active: false,
+          items: [
+            { name: '平台角色维护', title: '', active: false, component: QxRolesCRUD, paras: '' },
+          ],
+        },
+
+        {
+          name: '权限',
+          active: false,
+          items: [
             {
               name: '权限类型维护',
               title: '',
@@ -275,38 +273,37 @@
         },
 
         {
+          name: '菜单',
+          active: false,
+          items: [
+            {
+              name: '工程菜单维护',
+              title: '',
+              active: false,
+              component: QxPrjMenusCRUD,
+              paras: 'EditTabName=QxPrjMenus',
+            },
+            {
+              name: '角色菜单',
+              title: '',
+              active: false,
+              component: QxRoleMenusCRUD,
+              paras: 'EditTabName=QxRoleMenus',
+            },
+            { name: '缓存配置', title: '', active: false, component: CacheUseStateCRUD, paras: '' },
+          ],
+        },
+        {
           name: '系统设置',
           active: false,
           items: [
-            // <a  @click="xadmin.add_tab('分数权重管理','../ParameterTable/SysScoreWeight_QUDI_TS')"
-            // {
-            //   name: '个人知识点查看',
-            //   title: '',
-            //   active: false,
-            //   component: PersonalKnowledgeView,
-            //   paras: '',
-            // },
-            // <a  @click="xadmin.add_tab('个人知识点查看', '../GradEduTopic/PersonalKnowledgeView')"
-
-            // <a @click="xadmin.add_tab('各观点分享配置', '../GradEduTools/gs_UserConfig')">
-            { name: '缓存配置', title: '', active: false, component: CacheUseStateCRUD, paras: '' },
-            { name: '学校维护', title: '', active: false, component: XzSchoolCRUD, paras: '' },
-
-            // <a @click="xadmin.add_tab('缓存配置', '../SystemSet_Share/CacheUseStateCRUD')">
-
-            // <a  @click="xadmin.add_tab('评论类型管理','../GradEduTopic/SysCommentType_QUDI_TS')"
-
-            // <a onclick="xadmin.add_tab('个人知识点查看', '../GraduateEduTopic/PersonalKnowledgeView')">
-            //     <i class="iconfont">&#xe6a7;</i>
-            //     <cite>个人知识点查看</cite>
-            // </a>
-            // {
-            //   name: '个人知识点查看',
-            //   title: '',
-            //   active: false,
-            //   component: PersonalKnowledgeView,
-            //   paras: '',
-            // },
+            {
+              name: '项目维护',
+              title: '',
+              active: false,
+              component: QxCmProjectCRUD,
+              paras: '',
+            },
           ],
         },
       ]);
@@ -326,7 +323,7 @@
       const addTab = (moduleName: string, componentName: string) => {
         const existingTab = tabs.value.find((tab: any) => tab.name === componentName);
         if (!existingTab) {
-          const selectedModule = menu.value.find((module: any) => module.name === moduleName);
+          const selectedModule = AllMenu.value.find((module: any) => module.name === moduleName);
           if (selectedModule) {
             const selectedComponent = (selectedModule.items as Item[]).find(
               (item: any) => item.name === componentName,
@@ -407,7 +404,7 @@
       const activeTab = ref(0);
       // 切换菜单状态
       const toggleActive = (module: any) => {
-        menu.value.forEach((m: any) => {
+        AllMenu.value.forEach((m: any) => {
           if (m !== module) {
             m.active = false;
           }
@@ -415,7 +412,7 @@
         module.active = !module.active;
       };
       const toggleActiveItem = (item: any) => {
-        menu.value.forEach((m: any) => {
+        AllMenu.value.forEach((m: any) => {
           m.items.forEach((i: any) => {
             if (i !== item) {
               i.active = false;
@@ -437,10 +434,10 @@
             strTitle.value = '研究生论文阅读系统-个人中心';
             break;
           case '0025':
-            strTitle.value = '游戏化教育平台-后台管理';
+            strTitle.value = '通用用户权限管理平台-后台管理';
             break;
           case '0026':
-            strTitle.value = '游戏化教育平台-个人中心';
+            strTitle.value = '通用用户权限管理平台-个人中心';
             break;
           default:
             strMsg = `菜单集Id:${menuSetId.value} 在函数中没有被处理!`;
@@ -456,8 +453,16 @@
           menuSetId.value,
           clsSysPara4WebApi.cmPrjId,
         );
-        // console.log('arrMenuName_CurrMenuSet:', arrMenuName_CurrMenuSet);
-        menu.value = menu.value.filter((x: any) => arrMenuName_CurrMenuSet.indexOf(x.name) > -1);
+        const menuNameSet = new Set(arrMenuName_CurrMenuSet);
+        // AllMenu.value = AllMenu.value
+        //   .map((module: any) => {
+        //     const hasModulePermission = menuNameSet.has(module.name);
+        //     const filteredItems = module.items.filter(
+        //       (item: any) => hasModulePermission || menuNameSet.has(item.name),
+        //     );
+        //     return { ...module, items: filteredItems };
+        //   })
+        //   .filter((module: any) => module.items.length > 0);
         // console.log(menu.value);
         IndexIframe.GetPropValue = GetPropValue;
         IndexIframe.divLayout = refDivLayout.value;
@@ -548,7 +553,7 @@
 
         btn_Click,
         toggleActive,
-        menu,
+        AllMenu,
         addTab,
         removeTab,
         currentTab,
