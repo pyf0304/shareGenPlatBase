@@ -490,11 +490,11 @@ export async function RsAdminGrade_func(
     console.error(strMsg);
     throw new Error(strMsg);
   }
-  if (clsRsAdminGradeEN.AttributeName.indexOf(strOutFldName) == -1) {
+  if (clsRsAdminGradeEN._AttributeName.indexOf(strOutFldName) == -1) {
     const strMsg = Format(
       '输出字段名:[{0}]不正确,不在输出字段范围之内!({1})',
       strOutFldName,
-      clsRsAdminGradeEN.AttributeName.join(','),
+      clsRsAdminGradeEN._AttributeName.join(','),
     );
     console.error(strMsg);
     throw new Error(strMsg);

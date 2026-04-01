@@ -2,14 +2,14 @@
  /**
  * 类名:clsQxUserGroupPotenceWApi
  * 表名:QxUserGroupPotence(00140008)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:43
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:02:09
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
  应用类型:Vue应用InCore-TS(30)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户权限管理(UserPotenceMan)
  * 框架-层名:WA_访问层(TS)(WA_Access,0155)
@@ -21,21 +21,19 @@
 /**
  * 用户权限关系(QxUserGroupPotence)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2025年04月13日.
+* Created by pyf on 2026年04月01日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
 import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
 import { Storage } from '@/utils/Storage';
-import { ConditionCollection } from "@/ts/PubFun/ConditionCollection";
+import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
 import { GetStrLen,tzDataType,Format,IsNullOrEmpty } from "@/ts/PubFun/clsString";
 import { clsQxUserGroupPotenceEN } from "@/ts/L0Entity/UserPotenceMan/clsQxUserGroupPotenceEN";
 import { GetExceptionStr, myShowErrorMsg, ObjectAssign } from "@/ts/PubFun/clsCommFunc4Web";
-import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
 import { clsSysPara4WebApi, GetWebApiUrl_GP } from "@/ts/PubConfig/clsSysPara4WebApi";
 import { stuTopPara } from "@/ts/PubFun/stuTopPara";
 import { stuRangePara } from "@/ts/PubFun/stuRangePara";
-import { stuPagerPara } from "@/ts/PubFun/stuPagerPara";
 
  export const qxUserGroupPotence_Controller = "QxUserGroupPotenceApi";
  export const qxUserGroupPotence_ConstructorName = "qxUserGroupPotence";
@@ -120,7 +118,7 @@ throw(error.statusText);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -133,7 +131,7 @@ return a.mId-b.mId;
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -148,7 +146,7 @@ else return a.userId.localeCompare(b.userId);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -264,7 +262,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxUserGroupPotence]中不存在!(in
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -842,73 +840,7 @@ throw(error.statusText);
 }
 }
 //该表没有使用Cache,不需要生成[GetObjLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerCache)
-
- /**
- * 根据分页条件获取相应的记录对象列表,只获取一页
- * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
- * @param objPagerPara:分页获取对象列表的参数对象
- * @returns 获取的相应记录对象列表
- **/
-export  async function QxUserGroupPotence_GetObjLstByPagerAsync(objPagerPara: stuPagerPara): Promise<Array<clsQxUserGroupPotenceEN>>  
-{
-const strThisFuncName = "GetObjLstByPagerAsync";
-if (objPagerPara.pageIndex == 0) return new Array<clsQxUserGroupPotenceEN>();
-const strAction = "GetObjLstByPager";
-const strUrl = GetWebApiUrl_GP(qxUserGroupPotence_Controller, strAction);
-
-const token = Storage.get(ACCESS_TOKEN_KEY);
-//console.error('token:', token);
-const config = {
-headers: {
-Authorization: `${ token}`,
-},
-};
-try
-{
-const response = await axios.post(strUrl, objPagerPara, config);
-const data = response.data;
-if (data.errorId == 0)
-{
-const returnObjLst = data.returnObjLst;
-if (returnObjLst == null)
-{
-const strNullInfo = Format("获取数据为null, 请注意!(in {0}.{1})", qxUserGroupPotence_ConstructorName, strThisFuncName);
-console.error(strNullInfo);
-throw(strNullInfo);
-}
-//console.log(returnObjLst);
-const arrObjLst = QxUserGroupPotence_GetObjLstByJSONObjLst(returnObjLst);
-return arrObjLst;
-}
-else
-{
-console.error(data.errorMsg);
-throw(data.errorMsg);
-}
-} catch (error: any) {
-console.error(error);
-if (error.statusText == undefined)
-{
-throw error;
-}
-if (error.statusText == "error")
-{
-const strInfo = Format("网络错误!访问地址:{0}不成功!(in {1}.{2})", strUrl, qxUserGroupPotence_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else if (error.statusText == "Not Found")
-{
-const strInfo = Format("网络错误!访问地址:{0}可能不存在!(in {1}.{2})", strUrl, qxUserGroupPotence_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else
-{
-throw(error.statusText);
-}
-}
-}
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
 
  /**
  * 调用WebApi来删除记录,根据关键字来删除记录
@@ -1024,6 +956,11 @@ throw(error.statusText);
 }
 }
 }
+//该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjExLstByPagerCache)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_CopyToEx)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMapByFldName)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByExKey)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMap)
 
  /**
  * 根据条件删除记录
@@ -1146,7 +1083,7 @@ throw(error.statusText);
  /** 添加新记录,保存函数
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_AddNewObjSave)
  **/
-export  async function QxUserGroupPotence_AddNewObjSave(objQxUserGroupPotenceEN: clsQxUserGroupPotenceEN): Promise<AddRecordResult>{
+export  async function QxUserGroupPotence_AddNewObjSave(objQxUserGroupPotenceEN: clsQxUserGroupPotenceEN ): Promise<AddRecordResult>{
 const strThisFuncName = 'AddNewObjSave';
 try
 {
@@ -1974,7 +1911,7 @@ if (IsNullOrEmpty(pobjQxUserGroupPotenceEN.potenceId) == false && pobjQxUserGrou
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -1999,7 +1936,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -2025,7 +1962,7 @@ return arrQxUserGroupPotenceObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrQxUserGroupPotenceObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -2044,7 +1981,7 @@ return arrQxUserGroupPotenceObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象

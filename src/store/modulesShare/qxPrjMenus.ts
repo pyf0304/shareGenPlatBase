@@ -189,7 +189,7 @@ export const useQxPrjMenusStore = defineStore('QxPrjMenus', {
         // case clsQxPrjMenusEN.con_CollegeName:
         //   return objQxPrjMenus.collegeName;
         // case clsQxPrjMenusEN.con_IdXzMajor:
-        //   return objQxPrjMenus.idXzMajor;
+        //   return objQxPrjMenus.id_XzMajor;
         // case clsQxPrjMenusEN.con_MajorName:
         //   return objQxPrjMenus.majorName;
         // case clsQxPrjMenusEN.con_HeadPic:

@@ -184,7 +184,7 @@ export function vStudentInfo_SimEx_FuncMapByFldName(
   console.log(objvStudentInfo_SimEx);
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsvStudentInfo_SimEN.AttributeName;
+  const arrFldName = clsvStudentInfo_SimEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {
@@ -228,4 +228,3 @@ export async function vStudentInfo_SimEx_GetObjByStuId(
   const objvStudentInfo_Sim = await vStudentInfo_Sim_GetFirstObjAsync(strWhere);
   return objvStudentInfo_Sim;
 }
-

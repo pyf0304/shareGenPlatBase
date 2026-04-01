@@ -2,8 +2,8 @@
  /**
  * 类名:clsQxUseStateWApi
  * 表名:QxUseState(00140133)
- * 版本:2026.03.27.1(服务器:WIN-SRV103-116)
- * 日期:2026/03/31 00:50:58
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:01:37
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
@@ -21,7 +21,7 @@
 /**
  * 使用状态(QxUseState)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2026年03月31日.
+* Created by pyf on 2026年04月01日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
@@ -58,7 +58,7 @@ if (IsNullOrEmpty(strUseStateId) == true)
 console.error(strMsg);
  throw (strMsg);
 }
-if (strUseStateId.length != 4)
+if (strUseStateId.length != 2)
 {
 const strMsg = Format("缓存分类变量:[strUseStateId]的长度:[{0}]不正确!(clsQxUseStateWApi.GetObjByUseStateIdAsync)", strUseStateId.length);
 console.error(strMsg);
@@ -137,7 +137,7 @@ if (IsNullOrEmpty(strUseStateId) == true)
 console.error(strMsg);
  throw (strMsg);
 }
-if (strUseStateId.length != 4)
+if (strUseStateId.length != 2)
 {
 const strMsg = Format("缓存分类变量:[strUseStateId]的长度:[{0}]不正确!(clsQxUseStateWApi.GetObjByUseStateIdlocalStorage)", strUseStateId.length);
 console.error(strMsg);
@@ -192,7 +192,7 @@ if (IsNullOrEmpty(strUseStateId) == true)
 console.error(strMsg);
  throw (strMsg);
 }
-if (strUseStateId.length != 4)
+if (strUseStateId.length != 2)
 {
 const strMsg = Format("缓存分类变量:[strUseStateId]的长度:[{0}]不正确!(clsQxUseStateWApi.GetObjByUseStateIdCache)", strUseStateId.length);
 console.error(strMsg);
@@ -263,7 +263,7 @@ alert(strMsg);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2026-03-31
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -276,7 +276,7 @@ return a.useStateId.localeCompare(b.useStateId);
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2026-03-31
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -291,7 +291,7 @@ else return a.useStateName.localeCompare(b.useStateName);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2026-03-31
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -365,7 +365,7 @@ if (IsNullOrEmpty(strUseStateId) == true)
 console.error(strMsg);
  throw (strMsg);
 }
-if (strUseStateId.length != 4)
+if (strUseStateId.length != 2)
 {
 const strMsg = Format("缓存分类变量:[strUseStateId]的长度:[{0}]不正确!(clsQxUseStateWApi.GetNameByUseStateIdCache)", strUseStateId.length);
 console.error(strMsg);
@@ -400,7 +400,7 @@ return "";
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2026-03-31
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -434,7 +434,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxUseState]中不存在!(in ${ qxUs
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2026-03-31
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_func)
  * @param strInFldName:输入字段名
  * @param strOutFldName:输出字段名
@@ -472,7 +472,7 @@ return objQxUseState.GetFldValue(strOutFldName).toString();
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2026-03-31
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_funcKey)
  * @param strInFldName:输入字段名
  * @param strInValue:输入字段值
@@ -2746,9 +2746,9 @@ if (IsNullOrEmpty(pobjQxUseStateEN.useStateName) === true )
  throw new Error(`(errid:Watl000411)字段[使用状态名称]不能为空(In 使用状态)!(clsQxUseStateBL:CheckPropertyNew0)`);
 }
 //检查字段长度, 若字符型字段长度超出规定的长度,即非法!
-if (IsNullOrEmpty(pobjQxUseStateEN.useStateId) == false && GetStrLen(pobjQxUseStateEN.useStateId) > 4)
+if (IsNullOrEmpty(pobjQxUseStateEN.useStateId) == false && GetStrLen(pobjQxUseStateEN.useStateId) > 2)
 {
- throw new Error(`(errid:Watl000413)字段[使用状态Id(useStateId)]的长度不能超过4(In 使用状态(QxUseState))!值:${pobjQxUseStateEN.useStateId}(clsQxUseStateBL:CheckPropertyNew)`);
+ throw new Error(`(errid:Watl000413)字段[使用状态Id(useStateId)]的长度不能超过2(In 使用状态(QxUseState))!值:${pobjQxUseStateEN.useStateId}(clsQxUseStateBL:CheckPropertyNew)`);
 }
 if (IsNullOrEmpty(pobjQxUseStateEN.useStateName) == false && GetStrLen(pobjQxUseStateEN.useStateName) > 30)
 {
@@ -2782,9 +2782,9 @@ if (IsNullOrEmpty(pobjQxUseStateEN.memo) == false && undefined !== pobjQxUseStat
 export  function QxUseState_CheckProperty4Update(pobjQxUseStateEN: clsQxUseStateEN)
 {
 //检查字段长度, 若字符型字段长度超出规定的长度,即非法!
-if (IsNullOrEmpty(pobjQxUseStateEN.useStateId) == false && GetStrLen(pobjQxUseStateEN.useStateId) > 4)
+if (IsNullOrEmpty(pobjQxUseStateEN.useStateId) == false && GetStrLen(pobjQxUseStateEN.useStateId) > 2)
 {
- throw new Error(`(errid:Watl000416)字段[使用状态Id(useStateId)]的长度不能超过4(In 使用状态(QxUseState))!值:${pobjQxUseStateEN.useStateId}(clsQxUseStateBL:CheckProperty4Update)`);
+ throw new Error(`(errid:Watl000416)字段[使用状态Id(useStateId)]的长度不能超过2(In 使用状态(QxUseState))!值:${pobjQxUseStateEN.useStateId}(clsQxUseStateBL:CheckProperty4Update)`);
 }
 if (IsNullOrEmpty(pobjQxUseStateEN.useStateName) == false && GetStrLen(pobjQxUseStateEN.useStateName) > 30)
 {
@@ -2815,7 +2815,7 @@ if (IsNullOrEmpty(pobjQxUseStateEN.memo) == false && undefined !== pobjQxUseStat
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2026-03-31
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -2840,7 +2840,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2026-03-31
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -2866,7 +2866,7 @@ return arrQxUseStateObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2026-03-31
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrQxUseStateObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -2885,7 +2885,7 @@ return arrQxUseStateObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2026-03-31
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象

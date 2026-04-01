@@ -2,14 +2,14 @@
  /**
  * 类名:clsQxServer4SynchWApi
  * 表名:QxServer4Synch(00140091)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:22
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:03:07
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
  应用类型:Vue应用InCore-TS(30)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:数据同步(DataSynch)
  * 框架-层名:WA_访问层(TS)(WA_Access,0155)
@@ -21,21 +21,19 @@
 /**
  * 同步服务器(QxServer4Synch)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2025年04月13日.
+* Created by pyf on 2026年04月01日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
 import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
 import { Storage } from '@/utils/Storage';
 import { IsNullOrEmpty,GetStrLen,tzDataType,Format } from "@/ts/PubFun/clsString";
-import { ConditionCollection } from "@/ts/PubFun/ConditionCollection";
+import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
 import { BindDdl_ObjLstInDivObj,GetExceptionStr,myShowErrorMsg,ObjectAssign } from "@/ts/PubFun/clsCommFunc4Web";
 import { clsQxServer4SynchEN } from "@/ts/L0Entity/DataSynch/clsQxServer4SynchEN";
-import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
 import { clsSysPara4WebApi, GetWebApiUrl_GP } from "@/ts/PubConfig/clsSysPara4WebApi";
 import { stuTopPara } from "@/ts/PubFun/stuTopPara";
 import { stuRangePara } from "@/ts/PubFun/stuRangePara";
-import { stuPagerPara } from "@/ts/PubFun/stuPagerPara";
 
  export const qxServer4Synch_Controller = "QxServer4SynchApi";
  export const qxServer4Synch_ConstructorName = "qxServer4Synch";
@@ -126,7 +124,7 @@ throw(error.statusText);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -139,7 +137,7 @@ return a.serverId.localeCompare(b.serverId);
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -154,7 +152,7 @@ else return a.serverName.localeCompare(b.serverName);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -282,7 +280,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxServer4Synch]中不存在!(in ${ 
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -864,73 +862,7 @@ throw(error.statusText);
 }
 }
 //该表没有使用Cache,不需要生成[GetObjLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerCache)
-
- /**
- * 根据分页条件获取相应的记录对象列表,只获取一页
- * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
- * @param objPagerPara:分页获取对象列表的参数对象
- * @returns 获取的相应记录对象列表
- **/
-export  async function QxServer4Synch_GetObjLstByPagerAsync(objPagerPara: stuPagerPara): Promise<Array<clsQxServer4SynchEN>>  
-{
-const strThisFuncName = "GetObjLstByPagerAsync";
-if (objPagerPara.pageIndex == 0) return new Array<clsQxServer4SynchEN>();
-const strAction = "GetObjLstByPager";
-const strUrl = GetWebApiUrl_GP(qxServer4Synch_Controller, strAction);
-
-const token = Storage.get(ACCESS_TOKEN_KEY);
-//console.error('token:', token);
-const config = {
-headers: {
-Authorization: `${ token}`,
-},
-};
-try
-{
-const response = await axios.post(strUrl, objPagerPara, config);
-const data = response.data;
-if (data.errorId == 0)
-{
-const returnObjLst = data.returnObjLst;
-if (returnObjLst == null)
-{
-const strNullInfo = Format("获取数据为null, 请注意!(in {0}.{1})", qxServer4Synch_ConstructorName, strThisFuncName);
-console.error(strNullInfo);
-throw(strNullInfo);
-}
-//console.log(returnObjLst);
-const arrObjLst = QxServer4Synch_GetObjLstByJSONObjLst(returnObjLst);
-return arrObjLst;
-}
-else
-{
-console.error(data.errorMsg);
-throw(data.errorMsg);
-}
-} catch (error: any) {
-console.error(error);
-if (error.statusText == undefined)
-{
-throw error;
-}
-if (error.statusText == "error")
-{
-const strInfo = Format("网络错误!访问地址:{0}不成功!(in {1}.{2})", strUrl, qxServer4Synch_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else if (error.statusText == "Not Found")
-{
-const strInfo = Format("网络错误!访问地址:{0}可能不存在!(in {1}.{2})", strUrl, qxServer4Synch_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else
-{
-throw(error.statusText);
-}
-}
-}
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
 
  /**
  * 调用WebApi来删除记录,根据关键字来删除记录
@@ -1046,6 +978,11 @@ throw(error.statusText);
 }
 }
 }
+//该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjExLstByPagerCache)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_CopyToEx)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMapByFldName)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByExKey)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMap)
 
  /**
  * 根据条件删除记录
@@ -1224,7 +1161,7 @@ throw(error.statusText);
  /** 添加新记录,保存函数
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_AddNewObjSave)
  **/
-export  async function QxServer4Synch_AddNewObjSave(objQxServer4SynchEN: clsQxServer4SynchEN): Promise<AddRecordResult>{
+export  async function QxServer4Synch_AddNewObjSave(objQxServer4SynchEN: clsQxServer4SynchEN ): Promise<AddRecordResult>{
 const strThisFuncName = 'AddNewObjSave';
 try
 {
@@ -2134,7 +2071,7 @@ if (IsNullOrEmpty(pobjQxServer4SynchEN.memo) == false && undefined !== pobjQxSer
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -2159,7 +2096,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -2185,7 +2122,7 @@ return arrQxServer4SynchObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrQxServer4SynchObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -2204,7 +2141,7 @@ return arrQxServer4SynchObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象

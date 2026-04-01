@@ -125,7 +125,7 @@ export function QxProjectsEx_FuncMapByFldName(
   console.log(objQxProjectsEx);
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsQxProjectsEN.AttributeName;
+  const arrFldName = clsQxProjectsEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

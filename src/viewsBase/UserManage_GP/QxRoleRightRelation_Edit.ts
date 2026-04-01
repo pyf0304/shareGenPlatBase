@@ -184,7 +184,7 @@ export abstract class QxRoleRightRelation_Edit {
       this.opType = 'Add';
       const bolIsSuccess = await this.ShowDialog_QxRoleRightRelation(this.opType);
       if (bolIsSuccess == false) return;
-      if (['02', '03', '06'].indexOf(clsQxRoleRightRelationEN.PrimaryTypeId) > -1) {
+      if (['02', '03', '06'].indexOf(clsQxRoleRightRelationEN._PrimaryTypeId) > -1) {
         await this.AddNewRecordWithMaxId();
       } else {
         await this.AddNewRecord();
@@ -284,7 +284,7 @@ export abstract class QxRoleRightRelation_Edit {
         case '确认添加':
           //这是一个单表的插入的代码,由于逻辑层太简单,
           //就把逻辑层合并到控制层,
-          if (['02', '03', '06'].indexOf(clsQxRoleRightRelationEN.PrimaryTypeId) > -1) {
+          if (['02', '03', '06'].indexOf(clsQxRoleRightRelationEN._PrimaryTypeId) > -1) {
             const returnKeyId = await this.AddNewRecordWithReturnKeySave();
             if (returnKeyId != 0) {
               refQxRoleRightRelation_Edit.value.hideDialog();
@@ -437,9 +437,8 @@ export abstract class QxRoleRightRelation_Edit {
     objQxRoleRightRelationEN: clsQxRoleRightRelationEN,
   ): Promise<boolean> {
     const strUniquenessCondition = QxRoleRightRelation_GetUniCondStr(objQxRoleRightRelationEN);
-    const bolIsExistCondition = await QxRoleRightRelation_IsExistRecordAsync(
-      strUniquenessCondition,
-    );
+    const bolIsExistCondition =
+      await QxRoleRightRelation_IsExistRecordAsync(strUniquenessCondition);
     if (bolIsExistCondition == true) {
       const strMsg = Format(
         '不能满足唯一性条件。满足条件：{0}的记录已经存在!',
@@ -460,9 +459,8 @@ export abstract class QxRoleRightRelation_Edit {
   ): Promise<boolean> {
     const strUniquenessCondition =
       QxRoleRightRelation_GetUniCondStr4Update(objQxRoleRightRelationEN);
-    const bolIsExistCondition = await QxRoleRightRelation_IsExistRecordAsync(
-      strUniquenessCondition,
-    );
+    const bolIsExistCondition =
+      await QxRoleRightRelation_IsExistRecordAsync(strUniquenessCondition);
     if (bolIsExistCondition == true) {
       const strMsg = Format(
         '不能满足唯一性条件。满足条件：{0}的记录已经存在!',
@@ -514,9 +512,8 @@ export abstract class QxRoleRightRelation_Edit {
       if (bolIsExistCond == false) {
         return 0;
       }
-      const responseKeyId = await QxRoleRightRelation_AddNewRecordWithReturnKeyAsync(
-        objQxRoleRightRelationEN,
-      );
+      const responseKeyId =
+        await QxRoleRightRelation_AddNewRecordWithReturnKeyAsync(objQxRoleRightRelationEN);
       const returnKeyId: string = responseKeyId;
       if (IsNullOrEmpty(returnKeyId) == false) {
         objQxRoleRightRelationEN.mId = Number(returnKeyId);

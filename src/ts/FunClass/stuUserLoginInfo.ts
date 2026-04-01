@@ -92,7 +92,7 @@ export class stuUserLoginInfo {
     mapParam.add('PrjDataBaseName', objUserLoginInfo.PrjDataBaseName);
     mapParam.add('CurrDataBaseTypeId', objUserLoginInfo.CurrDataBaseTypeId);
     mapParam.add('ApplicationTypeId', objUserLoginInfo.ApplicationTypeId);
-    mapParam.add('idXzMajor', objUserLoginInfo.idXzMajor);
+    mapParam.add('idXzMajor', objUserLoginInfo.id_XzMajor);
 
     return mapParam;
   }

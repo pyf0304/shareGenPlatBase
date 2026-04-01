@@ -548,10 +548,10 @@
         synchDate.value = pobjQxUsersENEx.synchDate; // 同步日期
         memo.value = pobjQxUsersENEx.memo; // 备注
         detailInfoTab.value = pobjQxUsersENEx.detailInfoTab; // 详细信息表
-        idGradeBase.value = pobjQxUsersENEx.idGradeBase; // 年级流水号
-        idSchool.value = pobjQxUsersENEx.idSchool; // 学校流水号
+        idGradeBase.value = pobjQxUsersENEx.id_GradeBase; // 年级流水号
+        idSchool.value = pobjQxUsersENEx.id_School; // 学校流水号
         headPic.value = pobjQxUsersENEx.headPic; // 头像
-        idXzCollege.value = pobjQxUsersENEx.idXzCollege; // 学院Id
+        idXzCollege.value = pobjQxUsersENEx.id_XzCollege; // 学院Id
         departmentName.value = pobjQxUsersENEx.departmentName; // 部门名
         departmentTypeId.value = pobjQxUsersENEx.departmentTypeId; // 部门类型ID
         departmentTypeName.value = pobjQxUsersENEx.departmentTypeName; // 部门类型名

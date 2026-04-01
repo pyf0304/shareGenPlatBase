@@ -104,7 +104,7 @@ export async function UserTypeEx_GetObjExLstByPagerAsync(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsUserTypeEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsUserTypeEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrUserTypeExObjLst) {
       await UserTypeEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -179,7 +179,7 @@ export function UserTypeEx_FuncMapByFldName(strFldName: string, objUserTypeEx: c
   console.log(objUserTypeEx);
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsUserTypeEN.AttributeName;
+  const arrFldName = clsUserTypeEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

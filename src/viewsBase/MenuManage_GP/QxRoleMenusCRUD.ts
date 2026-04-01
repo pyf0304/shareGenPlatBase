@@ -1134,7 +1134,7 @@ export abstract class QxRoleMenusCRUD implements clsOperateList {
     arrQxRoleMenusExObjLst: Array<clsQxRoleMenusENEx>,
     arrDataColumn: Array<clsDataColumn>,
   ) {
-    const arrFldName = clsQxRoleMenusEN.AttributeName;
+    const arrFldName = clsQxRoleMenusEN._AttributeName;
     for (const objDataColumn of arrDataColumn) {
       if (IsNullOrEmpty(objDataColumn.fldName) == true) continue;
       if (arrFldName.indexOf(objDataColumn.fldName) > -1) continue;

@@ -488,11 +488,11 @@ export async function RsStaffType_func(
     console.error(strMsg);
     throw new Error(strMsg);
   }
-  if (clsRsStaffTypeEN.AttributeName.indexOf(strOutFldName) == -1) {
+  if (clsRsStaffTypeEN._AttributeName.indexOf(strOutFldName) == -1) {
     const strMsg = Format(
       '输出字段名:[{0}]不正确,不在输出字段范围之内!({1})',
       strOutFldName,
-      clsRsStaffTypeEN.AttributeName.join(','),
+      clsRsStaffTypeEN._AttributeName.join(','),
     );
     console.error(strMsg);
     throw new Error(strMsg);

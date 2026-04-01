@@ -278,7 +278,7 @@
           opType.value = 'Add';
           const bolIsSuccess = await objPage_Edit.value.ShowDialog_XzSchool(opType.value);
           if (bolIsSuccess == false) return;
-          if (['02', '03', '06'].indexOf(clsXzSchoolEN.PrimaryTypeId) > -1) {
+          if (['02', '03', '06'].indexOf(clsXzSchoolEN._PrimaryTypeId) > -1) {
             await objPage_Edit.value.AddNewRecordWithMaxId();
           } else {
             await objPage_Edit.value.AddNewRecord();

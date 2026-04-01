@@ -226,9 +226,8 @@ export async function ResourceType_GetObjByIdResourceTypeCache(
       return objResourceType;
     } else {
       if (bolTryAsyncOnce == true) {
-        const objResourceTypeConst = await ResourceType_GetObjByIdResourceTypeAsync(
-          strIdResourceType,
-        );
+        const objResourceTypeConst =
+          await ResourceType_GetObjByIdResourceTypeAsync(strIdResourceType);
         if (objResourceTypeConst != null) {
           ResourceType_ReFreshThisCache();
           return objResourceTypeConst;
@@ -551,11 +550,11 @@ export async function ResourceType_func(
     console.error(strMsg);
     throw new Error(strMsg);
   }
-  if (clsResourceTypeEN.AttributeName.indexOf(strOutFldName) == -1) {
+  if (clsResourceTypeEN._AttributeName.indexOf(strOutFldName) == -1) {
     const strMsg = Format(
       '输出字段名:[{0}]不正确,不在输出字段范围之内!({1})',
       strOutFldName,
-      clsResourceTypeEN.AttributeName.join(','),
+      clsResourceTypeEN._AttributeName.join(','),
     );
     console.error(strMsg);
     throw new Error(strMsg);
@@ -3496,4 +3495,3 @@ export function ResourceType_GetObjFromJsonObj(
   ObjectAssign(objResourceTypeENT, objResourceTypeENS);
   return objResourceTypeENT;
 }
-

@@ -2,14 +2,14 @@
  /**
  * 类名:clsQxFuncModule_AgcWApi
  * 表名:QxFuncModule_Agc(00140101)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:33
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:02:35
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
  应用类型:Vue应用InCore-TS(30)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:工程管理(PrjManage_GP)
  * 框架-层名:WA_访问层(TS)(WA_Access,0155)
@@ -21,22 +21,20 @@
 /**
  * 功能模块_Agc(QxFuncModule_Agc)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2025年04月13日.
+* Created by pyf on 2026年04月01日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
 import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
 import { Storage } from '@/utils/Storage';
 import { IsNullOrEmpty,GetStrLen,tzDataType,Format } from "@/ts/PubFun/clsString";
-import { ConditionCollection } from "@/ts/PubFun/ConditionCollection";
 import { clsOrderByData } from "@/ts/PubFun/clsOrderByData";
+import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
 import { BindDdl_ObjLstInDivObj,GetExceptionStr,myShowErrorMsg,ObjectAssign } from "@/ts/PubFun/clsCommFunc4Web";
 import { clsQxFuncModule_AgcEN } from "@/ts/L0Entity/PrjManage_GP/clsQxFuncModule_AgcEN";
-import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
 import { clsSysPara4WebApi, GetWebApiUrl_GP } from "@/ts/PubConfig/clsSysPara4WebApi";
 import { stuTopPara } from "@/ts/PubFun/stuTopPara";
 import { stuRangePara } from "@/ts/PubFun/stuRangePara";
-import { stuPagerPara } from "@/ts/PubFun/stuPagerPara";
 
  export const qxFuncModule_Agc_Controller = "QxFuncModule_AgcApi";
  export const qxFuncModule_Agc_ConstructorName = "qxFuncModule_Agc";
@@ -127,7 +125,7 @@ throw(error.statusText);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -140,7 +138,7 @@ return a.funcModuleAgcId.localeCompare(b.funcModuleAgcId);
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -155,7 +153,7 @@ else return a.funcModuleName.localeCompare(b.funcModuleName);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -303,7 +301,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxFuncModule_Agc]中不存在!(in $
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -893,73 +891,7 @@ throw(error.statusText);
 }
 }
 //该表没有使用Cache,不需要生成[GetObjLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerCache)
-
- /**
- * 根据分页条件获取相应的记录对象列表,只获取一页
- * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
- * @param objPagerPara:分页获取对象列表的参数对象
- * @returns 获取的相应记录对象列表
- **/
-export  async function QxFuncModule_Agc_GetObjLstByPagerAsync(objPagerPara: stuPagerPara): Promise<Array<clsQxFuncModule_AgcEN>>  
-{
-const strThisFuncName = "GetObjLstByPagerAsync";
-if (objPagerPara.pageIndex == 0) return new Array<clsQxFuncModule_AgcEN>();
-const strAction = "GetObjLstByPager";
-const strUrl = GetWebApiUrl_GP(qxFuncModule_Agc_Controller, strAction);
-
-const token = Storage.get(ACCESS_TOKEN_KEY);
-//console.error('token:', token);
-const config = {
-headers: {
-Authorization: `${ token}`,
-},
-};
-try
-{
-const response = await axios.post(strUrl, objPagerPara, config);
-const data = response.data;
-if (data.errorId == 0)
-{
-const returnObjLst = data.returnObjLst;
-if (returnObjLst == null)
-{
-const strNullInfo = Format("获取数据为null, 请注意!(in {0}.{1})", qxFuncModule_Agc_ConstructorName, strThisFuncName);
-console.error(strNullInfo);
-throw(strNullInfo);
-}
-//console.log(returnObjLst);
-const arrObjLst = QxFuncModule_Agc_GetObjLstByJSONObjLst(returnObjLst);
-return arrObjLst;
-}
-else
-{
-console.error(data.errorMsg);
-throw(data.errorMsg);
-}
-} catch (error: any) {
-console.error(error);
-if (error.statusText == undefined)
-{
-throw error;
-}
-if (error.statusText == "error")
-{
-const strInfo = Format("网络错误!访问地址:{0}不成功!(in {1}.{2})", strUrl, qxFuncModule_Agc_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else if (error.statusText == "Not Found")
-{
-const strInfo = Format("网络错误!访问地址:{0}可能不存在!(in {1}.{2})", strUrl, qxFuncModule_Agc_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else
-{
-throw(error.statusText);
-}
-}
-}
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
 
  /**
  * 调用WebApi来删除记录,根据关键字来删除记录
@@ -1075,6 +1007,11 @@ throw(error.statusText);
 }
 }
 }
+//该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjExLstByPagerCache)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_CopyToEx)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMapByFldName)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByExKey)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMap)
 
  /**
  * 根据条件删除记录
@@ -1449,7 +1386,7 @@ throw(error.statusText);
  /** 添加新记录,保存函数
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_AddNewObjSave)
  **/
-export  async function QxFuncModule_Agc_AddNewObjSave(objQxFuncModule_AgcEN: clsQxFuncModule_AgcEN): Promise<AddRecordResult>{
+export  async function QxFuncModule_Agc_AddNewObjSave(objQxFuncModule_AgcEN: clsQxFuncModule_AgcEN ): Promise<AddRecordResult>{
 const strThisFuncName = 'AddNewObjSave';
 try
 {
@@ -2245,7 +2182,7 @@ if (null === pobjQxFuncModule_AgcEN.orderNum
 }
 if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.useStateId) === true )
 {
- throw new Error(`(errid:Watl000411)字段[UseStateId]不能为空(In 功能模块_Agc)!(clsQxFuncModule_AgcBL:CheckPropertyNew0)`);
+ throw new Error(`(errid:Watl000411)字段[使用状态Id]不能为空(In 功能模块_Agc)!(clsQxFuncModule_AgcBL:CheckPropertyNew0)`);
 }
 //检查字段长度, 若字符型字段长度超出规定的长度,即非法!
 if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.funcModuleAgcId) == false && GetStrLen(pobjQxFuncModule_AgcEN.funcModuleAgcId) > 8)
@@ -2268,9 +2205,9 @@ if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.qxPrjId) == false && GetStrLen(pobjQxFu
 {
  throw new Error(`(errid:Watl000413)字段[项目Id(qxPrjId)]的长度不能超过4(In 功能模块_Agc(QxFuncModule_Agc))!值:${pobjQxFuncModule_AgcEN.qxPrjId}(clsQxFuncModule_AgcBL:CheckPropertyNew)`);
 }
-if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.useStateId) == false && GetStrLen(pobjQxFuncModule_AgcEN.useStateId) > 4)
+if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.useStateId) == false && GetStrLen(pobjQxFuncModule_AgcEN.useStateId) > 2)
 {
- throw new Error(`(errid:Watl000413)字段[UseStateId(useStateId)]的长度不能超过4(In 功能模块_Agc(QxFuncModule_Agc))!值:${pobjQxFuncModule_AgcEN.useStateId}(clsQxFuncModule_AgcBL:CheckPropertyNew)`);
+ throw new Error(`(errid:Watl000413)字段[使用状态Id(useStateId)]的长度不能超过2(In 功能模块_Agc(QxFuncModule_Agc))!值:${pobjQxFuncModule_AgcEN.useStateId}(clsQxFuncModule_AgcBL:CheckPropertyNew)`);
 }
 if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.updUser) == false && GetStrLen(pobjQxFuncModule_AgcEN.updUser) > 20)
 {
@@ -2315,7 +2252,7 @@ if (null != pobjQxFuncModule_AgcEN.orderNum && undefined !== pobjQxFuncModule_Ag
 }
 if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.useStateId) == false && undefined !== pobjQxFuncModule_AgcEN.useStateId && tzDataType.isString(pobjQxFuncModule_AgcEN.useStateId) === false)
 {
- throw new Error(`(errid:Watl000414)字段[UseStateId(useStateId)]的值:[${pobjQxFuncModule_AgcEN.useStateId}], 非法,应该为字符型(In 功能模块_Agc(QxFuncModule_Agc))!(clsQxFuncModule_AgcBL:CheckPropertyNew0)`);
+ throw new Error(`(errid:Watl000414)字段[使用状态Id(useStateId)]的值:[${pobjQxFuncModule_AgcEN.useStateId}], 非法,应该为字符型(In 功能模块_Agc(QxFuncModule_Agc))!(clsQxFuncModule_AgcBL:CheckPropertyNew0)`);
 }
 if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.updUser) == false && undefined !== pobjQxFuncModule_AgcEN.updUser && tzDataType.isString(pobjQxFuncModule_AgcEN.updUser) === false)
 {
@@ -2338,9 +2275,9 @@ if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.qxPrjId) == false && pobjQxFuncModule_A
 {
  throw ("(errid:Watl000415)字段[项目Id]作为外键字段,长度应该为4(In 功能模块_Agc)!(clsQxFuncModule_AgcBL:CheckPropertyNew)");
 }
-if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.useStateId) == false && pobjQxFuncModule_AgcEN.useStateId != '[nuull]' && GetStrLen(pobjQxFuncModule_AgcEN.useStateId) !=  4)
+if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.useStateId) == false && pobjQxFuncModule_AgcEN.useStateId != '[nuull]' && GetStrLen(pobjQxFuncModule_AgcEN.useStateId) !=  2)
 {
- throw ("(errid:Watl000415)字段[UseStateId]作为外键字段,长度应该为4(In 功能模块_Agc)!(clsQxFuncModule_AgcBL:CheckPropertyNew)");
+ throw ("(errid:Watl000415)字段[使用状态Id]作为外键字段,长度应该为2(In 功能模块_Agc)!(clsQxFuncModule_AgcBL:CheckPropertyNew)");
 }
 
 //设置说明该对象已经检查过了,后面不需要再检查,即非法!
@@ -2372,9 +2309,9 @@ if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.qxPrjId) == false && GetStrLen(pobjQxFu
 {
  throw new Error(`(errid:Watl000416)字段[项目Id(qxPrjId)]的长度不能超过4(In 功能模块_Agc(QxFuncModule_Agc))!值:${pobjQxFuncModule_AgcEN.qxPrjId}(clsQxFuncModule_AgcBL:CheckProperty4Update)`);
 }
-if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.useStateId) == false && GetStrLen(pobjQxFuncModule_AgcEN.useStateId) > 4)
+if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.useStateId) == false && GetStrLen(pobjQxFuncModule_AgcEN.useStateId) > 2)
 {
- throw new Error(`(errid:Watl000416)字段[UseStateId(useStateId)]的长度不能超过4(In 功能模块_Agc(QxFuncModule_Agc))!值:${pobjQxFuncModule_AgcEN.useStateId}(clsQxFuncModule_AgcBL:CheckProperty4Update)`);
+ throw new Error(`(errid:Watl000416)字段[使用状态Id(useStateId)]的长度不能超过2(In 功能模块_Agc(QxFuncModule_Agc))!值:${pobjQxFuncModule_AgcEN.useStateId}(clsQxFuncModule_AgcBL:CheckProperty4Update)`);
 }
 if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.updUser) == false && GetStrLen(pobjQxFuncModule_AgcEN.updUser) > 20)
 {
@@ -2419,7 +2356,7 @@ if (null != pobjQxFuncModule_AgcEN.orderNum && undefined !== pobjQxFuncModule_Ag
 }
 if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.useStateId) == false && undefined !== pobjQxFuncModule_AgcEN.useStateId && tzDataType.isString(pobjQxFuncModule_AgcEN.useStateId) === false)
 {
- throw new Error(`(errid:Watl000417)字段[UseStateId(useStateId)]的值:[${pobjQxFuncModule_AgcEN.useStateId}], 非法,应该为字符型(In 功能模块_Agc(QxFuncModule_Agc))!(clsQxFuncModule_AgcBL:CheckProperty4Update)`);
+ throw new Error(`(errid:Watl000417)字段[使用状态Id(useStateId)]的值:[${pobjQxFuncModule_AgcEN.useStateId}], 非法,应该为字符型(In 功能模块_Agc(QxFuncModule_Agc))!(clsQxFuncModule_AgcBL:CheckProperty4Update)`);
 }
 if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.updUser) == false && undefined !== pobjQxFuncModule_AgcEN.updUser && tzDataType.isString(pobjQxFuncModule_AgcEN.updUser) === false)
 {
@@ -2447,9 +2384,9 @@ if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.qxPrjId) == false && pobjQxFuncModule_A
 {
  throw ("(errid:Watl000418)字段[项目Id]作为外键字段,长度应该为4(In 功能模块_Agc)!(clsQxFuncModule_AgcBL:CheckPropertyNew)");
 }
-if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.useStateId) == false && pobjQxFuncModule_AgcEN.useStateId != '[nuull]' && GetStrLen(pobjQxFuncModule_AgcEN.useStateId) !=  4)
+if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.useStateId) == false && pobjQxFuncModule_AgcEN.useStateId != '[nuull]' && GetStrLen(pobjQxFuncModule_AgcEN.useStateId) !=  2)
 {
- throw ("(errid:Watl000418)字段[UseStateId]作为外键字段,长度应该为4(In 功能模块_Agc)!(clsQxFuncModule_AgcBL:CheckPropertyNew)");
+ throw ("(errid:Watl000418)字段[使用状态Id]作为外键字段,长度应该为2(In 功能模块_Agc)!(clsQxFuncModule_AgcBL:CheckPropertyNew)");
 }
 
 }
@@ -2457,7 +2394,7 @@ if (IsNullOrEmpty(pobjQxFuncModule_AgcEN.useStateId) == false && pobjQxFuncModul
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -2482,7 +2419,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -2508,7 +2445,7 @@ return arrQxFuncModule_AgcObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrQxFuncModule_AgcObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -2527,7 +2464,7 @@ return arrQxFuncModule_AgcObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象

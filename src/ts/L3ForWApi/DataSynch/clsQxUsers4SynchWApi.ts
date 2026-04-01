@@ -2,14 +2,14 @@
  /**
  * 类名:clsQxUsers4SynchWApi
  * 表名:QxUsers4Synch(00140089)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:14
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:03:03
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
  应用类型:Vue应用InCore-TS(30)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:数据同步(DataSynch)
  * 框架-层名:WA_访问层(TS)(WA_Access,0155)
@@ -21,21 +21,19 @@
 /**
  * 用户4同步(QxUsers4Synch)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2025年04月13日.
+* Created by pyf on 2026年04月01日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
 import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
 import { Storage } from '@/utils/Storage';
-import { ConditionCollection } from "@/ts/PubFun/ConditionCollection";
+import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
 import { GetStrLen,tzDataType,Format,IsNullOrEmpty } from "@/ts/PubFun/clsString";
 import { clsQxUsers4SynchEN } from "@/ts/L0Entity/DataSynch/clsQxUsers4SynchEN";
 import { GetExceptionStr, myShowErrorMsg, ObjectAssign } from "@/ts/PubFun/clsCommFunc4Web";
-import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
 import { clsSysPara4WebApi, GetWebApiUrl_GP } from "@/ts/PubConfig/clsSysPara4WebApi";
 import { stuTopPara } from "@/ts/PubFun/stuTopPara";
 import { stuRangePara } from "@/ts/PubFun/stuRangePara";
-import { stuPagerPara } from "@/ts/PubFun/stuPagerPara";
 
  export const qxUsers4Synch_Controller = "QxUsers4SynchApi";
  export const qxUsers4Synch_ConstructorName = "qxUsers4Synch";
@@ -120,7 +118,7 @@ throw(error.statusText);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -133,7 +131,7 @@ return a.mId-b.mId;
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -148,7 +146,7 @@ else return a.ipAddress.localeCompare(b.ipAddress);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -218,11 +216,11 @@ if (a.departmentId == null) return -1;
 if (b.departmentId == null) return 1;
 return a.departmentId.localeCompare(b.departmentId);
 }
-case clsQxUsers4SynchEN.con_IdXzCollege:
+case clsQxUsers4SynchEN.con_Id_XzCollege:
 return (a: clsQxUsers4SynchEN, b: clsQxUsers4SynchEN) => {
-if (a.idXzCollege == null) return -1;
-if (b.idXzCollege == null) return 1;
-return a.idXzCollege.localeCompare(b.idXzCollege);
+if (a.id_XzCollege == null) return -1;
+if (b.id_XzCollege == null) return 1;
+return a.id_XzCollege.localeCompare(b.id_XzCollege);
 }
 case clsQxUsers4SynchEN.con_EffitiveBeginDate:
 return (a: clsQxUsers4SynchEN, b: clsQxUsers4SynchEN) => {
@@ -352,11 +350,11 @@ if (b.departmentId == null) return -1;
 if (a.departmentId == null) return 1;
 return b.departmentId.localeCompare(a.departmentId);
 }
-case clsQxUsers4SynchEN.con_IdXzCollege:
+case clsQxUsers4SynchEN.con_Id_XzCollege:
 return (a: clsQxUsers4SynchEN, b: clsQxUsers4SynchEN) => {
-if (b.idXzCollege == null) return -1;
-if (a.idXzCollege == null) return 1;
-return b.idXzCollege.localeCompare(a.idXzCollege);
+if (b.id_XzCollege == null) return -1;
+if (a.id_XzCollege == null) return 1;
+return b.id_XzCollege.localeCompare(a.id_XzCollege);
 }
 case clsQxUsers4SynchEN.con_EffitiveBeginDate:
 return (a: clsQxUsers4SynchEN, b: clsQxUsers4SynchEN) => {
@@ -432,7 +430,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxUsers4Synch]中不存在!(in ${ q
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -488,9 +486,9 @@ case clsQxUsers4SynchEN.con_DepartmentId:
 return (obj: clsQxUsers4SynchEN) => {
 return obj.departmentId === value;
 }
-case clsQxUsers4SynchEN.con_IdXzCollege:
+case clsQxUsers4SynchEN.con_Id_XzCollege:
 return (obj: clsQxUsers4SynchEN) => {
-return obj.idXzCollege === value;
+return obj.id_XzCollege === value;
 }
 case clsQxUsers4SynchEN.con_EffitiveBeginDate:
 return (obj: clsQxUsers4SynchEN) => {
@@ -1070,73 +1068,7 @@ throw(error.statusText);
 }
 }
 //该表没有使用Cache,不需要生成[GetObjLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerCache)
-
- /**
- * 根据分页条件获取相应的记录对象列表,只获取一页
- * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
- * @param objPagerPara:分页获取对象列表的参数对象
- * @returns 获取的相应记录对象列表
- **/
-export  async function QxUsers4Synch_GetObjLstByPagerAsync(objPagerPara: stuPagerPara): Promise<Array<clsQxUsers4SynchEN>>  
-{
-const strThisFuncName = "GetObjLstByPagerAsync";
-if (objPagerPara.pageIndex == 0) return new Array<clsQxUsers4SynchEN>();
-const strAction = "GetObjLstByPager";
-const strUrl = GetWebApiUrl_GP(qxUsers4Synch_Controller, strAction);
-
-const token = Storage.get(ACCESS_TOKEN_KEY);
-//console.error('token:', token);
-const config = {
-headers: {
-Authorization: `${ token}`,
-},
-};
-try
-{
-const response = await axios.post(strUrl, objPagerPara, config);
-const data = response.data;
-if (data.errorId == 0)
-{
-const returnObjLst = data.returnObjLst;
-if (returnObjLst == null)
-{
-const strNullInfo = Format("获取数据为null, 请注意!(in {0}.{1})", qxUsers4Synch_ConstructorName, strThisFuncName);
-console.error(strNullInfo);
-throw(strNullInfo);
-}
-//console.log(returnObjLst);
-const arrObjLst = QxUsers4Synch_GetObjLstByJSONObjLst(returnObjLst);
-return arrObjLst;
-}
-else
-{
-console.error(data.errorMsg);
-throw(data.errorMsg);
-}
-} catch (error: any) {
-console.error(error);
-if (error.statusText == undefined)
-{
-throw error;
-}
-if (error.statusText == "error")
-{
-const strInfo = Format("网络错误!访问地址:{0}不成功!(in {1}.{2})", strUrl, qxUsers4Synch_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else if (error.statusText == "Not Found")
-{
-const strInfo = Format("网络错误!访问地址:{0}可能不存在!(in {1}.{2})", strUrl, qxUsers4Synch_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else
-{
-throw(error.statusText);
-}
-}
-}
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
 
  /**
  * 调用WebApi来删除记录,根据关键字来删除记录
@@ -1252,6 +1184,11 @@ throw(error.statusText);
 }
 }
 }
+//该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjExLstByPagerCache)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_CopyToEx)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMapByFldName)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByExKey)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMap)
 
  /**
  * 根据条件删除记录
@@ -1374,7 +1311,7 @@ throw(error.statusText);
  /** 添加新记录,保存函数
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_AddNewObjSave)
  **/
-export  async function QxUsers4Synch_AddNewObjSave(objQxUsers4SynchEN: clsQxUsers4SynchEN): Promise<AddRecordResult>{
+export  async function QxUsers4Synch_AddNewObjSave(objQxUsers4SynchEN: clsQxUsers4SynchEN ): Promise<AddRecordResult>{
 const strThisFuncName = 'AddNewObjSave';
 try
 {
@@ -2080,9 +2017,9 @@ if (IsNullOrEmpty(pobjQxUsers4SynchEN.departmentId) == false && GetStrLen(pobjQx
 {
  throw new Error(`(errid:Watl000413)字段[部门Id(departmentId)]的长度不能超过8(In 用户4同步(QxUsers4Synch))!值:${pobjQxUsers4SynchEN.departmentId}(clsQxUsers4SynchBL:CheckPropertyNew)`);
 }
-if (IsNullOrEmpty(pobjQxUsers4SynchEN.idXzCollege) == false && GetStrLen(pobjQxUsers4SynchEN.idXzCollege) > 4)
+if (IsNullOrEmpty(pobjQxUsers4SynchEN.id_XzCollege) == false && GetStrLen(pobjQxUsers4SynchEN.id_XzCollege) > 4)
 {
- throw new Error(`(errid:Watl000413)字段[学院Id(idXzCollege)]的长度不能超过4(In 用户4同步(QxUsers4Synch))!值:${pobjQxUsers4SynchEN.idXzCollege}(clsQxUsers4SynchBL:CheckPropertyNew)`);
+ throw new Error(`(errid:Watl000413)字段[学院Id(id_XzCollege)]的长度不能超过4(In 用户4同步(QxUsers4Synch))!值:${pobjQxUsers4SynchEN.id_XzCollege}(clsQxUsers4SynchBL:CheckPropertyNew)`);
 }
 if (IsNullOrEmpty(pobjQxUsers4SynchEN.effitiveBeginDate) == false && GetStrLen(pobjQxUsers4SynchEN.effitiveBeginDate) > 14)
 {
@@ -2157,9 +2094,9 @@ if (IsNullOrEmpty(pobjQxUsers4SynchEN.departmentId) == false && undefined !== po
 {
  throw new Error(`(errid:Watl000414)字段[部门Id(departmentId)]的值:[${pobjQxUsers4SynchEN.departmentId}], 非法,应该为字符型(In 用户4同步(QxUsers4Synch))!(clsQxUsers4SynchBL:CheckPropertyNew0)`);
 }
-if (IsNullOrEmpty(pobjQxUsers4SynchEN.idXzCollege) == false && undefined !== pobjQxUsers4SynchEN.idXzCollege && tzDataType.isString(pobjQxUsers4SynchEN.idXzCollege) === false)
+if (IsNullOrEmpty(pobjQxUsers4SynchEN.id_XzCollege) == false && undefined !== pobjQxUsers4SynchEN.id_XzCollege && tzDataType.isString(pobjQxUsers4SynchEN.id_XzCollege) === false)
 {
- throw new Error(`(errid:Watl000414)字段[学院Id(idXzCollege)]的值:[${pobjQxUsers4SynchEN.idXzCollege}], 非法,应该为字符型(In 用户4同步(QxUsers4Synch))!(clsQxUsers4SynchBL:CheckPropertyNew0)`);
+ throw new Error(`(errid:Watl000414)字段[学院Id(id_XzCollege)]的值:[${pobjQxUsers4SynchEN.id_XzCollege}], 非法,应该为字符型(In 用户4同步(QxUsers4Synch))!(clsQxUsers4SynchBL:CheckPropertyNew0)`);
 }
 if (IsNullOrEmpty(pobjQxUsers4SynchEN.effitiveBeginDate) == false && undefined !== pobjQxUsers4SynchEN.effitiveBeginDate && tzDataType.isString(pobjQxUsers4SynchEN.effitiveBeginDate) === false)
 {
@@ -2256,9 +2193,9 @@ if (IsNullOrEmpty(pobjQxUsers4SynchEN.departmentId) == false && GetStrLen(pobjQx
 {
  throw new Error(`(errid:Watl000416)字段[部门Id(departmentId)]的长度不能超过8(In 用户4同步(QxUsers4Synch))!值:${pobjQxUsers4SynchEN.departmentId}(clsQxUsers4SynchBL:CheckProperty4Update)`);
 }
-if (IsNullOrEmpty(pobjQxUsers4SynchEN.idXzCollege) == false && GetStrLen(pobjQxUsers4SynchEN.idXzCollege) > 4)
+if (IsNullOrEmpty(pobjQxUsers4SynchEN.id_XzCollege) == false && GetStrLen(pobjQxUsers4SynchEN.id_XzCollege) > 4)
 {
- throw new Error(`(errid:Watl000416)字段[学院Id(idXzCollege)]的长度不能超过4(In 用户4同步(QxUsers4Synch))!值:${pobjQxUsers4SynchEN.idXzCollege}(clsQxUsers4SynchBL:CheckProperty4Update)`);
+ throw new Error(`(errid:Watl000416)字段[学院Id(id_XzCollege)]的长度不能超过4(In 用户4同步(QxUsers4Synch))!值:${pobjQxUsers4SynchEN.id_XzCollege}(clsQxUsers4SynchBL:CheckProperty4Update)`);
 }
 if (IsNullOrEmpty(pobjQxUsers4SynchEN.effitiveBeginDate) == false && GetStrLen(pobjQxUsers4SynchEN.effitiveBeginDate) > 14)
 {
@@ -2333,9 +2270,9 @@ if (IsNullOrEmpty(pobjQxUsers4SynchEN.departmentId) == false && undefined !== po
 {
  throw new Error(`(errid:Watl000417)字段[部门Id(departmentId)]的值:[${pobjQxUsers4SynchEN.departmentId}], 非法,应该为字符型(In 用户4同步(QxUsers4Synch))!(clsQxUsers4SynchBL:CheckProperty4Update)`);
 }
-if (IsNullOrEmpty(pobjQxUsers4SynchEN.idXzCollege) == false && undefined !== pobjQxUsers4SynchEN.idXzCollege && tzDataType.isString(pobjQxUsers4SynchEN.idXzCollege) === false)
+if (IsNullOrEmpty(pobjQxUsers4SynchEN.id_XzCollege) == false && undefined !== pobjQxUsers4SynchEN.id_XzCollege && tzDataType.isString(pobjQxUsers4SynchEN.id_XzCollege) === false)
 {
- throw new Error(`(errid:Watl000417)字段[学院Id(idXzCollege)]的值:[${pobjQxUsers4SynchEN.idXzCollege}], 非法,应该为字符型(In 用户4同步(QxUsers4Synch))!(clsQxUsers4SynchBL:CheckProperty4Update)`);
+ throw new Error(`(errid:Watl000417)字段[学院Id(id_XzCollege)]的值:[${pobjQxUsers4SynchEN.id_XzCollege}], 非法,应该为字符型(In 用户4同步(QxUsers4Synch))!(clsQxUsers4SynchBL:CheckProperty4Update)`);
 }
 if (IsNullOrEmpty(pobjQxUsers4SynchEN.effitiveBeginDate) == false && undefined !== pobjQxUsers4SynchEN.effitiveBeginDate && tzDataType.isString(pobjQxUsers4SynchEN.effitiveBeginDate) === false)
 {
@@ -2394,7 +2331,7 @@ if (null === pobjQxUsers4SynchEN.mId
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -2419,7 +2356,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -2445,7 +2382,7 @@ return arrQxUsers4SynchObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrQxUsers4SynchObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -2464,7 +2401,7 @@ return arrQxUsers4SynchObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -2553,10 +2490,10 @@ if (Object.prototype.hasOwnProperty.call(objQxUsers4SynchCond.dicFldComparisonOp
 const strComparisonOpDepartmentId:string = objQxUsers4SynchCond.dicFldComparisonOp[clsQxUsers4SynchEN.con_DepartmentId];
 strWhereCond += Format(" And {0} {2} '{1}'", clsQxUsers4SynchEN.con_DepartmentId, objQxUsers4SynchCond.departmentId, strComparisonOpDepartmentId);
 }
-if (Object.prototype.hasOwnProperty.call(objQxUsers4SynchCond.dicFldComparisonOp, clsQxUsers4SynchEN.con_IdXzCollege) == true)
+if (Object.prototype.hasOwnProperty.call(objQxUsers4SynchCond.dicFldComparisonOp, clsQxUsers4SynchEN.con_Id_XzCollege) == true)
 {
-const strComparisonOpIdXzCollege:string = objQxUsers4SynchCond.dicFldComparisonOp[clsQxUsers4SynchEN.con_IdXzCollege];
-strWhereCond += Format(" And {0} {2} '{1}'", clsQxUsers4SynchEN.con_IdXzCollege, objQxUsers4SynchCond.idXzCollege, strComparisonOpIdXzCollege);
+const strComparisonOpId_XzCollege:string = objQxUsers4SynchCond.dicFldComparisonOp[clsQxUsers4SynchEN.con_Id_XzCollege];
+strWhereCond += Format(" And {0} {2} '{1}'", clsQxUsers4SynchEN.con_Id_XzCollege, objQxUsers4SynchCond.id_XzCollege, strComparisonOpId_XzCollege);
 }
 if (Object.prototype.hasOwnProperty.call(objQxUsers4SynchCond.dicFldComparisonOp, clsQxUsers4SynchEN.con_EffitiveBeginDate) == true)
 {

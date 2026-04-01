@@ -150,7 +150,7 @@ export async function QxUsersEx_GetObjExLstByPagerAsync(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsQxUsersEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsQxUsersEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrQxUsersExObjLst) {
       await QxUsersEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -396,7 +396,7 @@ export async function QxUsersEx_FuncMapSchoolName(objQxUsers: clsQxUsersENEx) {
   const strThisFuncName = QxUsersEx_FuncMapSchoolName.name;
   try {
     if (IsNullOrEmpty(objQxUsers.schoolName) == true) {
-      const XzSchoolidSchool = objQxUsers.idSchool;
+      const XzSchoolidSchool = objQxUsers.id_School;
       const XzSchoolSchoolName = await XzSchool_func(
         clsXzSchoolEN.con_IdSchool,
         clsXzSchoolEN.con_SchoolName,
@@ -1071,7 +1071,7 @@ export function QxUsersEx_FuncMapByFldName(strFldName: string, objQxUsersEx: cls
   strFldName = strFldName.replace('|Ex', '');
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsQxUsersEN.AttributeName;
+  const arrFldName = clsQxUsersEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {
@@ -1118,7 +1118,7 @@ export async function QxUsersEx_FuncMapSchoolNameA(objQxUsers: clsQxUsersENEx) {
   const strThisFuncName = QxUsersEx_FuncMapSchoolNameA.name;
   try {
     if (IsNullOrEmpty(objQxUsers.schoolNameA) == true) {
-      const XzSchoolidSchool = objQxUsers.idSchool;
+      const XzSchoolidSchool = objQxUsers.id_School;
       const XzSchoolSchoolNameA = await XzSchool_func(
         clsXzSchoolEN.con_IdSchool,
         clsXzSchoolEN.con_SchoolNameA,

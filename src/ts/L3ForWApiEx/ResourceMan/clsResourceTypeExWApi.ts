@@ -309,7 +309,7 @@ export function ResourceTypeEx_FuncMapByFldName(
   const strThisFuncName = ResourceTypeEx_FuncMapByFldName.name;
   let strMsg = '';
   //如果是本表中字段，不需要映射
-  const arrFldName = clsResourceTypeEN.AttributeName;
+  const arrFldName = clsResourceTypeEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {
@@ -340,4 +340,3 @@ export async function ResourceTypeEx_FilterFunByKey(strKey: string, value: any) 
       return ResourceType_FilterFunByKey(strKey, value);
   }
 }
-

@@ -80,7 +80,7 @@ export function SysDefaValNameEx_CopyToEx(
   try {
     ObjectAssign(objSysDefaValNameENT, objSysDefaValNameENS);
     return objSysDefaValNameENT;
-  } catch (e:any) {
+  } catch (e: any) {
     const strMsg = Format(
       '(errid:Watl000067)Copy表对象数据出错,{0}.(in {1}.{2})',
       e,
@@ -132,7 +132,7 @@ export async function SysDefaValNameEx_GetObjExLstByPagerAsync(
     }
     arrSysDefaValName_Sel = arrSysDefaValName_Sel.slice(intStart, intEnd);
     return arrSysDefaValName_Sel;
-  } catch (e:any) {
+  } catch (e: any) {
     const strMsg = Format(
       '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
       e,
@@ -187,7 +187,7 @@ export function SysDefaValNameEx_FuncMapByFldName(
   console.log(objSysDefaValNameEx);
   let strMsg = '';
   //如果是本表中字段，不需要映射
-  const arrFldName = clsSysDefaValNameEN.AttributeName;
+  const arrFldName = clsSysDefaValNameEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

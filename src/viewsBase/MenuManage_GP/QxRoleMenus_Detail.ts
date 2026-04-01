@@ -2,12 +2,12 @@
  /**
  * 类名:QxRoleMenus_Detail(界面:QxRoleMenusCRUD,00140029)
  * 表名:QxRoleMenus(00140007)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:02:12
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:10:36
  * 生成者:
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  * 模块中文名:菜单管理(MenuManage_GP)
  * 框架-层名:Vue_详细信息后台_TS(TS)(Vue_ViewScript_DetailCS_TS,0260)

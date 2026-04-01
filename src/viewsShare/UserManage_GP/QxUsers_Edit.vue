@@ -488,9 +488,9 @@
         pobjQxUsersEN.SetUpdUser(userStore.getUserId); // 修改用户
         pobjQxUsersEN.SetDetailInfoTab(detailInfoTab.value); // 详细信息表
         pobjQxUsersEN.SetMemo(memo.value); // 备注
-        pobjQxUsersEN.SetIdGradeBase(idGradeBase.value); // 年级流水号
-        pobjQxUsersEN.SetIdSchool(idSchool.value); // 学校流水号
-        pobjQxUsersEN.SetIdXzCollege(idXzCollege.value); // 学院Id
+        pobjQxUsersEN.SetId_GradeBase(idGradeBase.value); // 年级流水号
+        pobjQxUsersEN.SetId_School(idSchool.value); // 学校流水号
+        pobjQxUsersEN.SetId_XzCollege(idXzCollege.value); // 学院Id
         return pobjQxUsersEN;
       }
 
@@ -518,9 +518,9 @@
         synchDate.value = pobjQxUsersEN.synchDate; // 同步日期
         detailInfoTab.value = pobjQxUsersEN.detailInfoTab; // 详细信息表
         memo.value = pobjQxUsersEN.memo; // 备注
-        idGradeBase.value = pobjQxUsersEN.idGradeBase; // 年级流水号
-        idSchool.value = pobjQxUsersEN.idSchool; // 学校流水号
-        idXzCollege.value = pobjQxUsersEN.idXzCollege; // 学院Id
+        idGradeBase.value = pobjQxUsersEN.id_GradeBase; // 年级流水号
+        idSchool.value = pobjQxUsersEN.id_School; // 学校流水号
+        idXzCollege.value = pobjQxUsersEN.id_XzCollege; // 学院Id
       }
 
       /**
@@ -575,7 +575,7 @@
             case '确认添加':
               //这是一个单表的插入的代码,由于逻辑层太简单,
               //就把逻辑层合并到控制层,
-              if (['02', '03', '06'].indexOf(clsQxUsersEN.PrimaryTypeId) > -1) {
+              if (['02', '03', '06'].indexOf(clsQxUsersEN._PrimaryTypeId) > -1) {
                 returnKeyId = await objPage_Edit.value.AddNewRecordWithMaxIdSave();
                 if (IsNullOrEmpty(returnKeyId) == false) {
                   if (QxUsers_Edit.strPageDispModeId == enumPageDispMode.PopupBox_01) hideDialog();

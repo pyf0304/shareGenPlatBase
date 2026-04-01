@@ -181,12 +181,12 @@ export const usevQxUsersSimStore = defineStore('vUserSim', {
           return objvUserSim.userId;
         case clsvQxUsersSimEN.con_UserName:
           return objvUserSim.userName;
-        case clsvQxUsersSimEN.con_IdXzCollege:
+        case clsvQxUsersSimEN.con_Id_XzCollege:
           return objvUserSim.idXzCollege;
         // case clsvQxUsersSimEN.con_CollegeName:
         //   return objvUserSim.collegeName;
         // case clsvQxUsersSimEN.con_IdXzMajor:
-        //   return objvUserSim.idXzMajor;
+        //   return objvUserSim.id_XzMajor;
         // case clsvQxUsersSimEN.con_MajorName:
         //   return objvUserSim.majorName;
         // case clsvQxUsersSimEN.con_HeadPic:

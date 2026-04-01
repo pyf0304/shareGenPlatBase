@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxUsersEN
  * 表名:QxUsers(00140015)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:28:06
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:00:20
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsQxUsersEN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = ""; //
-public static PrimaryTypeId = "01"; //关键字
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "QxUsers"; //当前表名,与该类相关的表名
-public static _KeyFldName= "UserId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 23;
-public static AttributeName = ["userId", "userName", "departmentId", "userStateId", "password", "effitiveBeginDate", "effitiveEndDate", "stuTeacherId", "identityId", "isArchive", "openId", "email", "phoneNumber", "isSynch", "synchDate", "detailInfoTab", "idGradeBase", "idSchool", "headPic", "idXzCollege", "updDate", "updUser", "memo"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = ""; //
+public static readonly _PrimaryTypeId: string = "01"; //关键字
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "QxUsers"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "UserId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 23;
+public static readonly _AttributeName = ["userId", "userName", "departmentId", "userStateId", "password", "effitiveBeginDate", "effitiveEndDate", "stuTeacherId", "identityId", "isArchive", "openId", "email", "phoneNumber", "isSynch", "synchDate", "detailInfoTab", "id_GradeBase", "id_School", "headPic", "id_XzCollege", "updDate", "updUser", "memo"];
 //以下是属性变量
 
 /**
@@ -62,10 +62,10 @@ private mstrPhoneNumber = "";    //电话号码
 private mbolIsSynch = false;    //是否同步
 private mstrSynchDate = "";    //同步日期
 private mstrDetailInfoTab = "";    //详细信息表
-private mstrIdGradeBase = "";    //年级流水号
-private mstrIdSchool = "";    //学校流水号
+private mstrId_GradeBase = "";    //入学年级流水号
+private mstrId_School = "";    //学校流水号
 private mstrheadPic = "";    //头像
-private mstrIdXzCollege = "";    //学院Id
+private mstrId_XzCollege = "";    //学院Id
 private mstrUpdDate = "";    //修改日期
 private mstrUpdUser = "";    //修改用户
 private mstrMemo = "";    //备注
@@ -295,15 +295,15 @@ if (value  != undefined)
 }
 
 /**
- * 年级流水号(说明:;字段类型:char;字段长度:4;是否可空:True)
+ * 入学年级流水号(说明:;字段类型:char;字段长度:4;是否可空:True)
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsProperty)
 */
- public SetIdGradeBase (value: string)
+ public SetId_GradeBase (value: string)
 {
 if (value  != undefined)
 {
- this.idGradeBase = value;
-    this.hmProperty["idGradeBase"] = true;
+ this.id_GradeBase = value;
+    this.hmProperty["id_GradeBase"] = true;
    this.sfUpdFldSetStr = this.updFldString;
 }
 }
@@ -312,12 +312,12 @@ if (value  != undefined)
  * 学校流水号(说明:;字段类型:char;字段长度:4;是否可空:True)
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsProperty)
 */
- public SetIdSchool (value: string)
+ public SetId_School (value: string)
 {
 if (value  != undefined)
 {
- this.idSchool = value;
-    this.hmProperty["idSchool"] = true;
+ this.id_School = value;
+    this.hmProperty["id_School"] = true;
    this.sfUpdFldSetStr = this.updFldString;
 }
 }
@@ -340,12 +340,12 @@ if (value  != undefined)
  * 学院Id(说明:;字段类型:char;字段长度:4;是否可空:True)
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsProperty)
 */
- public SetIdXzCollege (value: string)
+ public SetId_XzCollege (value: string)
 {
 if (value  != undefined)
 {
- this.idXzCollege = value;
-    this.hmProperty["idXzCollege"] = true;
+ this.id_XzCollege = value;
+    this.hmProperty["id_XzCollege"] = true;
    this.sfUpdFldSetStr = this.updFldString;
 }
 }
@@ -436,14 +436,14 @@ case clsQxUsersEN.con_SynchDate:
 return this.synchDate;
 case clsQxUsersEN.con_DetailInfoTab:
 return this.detailInfoTab;
-case clsQxUsersEN.con_IdGradeBase:
-return this.idGradeBase;
-case clsQxUsersEN.con_IdSchool:
-return this.idSchool;
+case clsQxUsersEN.con_Id_GradeBase:
+return this.id_GradeBase;
+case clsQxUsersEN.con_Id_School:
+return this.id_School;
 case clsQxUsersEN.con_headPic:
 return this.headPic;
-case clsQxUsersEN.con_IdXzCollege:
-return this.idXzCollege;
+case clsQxUsersEN.con_Id_XzCollege:
+return this.id_XzCollege;
 case clsQxUsersEN.con_UpdDate:
 return this.updDate;
 case clsQxUsersEN.con_UpdUser:
@@ -538,21 +538,21 @@ case clsQxUsersEN.con_DetailInfoTab:
 this.detailInfoTab = strValue;
     this.hmProperty["detailInfoTab"] = true;
 break;
-case clsQxUsersEN.con_IdGradeBase:
-this.idGradeBase = strValue;
-    this.hmProperty["idGradeBase"] = true;
+case clsQxUsersEN.con_Id_GradeBase:
+this.id_GradeBase = strValue;
+    this.hmProperty["id_GradeBase"] = true;
 break;
-case clsQxUsersEN.con_IdSchool:
-this.idSchool = strValue;
-    this.hmProperty["idSchool"] = true;
+case clsQxUsersEN.con_Id_School:
+this.id_School = strValue;
+    this.hmProperty["id_School"] = true;
 break;
 case clsQxUsersEN.con_headPic:
 this.headPic = strValue;
     this.hmProperty["headPic"] = true;
 break;
-case clsQxUsersEN.con_IdXzCollege:
-this.idXzCollege = strValue;
-    this.hmProperty["idXzCollege"] = true;
+case clsQxUsersEN.con_Id_XzCollege:
+this.id_XzCollege = strValue;
+    this.hmProperty["id_XzCollege"] = true;
 break;
 case clsQxUsersEN.con_UpdDate:
 this.updDate = strValue;
@@ -599,10 +599,10 @@ public phoneNumber = "";    //电话号码
 public isSynch = false;    //是否同步
 public synchDate = "";    //同步日期
 public detailInfoTab = "";    //详细信息表
-public idGradeBase = "";    //年级流水号
-public idSchool = "";    //学校流水号
+public id_GradeBase = "";    //入学年级流水号
+public id_School = "";    //学校流水号
 public headPic = "";    //头像
-public idXzCollege = "";    //学院Id
+public id_XzCollege = "";    //学院Id
 public updDate = "";    //修改日期
 public updUser = "";    //修改用户
 public memo = "";    //备注
@@ -612,139 +612,139 @@ public memo = "";    //备注
  * 常量:"UserId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserId(): string {return "userId";}    //用户ID
+ public static readonly con_UserId = "userId";    //用户ID
 
  /**
  * 常量:"UserName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserName(): string {return "userName";}    //用户名
+ public static readonly con_UserName = "userName";    //用户名
 
  /**
  * 常量:"DepartmentId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DepartmentId(): string {return "departmentId";}    //部门Id
+ public static readonly con_DepartmentId = "departmentId";    //部门Id
 
  /**
  * 常量:"UserStateId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserStateId(): string {return "userStateId";}    //用户状态Id
+ public static readonly con_UserStateId = "userStateId";    //用户状态Id
 
  /**
  * 常量:"Password"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Password(): string {return "password";}    //口令
+ public static readonly con_Password = "password";    //口令
 
  /**
  * 常量:"EffitiveBeginDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_EffitiveBeginDate(): string {return "effitiveBeginDate";}    //有效开始日期
+ public static readonly con_EffitiveBeginDate = "effitiveBeginDate";    //有效开始日期
 
  /**
  * 常量:"EffitiveEndDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_EffitiveEndDate(): string {return "effitiveEndDate";}    //有效结束日期
+ public static readonly con_EffitiveEndDate = "effitiveEndDate";    //有效结束日期
 
  /**
  * 常量:"StuTeacherId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_StuTeacherId(): string {return "stuTeacherId";}    //学工号
+ public static readonly con_StuTeacherId = "stuTeacherId";    //学工号
 
  /**
  * 常量:"IdentityId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IdentityId(): string {return "identityId";}    //身份编号
+ public static readonly con_IdentityId = "identityId";    //身份编号
 
  /**
  * 常量:"IsArchive"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IsArchive(): string {return "isArchive";}    //是否存档
+ public static readonly con_IsArchive = "isArchive";    //是否存档
 
  /**
  * 常量:"OpenId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_OpenId(): string {return "openId";}    //微信openid
+ public static readonly con_OpenId = "openId";    //微信openid
 
  /**
  * 常量:"Email"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Email(): string {return "email";}    //邮箱
+ public static readonly con_Email = "email";    //邮箱
 
  /**
  * 常量:"PhoneNumber"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_PhoneNumber(): string {return "phoneNumber";}    //电话号码
+ public static readonly con_PhoneNumber = "phoneNumber";    //电话号码
 
  /**
  * 常量:"IsSynch"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IsSynch(): string {return "isSynch";}    //是否同步
+ public static readonly con_IsSynch = "isSynch";    //是否同步
 
  /**
  * 常量:"SynchDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_SynchDate(): string {return "synchDate";}    //同步日期
+ public static readonly con_SynchDate = "synchDate";    //同步日期
 
  /**
  * 常量:"DetailInfoTab"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DetailInfoTab(): string {return "detailInfoTab";}    //详细信息表
+ public static readonly con_DetailInfoTab = "detailInfoTab";    //详细信息表
 
  /**
- * 常量:"IdGradeBase"
+ * 常量:"Id_GradeBase"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IdGradeBase(): string {return "idGradeBase";}    //年级流水号
+ public static readonly con_Id_GradeBase = "id_GradeBase";    //入学年级流水号
 
  /**
- * 常量:"IdSchool"
+ * 常量:"Id_School"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IdSchool(): string {return "idSchool";}    //学校流水号
+ public static readonly con_Id_School = "id_School";    //学校流水号
 
  /**
  * 常量:"headPic"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_headPic(): string {return "headPic";}    //头像
+ public static readonly con_headPic = "headPic";    //头像
 
  /**
- * 常量:"IdXzCollege"
+ * 常量:"Id_XzCollege"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IdXzCollege(): string {return "idXzCollege";}    //学院Id
+ public static readonly con_Id_XzCollege = "id_XzCollege";    //学院Id
 
  /**
  * 常量:"UpdDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdDate(): string {return "updDate";}    //修改日期
+ public static readonly con_UpdDate = "updDate";    //修改日期
 
  /**
  * 常量:"UpdUser"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdUser(): string {return "updUser";}    //修改用户
+ public static readonly con_UpdUser = "updUser";    //修改用户
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 设置条件字段值.
@@ -766,6 +766,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名

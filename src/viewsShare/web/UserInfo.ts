@@ -184,7 +184,7 @@ export class UserInfo {
       BindDdl_ObjLst(
         ddlIdXzCollege,
         arrXzClgObjLst,
-        clsXzClgEN.con_IdXzCollege,
+        clsXzClgEN.con_Id_XzCollege,
         clsXzClgEN.con_CollegeName,
         '学院',
       );
@@ -282,7 +282,7 @@ export class UserInfo {
 
   public Clear() {
     this.idXzCollege = '';
-    this.idXzMajor = '';
+    this.id_XzMajor = '';
     this.idGradeBase = '';
     this.email = '';
     this.password = '';
@@ -296,7 +296,7 @@ export class UserInfo {
     }
 
     this.idXzCollege = pobjUsersEN.idXzCollege;
-    this.idXzMajor = pobjUsersEN.idXzMajor;
+    this.id_XzMajor = pobjUsersEN.id_XzMajor;
     this.idGradeBase = pobjUsersEN.idGradeBase; // idGradeBase
     this.email = pobjUsersEN.email; // EMail
     this.userName = pobjUsersEN.userName;
@@ -308,7 +308,7 @@ export class UserInfo {
     console.log(strListDiv);
     if (this.idXzCollege == '') {
       alert('学院不能为空！');
-    } else if (this.idXzMajor == '') {
+    } else if (this.id_XzMajor == '') {
       alert('专业不能为空！');
     } else if (this.idGradeBase == '') {
       alert('年级不能为空！');
@@ -403,7 +403,7 @@ export class UserInfo {
     if (divName == null) return;
     const userStore = useUserStore();
     pobjUsersEN.SetIdXzCollege(this.idXzCollege); // 学院流水号
-    pobjUsersEN.SetIdXzMajor(this.idXzMajor); // 专业流水号
+    pobjUsersEN.SetIdXzMajor(this.id_XzMajor); // 专业流水号
     pobjUsersEN.SetIdGradeBase(this.idGradeBase); // 年级流水号
     pobjUsersEN.SetEmail(this.email); // 电子邮箱
     if (this.password != '' && this.RePassword != '') {
@@ -421,7 +421,7 @@ export class UserInfo {
 
   public PutDataToUsersClass2(pobjQxUsersEN: clsQxUsersEN) {
     const userStore = useUserStore();
-    pobjQxUsersEN.SetIdXzCollege(this.idXzCollege); // 学院流水号
+    pobjQxUsersEN.SetId_XzCollege(this.idXzCollege); // 学院流水号
     pobjQxUsersEN.SetEmail(this.email); // 电子邮箱
     if (this.password != '' && this.RePassword != '') {
       pobjQxUsersEN.SetPassword(this.password); // password

@@ -1,6 +1,4 @@
-﻿
-
-/**
+﻿/**
  * v用户(vUsers)
  * (AutoGCLib.WA_AccessEx4TypeScript:GeneCode)
  * Created by pyf on 2023年01月12日.
@@ -75,8 +73,6 @@ export function vUsersEx_CopyToEx(objvUsersENS: clsvUsersEN): clsvUsersENEx {
     return objvUsersENT;
   }
 }
-
-
 
 /**
  * 根据分页条件从缓存中获取分页对象列表，只获取一页.
@@ -166,7 +162,7 @@ export function vUsersEx_FuncMapByFldName(strFldName: string, objvUsersEx: clsvU
   console.log(objvUsersEx);
   let strMsg = '';
   //如果是本表中字段，不需要映射
-  const arrFldName = clsvUsersEN.AttributeName;
+  const arrFldName = clsvUsersEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

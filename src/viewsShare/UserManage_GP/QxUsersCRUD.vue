@@ -78,7 +78,7 @@
                 class="form-control form-control-sm"
                 style="width: 200px"
               >
-                <option v-for="(item, index) in arrXzSchool" :key="index" :value="item.idSchool">
+                <option v-for="(item, index) in arrXzSchool" :key="index" :value="item.id_School">
                   {{ item.schoolName }}
                 </option></select
               >
@@ -178,7 +178,7 @@
               class="form-control form-control-sm"
               style="width: 100px"
             >
-              <option v-for="(item, index) in arrXzSchool" :key="index" :value="item.idSchool">
+              <option v-for="(item, index) in arrXzSchool" :key="index" :value="item.id_School">
                 {{ item.schoolName }}
               </option></select
             >
@@ -348,7 +348,7 @@
           opType.value = 'Add';
           const bolIsSuccess = await objPage_Edit.value.ShowDialog_QxUsers(opType.value);
           if (bolIsSuccess == false) return;
-          if (['02', '03', '06'].indexOf(clsQxUsersEN.PrimaryTypeId) > -1) {
+          if (['02', '03', '06'].indexOf(clsQxUsersEN._PrimaryTypeId) > -1) {
             await objPage_Edit.value.AddNewRecordWithMaxId();
           } else {
             await objPage_Edit.value.AddNewRecord();

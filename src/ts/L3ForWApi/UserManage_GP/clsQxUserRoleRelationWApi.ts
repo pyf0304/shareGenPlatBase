@@ -2,14 +2,14 @@
  /**
  * 类名:clsQxUserRoleRelationWApi
  * 表名:QxUserRoleRelation(00140013)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:28:04
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:00:14
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
  应用类型:Vue应用InCore-TS(30)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:WA_访问层(TS)(WA_Access,0155)
@@ -21,7 +21,7 @@
 /**
  * 用户角色关系(QxUserRoleRelation)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2025年06月13日.
+* Created by pyf on 2026年04月01日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
@@ -42,8 +42,8 @@ import { QxRoles_func } from "@/ts/L3ForWApi/UserManage_GP/clsQxRolesWApi";
 import { clsQxRolesEN } from "@/ts/L0Entity/UserManage_GP/clsQxRolesEN";
 import { QxProjects_func } from "@/ts/L3ForWApi/PrjManage_GP/clsQxProjectsWApi";
 import { clsQxProjectsEN } from "@/ts/L0Entity/PrjManage_GP/clsQxProjectsEN";
-import { XzSchool_func } from "@/ts/L3ForWApi/SystemSet/clsXzSchoolWApi";
-import { clsXzSchoolEN } from "@/ts/L0Entity/SystemSet/clsXzSchoolEN";
+import { vQx_XzSchool_func } from "@/ts/L3ForWApi/UserManage_GP/clsvQx_XzSchoolWApi";
+import { clsvQx_XzSchoolEN } from "@/ts/L0Entity/UserManage_GP/clsvQx_XzSchoolEN";
 import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
 import { clsSysPara4WebApi, GetWebApiUrl_GP } from "@/ts/PubConfig/clsSysPara4WebApi";
 import { stuTopPara } from "@/ts/PubFun/stuTopPara";
@@ -132,7 +132,7 @@ throw(error.statusText);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -145,7 +145,7 @@ return a.mId-b.mId;
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -160,7 +160,7 @@ else return a.userId.localeCompare(b.userId);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -186,11 +186,11 @@ case clsQxUserRoleRelationEN.con_RoleId:
 return (a: clsQxUserRoleRelationEN, b: clsQxUserRoleRelationEN) => {
 return a.roleId.localeCompare(b.roleId);
 }
-case clsQxUserRoleRelationEN.con_IdSchool:
+case clsQxUserRoleRelationEN.con_Id_School:
 return (a: clsQxUserRoleRelationEN, b: clsQxUserRoleRelationEN) => {
-if (a.idSchool == null) return -1;
-if (b.idSchool == null) return 1;
-return a.idSchool.localeCompare(b.idSchool);
+if (a.id_School == null) return -1;
+if (b.id_School == null) return 1;
+return a.id_School.localeCompare(b.id_School);
 }
 case clsQxUserRoleRelationEN.con_QxPrjId:
 return (a: clsQxUserRoleRelationEN, b: clsQxUserRoleRelationEN) => {
@@ -232,11 +232,11 @@ case clsQxUserRoleRelationEN.con_RoleId:
 return (a: clsQxUserRoleRelationEN, b: clsQxUserRoleRelationEN) => {
 return b.roleId.localeCompare(a.roleId);
 }
-case clsQxUserRoleRelationEN.con_IdSchool:
+case clsQxUserRoleRelationEN.con_Id_School:
 return (a: clsQxUserRoleRelationEN, b: clsQxUserRoleRelationEN) => {
-if (b.idSchool == null) return -1;
-if (a.idSchool == null) return 1;
-return b.idSchool.localeCompare(a.idSchool);
+if (b.id_School == null) return -1;
+if (a.id_School == null) return 1;
+return b.id_School.localeCompare(a.id_School);
 }
 case clsQxUserRoleRelationEN.con_QxPrjId:
 return (a: clsQxUserRoleRelationEN, b: clsQxUserRoleRelationEN) => {
@@ -268,7 +268,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxUserRoleRelation]中不存在!(in
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -292,9 +292,9 @@ case clsQxUserRoleRelationEN.con_RoleId:
 return (obj: clsQxUserRoleRelationEN) => {
 return obj.roleId === value;
 }
-case clsQxUserRoleRelationEN.con_IdSchool:
+case clsQxUserRoleRelationEN.con_Id_School:
 return (obj: clsQxUserRoleRelationEN) => {
-return obj.idSchool === value;
+return obj.id_School === value;
 }
 case clsQxUserRoleRelationEN.con_QxPrjId:
 return (obj: clsQxUserRoleRelationEN) => {
@@ -1057,7 +1057,7 @@ alert(strMsg);
 /**
  * 根据扩展字段名去调用相应的映射函数
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMapByFldName)
  * @param strFldName:扩展字段名
  * @param  obj{0}Ex:需要转换的对象
@@ -1069,7 +1069,7 @@ const strThisFuncName = QxUserRoleRelation_FuncMapByFldName.name;
 strFldName = strFldName.replace('|Ex', '');
 let strMsg = "";
 //如果是本表中字段,不需要映射
-const arrFldName = clsQxUserRoleRelationEN.AttributeName;
+const arrFldName = clsQxUserRoleRelationEN._AttributeName;
 if (arrFldName.indexOf(strFldName) > -1) return;
 //针对扩展字段进行映射
 switch (strFldName)
@@ -1102,7 +1102,7 @@ console.error(strMsg);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByExKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -1419,9 +1419,9 @@ const strThisFuncName = QxUserRoleRelation_FuncMapSchoolName.name;
 try
 {
 if (IsNullOrEmpty(objQxUserRoleRelation.schoolName) == true){
- const XzSchoolidSchool = objQxUserRoleRelation.idSchool;
- const XzSchoolSchoolName = await XzSchool_func(clsXzSchoolEN.con_IdSchool, clsXzSchoolEN.con_SchoolName, XzSchoolidSchool );
- objQxUserRoleRelation.schoolName = XzSchoolSchoolName;
+ const vQxXzSchoolIdSchool = objQxUserRoleRelation.id_School;
+ const vQxXzSchoolSchoolName = await vQx_XzSchool_func(clsvQx_XzSchoolEN.con_Id_School, clsvQx_XzSchoolEN.con_SchoolName, vQxXzSchoolIdSchool );
+ objQxUserRoleRelation.schoolName = vQxXzSchoolSchoolName;
 }
 }
 catch (e)
@@ -1553,7 +1553,7 @@ throw(error.statusText);
  /** 添加新记录,保存函数
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_AddNewObjSave)
  **/
-export  async function QxUserRoleRelation_AddNewObjSave(objQxUserRoleRelationEN: clsQxUserRoleRelationEN): Promise<AddRecordResult>{
+export  async function QxUserRoleRelation_AddNewObjSave(objQxUserRoleRelationEN: clsQxUserRoleRelationEN ): Promise<AddRecordResult>{
 const strThisFuncName = 'AddNewObjSave';
 try
 {
@@ -2228,9 +2228,9 @@ if (IsNullOrEmpty(pobjQxUserRoleRelationEN.roleId) == false && GetStrLen(pobjQxU
 {
  throw new Error(`(errid:Watl000413)字段[角色Id(roleId)]的长度不能超过8(In 用户角色关系(QxUserRoleRelation))!值:${pobjQxUserRoleRelationEN.roleId}(clsQxUserRoleRelationBL:CheckPropertyNew)`);
 }
-if (IsNullOrEmpty(pobjQxUserRoleRelationEN.idSchool) == false && GetStrLen(pobjQxUserRoleRelationEN.idSchool) > 4)
+if (IsNullOrEmpty(pobjQxUserRoleRelationEN.id_School) == false && GetStrLen(pobjQxUserRoleRelationEN.id_School) > 4)
 {
- throw new Error(`(errid:Watl000413)字段[学校流水号(idSchool)]的长度不能超过4(In 用户角色关系(QxUserRoleRelation))!值:${pobjQxUserRoleRelationEN.idSchool}(clsQxUserRoleRelationBL:CheckPropertyNew)`);
+ throw new Error(`(errid:Watl000413)字段[学校流水号(id_School)]的长度不能超过4(In 用户角色关系(QxUserRoleRelation))!值:${pobjQxUserRoleRelationEN.id_School}(clsQxUserRoleRelationBL:CheckPropertyNew)`);
 }
 if (IsNullOrEmpty(pobjQxUserRoleRelationEN.qxPrjId) == false && GetStrLen(pobjQxUserRoleRelationEN.qxPrjId) > 4)
 {
@@ -2261,9 +2261,9 @@ if (IsNullOrEmpty(pobjQxUserRoleRelationEN.roleId) == false && undefined !== pob
 {
  throw new Error(`(errid:Watl000414)字段[角色Id(roleId)]的值:[${pobjQxUserRoleRelationEN.roleId}], 非法,应该为字符型(In 用户角色关系(QxUserRoleRelation))!(clsQxUserRoleRelationBL:CheckPropertyNew0)`);
 }
-if (IsNullOrEmpty(pobjQxUserRoleRelationEN.idSchool) == false && undefined !== pobjQxUserRoleRelationEN.idSchool && tzDataType.isString(pobjQxUserRoleRelationEN.idSchool) === false)
+if (IsNullOrEmpty(pobjQxUserRoleRelationEN.id_School) == false && undefined !== pobjQxUserRoleRelationEN.id_School && tzDataType.isString(pobjQxUserRoleRelationEN.id_School) === false)
 {
- throw new Error(`(errid:Watl000414)字段[学校流水号(idSchool)]的值:[${pobjQxUserRoleRelationEN.idSchool}], 非法,应该为字符型(In 用户角色关系(QxUserRoleRelation))!(clsQxUserRoleRelationBL:CheckPropertyNew0)`);
+ throw new Error(`(errid:Watl000414)字段[学校流水号(id_School)]的值:[${pobjQxUserRoleRelationEN.id_School}], 非法,应该为字符型(In 用户角色关系(QxUserRoleRelation))!(clsQxUserRoleRelationBL:CheckPropertyNew0)`);
 }
 if (IsNullOrEmpty(pobjQxUserRoleRelationEN.qxPrjId) == false && undefined !== pobjQxUserRoleRelationEN.qxPrjId && tzDataType.isString(pobjQxUserRoleRelationEN.qxPrjId) === false)
 {
@@ -2308,9 +2308,9 @@ if (IsNullOrEmpty(pobjQxUserRoleRelationEN.roleId) == false && GetStrLen(pobjQxU
 {
  throw new Error(`(errid:Watl000416)字段[角色Id(roleId)]的长度不能超过8(In 用户角色关系(QxUserRoleRelation))!值:${pobjQxUserRoleRelationEN.roleId}(clsQxUserRoleRelationBL:CheckProperty4Update)`);
 }
-if (IsNullOrEmpty(pobjQxUserRoleRelationEN.idSchool) == false && GetStrLen(pobjQxUserRoleRelationEN.idSchool) > 4)
+if (IsNullOrEmpty(pobjQxUserRoleRelationEN.id_School) == false && GetStrLen(pobjQxUserRoleRelationEN.id_School) > 4)
 {
- throw new Error(`(errid:Watl000416)字段[学校流水号(idSchool)]的长度不能超过4(In 用户角色关系(QxUserRoleRelation))!值:${pobjQxUserRoleRelationEN.idSchool}(clsQxUserRoleRelationBL:CheckProperty4Update)`);
+ throw new Error(`(errid:Watl000416)字段[学校流水号(id_School)]的长度不能超过4(In 用户角色关系(QxUserRoleRelation))!值:${pobjQxUserRoleRelationEN.id_School}(clsQxUserRoleRelationBL:CheckProperty4Update)`);
 }
 if (IsNullOrEmpty(pobjQxUserRoleRelationEN.qxPrjId) == false && GetStrLen(pobjQxUserRoleRelationEN.qxPrjId) > 4)
 {
@@ -2341,9 +2341,9 @@ if (IsNullOrEmpty(pobjQxUserRoleRelationEN.roleId) == false && undefined !== pob
 {
  throw new Error(`(errid:Watl000417)字段[角色Id(roleId)]的值:[${pobjQxUserRoleRelationEN.roleId}], 非法,应该为字符型(In 用户角色关系(QxUserRoleRelation))!(clsQxUserRoleRelationBL:CheckProperty4Update)`);
 }
-if (IsNullOrEmpty(pobjQxUserRoleRelationEN.idSchool) == false && undefined !== pobjQxUserRoleRelationEN.idSchool && tzDataType.isString(pobjQxUserRoleRelationEN.idSchool) === false)
+if (IsNullOrEmpty(pobjQxUserRoleRelationEN.id_School) == false && undefined !== pobjQxUserRoleRelationEN.id_School && tzDataType.isString(pobjQxUserRoleRelationEN.id_School) === false)
 {
- throw new Error(`(errid:Watl000417)字段[学校流水号(idSchool)]的值:[${pobjQxUserRoleRelationEN.idSchool}], 非法,应该为字符型(In 用户角色关系(QxUserRoleRelation))!(clsQxUserRoleRelationBL:CheckProperty4Update)`);
+ throw new Error(`(errid:Watl000417)字段[学校流水号(id_School)]的值:[${pobjQxUserRoleRelationEN.id_School}], 非法,应该为字符型(In 用户角色关系(QxUserRoleRelation))!(clsQxUserRoleRelationBL:CheckProperty4Update)`);
 }
 if (IsNullOrEmpty(pobjQxUserRoleRelationEN.qxPrjId) == false && undefined !== pobjQxUserRoleRelationEN.qxPrjId && tzDataType.isString(pobjQxUserRoleRelationEN.qxPrjId) === false)
 {
@@ -2382,7 +2382,7 @@ if (IsNullOrEmpty(pobjQxUserRoleRelationEN.qxPrjId) == false && pobjQxUserRoleRe
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -2407,7 +2407,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -2433,7 +2433,7 @@ return arrQxUserRoleRelationObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrQxUserRoleRelationObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -2452,7 +2452,7 @@ return arrQxUserRoleRelationObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -2501,10 +2501,10 @@ if (Object.prototype.hasOwnProperty.call(objQxUserRoleRelationCond.dicFldCompari
 const strComparisonOpRoleId:string = objQxUserRoleRelationCond.dicFldComparisonOp[clsQxUserRoleRelationEN.con_RoleId];
 strWhereCond += Format(" And {0} {2} '{1}'", clsQxUserRoleRelationEN.con_RoleId, objQxUserRoleRelationCond.roleId, strComparisonOpRoleId);
 }
-if (Object.prototype.hasOwnProperty.call(objQxUserRoleRelationCond.dicFldComparisonOp, clsQxUserRoleRelationEN.con_IdSchool) == true)
+if (Object.prototype.hasOwnProperty.call(objQxUserRoleRelationCond.dicFldComparisonOp, clsQxUserRoleRelationEN.con_Id_School) == true)
 {
-const strComparisonOpIdSchool:string = objQxUserRoleRelationCond.dicFldComparisonOp[clsQxUserRoleRelationEN.con_IdSchool];
-strWhereCond += Format(" And {0} {2} '{1}'", clsQxUserRoleRelationEN.con_IdSchool, objQxUserRoleRelationCond.idSchool, strComparisonOpIdSchool);
+const strComparisonOpId_School:string = objQxUserRoleRelationCond.dicFldComparisonOp[clsQxUserRoleRelationEN.con_Id_School];
+strWhereCond += Format(" And {0} {2} '{1}'", clsQxUserRoleRelationEN.con_Id_School, objQxUserRoleRelationCond.id_School, strComparisonOpId_School);
 }
 if (Object.prototype.hasOwnProperty.call(objQxUserRoleRelationCond.dicFldComparisonOp, clsQxUserRoleRelationEN.con_QxPrjId) == true)
 {

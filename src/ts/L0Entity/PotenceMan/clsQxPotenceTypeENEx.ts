@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxPotenceTypeENEx
  * 表名:QxPotenceType(00140003)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:27:34
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:00:46
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:权限管理(PotenceMan)
  * 框架-层名:实体扩展层(TS)(EntityLayerEx,0191)
@@ -62,23 +62,24 @@ return strValue;
  * 常量:"FuncModuleName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_FuncModuleName(): string {return "funcModuleName";}    //模块名
+ public static readonly con_FuncModuleName = "funcModuleName";    //模块名
 
  /**
  * 常量:"MenuName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_MenuName(): string {return "menuName";}    //菜单名
+ public static readonly con_MenuName = "menuName";    //菜单名
 
  /**
  * 常量:"DateTimeSim"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_DateTimeSim(): string {return "dateTimeSim";}    //简化日期时间
+ public static readonly con_DateTimeSim = "dateTimeSim";    //简化日期时间
 
 public funcModuleName = "";    //模块名
 public menuName = "";    //菜单名
 public dateTimeSim = "";    //简化日期时间
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名

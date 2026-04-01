@@ -118,7 +118,7 @@
           <tr v-for="(item, index) in items" :key="index" class="text-secondary">
             <td>
               <input
-                :id="'chk' + item.idSchool"
+                :id="'chk' + item.id_School"
                 v-model="item.checked"
                 type="checkbox"
                 name="chkInTab"
@@ -126,7 +126,7 @@
               />
             </td>
 
-            <td v-html="item.idSchool"></td>
+            <td v-html="item.id_School"></td>
 
             <td v-html="item.schoolName"></td>
 

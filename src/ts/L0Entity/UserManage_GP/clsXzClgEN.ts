@@ -207,7 +207,7 @@ export class clsXzClgEN extends clsGeneralTab {
    */
   public SetIdSchool(value: string) {
     if (value != undefined) {
-      this.idSchool = value;
+      this.id_School = value;
       this.hmProperty['idSchool'] = true;
       this.sfUpdFldSetStr = this.updFldString;
     }
@@ -306,7 +306,7 @@ export class clsXzClgEN extends clsGeneralTab {
   public GetFldValue(strFldName: string): any {
     let strMsg = '';
     switch (strFldName) {
-      case clsXzClgEN.con_IdXzCollege:
+      case clsXzClgEN.con_Id_XzCollege:
         return this.idXzCollege;
       case clsXzClgEN.con_CollegeId:
         return this.collegeId;
@@ -327,7 +327,7 @@ export class clsXzClgEN extends clsGeneralTab {
       case clsXzClgEN.con_WebSite:
         return this.webSite;
       case clsXzClgEN.con_IdSchool:
-        return this.idSchool;
+        return this.id_School;
       case clsXzClgEN.con_IdUni:
         return this.idUni;
       case clsXzClgEN.con_IsVisible4Tea:
@@ -364,7 +364,7 @@ export class clsXzClgEN extends clsGeneralTab {
     const strThisFuncName = 'SetFldValue';
     let strMsg = '';
     switch (strFldName) {
-      case clsXzClgEN.con_IdXzCollege:
+      case clsXzClgEN.con_Id_XzCollege:
         this.idXzCollege = strValue;
         this.hmProperty['idXzCollege'] = true;
         break;
@@ -405,7 +405,7 @@ export class clsXzClgEN extends clsGeneralTab {
         this.hmProperty['webSite'] = true;
         break;
       case clsXzClgEN.con_IdSchool:
-        this.idSchool = strValue;
+        this.id_School = strValue;
         this.hmProperty['idSchool'] = true;
         break;
       case clsXzClgEN.con_IdUni:

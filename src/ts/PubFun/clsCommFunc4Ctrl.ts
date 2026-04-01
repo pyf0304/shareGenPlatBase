@@ -15,6 +15,22 @@ export function GetCheckedObjLstInDiv(strDivId: string): Array<HTMLInputElement>
   return arrCheckBox;
 }
 
+export function getAObjByIdInDivObj(objDiv: HTMLDivElement, strAId: string): HTMLAnchorElement {
+  const arrElements0 = objDiv.getElementsByTagName('a');
+  const arrElements = GetArray(arrElements0);
+  const objElement: HTMLAnchorElement = <HTMLAnchorElement>arrElements.find((x) => x.id == strAId);
+  if (objElement == null) {
+    const strMsg = Format(
+      '在层:[{0}]内，不存在类型为:[a]的元素:[{1}], 请检查！',
+      objDiv.id,
+      strAId,
+    );
+    console.error(strMsg);
+    throw strMsg;
+  }
+  return objElement;
+}
+
 export function GetCheckedKeyIdsInDiv(strDivName4List: string): Array<string> {
   const divList: HTMLDivElement = document.getElementById(strDivName4List) as HTMLDivElement;
   const chkItems: HTMLCollectionOf<Element> = divList.getElementsByClassName('CheckInTab'); // as Array<HTMLInputElement>;

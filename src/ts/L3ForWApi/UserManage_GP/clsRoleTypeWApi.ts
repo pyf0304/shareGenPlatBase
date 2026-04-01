@@ -2,14 +2,14 @@
  /**
  * 类名:clsRoleTypeWApi
  * 表名:RoleType(00140128)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:18
+ * 版本:2026.03.31.1(服务器:WIN-SRV103-116)
+ * 日期:2026/03/31 23:14:34
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
  应用类型:Vue应用InCore-TS(30)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:WA_访问层(TS)(WA_Access,0155)
@@ -21,7 +21,7 @@
 /**
  * 角色类型(RoleType)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2025年04月13日.
+* Created by pyf on 2026年03月31日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
@@ -31,13 +31,12 @@ import { IsNullOrEmpty,GetStrLen,tzDataType,Format } from "@/ts/PubFun/clsString
 import { enumComparisonOp } from "@/ts/PubFun/enumComparisonOp";
 import { CacheHelper } from "@/ts/PubFun/CacheHelper";
 import { ConditionCollection } from "@/ts/PubFun/ConditionCollection";
+import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
 import { BindDdl_ObjLstInDivObj,GetExceptionStr,myShowErrorMsg,ObjectAssign } from "@/ts/PubFun/clsCommFunc4Web";
 import { clsRoleTypeEN } from "@/ts/L0Entity/UserManage_GP/clsRoleTypeEN";
-import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
 import { clsSysPara4WebApi, GetWebApiUrl_GP } from "@/ts/PubConfig/clsSysPara4WebApi";
 import { stuTopPara } from "@/ts/PubFun/stuTopPara";
 import { stuRangePara } from "@/ts/PubFun/stuRangePara";
-import { stuPagerPara } from "@/ts/PubFun/stuPagerPara";
 import { clsDateTime } from "@/ts/PubFun/clsDateTime";
 
  export const roleType_Controller = "RoleTypeApi";
@@ -238,7 +237,7 @@ return null;
  * @param objRoleType:所给的对象
  * @returns 对象
 */
-export  async function RoleType_UpdateObjInLstCache(objRoleType: clsRoleTypeEN) {
+export  async function RoleType_UpdateObjInLstCache(objRoleType: clsRoleTypeEN ) {
 const strThisFuncName = "UpdateObjInLstCache";
 try
 {
@@ -265,7 +264,7 @@ alert(strMsg);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-03-31
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -278,7 +277,7 @@ return a.roleTypeId.localeCompare(b.roleTypeId);
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-03-31
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -293,7 +292,7 @@ else return a.roleTypeName.localeCompare(b.roleTypeName);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-03-31
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -367,7 +366,7 @@ strMsg = `字段名:[${strKey}]在表对象:[RoleType]中不存在!(in ${ roleTy
  * @param strRoleTypeId:所给的关键字
  * @returns 对象
 */
-export  async function RoleType_GetNameByRoleTypeIdCache(strRoleTypeId: string) {
+export  async function RoleType_GetNameByRoleTypeIdCache(strRoleTypeId: string ) {
 
 if (IsNullOrEmpty(strRoleTypeId) == true)
 {
@@ -410,7 +409,7 @@ return "";
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-03-31
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -448,7 +447,7 @@ strMsg = `字段名:[${strKey}]在表对象:[RoleType]中不存在!(in ${ roleTy
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-03-31
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_func)
  * @param strInFldName:输入字段名
  * @param strOutFldName:输出字段名
@@ -465,10 +464,10 @@ const strMsg = Format("输入字段名:[{0}]不正确!", strInFldName);
 console.error(strMsg);
 throw new Error(strMsg);
 }
-if (clsRoleTypeEN.AttributeName.indexOf(strOutFldName) == -1)
+if (clsRoleTypeEN._AttributeName.indexOf(strOutFldName) == -1)
 {
 const strMsg = Format("输出字段名:[{0}]不正确,不在输出字段范围之内!({1})",
-strOutFldName, clsRoleTypeEN.AttributeName.join(','));
+strOutFldName, clsRoleTypeEN._AttributeName.join(','));
 console.error(strMsg);
 throw new Error(strMsg);
 }
@@ -486,7 +485,7 @@ return objRoleType.GetFldValue(strOutFldName).toString();
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-03-31
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_funcKey)
  * @param strInFldName:输入字段名
  * @param strInValue:输入字段值
@@ -825,13 +824,13 @@ const strThisFuncName = "GetObjLstClientCache";
 //初始化列表缓存
 let strWhereCond = "1=1";
 const strKey = clsRoleTypeEN._CurrTabName;
-if (IsNullOrEmpty(clsRoleTypeEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsRoleTypeEN._WhereFormat) == false)
 {
-strWhereCond = clsRoleTypeEN.WhereFormat;
+strWhereCond = clsRoleTypeEN._WhereFormat;
 }
-if (IsNullOrEmpty(clsRoleTypeEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsRoleTypeEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsRoleTypeEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsRoleTypeEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -866,19 +865,19 @@ throw (strMsg);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_localStorage)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function RoleType_GetObjLstlocalStorage() 
+export  async function RoleType_GetObjLstlocalStorage()
 {
 const strThisFuncName = "GetObjLstlocalStorage";
 //初始化列表缓存
 let strWhereCond = "1=1";
 const strKey = clsRoleTypeEN._CurrTabName;
-if (IsNullOrEmpty(clsRoleTypeEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsRoleTypeEN._WhereFormat) == false)
 {
-strWhereCond = clsRoleTypeEN.WhereFormat;
+strWhereCond = clsRoleTypeEN._WhereFormat;
 }
-if (IsNullOrEmpty(clsRoleTypeEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsRoleTypeEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsRoleTypeEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsRoleTypeEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -1007,19 +1006,19 @@ throw(error.statusText);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_sessionStorage)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function RoleType_GetObjLstsessionStorage() 
+export  async function RoleType_GetObjLstsessionStorage()
 {
 const strThisFuncName = "GetObjLstsessionStorage";
 //初始化列表缓存
 let strWhereCond = "1=1";
 const strKey = clsRoleTypeEN._CurrTabName;
-if (IsNullOrEmpty(clsRoleTypeEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsRoleTypeEN._WhereFormat) == false)
 {
-strWhereCond = clsRoleTypeEN.WhereFormat;
+strWhereCond = clsRoleTypeEN._WhereFormat;
 }
-if (IsNullOrEmpty(clsRoleTypeEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsRoleTypeEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsRoleTypeEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsRoleTypeEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -1055,7 +1054,7 @@ throw (strMsg);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_sessionStorage_PureCache)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function RoleType_GetObjLstsessionStoragePureCache() 
+export  async function RoleType_GetObjLstsessionStoragePureCache()
 {
 //初始化列表缓存
 const strKey = clsRoleTypeEN._CurrTabName;
@@ -1084,7 +1083,7 @@ export  async function RoleType_GetObjLstCache(): Promise<Array<clsRoleTypeEN>>
 //const strThisFuncName = "GetObjLst_Cache";
 
 let arrRoleTypeObjLstCache;
-switch (clsRoleTypeEN.CacheModeId)
+switch (clsRoleTypeEN._CacheModeId)
 {
 case "04"://sessionStorage
 arrRoleTypeObjLstCache = await RoleType_GetObjLstsessionStorage();
@@ -1111,7 +1110,7 @@ export  async function RoleType_GetObjLstPureCache()
 {
 //const strThisFuncName = "GetObjLstPureCache";
 let arrRoleTypeObjLstCache;
-switch (clsRoleTypeEN.CacheModeId)
+switch (clsRoleTypeEN._CacheModeId)
 {
 case "04"://sessionStorage
 arrRoleTypeObjLstCache = await RoleType_GetObjLstsessionStoragePureCache();
@@ -1430,185 +1429,8 @@ throw(error.statusText);
 }
 }
 }
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerCache)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
-*/
-export  async function RoleType_GetObjLstByPagerCache(objPagerPara: stuPagerPara ) {
-const strThisFuncName = "GetObjLstByPagerCache";
-if (objPagerPara.pageIndex == 0) return new Array<clsRoleTypeEN>();
-const arrRoleTypeObjLstCache = await RoleType_GetObjLstCache();
-if (arrRoleTypeObjLstCache.length == 0) return arrRoleTypeObjLstCache;
-let arrRoleTypeSel = arrRoleTypeObjLstCache;
-const objRoleTypeCond = objPagerPara.conditionCollection;
-if (objRoleTypeCond == null)
-{
-const strMsg = `根据分布条件从缓存中获取分页对象列表时，objPagerPara.conditionCollection为null,请检查！(in ${ strThisFuncName})`;
-alert(strMsg);
-console.error(strMsg);
-return new Array<clsRoleTypeEN>();
-}
-//console.log("clsRoleTypeWApi->GetObjLstByPagerCache->dicFldComparisonOp:");
-//console.log(dicFldComparisonOp);
-try {
-for (const objCondition of objRoleTypeCond.GetConditions()) {
-if (objCondition == null) continue; 
-const strKey = objCondition.fldName;
-const strComparisonOp = objCondition.comparison;
-const strValue = objCondition.fldValue;
-arrRoleTypeSel = arrRoleTypeSel.filter(x => x.GetFldValue(strKey) != null);
-const strType = typeof(strValue);
-switch (strType) {
-case "string":
-if (strValue == null) continue;
-if (strValue == "") continue;
-if (strComparisonOp == "=") {
-arrRoleTypeSel = arrRoleTypeSel.filter(x => x.GetFldValue(strKey).toString() == strValue.toString());
-}
-else if (strComparisonOp == "like") {
-arrRoleTypeSel = arrRoleTypeSel.filter(x => x.GetFldValue(strKey).toString().indexOf(strValue.toString()) != -1);
-}
-else if (strComparisonOp == "length greater") {
-arrRoleTypeSel = arrRoleTypeSel.filter(x => x.GetFldValue(strKey).toString().length > Number(strValue.toString()));
-}
-else if (strComparisonOp == "length not greater") {
-arrRoleTypeSel = arrRoleTypeSel.filter(x => x.GetFldValue(strKey).toString().length <= Number(strValue.toString()));
-}
-else if (strComparisonOp == "length not less") {
-arrRoleTypeSel = arrRoleTypeSel.filter(x => x.GetFldValue(strKey).toString().length >= Number(strValue.toString()));
-}
-else if (strComparisonOp == "length less") {
-arrRoleTypeSel = arrRoleTypeSel.filter(x => x.GetFldValue(strKey).toString().length < Number(strValue.toString()));
-}
-else if (strComparisonOp == "length equal") {
-arrRoleTypeSel = arrRoleTypeSel.filter(x => x.GetFldValue(strKey).toString().length == Number(strValue.toString()));
-}
-else if (strComparisonOp == "in") {
-const arrValues = strValue.toString().split(',');
-arrRoleTypeSel = arrRoleTypeSel.filter(x => arrValues.indexOf(x.GetFldValue(strKey).toString()) != -1);
-}
-break;
-case "boolean":
-if (strValue == null) continue;
-if (strComparisonOp == "=") {
-arrRoleTypeSel = arrRoleTypeSel.filter(x => x.GetFldValue(strKey) == strValue);
-}
-break;
-case "number":
-if (Number(strValue) == 0) continue;
-if (strComparisonOp == "=") {
-arrRoleTypeSel = arrRoleTypeSel.filter(x => x.GetFldValue(strKey) == strValue);
-}
-else if (strComparisonOp == ">=") {
-arrRoleTypeSel = arrRoleTypeSel.filter(x => x.GetFldValue(strKey) >= strValue);
-}
-else if (strComparisonOp == "<=") {
-arrRoleTypeSel = arrRoleTypeSel.filter(x => x.GetFldValue(strKey) <= strValue);
-}
-else if (strComparisonOp == ">") {
-arrRoleTypeSel = arrRoleTypeSel.filter(x => x.GetFldValue(strKey) > strValue);
-}
-else if (strComparisonOp == "<") {
-arrRoleTypeSel = arrRoleTypeSel.filter(x => x.GetFldValue(strKey) <= strValue);
-}
-break;
-}
-}
-if (arrRoleTypeSel.length == 0) return arrRoleTypeSel;
-let intStart: number = objPagerPara.pageSize* (objPagerPara.pageIndex - 1);
-if (intStart <= 0) intStart = 0;
-const intEnd = intStart + objPagerPara.pageSize;
-if (objPagerPara.orderBy != null && objPagerPara.orderBy.length>0) {
-const sstrSplit: string[] = objPagerPara.orderBy.split(" ");
-let strSortType = "asc";
-const strSortFld = sstrSplit[0];
-if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-arrRoleTypeSel = arrRoleTypeSel.sort(RoleType_SortFunByKey(strSortFld, strSortType));
-}
-else {
-//如果排序字段名[OrderBy]为空,就调用排序函数
-arrRoleTypeSel = arrRoleTypeSel.sort(objPagerPara.sortFun);
-}
-arrRoleTypeSel = arrRoleTypeSel.slice(intStart, intEnd);     
-return arrRoleTypeSel;
-}
-catch (e) {
-const strMsg = Format("错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})", e, objPagerPara.whereCond, roleType_ConstructorName, strThisFuncName);
-console.error(strMsg);
-throw new Error(strMsg);
-}
-return new Array<clsRoleTypeEN>();
-}
-
- /**
- * 根据分页条件获取相应的记录对象列表,只获取一页
- * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
- * @param objPagerPara:分页获取对象列表的参数对象
- * @returns 获取的相应记录对象列表
- **/
-export  async function RoleType_GetObjLstByPagerAsync(objPagerPara: stuPagerPara): Promise<Array<clsRoleTypeEN>>  
-{
-const strThisFuncName = "GetObjLstByPagerAsync";
-if (objPagerPara.pageIndex == 0) return new Array<clsRoleTypeEN>();
-const strAction = "GetObjLstByPager";
-const strUrl = GetWebApiUrl_GP(roleType_Controller, strAction);
-
-const token = Storage.get(ACCESS_TOKEN_KEY);
-//console.error('token:', token);
-const config = {
-headers: {
-Authorization: `${ token}`,
-},
-};
-try
-{
-const response = await axios.post(strUrl, objPagerPara, config);
-const data = response.data;
-if (data.errorId == 0)
-{
-const returnObjLst = data.returnObjLst;
-if (returnObjLst == null)
-{
-const strNullInfo = Format("获取数据为null, 请注意!(in {0}.{1})", roleType_ConstructorName, strThisFuncName);
-console.error(strNullInfo);
-throw(strNullInfo);
-}
-//console.log(returnObjLst);
-const arrObjLst = RoleType_GetObjLstByJSONObjLst(returnObjLst);
-return arrObjLst;
-}
-else
-{
-console.error(data.errorMsg);
-throw(data.errorMsg);
-}
-} catch (error: any) {
-console.error(error);
-if (error.statusText == undefined)
-{
-throw error;
-}
-if (error.statusText == "error")
-{
-const strInfo = Format("网络错误!访问地址:{0}不成功!(in {1}.{2})", strUrl, roleType_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else if (error.statusText == "Not Found")
-{
-const strInfo = Format("网络错误!访问地址:{0}可能不存在!(in {1}.{2})", strUrl, roleType_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else
-{
-throw(error.statusText);
-}
-}
-}
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerCache)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
 
  /**
  * 调用WebApi来删除记录,根据关键字来删除记录
@@ -1724,6 +1546,11 @@ throw(error.statusText);
 }
 }
 }
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjExLstByPagerCache)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_CopyToEx)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMapByFldName)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByExKey)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMap)
 
  /**
  * 根据条件删除记录
@@ -1907,7 +1734,7 @@ throw(error.statusText);
  /** 添加新记录,保存函数
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_AddNewObjSave)
  **/
-export  async function RoleType_AddNewObjSave(objRoleTypeEN: clsRoleTypeEN): Promise<AddRecordResult>{
+export  async function RoleType_AddNewObjSave(objRoleTypeEN: clsRoleTypeEN ): Promise<AddRecordResult>{
 const strThisFuncName = 'AddNewObjSave';
 try
 {
@@ -2241,7 +2068,7 @@ throw(error.statusText);
  * @param objstrRoleTypeIdCond:条件对象
  * @returns 对象列表子集
 */
-export  async function RoleType_IsExistRecordCache(objRoleTypeCond: ConditionCollection) {
+export  async function RoleType_IsExistRecordCache(objRoleTypeCond: ConditionCollection ) {
 const strThisFuncName = "IsExistRecordCache";
 const arrRoleTypeObjLstCache = await RoleType_GetObjLstCache();
 if (arrRoleTypeObjLstCache == null) return false;
@@ -2717,11 +2544,12 @@ return strServiceUrl;
 export  function RoleType_ReFreshCache():void
 {
 
+
  const strMsg:string = Format("刷新缓存成功!");
 console.trace(strMsg);
 // 静态的对象列表,用于清空相关缓存,针对记录较少,作为参数表可以使用
 const strKey = clsRoleTypeEN._CurrTabName;
-switch (clsRoleTypeEN.CacheModeId)
+switch (clsRoleTypeEN._CacheModeId)
 {
 case "04"://sessionStorage
 sessionStorage.removeItem(strKey);
@@ -2745,10 +2573,11 @@ clsRoleTypeEN._RefreshTimeLst.push(clsDateTime.getTodayDateTimeStr(0));
  **/
 export  function RoleType_ReFreshThisCache():void
 {
+
 if (clsSysPara4WebApi.spSetRefreshCacheOn == true)
 {
 const strKey = clsRoleTypeEN._CurrTabName;
-switch (clsRoleTypeEN.CacheModeId)
+switch (clsRoleTypeEN._CacheModeId)
 {
 case "04"://sessionStorage
 sessionStorage.removeItem(strKey);
@@ -2935,7 +2764,7 @@ if (IsNullOrEmpty(pobjRoleTypeEN.roleTypeId) === true
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-03-31
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -2960,7 +2789,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-03-31
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -2986,7 +2815,7 @@ return arrRoleTypeObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-03-31
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrRoleTypeObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -3005,7 +2834,7 @@ return arrRoleTypeObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-03-31
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象

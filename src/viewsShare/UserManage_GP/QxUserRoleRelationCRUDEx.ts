@@ -144,7 +144,7 @@ export default class QxUserRoleRelationCRUDEx extends QxUserRoleRelationCRUD imp
         viewVarSet.sortQxUserRoleRelationBy = `QxRoles|roleName ${sortDirection}|QxUserRoleRelation.RoleId = QxRoles.RoleId`;
         break;
       case 'schoolName|Ex':
-        viewVarSet.sortQxUserRoleRelationBy = `XzSchool|schoolName ${sortDirection}|QxUserRoleRelation.IdSchool = XzSchool.IdSchool`;
+        viewVarSet.sortQxUserRoleRelationBy = `XzSchool|schoolName ${sortDirection}|QxUserRoleRelation.id_School = XzSchool.id_School`;
         break;
       default:
         viewVarSet.sortQxUserRoleRelationBy = Format('{0} {1}', sortColumnKey, sortDirection);

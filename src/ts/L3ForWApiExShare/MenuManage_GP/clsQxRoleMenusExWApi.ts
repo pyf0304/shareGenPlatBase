@@ -106,7 +106,7 @@ export async function QxRoleMenusEx_GetObjExLstByPagerAsync(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsQxRoleMenusEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsQxRoleMenusEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrQxRoleMenusExObjLst) {
       await QxRoleMenusEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -540,7 +540,7 @@ export function QxRoleMenusEx_FuncMapByFldName(
   const strThisFuncName = QxRoleMenusEx_FuncMapByFldName.name;
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsQxRoleMenusEN.AttributeName;
+  const arrFldName = clsQxRoleMenusEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {
@@ -922,7 +922,7 @@ export async function QxRoleMenusEx_GetObjExLstByPagerCache(
   const bolIsFuncMap = isFuncMapCache[isFuncMapKey];
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsQxRoleMenusEN.AttributeName.indexOf(objSortInfo.SortFld) == -1 &&
+    clsQxRoleMenusEN._AttributeName.indexOf(objSortInfo.SortFld) == -1 &&
     (bolIsFuncMap == false || bolIsFuncMap == undefined)
   ) {
     for (const newObj of arrQxRoleMenusExObjLst) {

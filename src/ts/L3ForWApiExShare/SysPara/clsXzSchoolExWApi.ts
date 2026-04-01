@@ -289,7 +289,7 @@ export function XzSchoolEx_FuncMapByFldName(strFldName: string, objXzSchoolEx: c
   const strThisFuncName = XzSchoolEx_FuncMapByFldName.name;
   let strMsg = '';
   //如果是本表中字段，不需要映射
-  const arrFldName = clsXzSchoolEN.AttributeName;
+  const arrFldName = clsXzSchoolEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {
@@ -320,4 +320,3 @@ export async function XzSchoolEx_FilterFunByKey(strKey: string, value: any) {
       return XzSchool_FilterFunByKey(strKey, value);
   }
 }
-

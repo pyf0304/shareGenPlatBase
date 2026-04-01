@@ -891,7 +891,7 @@ export abstract class QxRoleRightRelationCRUD implements clsOperateList {
     arrQxRoleRightRelationExObjLst: Array<clsQxRoleRightRelationENEx>,
     arrDataColumn: Array<clsDataColumn>,
   ) {
-    const arrFldName = clsQxRoleRightRelationEN.AttributeName;
+    const arrFldName = clsQxRoleRightRelationEN._AttributeName;
     for (const objDataColumn of arrDataColumn) {
       if (IsNullOrEmpty(objDataColumn.fldName) == true) continue;
       if (arrFldName.indexOf(objDataColumn.fldName) > -1) continue;
@@ -987,9 +987,8 @@ export abstract class QxRoleRightRelationCRUD implements clsOperateList {
         orderBy: viewVarSet.sortQxRoleRightRelationBy,
         sortFun: strSortFun,
       };
-      arrQxRoleRightRelationExObjLst = await QxRoleRightRelation_GetObjExLstByPagerCache(
-        objPagerPara,
-      );
+      arrQxRoleRightRelationExObjLst =
+        await QxRoleRightRelation_GetObjExLstByPagerCache(objPagerPara);
     } catch (e) {
       const strMsg = `绑定GridView不成功,${e}.(in ${this.constructor.name}.${strThisFuncName}`;
       console.error(strMsg);

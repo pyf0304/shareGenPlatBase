@@ -2,14 +2,14 @@
  /**
  * 类名:clsQxPrjMenusWApi
  * 表名:QxPrjMenus(00140004)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:27:35
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:02:12
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
  应用类型:Vue应用InCore-TS(30)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:菜单管理(MenuManage_GP)
  * 框架-层名:WA_访问层(TS)(WA_Access,0155)
@@ -21,7 +21,7 @@
 /**
  * 工程菜单(QxPrjMenus)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2025年06月13日.
+* Created by pyf on 2026年04月01日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
@@ -42,7 +42,6 @@ import { useQxPrjMenusStore } from "@/store/modulesShare/qxPrjMenus";
 import { clsSysPara4WebApi, GetWebApiUrl_GP } from "@/ts/PubConfig/clsSysPara4WebApi";
 import { stuTopPara } from "@/ts/PubFun/stuTopPara";
 import { stuRangePara } from "@/ts/PubFun/stuRangePara";
-import { clsDateTime } from "@/ts/PubFun/clsDateTime";
 
  export const qxPrjMenus_Controller = "QxPrjMenusApi";
  export const qxPrjMenus_ConstructorName = "qxPrjMenus";
@@ -133,7 +132,7 @@ throw(error.statusText);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -146,7 +145,7 @@ return a.menuId.localeCompare(b.menuId);
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -161,7 +160,7 @@ else return a.menuName.localeCompare(b.menuName);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -397,7 +396,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxPrjMenus]中不存在!(in ${ qxPr
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -754,13 +753,13 @@ const strThisFuncName = "GetObjLstClientCache";
 //初始化列表缓存
 let strWhereCond = "1=1";
 const strKey = clsQxPrjMenusEN._CurrTabName;
-if (IsNullOrEmpty(clsQxPrjMenusEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsQxPrjMenusEN._WhereFormat) == false)
 {
-strWhereCond = clsQxPrjMenusEN.WhereFormat;
+strWhereCond = clsQxPrjMenusEN._WhereFormat;
 }
-if (IsNullOrEmpty(clsQxPrjMenusEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsQxPrjMenusEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsQxPrjMenusEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsQxPrjMenusEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -795,19 +794,19 @@ throw (strMsg);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_localStorage)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function QxPrjMenus_GetObjLstlocalStorage() 
+export  async function QxPrjMenus_GetObjLstlocalStorage()
 {
 const strThisFuncName = "GetObjLstlocalStorage";
 //初始化列表缓存
 let strWhereCond = "1=1";
 const strKey = clsQxPrjMenusEN._CurrTabName;
-if (IsNullOrEmpty(clsQxPrjMenusEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsQxPrjMenusEN._WhereFormat) == false)
 {
-strWhereCond = clsQxPrjMenusEN.WhereFormat;
+strWhereCond = clsQxPrjMenusEN._WhereFormat;
 }
-if (IsNullOrEmpty(clsQxPrjMenusEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsQxPrjMenusEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsQxPrjMenusEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsQxPrjMenusEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -936,19 +935,19 @@ throw(error.statusText);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_sessionStorage)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function QxPrjMenus_GetObjLstsessionStorage() 
+export  async function QxPrjMenus_GetObjLstsessionStorage()
 {
 const strThisFuncName = "GetObjLstsessionStorage";
 //初始化列表缓存
 let strWhereCond = "1=1";
 const strKey = clsQxPrjMenusEN._CurrTabName;
-if (IsNullOrEmpty(clsQxPrjMenusEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsQxPrjMenusEN._WhereFormat) == false)
 {
-strWhereCond = clsQxPrjMenusEN.WhereFormat;
+strWhereCond = clsQxPrjMenusEN._WhereFormat;
 }
-if (IsNullOrEmpty(clsQxPrjMenusEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsQxPrjMenusEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsQxPrjMenusEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsQxPrjMenusEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -984,7 +983,7 @@ throw (strMsg);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_sessionStorage_PureCache)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function QxPrjMenus_GetObjLstsessionStoragePureCache() 
+export  async function QxPrjMenus_GetObjLstsessionStoragePureCache()
 {
 //初始化列表缓存
 const strKey = clsQxPrjMenusEN._CurrTabName;
@@ -1013,7 +1012,7 @@ export  async function QxPrjMenus_GetObjLstPureCache()
 {
 //const strThisFuncName = "GetObjLstPureCache";
 let arrQxPrjMenusObjLstCache;
-switch (clsQxPrjMenusEN.CacheModeId)
+switch (clsQxPrjMenusEN._CacheModeId)
 {
 case "04"://sessionStorage
 arrQxPrjMenusObjLstCache = await QxPrjMenus_GetObjLstsessionStoragePureCache();
@@ -1442,7 +1441,7 @@ alert(strMsg);
 /**
  * 根据扩展字段名去调用相应的映射函数
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMapByFldName)
  * @param strFldName:扩展字段名
  * @param  obj{0}Ex:需要转换的对象
@@ -1454,7 +1453,7 @@ const strThisFuncName = QxPrjMenus_FuncMapByFldName.name;
 strFldName = strFldName.replace('|Ex', '');
 let strMsg = "";
 //如果是本表中字段,不需要映射
-const arrFldName = clsQxPrjMenusEN.AttributeName;
+const arrFldName = clsQxPrjMenusEN._AttributeName;
 if (arrFldName.indexOf(strFldName) > -1) return;
 //针对扩展字段进行映射
 switch (strFldName)
@@ -1475,7 +1474,7 @@ console.error(strMsg);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByExKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -1832,7 +1831,7 @@ throw(error.statusText);
  /** 添加新记录,保存函数
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_AddNewObjSave)
  **/
-export  async function QxPrjMenus_AddNewObjSave(objQxPrjMenusEN: clsQxPrjMenusEN): Promise<AddRecordResult>{
+export  async function QxPrjMenus_AddNewObjSave(objQxPrjMenusEN: clsQxPrjMenusEN ): Promise<AddRecordResult>{
 const strThisFuncName = 'AddNewObjSave';
 try
 {
@@ -2595,7 +2594,6 @@ const arrObjLstSel = await QxPrjMenus_GetObjLstAsync(strCondition);
 if (arrObjLstSel == null) return;
 BindDdl_ObjLstInDivObj(objDiv, strDdlName, arrObjLstSel, clsQxPrjMenusEN.con_MenuId, clsQxPrjMenusEN.con_MenuName, "工程菜单...");
 }
-//(IsNeedGC == false)该表下拉框功能不需要生成;
 
 /**
  * 绑定基于Web的下拉框,在某一层下的下拉框
@@ -2655,7 +2653,6 @@ arrQxPrjMenus.push(obj0);
 arrObjLstSel.forEach(x => arrQxPrjMenus.push(x));
 return arrQxPrjMenus;
 }
-//(IsNeedGC == false)该表下拉框功能不需要生成;
 
 /**
  * 检查对象字段值是否合法,1)检查是否可空;2)检查字段值长度是否超长,如果出错就抛出错误.
@@ -3016,7 +3013,7 @@ if (IsNullOrEmpty(pobjQxPrjMenusEN.roleId) == false && pobjQxPrjMenusEN.roleId !
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -3041,7 +3038,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -3067,7 +3064,7 @@ return arrQxPrjMenusObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrQxPrjMenusObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -3086,7 +3083,7 @@ return arrQxPrjMenusObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象

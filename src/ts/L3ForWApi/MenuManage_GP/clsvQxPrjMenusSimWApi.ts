@@ -2,14 +2,14 @@
  /**
  * 类名:clsvQxPrjMenusSimWApi
  * 表名:vQxPrjMenusSim(00140126)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:46
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:04:13
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
  应用类型:Vue应用InCore-TS(30)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:菜单管理(MenuManage_GP)
  * 框架-层名:WA_访问层(TS)(WA_Access,0155)
@@ -21,7 +21,7 @@
 /**
  * vQxPrjMenusSim(vQxPrjMenusSim)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2025年04月13日.
+* Created by pyf on 2026年04月01日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
@@ -32,12 +32,10 @@ import { enumComparisonOp } from "@/ts/PubFun/enumComparisonOp";
 import { CacheHelper,LocalStorage_GetKeyByPrefix,SessionStorage_GetKeyByPrefix } from "@/ts/PubFun/CacheHelper";
 import { ConditionCollection } from "@/ts/PubFun/ConditionCollection";
 import { clsvQxPrjMenusSimEN } from "@/ts/L0Entity/MenuManage_GP/clsvQxPrjMenusSimEN";
-import { GetExceptionStr, GetObjKeys, myShowErrorMsg, ObjectAssign } from "@/ts/PubFun/clsCommFunc4Web";
-import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
+import { GetExceptionStr, myShowErrorMsg, ObjectAssign } from "@/ts/PubFun/clsCommFunc4Web";
 import { clsSysPara4WebApi, GetWebApiUrl_GP } from "@/ts/PubConfig/clsSysPara4WebApi";
 import { stuTopPara } from "@/ts/PubFun/stuTopPara";
 import { stuRangePara } from "@/ts/PubFun/stuRangePara";
-import { stuPagerPara } from "@/ts/PubFun/stuPagerPara";
 import { clsDateTime } from "@/ts/PubFun/clsDateTime";
 
  export const vQxPrjMenusSim_Controller = "vQxPrjMenusSimApi";
@@ -235,7 +233,7 @@ return null;
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -248,7 +246,7 @@ return a.menuId.localeCompare(b.menuId);
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -263,7 +261,7 @@ else return a.menuName.localeCompare(b.menuName);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -389,7 +387,7 @@ strMsg = `字段名:[${strKey}]在表对象:[vQxPrjMenusSim]中不存在!(in ${ 
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -447,7 +445,7 @@ strMsg = `字段名:[${strKey}]在表对象:[vQxPrjMenusSim]中不存在!(in ${ 
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_func)
  * @param strInFldName:输入字段名
  * @param strOutFldName:输出字段名
@@ -479,10 +477,10 @@ const strMsg = Format("输入字段名:[{0}]不正确!", strInFldName);
 console.error(strMsg);
 throw new Error(strMsg);
 }
-if (clsvQxPrjMenusSimEN.AttributeName.indexOf(strOutFldName) == -1)
+if (clsvQxPrjMenusSimEN._AttributeName.indexOf(strOutFldName) == -1)
 {
 const strMsg = Format("输出字段名:[{0}]不正确,不在输出字段范围之内!({1})",
-strOutFldName, clsvQxPrjMenusSimEN.AttributeName.join(','));
+strOutFldName, clsvQxPrjMenusSimEN._AttributeName.join(','));
 console.error(strMsg);
 throw new Error(strMsg);
 }
@@ -500,7 +498,7 @@ return objvQxPrjMenusSim.GetFldValue(strOutFldName).toString();
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_funcKey)
  * @param strInFldName:输入字段名
  * @param strInValue:输入字段值
@@ -847,23 +845,23 @@ throw(error.statusText);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_ClientCache)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function vQxPrjMenusSim_GetObjLstClientCache(strQxPrjId: string)
+export  async function vQxPrjMenusSim_GetObjLstClientCache(strQxPrjId: string) 
 {
 const strThisFuncName = "GetObjLstClientCache";
 //初始化列表缓存
 let strWhereCond = "1=1";
-if (IsNullOrEmpty(clsvQxPrjMenusSimEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsvQxPrjMenusSimEN._WhereFormat) == false)
 {
-strWhereCond = Format(clsvQxPrjMenusSimEN.WhereFormat, strQxPrjId);
+strWhereCond = Format(clsvQxPrjMenusSimEN._WhereFormat, strQxPrjId);
 }
 else
 {
 strWhereCond = Format("QxPrjId='{0}'", strQxPrjId);
 }
 const strKey = Format("{0}_{1}", clsvQxPrjMenusSimEN._CurrTabName, strQxPrjId);
-if (IsNullOrEmpty(clsvQxPrjMenusSimEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsvQxPrjMenusSimEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsvQxPrjMenusSimEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsvQxPrjMenusSimEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -903,18 +901,18 @@ export  async function vQxPrjMenusSim_GetObjLstlocalStorage(strQxPrjId: string)
 const strThisFuncName = "GetObjLstlocalStorage";
 //初始化列表缓存
 let strWhereCond = "1=1";
-if (IsNullOrEmpty(clsvQxPrjMenusSimEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsvQxPrjMenusSimEN._WhereFormat) == false)
 {
-strWhereCond = Format(clsvQxPrjMenusSimEN.WhereFormat, strQxPrjId);
+strWhereCond = Format(clsvQxPrjMenusSimEN._WhereFormat, strQxPrjId);
 }
 else
 {
 strWhereCond = Format("{0}='{1}'",clsvQxPrjMenusSimEN.con_QxPrjId, strQxPrjId);
 }
 const strKey = Format("{0}_{1}", clsvQxPrjMenusSimEN._CurrTabName, strQxPrjId);
-if (IsNullOrEmpty(clsvQxPrjMenusSimEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsvQxPrjMenusSimEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsvQxPrjMenusSimEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsvQxPrjMenusSimEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -953,7 +951,7 @@ throw (strMsg);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_localStorage_PureCache)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function vQxPrjMenusSim_GetObjLstlocalStoragePureCache(strQxPrjId: string)
+export  async function vQxPrjMenusSim_GetObjLstlocalStoragePureCache(strQxPrjId: string) 
 {
 //初始化列表缓存
 const strKey = Format("{0}_{1}", clsvQxPrjMenusSimEN._CurrTabName, strQxPrjId);
@@ -1051,18 +1049,18 @@ export  async function vQxPrjMenusSim_GetObjLstsessionStorage(strQxPrjId: string
 const strThisFuncName = "GetObjLstsessionStorage";
 //初始化列表缓存
 let strWhereCond = "1=1";
-if (IsNullOrEmpty(clsvQxPrjMenusSimEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsvQxPrjMenusSimEN._WhereFormat) == false)
 {
-strWhereCond = Format(clsvQxPrjMenusSimEN.WhereFormat, strQxPrjId);
+strWhereCond = Format(clsvQxPrjMenusSimEN._WhereFormat, strQxPrjId);
 }
 else
 {
 strWhereCond = Format("{0}='{1}'",clsvQxPrjMenusSimEN.con_QxPrjId, strQxPrjId);
 }
 const strKey = Format("{0}_{1}", clsvQxPrjMenusSimEN._CurrTabName, strQxPrjId);
-if (IsNullOrEmpty(clsvQxPrjMenusSimEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsvQxPrjMenusSimEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsvQxPrjMenusSimEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsvQxPrjMenusSimEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -1143,7 +1141,7 @@ console.error(strMsg);
 throw (strMsg);
 }
 let arrvQxPrjMenusSimObjLstCache;
-switch (clsvQxPrjMenusSimEN.CacheModeId)
+switch (clsvQxPrjMenusSimEN._CacheModeId)
 {
 case "04"://sessionStorage
 arrvQxPrjMenusSimObjLstCache = await vQxPrjMenusSim_GetObjLstsessionStorage(strQxPrjId);
@@ -1166,11 +1164,11 @@ return arrvQxPrjMenusSimObjLstCache;
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_PureCacheAsync)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function vQxPrjMenusSim_GetObjLstPureCache(strQxPrjId: string)
+export  async function vQxPrjMenusSim_GetObjLstPureCache(strQxPrjId: string) 
 {
 //const strThisFuncName = "GetObjLstPureCache";
 let arrvQxPrjMenusSimObjLstCache;
-switch (clsvQxPrjMenusSimEN.CacheModeId)
+switch (clsvQxPrjMenusSimEN._CacheModeId)
 {
 case "04"://sessionStorage
 arrvQxPrjMenusSimObjLstCache = await vQxPrjMenusSim_GetObjLstsessionStoragePureCache(strQxPrjId);
@@ -1489,185 +1487,13 @@ throw(error.statusText);
 }
 }
 }
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerCache)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
-*/
-export  async function vQxPrjMenusSim_GetObjLstByPagerCache(objPagerPara: stuPagerPara ,strQxPrjId: string) {
-const strThisFuncName = "GetObjLstByPagerCache";
-if (objPagerPara.pageIndex == 0) return new Array<clsvQxPrjMenusSimEN>();
-const arrvQxPrjMenusSimObjLstCache = await vQxPrjMenusSim_GetObjLstCache(strQxPrjId);
-if (arrvQxPrjMenusSimObjLstCache.length == 0) return arrvQxPrjMenusSimObjLstCache;
-let arrvQxPrjMenusSimSel = arrvQxPrjMenusSimObjLstCache;
-const objvQxPrjMenusSimCond = objPagerPara.conditionCollection;
-if (objvQxPrjMenusSimCond == null)
-{
-const strMsg = `根据分布条件从缓存中获取分页对象列表时，objPagerPara.conditionCollection为null,请检查！(in ${ strThisFuncName})`;
-alert(strMsg);
-console.error(strMsg);
-return new Array<clsvQxPrjMenusSimEN>();
-}
-//console.log("clsvQxPrjMenusSimWApi->GetObjLstByPagerCache->dicFldComparisonOp:");
-//console.log(dicFldComparisonOp);
-try {
-for (const objCondition of objvQxPrjMenusSimCond.GetConditions()) {
-if (objCondition == null) continue; 
-const strKey = objCondition.fldName;
-const strComparisonOp = objCondition.comparison;
-const strValue = objCondition.fldValue;
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => x.GetFldValue(strKey) != null);
-const strType = typeof(strValue);
-switch (strType) {
-case "string":
-if (strValue == null) continue;
-if (strValue == "") continue;
-if (strComparisonOp == "=") {
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => x.GetFldValue(strKey).toString() == strValue.toString());
-}
-else if (strComparisonOp == "like") {
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => x.GetFldValue(strKey).toString().indexOf(strValue.toString()) != -1);
-}
-else if (strComparisonOp == "length greater") {
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => x.GetFldValue(strKey).toString().length > Number(strValue.toString()));
-}
-else if (strComparisonOp == "length not greater") {
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => x.GetFldValue(strKey).toString().length <= Number(strValue.toString()));
-}
-else if (strComparisonOp == "length not less") {
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => x.GetFldValue(strKey).toString().length >= Number(strValue.toString()));
-}
-else if (strComparisonOp == "length less") {
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => x.GetFldValue(strKey).toString().length < Number(strValue.toString()));
-}
-else if (strComparisonOp == "length equal") {
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => x.GetFldValue(strKey).toString().length == Number(strValue.toString()));
-}
-else if (strComparisonOp == "in") {
-const arrValues = strValue.toString().split(',');
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => arrValues.indexOf(x.GetFldValue(strKey).toString()) != -1);
-}
-break;
-case "boolean":
-if (strValue == null) continue;
-if (strComparisonOp == "=") {
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => x.GetFldValue(strKey) == strValue);
-}
-break;
-case "number":
-if (Number(strValue) == 0) continue;
-if (strComparisonOp == "=") {
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => x.GetFldValue(strKey) == strValue);
-}
-else if (strComparisonOp == ">=") {
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => x.GetFldValue(strKey) >= strValue);
-}
-else if (strComparisonOp == "<=") {
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => x.GetFldValue(strKey) <= strValue);
-}
-else if (strComparisonOp == ">") {
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => x.GetFldValue(strKey) > strValue);
-}
-else if (strComparisonOp == "<") {
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.filter(x => x.GetFldValue(strKey) <= strValue);
-}
-break;
-}
-}
-if (arrvQxPrjMenusSimSel.length == 0) return arrvQxPrjMenusSimSel;
-let intStart: number = objPagerPara.pageSize* (objPagerPara.pageIndex - 1);
-if (intStart <= 0) intStart = 0;
-const intEnd = intStart + objPagerPara.pageSize;
-if (objPagerPara.orderBy != null && objPagerPara.orderBy.length>0) {
-const sstrSplit: string[] = objPagerPara.orderBy.split(" ");
-let strSortType = "asc";
-const strSortFld = sstrSplit[0];
-if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.sort(vQxPrjMenusSim_SortFunByKey(strSortFld, strSortType));
-}
-else {
-//如果排序字段名[OrderBy]为空,就调用排序函数
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.sort(objPagerPara.sortFun);
-}
-arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.slice(intStart, intEnd);     
-return arrvQxPrjMenusSimSel;
-}
-catch (e) {
-const strMsg = Format("错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})", e, objPagerPara.whereCond, vQxPrjMenusSim_ConstructorName, strThisFuncName);
-console.error(strMsg);
-throw new Error(strMsg);
-}
-return new Array<clsvQxPrjMenusSimEN>();
-}
-
- /**
- * 根据分页条件获取相应的记录对象列表,只获取一页
- * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
- * @param objPagerPara:分页获取对象列表的参数对象
- * @returns 获取的相应记录对象列表
- **/
-export  async function vQxPrjMenusSim_GetObjLstByPagerAsync(objPagerPara: stuPagerPara): Promise<Array<clsvQxPrjMenusSimEN>>  
-{
-const strThisFuncName = "GetObjLstByPagerAsync";
-if (objPagerPara.pageIndex == 0) return new Array<clsvQxPrjMenusSimEN>();
-const strAction = "GetObjLstByPager";
-const strUrl = GetWebApiUrl_GP(vQxPrjMenusSim_Controller, strAction);
-
-const token = Storage.get(ACCESS_TOKEN_KEY);
-//console.error('token:', token);
-const config = {
-headers: {
-Authorization: `${ token}`,
-},
-};
-try
-{
-const response = await axios.post(strUrl, objPagerPara, config);
-const data = response.data;
-if (data.errorId == 0)
-{
-const returnObjLst = data.returnObjLst;
-if (returnObjLst == null)
-{
-const strNullInfo = Format("获取数据为null, 请注意!(in {0}.{1})", vQxPrjMenusSim_ConstructorName, strThisFuncName);
-console.error(strNullInfo);
-throw(strNullInfo);
-}
-//console.log(returnObjLst);
-const arrObjLst = vQxPrjMenusSim_GetObjLstByJSONObjLst(returnObjLst);
-return arrObjLst;
-}
-else
-{
-console.error(data.errorMsg);
-throw(data.errorMsg);
-}
-} catch (error: any) {
-console.error(error);
-if (error.statusText == undefined)
-{
-throw error;
-}
-if (error.statusText == "error")
-{
-const strInfo = Format("网络错误!访问地址:{0}不成功!(in {1}.{2})", strUrl, vQxPrjMenusSim_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else if (error.statusText == "Not Found")
-{
-const strInfo = Format("网络错误!访问地址:{0}可能不存在!(in {1}.{2})", strUrl, vQxPrjMenusSim_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else
-{
-throw(error.statusText);
-}
-}
-}
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerCache)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjExLstByPagerCache)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_CopyToEx)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMapByFldName)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByExKey)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMap)
 
 /**
  * 根据条件对象, 从缓存的对象列表中获取子集.
@@ -1675,7 +1501,7 @@ throw(error.statusText);
  * @param objstrMenuIdCond:条件对象
  * @returns 对象列表子集
 */
-export  async function vQxPrjMenusSim_IsExistRecordCache(objvQxPrjMenusSimCond: ConditionCollection,strQxPrjId: string) {
+export  async function vQxPrjMenusSim_IsExistRecordCache(objvQxPrjMenusSimCond: ConditionCollection ,strQxPrjId: string) {
 const strThisFuncName = "IsExistRecordCache";
 const arrvQxPrjMenusSimObjLstCache = await vQxPrjMenusSim_GetObjLstCache(strQxPrjId);
 if (arrvQxPrjMenusSimObjLstCache == null) return false;
@@ -2089,22 +1915,23 @@ return strServiceUrl;
 export  function vQxPrjMenusSim_ReFreshThisCache(strQxPrjId: string):void
 {
 
+
 if (IsNullOrEmpty(strQxPrjId) == true)
 {
-  const strMsg = Format("参数:[strQxPrjId]不能为空!(In clsvQxPrjMenusSimWApi.vQxPrjMenusSim_ReFreshThisCache)");
+  const strMsg = Format("参数:[strQxPrjId]不能为空！(In clsvQxPrjMenusSimWApi.vQxPrjMenusSim_ReFreshThisCache)");
 console.error(strMsg);
  throw (strMsg);
 }
 if (strQxPrjId.length != 4)
 {
-const strMsg = Format("缓存分类变量:[strQxPrjId]的长度:[{0}]不正确!(clsvQxPrjMenusSimWApi.vQxPrjMenusSim_ReFreshThisCache)", strQxPrjId.length);
+const strMsg = Format("缓存分类变量:[strQxPrjId]的长度:[{0}]不正确！(clsvQxPrjMenusSimWApi.vQxPrjMenusSim_ReFreshThisCache)", strQxPrjId.length);
 console.error(strMsg);
 throw (strMsg);
 }
 if (clsSysPara4WebApi.spSetRefreshCacheOn == true)
 {
 const strKey = Format("{0}_{1}", clsvQxPrjMenusSimEN._CurrTabName, strQxPrjId);
-switch (clsvQxPrjMenusSimEN.CacheModeId)
+switch (clsvQxPrjMenusSimEN._CacheModeId)
 {
 case "04"://sessionStorage
 sessionStorage.removeItem(strKey);
@@ -2144,7 +1971,7 @@ return clsvQxPrjMenusSimEN._RefreshTimeLst[clsvQxPrjMenusSimEN._RefreshTimeLst.l
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -2168,7 +1995,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -2194,7 +2021,7 @@ return arrvQxPrjMenusSimObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrvQxPrjMenusSimObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -2213,7 +2040,7 @@ return arrvQxPrjMenusSimObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象

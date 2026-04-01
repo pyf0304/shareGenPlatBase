@@ -167,7 +167,7 @@ export function UserTypeEx_FuncMapByFldName(strFldName: string, objUserTypeEx: c
   console.log(objUserTypeEx);
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsUserTypeEN.AttributeName;
+  const arrFldName = clsUserTypeEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {
@@ -180,4 +180,3 @@ export function UserTypeEx_FuncMapByFldName(strFldName: string, objUserTypeEx: c
       console.error(strMsg);
   }
 }
-

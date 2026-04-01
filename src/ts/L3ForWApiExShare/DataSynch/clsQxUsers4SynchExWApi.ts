@@ -1,5 +1,4 @@
-﻿
- /**
+﻿/**
  * 类名:clsQxUsers4SynchExWApi
  * 表名:QxUsers4Synch(00140089)
  * 版本:2025.02.27.1(服务器:WIN-SRV103-116)
@@ -18,72 +17,78 @@
    *      2、需要公共函数层(TzPubFunction.dll)的版本:2017.12.21.01
  **/
 
- /**
+/**
  * 用户4同步(QxUsers4Synch)
  * (AutoGCLib.WA_AccessEx4TypeScript:GeneCode)
-* Created by pyf on 2025年03月16日.
-* 注意:该类必须与调用界面处于同一个包,否则调用不成功!
+ * Created by pyf on 2025年03月16日.
+ * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
-import { ObjectAssign } from "@/ts/PubFun/clsCommFunc4Web";
-import { clsQxUsers4SynchENEx } from "@/ts/L0Entity/DataSynch/clsQxUsers4SynchENEx";
-import { QxUsers4Synch_GetObjLstByPagerAsync,QxUsers4Synch_SortFunByKey } from "@/ts/L3ForWApi/DataSynch/clsQxUsers4SynchWApi";
-import { clsQxUsers4SynchEN } from "@/ts/L0Entity/DataSynch/clsQxUsers4SynchEN";
-import { Format,IsNullOrEmpty } from "@/ts/PubFun/clsString";
-import { clsSysPara4WebApi } from "@/ts/PubConfig/clsSysPara4WebApi";
-import { stuPagerPara } from "@/ts/PubFun/stuPagerPara";
+import { ObjectAssign } from '@/ts/PubFun/clsCommFunc4Web';
+import { clsQxUsers4SynchENEx } from '@/ts/L0Entity/DataSynch/clsQxUsers4SynchENEx';
+import {
+  QxUsers4Synch_GetObjLstByPagerAsync,
+  QxUsers4Synch_SortFunByKey,
+} from '@/ts/L3ForWApi/DataSynch/clsQxUsers4SynchWApi';
+import { clsQxUsers4SynchEN } from '@/ts/L0Entity/DataSynch/clsQxUsers4SynchEN';
+import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
+import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
+import { stuPagerPara } from '@/ts/PubFun/stuPagerPara';
 
-export const qxUsers4SynchEx_Controller = "QxUsers4SynchExApi";
-export const qxUsers4SynchEx_ConstructorName = "qxUsers4SynchEx";
+export const qxUsers4SynchEx_Controller = 'QxUsers4SynchExApi';
+export const qxUsers4SynchEx_ConstructorName = 'qxUsers4SynchEx';
 
- /**
+/**
  * 获取WebApi的地址
  * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetWebApiUrl)
  * @returns 返回当前文件中Web服务的地址
  **/
-export  function QxUsers4SynchEx_GetWebApiUrl(strController: string, strAction: string): string {
-let strServiceUrl:string;
-let strCurrIPAddressAndPort = "";
-if (clsSysPara4WebApi.bolIsLocalHost == false)
-{
-strCurrIPAddressAndPort = clsSysPara4WebApi.CurrIPAddressAndPort;
-}
-else
-{
-strCurrIPAddressAndPort = clsSysPara4WebApi.CurrIPAddressAndPort_Local;
-}
-if (IsNullOrEmpty(clsSysPara4WebApi.CurrPrx) == true)
-{
-strServiceUrl = Format("{0}/{1}/{2}", strCurrIPAddressAndPort, strController, strAction);
-}
-else
-{
-strServiceUrl = Format("{0}/{1}/{2}/{3}", strCurrIPAddressAndPort, clsSysPara4WebApi.CurrPrx, strController, strAction);
-}
-return strServiceUrl;
+export function QxUsers4SynchEx_GetWebApiUrl(strController: string, strAction: string): string {
+  let strServiceUrl: string;
+  let strCurrIPAddressAndPort = '';
+  if (clsSysPara4WebApi.bolIsLocalHost == false) {
+    strCurrIPAddressAndPort = clsSysPara4WebApi.CurrIPAddressAndPort;
+  } else {
+    strCurrIPAddressAndPort = clsSysPara4WebApi.CurrIPAddressAndPort_Local;
+  }
+  if (IsNullOrEmpty(clsSysPara4WebApi.CurrPrx) == true) {
+    strServiceUrl = Format('{0}/{1}/{2}', strCurrIPAddressAndPort, strController, strAction);
+  } else {
+    strServiceUrl = Format(
+      '{0}/{1}/{2}/{3}',
+      strCurrIPAddressAndPort,
+      clsSysPara4WebApi.CurrPrx,
+      strController,
+      strAction,
+    );
+  }
+  return strServiceUrl;
 }
 
- /**
+/**
  * 把同一个类的对象,复制到另一个对象
  * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_CopyToEx)
  * @param objQxUsers4SynchENS:源对象
  * @returns 目标对象=>clsQxUsers4SynchEN:objQxUsers4SynchENT
  **/
-export  function QxUsers4SynchEx_CopyToEx(objQxUsers4SynchENS:clsQxUsers4SynchEN ): clsQxUsers4SynchENEx
-{
-const strThisFuncName  = QxUsers4SynchEx_CopyToEx.name;
- const objQxUsers4SynchENT = new clsQxUsers4SynchENEx();
-try
-{
-ObjectAssign(objQxUsers4SynchENT, objQxUsers4SynchENS);
- return objQxUsers4SynchENT;
-}
-catch (e)
-{
-const strMsg = Format("(errid:Watl000067)Copy表对象数据出错,{0}.(in {1}.{2})", e, qxUsers4SynchEx_ConstructorName, strThisFuncName);
-console.error(strMsg);
-alert(strMsg);
- return objQxUsers4SynchENT;
-}
+export function QxUsers4SynchEx_CopyToEx(
+  objQxUsers4SynchENS: clsQxUsers4SynchEN,
+): clsQxUsers4SynchENEx {
+  const strThisFuncName = QxUsers4SynchEx_CopyToEx.name;
+  const objQxUsers4SynchENT = new clsQxUsers4SynchENEx();
+  try {
+    ObjectAssign(objQxUsers4SynchENT, objQxUsers4SynchENS);
+    return objQxUsers4SynchENT;
+  } catch (e) {
+    const strMsg = Format(
+      '(errid:Watl000067)Copy表对象数据出错,{0}.(in {1}.{2})',
+      e,
+      qxUsers4SynchEx_ConstructorName,
+      strThisFuncName,
+    );
+    console.error(strMsg);
+    alert(strMsg);
+    return objQxUsers4SynchENT;
+  }
 }
 //该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerCache)
 
@@ -92,33 +97,41 @@ alert(strMsg);
  * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
  * @param objPagerPara:分页参数结构
  * @returns 对象列表
-*/
-export  async function QxUsers4SynchEx_GetObjExLstByPagerAsync(objPagerPara: stuPagerPara):Promise<Array<clsQxUsers4SynchENEx>> {
-const strThisFuncName = "GetObjExLstByPagerAsync";
-const arrQxUsers4SynchObjLst = await QxUsers4Synch_GetObjLstByPagerAsync(objPagerPara);
-const arrQxUsers4SynchExObjLst = arrQxUsers4SynchObjLst.map(QxUsers4SynchEx_CopyToEx);
-if (arrQxUsers4SynchExObjLst.length == 0) return arrQxUsers4SynchExObjLst;
-let arrQxUsers4SynchSel: Array < clsQxUsers4SynchENEx > = arrQxUsers4SynchExObjLst;
-try {
-if (objPagerPara.orderBy != null && objPagerPara.orderBy.length>0) {
-const sstrSplit: string[] = objPagerPara.orderBy.split(" ");
-let strSortType = "asc";
-const strSortFld = sstrSplit[0];
-if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-arrQxUsers4SynchSel = arrQxUsers4SynchSel.sort(QxUsers4SynchEx_SortFunByKey(strSortFld, strSortType));
-}
-else {
-//如果排序字段名[OrderBy]为空,就调用排序函数
-arrQxUsers4SynchSel = arrQxUsers4SynchSel.sort(objPagerPara.sortFun);
-}
-return arrQxUsers4SynchSel;
-}
-catch (e) {
-const strMsg = Format("错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})", e, objPagerPara.whereCond, qxUsers4SynchEx_ConstructorName, strThisFuncName);
-console.error(strMsg);
-throw new Error(strMsg);
-}
-return new Array<clsQxUsers4SynchENEx>();
+ */
+export async function QxUsers4SynchEx_GetObjExLstByPagerAsync(
+  objPagerPara: stuPagerPara,
+): Promise<Array<clsQxUsers4SynchENEx>> {
+  const strThisFuncName = 'GetObjExLstByPagerAsync';
+  const arrQxUsers4SynchObjLst = await QxUsers4Synch_GetObjLstByPagerAsync(objPagerPara);
+  const arrQxUsers4SynchExObjLst = arrQxUsers4SynchObjLst.map(QxUsers4SynchEx_CopyToEx);
+  if (arrQxUsers4SynchExObjLst.length == 0) return arrQxUsers4SynchExObjLst;
+  let arrQxUsers4SynchSel: Array<clsQxUsers4SynchENEx> = arrQxUsers4SynchExObjLst;
+  try {
+    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
+      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
+      let strSortType = 'asc';
+      const strSortFld = sstrSplit[0];
+      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
+      arrQxUsers4SynchSel = arrQxUsers4SynchSel.sort(
+        QxUsers4SynchEx_SortFunByKey(strSortFld, strSortType),
+      );
+    } else {
+      //如果排序字段名[OrderBy]为空,就调用排序函数
+      arrQxUsers4SynchSel = arrQxUsers4SynchSel.sort(objPagerPara.sortFun);
+    }
+    return arrQxUsers4SynchSel;
+  } catch (e) {
+    const strMsg = Format(
+      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
+      e,
+      objPagerPara.whereCond,
+      qxUsers4SynchEx_ConstructorName,
+      strThisFuncName,
+    );
+    console.error(strMsg);
+    throw new Error(strMsg);
+  }
+  return new Array<clsQxUsers4SynchENEx>();
 }
 
 /**
@@ -129,26 +142,20 @@ return new Array<clsQxUsers4SynchENEx>();
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
  * @returns 返回两个对象比较的结果
-*/
-export  function QxUsers4SynchEx_SortFunByKey(strKey:string, AscOrDesc: string)
-{
-strKey = strKey.replace('|Ex', '');
-if (AscOrDesc == "Asc" || AscOrDesc == "")
-{
-switch (strKey)
-{
-        default:
-return QxUsers4Synch_SortFunByKey(strKey, AscOrDesc);
- }
- }
-  else
- {
-switch (strKey)
-{
-        default:
-return QxUsers4Synch_SortFunByKey(strKey, AscOrDesc);
- }
- }
+ */
+export function QxUsers4SynchEx_SortFunByKey(strKey: string, AscOrDesc: string) {
+  strKey = strKey.replace('|Ex', '');
+  if (AscOrDesc == 'Asc' || AscOrDesc == '') {
+    switch (strKey) {
+      default:
+        return QxUsers4Synch_SortFunByKey(strKey, AscOrDesc);
+    }
+  } else {
+    switch (strKey) {
+      default:
+        return QxUsers4Synch_SortFunByKey(strKey, AscOrDesc);
+    }
+  }
 }
 
 /**
@@ -159,22 +166,26 @@ return QxUsers4Synch_SortFunByKey(strKey, AscOrDesc);
  * @param strFldName:扩展字段名
  * @param  obj{0}Ex:需要转换的对象
  * @returns 针对扩展字段名对转换对象进行函数映射
-*/
-export  function QxUsers4SynchEx_FuncMapByFldName(strFldName: string, objQxUsers4SynchEx: clsQxUsers4SynchENEx)
-{
-const strThisFuncName = QxUsers4SynchEx_FuncMapByFldName.name;
-console.log(objQxUsers4SynchEx);
-strFldName = strFldName.replace('|Ex', '');
-let strMsg = "";
-//如果是本表中字段,不需要映射
-const arrFldName = clsQxUsers4SynchEN.AttributeName;
-if (arrFldName.indexOf(strFldName) > -1) return;
-//针对扩展字段进行映射
-switch (strFldName)
-{
-
-        default:
-    strMsg = Format("扩展字段:[{0}]在字段值函数映射中不存在!(in {1})", strFldName, strThisFuncName);
-console.error(strMsg);
- }
+ */
+export function QxUsers4SynchEx_FuncMapByFldName(
+  strFldName: string,
+  objQxUsers4SynchEx: clsQxUsers4SynchENEx,
+) {
+  const strThisFuncName = QxUsers4SynchEx_FuncMapByFldName.name;
+  console.log(objQxUsers4SynchEx);
+  strFldName = strFldName.replace('|Ex', '');
+  let strMsg = '';
+  //如果是本表中字段,不需要映射
+  const arrFldName = clsQxUsers4SynchEN._AttributeName;
+  if (arrFldName.indexOf(strFldName) > -1) return;
+  //针对扩展字段进行映射
+  switch (strFldName) {
+    default:
+      strMsg = Format(
+        '扩展字段:[{0}]在字段值函数映射中不存在!(in {1})',
+        strFldName,
+        strThisFuncName,
+      );
+      console.error(strMsg);
+  }
 }

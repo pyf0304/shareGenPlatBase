@@ -17,7 +17,7 @@ export class clsDropDownList {
   }
 
   public static XzMajorIsExist(arr: Array<clsXzMajorEN>, key: clsXzMajorEN) {
-    const arr_Sel = arr.filter((x) => x.idXzMajor == key.idXzMajor);
+    const arr_Sel = arr.filter((x) => x.id_XzMajor == key.id_XzMajor);
     if (arr_Sel.length > 0) return true;
     return false;
   }

@@ -164,9 +164,8 @@ export async function vMessagePush_GetObjByMessagePushIdCache(
       return objvMessagePush;
     } else {
       if (bolTryAsyncOnce == true) {
-        const objvMessagePushConst = await vMessagePush_GetObjByMessagePushIdAsync(
-          strMessagePushId,
-        );
+        const objvMessagePushConst =
+          await vMessagePush_GetObjByMessagePushIdAsync(strMessagePushId);
         if (objvMessagePushConst != null) {
           vMessagePush_ReFreshThisCache();
           return objvMessagePushConst;
@@ -268,11 +267,11 @@ export async function vMessagePush_func(
     console.error(strMsg);
     throw new Error(strMsg);
   }
-  if (clsvMessagePushEN.AttributeName.indexOf(strOutFldName) == -1) {
+  if (clsvMessagePushEN._AttributeName.indexOf(strOutFldName) == -1) {
     const strMsg = Format(
       '输出字段名:[{0}]不正确,不在输出字段范围之内!({1})',
       strOutFldName,
-      clsvMessagePushEN.AttributeName.join(','),
+      clsvMessagePushEN._AttributeName.join(','),
     );
     console.error(strMsg);
     throw new Error(strMsg);
@@ -2341,4 +2340,3 @@ export function vMessagePush_GetObjFromJsonObj(
   ObjectAssign(objvMessagePushENT, objvMessagePushENS);
   return objvMessagePushENT;
 }
-

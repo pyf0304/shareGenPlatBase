@@ -172,7 +172,7 @@ export class UserInfo {
       BindDdl_ObjLst(
         ddlid_XzCollege,
         arrXzClgObjLst,
-        clsXzClgEN.con_IdXzCollege,
+        clsXzClgEN.con_Id_XzCollege,
         clsXzClgEN.con_CollegeName,
         '学院',
       );
@@ -275,7 +275,7 @@ export class UserInfo {
 
   public Clear() {
     this.idXzCollege = '';
-    this.idXzMajor = '';
+    this.id_XzMajor = '';
     this.idGradeBase = '';
     this.email = '';
     this.password = '';
@@ -289,7 +289,7 @@ export class UserInfo {
     }
 
     this.idXzCollege = pobjUsersEN.idXzCollege;
-    this.idXzMajor = pobjUsersEN.idXzMajor;
+    this.id_XzMajor = pobjUsersEN.id_XzMajor;
     this.idGradeBase = pobjUsersEN.idGradeBase; // idGradeBase
     this.email = pobjUsersEN.email; // EMail
     this.userName = pobjUsersEN.userName;
@@ -300,7 +300,7 @@ export class UserInfo {
   public async btnOKUpd_Click(strListDiv: string) {
     if (this.idXzCollege == '') {
       alert('学院不能为空！');
-    } else if (this.idXzMajor == '') {
+    } else if (this.id_XzMajor == '') {
       alert('专业不能为空！');
     } else if (this.idGradeBase == '') {
       alert('年级不能为空！');
@@ -389,7 +389,7 @@ export class UserInfo {
    */
   public PutDataToUsersClass(pobjUsersEN: clsUsersEN) {
     pobjUsersEN.idXzCollege = this.idXzCollege; // 学院流水号
-    pobjUsersEN.idXzMajor = this.idXzMajor; // 专业流水号
+    pobjUsersEN.id_XzMajor = this.id_XzMajor; // 专业流水号
     pobjUsersEN.idGradeBase = this.idGradeBase; // 年级流水号
     pobjUsersEN.email = this.email; // 电子邮箱
     if (this.password != '' && this.RePassword != '') {

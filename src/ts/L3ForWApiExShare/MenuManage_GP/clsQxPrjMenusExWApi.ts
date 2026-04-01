@@ -110,7 +110,7 @@ export async function QxPrjMenusEx_GetObjExLstByPagerAsync(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsQxPrjMenusEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsQxPrjMenusEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrQxPrjMenusExObjLst) {
       await QxPrjMenusEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -175,7 +175,7 @@ export async function QxPrjMenusEx_GetObjExLstByPagerAsyncByOrder(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsQxPrjMenusEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsQxPrjMenusEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrQxPrjMenusExObjLst) {
       await QxPrjMenusEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -350,7 +350,7 @@ export function QxPrjMenusEx_FuncMapByFldName(
   const strThisFuncName = QxPrjMenusEx_FuncMapByFldName.name;
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsQxPrjMenusEN.AttributeName;
+  const arrFldName = clsQxPrjMenusEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

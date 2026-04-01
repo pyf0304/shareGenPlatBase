@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxDepartmentInfoEN
  * 表名:QxDepartmentInfo(00140030)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:27:24
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:00:27
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsQxDepartmentInfoEN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = "03"; //localStorage
-public static PrimaryTypeId = "01"; //关键字
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "QxDepartmentInfo"; //当前表名,与该类相关的表名
-public static _KeyFldName= "DepartmentId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 8;
-public static AttributeName = ["departmentId", "departmentName", "departmentAbbrName", "departmentTypeId", "upDepartmentId", "orderNum", "inUse", "memo"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = "03"; //localStorage
+public static readonly _PrimaryTypeId: string = "01"; //关键字
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "QxDepartmentInfo"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "DepartmentId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 8;
+public static readonly _AttributeName = ["departmentId", "departmentName", "departmentAbbrName", "departmentTypeId", "upDepartmentId", "orderNum", "inUse", "memo"];
 //以下是属性变量
 
 /**
@@ -282,49 +282,49 @@ public memo = "";    //备注
  * 常量:"DepartmentId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DepartmentId(): string {return "departmentId";}    //部门Id
+ public static readonly con_DepartmentId = "departmentId";    //部门Id
 
  /**
  * 常量:"DepartmentName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DepartmentName(): string {return "departmentName";}    //部门名
+ public static readonly con_DepartmentName = "departmentName";    //部门名
 
  /**
  * 常量:"DepartmentAbbrName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DepartmentAbbrName(): string {return "departmentAbbrName";}    //名称缩写
+ public static readonly con_DepartmentAbbrName = "departmentAbbrName";    //名称缩写
 
  /**
  * 常量:"DepartmentTypeId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DepartmentTypeId(): string {return "departmentTypeId";}    //部门类型ID
+ public static readonly con_DepartmentTypeId = "departmentTypeId";    //部门类型ID
 
  /**
  * 常量:"UpDepartmentId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpDepartmentId(): string {return "upDepartmentId";}    //所属部门号
+ public static readonly con_UpDepartmentId = "upDepartmentId";    //所属部门号
 
  /**
  * 常量:"OrderNum"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_OrderNum(): string {return "orderNum";}    //排序号
+ public static readonly con_OrderNum = "orderNum";    //排序号
 
  /**
  * 常量:"InUse"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_InUse(): string {return "inUse";}    //是否在用
+ public static readonly con_InUse = "inUse";    //是否在用
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 设置条件字段值.
@@ -346,6 +346,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名

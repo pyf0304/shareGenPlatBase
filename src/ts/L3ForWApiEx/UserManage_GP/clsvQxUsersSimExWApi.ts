@@ -104,7 +104,7 @@ export async function vQxUsersSimEx_GetObjExLstByPagerAsync(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsvQxUsersSimEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsvQxUsersSimEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrvQxUsersSimExObjLst) {
       await vQxUsersSimEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -184,7 +184,7 @@ export function vQxUsersSimEx_FuncMapByFldName(
   console.log(objvQxUsersSimEx);
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsvQxUsersSimEN.AttributeName;
+  const arrFldName = clsvQxUsersSimEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

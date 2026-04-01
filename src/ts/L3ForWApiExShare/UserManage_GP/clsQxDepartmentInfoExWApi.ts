@@ -83,7 +83,7 @@ export function QxDepartmentInfoEx_CopyToEx(
   try {
     ObjectAssign(objQxDepartmentInfoENT, objQxDepartmentInfoENS);
     return objQxDepartmentInfoENT;
-  } catch (e:any) {
+  } catch (e: any) {
     const strMsg = Format(
       '(errid:Watl000067)Copy表对象数据出错,{0}.(in {1}.{2})',
       e,
@@ -207,7 +207,7 @@ export async function QxDepartmentInfoEx_GetObjExLstByPagerCache(
     }
     arrQxDepartmentInfo_Sel = arrQxDepartmentInfo_Sel.slice(intStart, intEnd);
     return arrQxDepartmentInfo_Sel;
-  } catch (e:any) {
+  } catch (e: any) {
     const strMsg = Format(
       '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
       e,
@@ -259,7 +259,7 @@ export async function QxDepartmentInfoEx_GetObjExLstByPagerAsync(
     }
     arrQxDepartmentInfo_Sel = arrQxDepartmentInfo_Sel.slice(intStart, intEnd);
     return arrQxDepartmentInfo_Sel;
-  } catch (e:any) {
+  } catch (e: any) {
     const strMsg = Format(
       '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
       e,
@@ -314,7 +314,7 @@ export function QxDepartmentInfoEx_FuncMapByFldName(
   console.log(objQxDepartmentInfoEx);
   let strMsg = '';
   //如果是本表中字段，不需要映射
-  const arrFldName = clsQxDepartmentInfoEN.AttributeName;
+  const arrFldName = clsQxDepartmentInfoEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

@@ -237,7 +237,7 @@
           opType.value = 'Add';
           const bolIsSuccess = await objPage_Edit.value.ShowDialog_QxPrjMenuSet(opType.value);
           if (bolIsSuccess == false) return;
-          if (['02', '03', '06'].indexOf(clsQxPrjMenuSetEN.PrimaryTypeId) > -1) {
+          if (['02', '03', '06'].indexOf(clsQxPrjMenuSetEN._PrimaryTypeId) > -1) {
             await objPage_Edit.value.AddNewRecordWithMaxId();
           } else {
             await objPage_Edit.value.AddNewRecord();

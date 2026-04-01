@@ -2461,7 +2461,7 @@ export function ObjectAssign(myObjT: any, myObjS: any): boolean {
   //const sstrKeysS: Array<string> = [];
 
   //if (objTypeNameS.endsWith("EN") == true) {
-  //    const temp = myObjS.constructor.AttributeName;
+  //    const temp = myObjS.constructor._AttributeName;
   //    for (const strKey of temp) {
   //        sstrKeysS.push(strKey);
   //    }
@@ -2471,7 +2471,7 @@ export function ObjectAssign(myObjT: any, myObjS: any): boolean {
   //}
   //else if (objTypeNameS.endsWith("ENEx") == true
   //    || objTypeNameS.indexOf("ENEx") > -1) {
-  //    const temp = myObjS.constructor.AttributeName;
+  //    const temp = myObjS.constructor._AttributeName;
   //    for (const strKey of temp) {
   //        sstrKeysS.push(strKey);
   //    }
@@ -2494,7 +2494,7 @@ export function ObjectAssign(myObjT: any, myObjS: any): boolean {
 
   //const sstrKeysT: Array<string> = [];
   //if (objTypeNameT.endsWith("EN") == true) {
-  //    const temp = myObjT.constructor.AttributeName;
+  //    const temp = myObjT.constructor._AttributeName;
   //    for (const strKey of temp) {
   //        sstrKeysT.push(strKey);
   //    }
@@ -2502,7 +2502,7 @@ export function ObjectAssign(myObjT: any, myObjS: any): boolean {
   //    sstrKeysT.push("sfFldComparisonOp");
   //}
   //else if (objTypeNameT.endsWith("ENEx") == true || objTypeNameT.indexOf("ENEx") > -1) {
-  //    const temp = myObjT.constructor.AttributeName;
+  //    const temp = myObjT.constructor._AttributeName;
   //    for (const strKey of temp) {
   //        sstrKeysT.push(strKey);
   //    }
@@ -2575,14 +2575,14 @@ export function ObjectAssignV2(myObjT: any, myObjS: any): boolean {
   const sstrKeysS: Array<string> = [];
 
   if (objTypeNameS.endsWith('EN') == true) {
-    const temp = myObjS.constructor.AttributeName;
+    const temp = myObjS.constructor._AttributeName;
     for (const strKey of temp) {
       sstrKeysS.push(strKey);
     }
     sstrKeysS.push('sfUpdFldSetStr');
     sstrKeysS.push('sfFldComparisonOp');
   } else if (objTypeNameS.endsWith('ENEx') == true || objTypeNameS.indexOf('ENEx') > -1) {
-    const temp = myObjS.constructor.AttributeName;
+    const temp = myObjS.constructor._AttributeName;
     for (const strKey of temp) {
       sstrKeysS.push(strKey);
     }
@@ -2603,14 +2603,14 @@ export function ObjectAssignV2(myObjT: any, myObjS: any): boolean {
 
   const sstrKeysT: Array<string> = [];
   if (objTypeNameT.endsWith('EN') == true) {
-    const temp = myObjT.constructor.AttributeName;
+    const temp = myObjT.constructor._AttributeName;
     for (const strKey of temp) {
       sstrKeysT.push(strKey);
     }
     sstrKeysT.push('sfUpdFldSetStr');
     sstrKeysT.push('sfFldComparisonOp');
   } else if (objTypeNameT.endsWith('ENEx') == true || objTypeNameT.indexOf('ENEx') > -1) {
-    const temp = myObjT.constructor.AttributeName;
+    const temp = myObjT.constructor._AttributeName;
     for (const strKey of temp) {
       sstrKeysT.push(strKey);
     }

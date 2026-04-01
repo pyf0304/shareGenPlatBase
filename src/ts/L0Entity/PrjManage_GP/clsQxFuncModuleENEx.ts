@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxFuncModuleENEx
  * 表名:QxFuncModule(00140086)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:32
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:02:34
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:工程管理(PrjManage_GP)
  * 框架-层名:实体扩展层(TS)(EntityLayerEx,0191)
@@ -50,6 +50,7 @@ strValue = super.GetFldValue(strFldName);
 return strValue;
 }
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名
@@ -58,6 +59,6 @@ return strValue;
 public static hasProperty(propName: string) : boolean {
 //return propName in new clsQxFuncModuleENEx();
 const instance = new clsQxFuncModuleENEx();
-return instance.hasOwnProperty(propName);
+return Object.prototype.hasOwnProperty.call(instance, propName);
 }
 }

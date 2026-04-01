@@ -2,8 +2,8 @@
  /**
  * 类名:QxCmProjectCRUD(界面:QxCmProjectCRUD,00140045)
  * 表名:QxCmProject(00140119)
- * 版本:2026.03.27.1(服务器:WIN-SRV103-116)
- * 日期:2026/03/30 06:30:15
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:13:11
  * 生成者:
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
@@ -43,10 +43,15 @@ public listPara: ListPara;//是否窄行的小表,即表中加样式： table-sm
 public objPager: clsPager;
 public static objPageCRUD: QxCmProjectCRUD;
 public static sortFunStatic: (ascOrDesc: string) => (x: any, y: any) => number;
+/** 保存用户通过下拉框选择的每页记录数，null 时由子类 getter 提供默认值 */
+protected _pageSize: number | null = null;
 constructor() {
 this.listPara = new ListPara(divVarSet.refDivLayout, divVarSet.refDivList);
 QxCmProjectCRUD.objPageCRUD = this;
 this.objPager = new clsPager(this);
+this.objPager.onPageSizeChange = (ps: number) => {
+this._pageSize = ps;
+};
 }
  /**
  * 获取当前组件的divList的层对象
@@ -70,7 +75,7 @@ return clsQxCmProjectEN._CurrTabName;
  * 每页记录数,在扩展类可以修改
  **/
 public get pageSize():number {
-return 5;
+return this._pageSize ?? 10;
 }
 public recCount = 0;
 
@@ -365,11 +370,11 @@ orderNum: 3,
 funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
 },
 {
-fldName: clsQxCmProjectEN.con_UpdDate,
-sortBy: "updDate",
+fldName: clsQxCmProjectENEx.con_UseStateName,
+sortBy: "useStateName",
 sortFun: SortFun,
 getDataSource: "",
-colHeader: "修改日期",
+colHeader: "使用状态名称",
 text: "",
 tdClass: "text-left",
 columnType: "Label",
@@ -377,11 +382,11 @@ orderNum: 4,
 funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
 },
 {
-fldName: clsQxCmProjectENEx.con_UseStateName,
-sortBy: "useStateName",
+fldName: clsQxCmProjectEN.con_UpdDate,
+sortBy: "updDate",
 sortFun: SortFun,
 getDataSource: "",
-colHeader: "使用状态名称",
+colHeader: "修改日期",
 text: "",
 tdClass: "text-left",
 columnType: "Label",
@@ -479,11 +484,11 @@ orderNum: 3,
 funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
 },
 {
-fldName: clsQxCmProjectEN.con_UpdDate,
-sortBy: "updDate",
+fldName: clsQxCmProjectENEx.con_UseStateName,
+sortBy: "useStateName",
 sortFun: SortFun,
 getDataSource: "",
-colHeader: "修改日期",
+colHeader: "使用状态名称",
 text: "",
 tdClass: "text-left",
 columnType: "Label",
@@ -491,11 +496,11 @@ orderNum: 4,
 funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
 },
 {
-fldName: clsQxCmProjectENEx.con_UseStateName,
-sortBy: "useStateName",
+fldName: clsQxCmProjectEN.con_UpdDate,
+sortBy: "updDate",
 sortFun: SortFun,
 getDataSource: "",
-colHeader: "使用状态名称",
+colHeader: "修改日期",
 text: "",
 tdClass: "text-left",
 columnType: "Label",

@@ -724,7 +724,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
     arrLoginLogExObjLst: Array<clsLoginLogENEx>,
     arrDataColumn: Array<clsDataColumn>,
   ) {
-    const arrFldName = clsLoginLogEN.AttributeName;
+    const arrFldName = clsLoginLogEN._AttributeName;
     for (const objDataColumn of arrDataColumn) {
       if (IsNullOrEmpty(objDataColumn.fldName) == true) continue;
       if (arrFldName.indexOf(objDataColumn.fldName) > -1) continue;

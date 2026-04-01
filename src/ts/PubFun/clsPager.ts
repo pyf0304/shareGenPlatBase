@@ -7,7 +7,7 @@
 import $ from 'jquery';
 import { clsDateTime } from './clsDateTime';
 import { clsOperateList } from './clsOperateList';
-import { GetArray, GetDivObjInDivObj, getAObjInDivObj } from '@/ts/PubFun/clsCommFunc4Ctrl';
+import { GetArray, GetDivObjInDivObj, getAObjByIdInDivObj } from '@/ts/PubFun/clsCommFunc4Ctrl';
 
 export class clsPager {
   constructor(objOperateList: clsOperateList) {
@@ -15,7 +15,8 @@ export class clsPager {
     this.ListPage = objOperateList;
   }
   public initDate = '';
-  public isShowInputPage = true;
+  /** 每页记录数改变时的回调，由宿主（CRUD类）订阅 */
+  public onPageSizeChange: ((pageSize: number) => void) | null = null;
   private mintCurrPageIndex = 1;
   private mintPageIndex = 1;
   private mintPageCount = 0;
@@ -183,19 +184,19 @@ export class clsPager {
     btnLastPage.onclick = function () {
       thisPager.IndexPage(0);
     };
-    if (this.isShowInputPage == true) {
-      const btnJumpToPage: HTMLAnchorElement = <HTMLAnchorElement>(
-        arrElements.find((x) => x.id == 'btnJumpToPage')
-      );
-      if (btnJumpToPage == null) {
-        const strMsg = `在层:[${strDivName4Pager}]内，不存在超链接:[btnJumpToPage], 请检查！(clsPager.SetEvent)`;
-        throw strMsg;
-      }
-      //const sltDdl: HTMLSelectElement = <HTMLSelectElement>document.getElementById(strDdlName);
-      btnJumpToPage.onclick = function () {
-        thisPager.JumpToPage(divName, strDivName4Pager);
-      };
+
+    const btnJumpToPage: HTMLAnchorElement = <HTMLAnchorElement>(
+      arrElements.find((x) => x.id == 'btnJumpToPage')
+    );
+    if (btnJumpToPage == null) {
+      const strMsg = `在层:[${strDivName4Pager}]内，不存在超链接:[btnJumpToPage], 请检查！(clsPager.SetEvent)`;
+      throw strMsg;
     }
+    //const sltDdl: HTMLSelectElement = <HTMLSelectElement>document.getElementById(strDdlName);
+    btnJumpToPage.onclick = function () {
+      thisPager.JumpToPage(divName, strDivName4Pager);
+    };
+
     const btnOne: HTMLAnchorElement = <HTMLAnchorElement>arrElements.find((x) => x.id == 'One');
     if (btnOne == null) {
       const strMsg = `在层:[${strDivName4Pager}]内，不存在超链接:[One], 请检查！(clsPager.SetEvent)`;
@@ -245,6 +246,18 @@ export class clsPager {
     btnFive.onclick = function (this) {
       thisPager.PageNum(this);
     };
+
+    const selPageSize = objDiv.querySelector('#selPageSize') as HTMLSelectElement;
+    if (selPageSize != null) {
+      selPageSize.value = thisPager.pageSize.toString();
+      selPageSize.onchange = function () {
+        const newSize = parseInt(selPageSize.value);
+        thisPager.pageSize = newSize;
+        thisPager.onPageSizeChange?.(newSize);
+        thisPager.ListPage.objPager.currPageIndex = 1;
+        thisPager.ListPage.IndexPage(1);
+      };
+    }
   }
   public ShowPagerV2(
     divName: HTMLDivElement,
@@ -257,7 +270,7 @@ export class clsPager {
     this.Show(divName, strDivName4Pager);
     this.ListPage = objListPage;
     //const padingnum = 100;
-
+    // const strprojectlist = `input[id ^= "projectlist"]`;
     const spnCountPage = objDiv.querySelector('#spnCountPage') as HTMLSpanElement;
     const spnNumber = objDiv.querySelector('#spnNumber');
     if (spnNumber == null) return;
@@ -289,8 +302,9 @@ export class clsPager {
       //$('#spnCountPage').html("第<b id='currentPageNo'> " + page + "</b>页 ");
 
       spnCountPage.innerHTML = `第<b id='currentPageNo'> ${page}</b>页 `;
+      //$('#spnNumber').html("共" + this.pageCount + "页&nbsp;共" + this.recCount + "记录&nbsp;到第");
 
-      spnNumber.innerHTML = `共${this.pageCount}页&nbsp;共${this.recCount}记录&nbsp;`;
+      spnNumber.innerHTML = `共${this.pageCount}页&nbsp;共${this.recCount}记录&nbsp;到第`;
     } else {
       //$('#spnCountPage').html("<b id='currentPageNo'>" + 0 + "</b>");
 
@@ -329,7 +343,8 @@ export class clsPager {
       //判断下一页是否超过了总页数
       if (this.pageIndex + 1 > this.pageCount) {
         this.HideLi('Four', objDiv);
-
+        //const liFive: HTMLLIElement = $('#five').parent() as HTMLLIElement;
+        //liFive.hidden = true;
         this.HideLi('Five', objDiv);
       } else {
         this.ShowLi('Four', objDiv);
@@ -457,6 +472,7 @@ export class clsPager {
       const page = this.ListPage.objPager.currPageIndex; //当前页
       $('#spnCountPage').html(`第<b id='currentPageNo'> ${page}</b>页 `);
 
+      //$('#spnNumber').html("共"+this.pageCount+"页 到第<input type='text' id='input_number' class='page-txtbox' />页<input name='' value='确定' type='button' onclick='IndexPage(-2)' /goods/ajaxqueryGoodsList.do.html','','goodsListContainer','"+pading+"', listPageCallback);' class='page-btn'/>")
       $('#spnNumber').html(
         `共${this.pageCount}页 共${this.recCount}记录 到第<input type='text' id='input_number' class='page-txtbox' />页<input name='' value='确定' type='button' onclick='JumpToPage()' class='page-btn' />`,
       );
@@ -732,31 +748,27 @@ export class clsPager {
     const spnNumber: HTMLSpanElement = <HTMLSpanElement>document.createElement('span');
     //spnNumber.className = "btn btn-outline-info btn-sm";
     spnNumber.id = 'spnNumber';
-    spnNumber.innerText = '共13855页 ';
+    spnNumber.innerText = '共13855页 到第';
     objliNumber.appendChild(spnNumber);
-    if (this.isShowInputPage == true) {
-      const spnTemp1: HTMLSpanElement = <HTMLSpanElement>document.createElement('span');
-      spnTemp1.innerHTML = '&nbsp;到第';
-      objliNumber.appendChild(spnTemp1);
-      const txtInputNumber: HTMLInputElement = <HTMLInputElement>document.createElement('input');
-      txtInputNumber.className = 'page-txtbox';
-      txtInputNumber.id = 'txtInputNumber';
-      txtInputNumber.style.width = '50px';
 
-      objliNumber.appendChild(txtInputNumber);
-      const spnYe: HTMLSpanElement = <HTMLSpanElement>document.createElement('span');
-      //spnNumber.className = "btn btn-outline-info btn-sm";
-      spnYe.id = 'spnYe';
-      spnYe.innerText = '页';
-      objliNumber.appendChild(spnYe);
+    const txtInputNumber: HTMLInputElement = <HTMLInputElement>document.createElement('input');
+    txtInputNumber.className = 'page-txtbox';
+    txtInputNumber.id = 'txtInputNumber';
+    txtInputNumber.style.width = '50px';
 
-      const btnJumpToPage: HTMLAnchorElement = <HTMLAnchorElement>document.createElement('a');
-      btnJumpToPage.className = 'btn btn-outline-info btn-sm';
-      btnJumpToPage.id = 'btnJumpToPage';
-      btnJumpToPage.href = 'javascript:void(0);';
-      btnJumpToPage.innerText = '确定';
-      objliNumber.appendChild(btnJumpToPage);
-    }
+    objliNumber.appendChild(txtInputNumber);
+    const spnYe: HTMLSpanElement = <HTMLSpanElement>document.createElement('span');
+    //spnNumber.className = "btn btn-outline-info btn-sm";
+    spnYe.id = 'spnYe';
+    spnYe.innerText = '页';
+    objliNumber.appendChild(spnYe);
+
+    const btnJumpToPage: HTMLAnchorElement = <HTMLAnchorElement>document.createElement('a');
+    btnJumpToPage.className = 'btn btn-outline-info btn-sm';
+    btnJumpToPage.id = 'btnJumpToPage';
+    btnJumpToPage.href = 'javascript:void(0);';
+    btnJumpToPage.innerText = '确定';
+    objliNumber.appendChild(btnJumpToPage);
     return objliNumber;
   }
 
@@ -767,6 +779,34 @@ export class clsPager {
     objhidCurrPageIndex.type = 'hidden';
     objhidCurrPageIndex.value = '1';
     return objhidCurrPageIndex;
+  }
+
+  public get_liPageSize(): HTMLLIElement {
+    const objliPageSize: HTMLLIElement = <HTMLLIElement>document.createElement('li');
+    objliPageSize.className = 'nav-item';
+    objliPageSize.id = 'liPageSize';
+
+    const spnLabel: HTMLSpanElement = <HTMLSpanElement>document.createElement('span');
+    spnLabel.innerText = '每页';
+    objliPageSize.appendChild(spnLabel);
+
+    const selPageSize: HTMLSelectElement = <HTMLSelectElement>document.createElement('select');
+    selPageSize.id = 'selPageSize';
+    selPageSize.className = 'page-txtbox';
+    selPageSize.style.width = '55px';
+    for (const size of [10, 15, 20, 50, 100]) {
+      const opt: HTMLOptionElement = document.createElement('option');
+      opt.value = size.toString();
+      opt.text = size.toString();
+      selPageSize.appendChild(opt);
+    }
+    objliPageSize.appendChild(selPageSize);
+
+    const spnUnit: HTMLSpanElement = <HTMLSpanElement>document.createElement('span');
+    spnUnit.innerText = '条';
+    objliPageSize.appendChild(spnUnit);
+
+    return objliPageSize;
   }
   public IsInit(divName: HTMLDivElement, strDivName4Pager: string): boolean {
     const objDiv4Pager: HTMLDivElement = GetDivObjInDivObj(divName, strDivName4Pager);
@@ -830,6 +870,9 @@ export class clsPager {
 
     const objliNumber: HTMLLIElement = this.get_liNumber();
     objUl.appendChild(objliNumber);
+
+    const objliPageSize: HTMLLIElement = this.get_liPageSize();
+    objUl.appendChild(objliPageSize);
     objDiv4Pager.appendChild(objUl);
 
     const hidCurrPageIndex: HTMLInputElement = this.get_hidCurrPageIndex();
@@ -924,7 +967,7 @@ export class clsPager {
 
   public HideLi(strAnchor: string, objDiv4Pager: HTMLDivElement) {
     // const objDiv = $(`#${strDivName4Pager}`);
-    const objAnchor = getAObjInDivObj(objDiv4Pager, strAnchor);
+    const objAnchor = getAObjByIdInDivObj(objDiv4Pager, strAnchor);
     const thisLi = objAnchor.parentNode as HTMLLIElement;
     thisLi.style.visibility = 'hidden';
     thisLi.style.display = 'none';
@@ -942,7 +985,7 @@ export class clsPager {
     //console.log(thisLi);
   }
   public ShowLi(strAnchor: string, objDiv4Pager: HTMLDivElement) {
-    const objAnchor = getAObjInDivObj(objDiv4Pager, strAnchor);
+    const objAnchor = getAObjByIdInDivObj(objDiv4Pager, strAnchor);
     const thisLi = objAnchor.parentNode as HTMLLIElement;
     thisLi.style.visibility = 'visible';
     thisLi.style.display = 'block';

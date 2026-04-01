@@ -249,7 +249,7 @@
        * @param pobjXzSchoolEN">表实体类对象</param>
        **/
       async function ShowDataFromXzSchoolObj(pobjXzSchoolEN: clsXzSchoolEN) {
-        idSchool.value = pobjXzSchoolEN.idSchool; // 学校流水号
+        idSchool.value = pobjXzSchoolEN.id_School; // 学校流水号
         schoolId.value = pobjXzSchoolEN.schoolId; // 学校编号
         schoolName.value = pobjXzSchoolEN.schoolName; // 学校名称
         schoolENName.value = pobjXzSchoolEN.schoolENName; // 学校英文名
@@ -299,7 +299,7 @@
             case '确认添加':
               //这是一个单表的插入的代码,由于逻辑层太简单,
               //就把逻辑层合并到控制层,
-              if (['02', '03', '06'].indexOf(clsXzSchoolEN.PrimaryTypeId) > -1) {
+              if (['02', '03', '06'].indexOf(clsXzSchoolEN._PrimaryTypeId) > -1) {
                 returnKeyId = await objPage_Edit.value.AddNewRecordWithMaxIdSave();
                 if (IsNullOrEmpty(returnKeyId) == false) {
                   if (XzSchool_Edit.strPageDispModeId == enumPageDispMode.PopupBox_01) hideDialog();

@@ -2,14 +2,14 @@
  /**
  * 类名:clsQxUserIdentityWApi
  * 表名:QxUserIdentity(00140042)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:28:01
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:00:35
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
  应用类型:Vue应用InCore-TS(30)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:WA_访问层(TS)(WA_Access,0155)
@@ -21,7 +21,7 @@
 /**
  * 用户权限身份(QxUserIdentity)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2025年06月13日.
+* Created by pyf on 2026年04月01日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
@@ -240,7 +240,7 @@ return null;
  * @param objQxUserIdentity:所给的对象
  * @returns 对象
 */
-export  async function QxUserIdentity_UpdateObjInLstCache(objQxUserIdentity: clsQxUserIdentityEN) {
+export  async function QxUserIdentity_UpdateObjInLstCache(objQxUserIdentity: clsQxUserIdentityEN ) {
 const strThisFuncName = "UpdateObjInLstCache";
 try
 {
@@ -267,7 +267,7 @@ alert(strMsg);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -280,7 +280,7 @@ return a.identityId.localeCompare(b.identityId);
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -295,7 +295,7 @@ else return a.identityDesc.localeCompare(b.identityDesc);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -385,7 +385,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxUserIdentity]中不存在!(in ${ 
  * @param strIdentityId:所给的关键字
  * @returns 对象
 */
-export  async function QxUserIdentity_GetNameByIdentityIdCache(strIdentityId: string) {
+export  async function QxUserIdentity_GetNameByIdentityIdCache(strIdentityId: string ) {
 
 if (IsNullOrEmpty(strIdentityId) == true)
 {
@@ -428,7 +428,7 @@ return "";
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -470,7 +470,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxUserIdentity]中不存在!(in ${ 
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_func)
  * @param strInFldName:输入字段名
  * @param strOutFldName:输出字段名
@@ -487,10 +487,10 @@ const strMsg = Format("输入字段名:[{0}]不正确!", strInFldName);
 console.error(strMsg);
 throw new Error(strMsg);
 }
-if (clsQxUserIdentityEN.AttributeName.indexOf(strOutFldName) == -1)
+if (clsQxUserIdentityEN._AttributeName.indexOf(strOutFldName) == -1)
 {
 const strMsg = Format("输出字段名:[{0}]不正确,不在输出字段范围之内!({1})",
-strOutFldName, clsQxUserIdentityEN.AttributeName.join(','));
+strOutFldName, clsQxUserIdentityEN._AttributeName.join(','));
 console.error(strMsg);
 throw new Error(strMsg);
 }
@@ -508,7 +508,7 @@ return objQxUserIdentity.GetFldValue(strOutFldName).toString();
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_funcKey)
  * @param strInFldName:输入字段名
  * @param strInValue:输入字段值
@@ -847,13 +847,13 @@ const strThisFuncName = "GetObjLstClientCache";
 //初始化列表缓存
 let strWhereCond = "1=1";
 const strKey = clsQxUserIdentityEN._CurrTabName;
-if (IsNullOrEmpty(clsQxUserIdentityEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsQxUserIdentityEN._WhereFormat) == false)
 {
-strWhereCond = clsQxUserIdentityEN.WhereFormat;
+strWhereCond = clsQxUserIdentityEN._WhereFormat;
 }
-if (IsNullOrEmpty(clsQxUserIdentityEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsQxUserIdentityEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsQxUserIdentityEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsQxUserIdentityEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -888,19 +888,19 @@ throw (strMsg);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_localStorage)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function QxUserIdentity_GetObjLstlocalStorage() 
+export  async function QxUserIdentity_GetObjLstlocalStorage()
 {
 const strThisFuncName = "GetObjLstlocalStorage";
 //初始化列表缓存
 let strWhereCond = "1=1";
 const strKey = clsQxUserIdentityEN._CurrTabName;
-if (IsNullOrEmpty(clsQxUserIdentityEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsQxUserIdentityEN._WhereFormat) == false)
 {
-strWhereCond = clsQxUserIdentityEN.WhereFormat;
+strWhereCond = clsQxUserIdentityEN._WhereFormat;
 }
-if (IsNullOrEmpty(clsQxUserIdentityEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsQxUserIdentityEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsQxUserIdentityEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsQxUserIdentityEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -1029,19 +1029,19 @@ throw(error.statusText);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_sessionStorage)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function QxUserIdentity_GetObjLstsessionStorage() 
+export  async function QxUserIdentity_GetObjLstsessionStorage()
 {
 const strThisFuncName = "GetObjLstsessionStorage";
 //初始化列表缓存
 let strWhereCond = "1=1";
 const strKey = clsQxUserIdentityEN._CurrTabName;
-if (IsNullOrEmpty(clsQxUserIdentityEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsQxUserIdentityEN._WhereFormat) == false)
 {
-strWhereCond = clsQxUserIdentityEN.WhereFormat;
+strWhereCond = clsQxUserIdentityEN._WhereFormat;
 }
-if (IsNullOrEmpty(clsQxUserIdentityEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsQxUserIdentityEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsQxUserIdentityEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsQxUserIdentityEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -1077,7 +1077,7 @@ throw (strMsg);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_sessionStorage_PureCache)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function QxUserIdentity_GetObjLstsessionStoragePureCache() 
+export  async function QxUserIdentity_GetObjLstsessionStoragePureCache()
 {
 //初始化列表缓存
 const strKey = clsQxUserIdentityEN._CurrTabName;
@@ -1106,7 +1106,7 @@ export  async function QxUserIdentity_GetObjLstCache(): Promise<Array<clsQxUserI
 //const strThisFuncName = "GetObjLst_Cache";
 
 let arrQxUserIdentityObjLstCache;
-switch (clsQxUserIdentityEN.CacheModeId)
+switch (clsQxUserIdentityEN._CacheModeId)
 {
 case "04"://sessionStorage
 arrQxUserIdentityObjLstCache = await QxUserIdentity_GetObjLstsessionStorage();
@@ -1133,7 +1133,7 @@ export  async function QxUserIdentity_GetObjLstPureCache()
 {
 //const strThisFuncName = "GetObjLstPureCache";
 let arrQxUserIdentityObjLstCache;
-switch (clsQxUserIdentityEN.CacheModeId)
+switch (clsQxUserIdentityEN._CacheModeId)
 {
 case "04"://sessionStorage
 arrQxUserIdentityObjLstCache = await QxUserIdentity_GetObjLstsessionStoragePureCache();
@@ -1784,7 +1784,7 @@ await QxUserIdentity_FuncMapByFldName(strFldName, newObj);
 const bolIsFuncMap = isFuncMapCache[isFuncMapKey];
 if (
 IsNullOrEmpty(objSortInfo.SortFld) == false &&
-clsQxUserIdentityEN.AttributeName.indexOf(objSortInfo.SortFld) == -1 &&
+clsQxUserIdentityEN._AttributeName.indexOf(objSortInfo.SortFld) == -1 &&
 (bolIsFuncMap == false || bolIsFuncMap == undefined)
 )
 {
@@ -1918,7 +1918,7 @@ alert(strMsg);
 /**
  * 根据扩展字段名去调用相应的映射函数
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMapByFldName)
  * @param strFldName:扩展字段名
  * @param  obj{0}Ex:需要转换的对象
@@ -1931,7 +1931,7 @@ console.log(objQxUserIdentityEx);
 strFldName = strFldName.replace('|Ex', '');
 let strMsg = "";
 //如果是本表中字段,不需要映射
-const arrFldName = clsQxUserIdentityEN.AttributeName;
+const arrFldName = clsQxUserIdentityEN._AttributeName;
 if (arrFldName.indexOf(strFldName) > -1) return;
 //针对扩展字段进行映射
 switch (strFldName)
@@ -1946,7 +1946,7 @@ console.error(strMsg);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByExKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -2155,7 +2155,7 @@ throw(error.statusText);
  /** 添加新记录,保存函数
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_AddNewObjSave)
  **/
-export  async function QxUserIdentity_AddNewObjSave(objQxUserIdentityEN: clsQxUserIdentityEN): Promise<AddRecordResult>{
+export  async function QxUserIdentity_AddNewObjSave(objQxUserIdentityEN: clsQxUserIdentityEN ): Promise<AddRecordResult>{
 const strThisFuncName = 'AddNewObjSave';
 try
 {
@@ -2489,7 +2489,7 @@ throw(error.statusText);
  * @param objstrIdentityIdCond:条件对象
  * @returns 对象列表子集
 */
-export  async function QxUserIdentity_IsExistRecordCache(objQxUserIdentityCond: ConditionCollection) {
+export  async function QxUserIdentity_IsExistRecordCache(objQxUserIdentityCond: ConditionCollection ) {
 const strThisFuncName = "IsExistRecordCache";
 const arrQxUserIdentityObjLstCache = await QxUserIdentity_GetObjLstCache();
 if (arrQxUserIdentityObjLstCache == null) return false;
@@ -2965,11 +2965,12 @@ return strServiceUrl;
 export  function QxUserIdentity_ReFreshCache():void
 {
 
+
  const strMsg:string = Format("刷新缓存成功!");
 console.trace(strMsg);
 // 静态的对象列表,用于清空相关缓存,针对记录较少,作为参数表可以使用
 const strKey = clsQxUserIdentityEN._CurrTabName;
-switch (clsQxUserIdentityEN.CacheModeId)
+switch (clsQxUserIdentityEN._CacheModeId)
 {
 case "04"://sessionStorage
 sessionStorage.removeItem(strKey);
@@ -2993,10 +2994,11 @@ clsQxUserIdentityEN._RefreshTimeLst.push(clsDateTime.getTodayDateTimeStr(0));
  **/
 export  function QxUserIdentity_ReFreshThisCache():void
 {
+
 if (clsSysPara4WebApi.spSetRefreshCacheOn == true)
 {
 const strKey = clsQxUserIdentityEN._CurrTabName;
-switch (clsQxUserIdentityEN.CacheModeId)
+switch (clsQxUserIdentityEN._CacheModeId)
 {
 case "04"://sessionStorage
 sessionStorage.removeItem(strKey);
@@ -3195,7 +3197,7 @@ if (IsNullOrEmpty(pobjQxUserIdentityEN.identityId) === true
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -3220,7 +3222,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -3246,7 +3248,7 @@ return arrQxUserIdentityObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrQxUserIdentityObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -3265,7 +3267,7 @@ return arrQxUserIdentityObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象

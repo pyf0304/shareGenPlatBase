@@ -107,7 +107,7 @@ export async function UsersEx_GetObjExLstByPagerAsync(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsUsersEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsUsersEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrUsersExObjLst) {
       await UsersEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -248,7 +248,7 @@ export function UsersEx_FuncMapByFldName(strFldName: string, objUsersEx: clsUser
   const strThisFuncName = UsersEx_FuncMapByFldName.name;
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsUsersEN.AttributeName;
+  const arrFldName = clsUsersEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {
@@ -1746,7 +1746,7 @@ export async function UsersEx_FuncMapMajorName(objUsers: clsUsersENEx) {
   const strThisFuncName = UsersEx_FuncMapMajorName.name;
   try {
     if (IsNullOrEmpty(objUsers.majorName) == true) {
-      const XzMajoridXzMajor = objUsers.idXzMajor;
+      const XzMajoridXzMajor = objUsers.id_XzMajor;
       const XzMajorMajorName = await XzMajor_func(
         clsXzMajorEN.con_IdXzMajor,
         clsXzMajorEN.con_MajorName,

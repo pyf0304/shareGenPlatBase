@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxUserDownLoadLogEN
  * 表名:QxUserDownLoadLog(00140058)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:25
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:02:51
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:工程文件下载(PrjFileDownLoad)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsQxUserDownLoadLogEN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = "05"; //未知
-public static PrimaryTypeId = "03"; //自增
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "QxUserDownLoadLog"; //当前表名,与该类相关的表名
-public static _KeyFldName= "UserDownLoadLogId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 7;
-public static AttributeName = ["userDownLoadLogId", "userId", "prjSiteId", "downLownDate", "isSuccess", "logInfo", "memo"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = "05"; //未知
+public static readonly _PrimaryTypeId: string = "03"; //自增
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "QxUserDownLoadLog"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "UserDownLoadLogId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 7;
+public static readonly _AttributeName = ["userDownLoadLogId", "userId", "prjSiteId", "downLownDate", "isSuccess", "logInfo", "memo"];
 //以下是属性变量
 
 /**
@@ -260,43 +260,43 @@ public memo = "";    //备注
  * 常量:"UserDownLoadLogId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserDownLoadLogId(): string {return "userDownLoadLogId";}    //用户下载日志Id
+ public static readonly con_UserDownLoadLogId = "userDownLoadLogId";    //用户下载日志Id
 
  /**
  * 常量:"UserId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserId(): string {return "userId";}    //用户ID
+ public static readonly con_UserId = "userId";    //用户ID
 
  /**
  * 常量:"PrjSiteId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_PrjSiteId(): string {return "prjSiteId";}    //工程站点Id
+ public static readonly con_PrjSiteId = "prjSiteId";    //工程站点Id
 
  /**
  * 常量:"DownLownDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DownLownDate(): string {return "downLownDate";}    //下载日期
+ public static readonly con_DownLownDate = "downLownDate";    //下载日期
 
  /**
  * 常量:"IsSuccess"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IsSuccess(): string {return "isSuccess";}    //是否成功
+ public static readonly con_IsSuccess = "isSuccess";    //是否成功
 
  /**
  * 常量:"LogInfo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_LogInfo(): string {return "logInfo";}    //日志信息
+ public static readonly con_LogInfo = "logInfo";    //日志信息
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 设置条件字段值.
@@ -318,6 +318,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名
@@ -326,6 +327,6 @@ this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 public static hasProperty(propName: string) : boolean {
 //return propName in new clsQxUserDownLoadLogEN();
 const instance = new clsQxUserDownLoadLogEN();
-return instance.hasOwnProperty(propName);
+return Object.prototype.hasOwnProperty.call(instance, propName);
 }
 }

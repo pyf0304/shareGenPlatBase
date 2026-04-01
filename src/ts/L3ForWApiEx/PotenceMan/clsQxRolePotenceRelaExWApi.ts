@@ -115,7 +115,7 @@ export async function QxRolePotenceRelaEx_GetObjExLstByPagerAsync(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsQxRolePotenceRelaEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsQxRolePotenceRelaEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrQxRolePotenceRelaExObjLst) {
       await QxRolePotenceRelaEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -273,7 +273,7 @@ export function QxRolePotenceRelaEx_FuncMapByFldName(
   const strThisFuncName = QxRolePotenceRelaEx_FuncMapByFldName.name;
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsQxRolePotenceRelaEN.AttributeName;
+  const arrFldName = clsQxRolePotenceRelaEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

@@ -1748,12 +1748,12 @@ export class clsUsersWApiEx {
           CacheHelper.Remove(strKey);
           break;
       }
-      (strMsg = `刷新缓存成功！(${clsStackTrace.GetCurrClassFunctionByLevel(
+      ((strMsg = `刷新缓存成功！(${clsStackTrace.GetCurrClassFunctionByLevel(
         3,
       )}->${clsStackTrace.GetCurrClassFunctionByLevel(
         2,
       )}->${clsStackTrace.GetCurrClassFunction()})`),
-        console.log(strMsg);
+        console.log(strMsg));
     } else {
       strMsg = `刷新缓存已经关闭。(clsSysPara4WebApi.spSetRefreshCacheOn == false)(${clsStackTrace.GetCurrClassFunctionByLevel(
         3,
@@ -1855,9 +1855,9 @@ export class clsUsersBL {
         '(errid:Watl000059)字段[用户(Users)|password(password)]的长度不能超过20!值:$(pobjUsersEN.password)(Users_CheckPropertyNew)',
       );
     }
-    if (null !== pobjUsersEN.idSchool && GetStrLen(pobjUsersEN.idSchool) > 4) {
+    if (null !== pobjUsersEN.id_School && GetStrLen(pobjUsersEN.id_School) > 4) {
       throw new Error(
-        '(errid:Watl000059)字段[用户(Users)|学校编号(idSchool)]的长度不能超过4!值:$(pobjUsersEN.idSchool)(Users_CheckPropertyNew)',
+        '(errid:Watl000059)字段[用户(Users)|学校编号(idSchool)]的长度不能超过4!值:$(pobjUsersEN.id_School)(Users_CheckPropertyNew)',
       );
     }
     if (null !== pobjUsersEN.beginYearMonth && GetStrLen(pobjUsersEN.beginYearMonth) > 8) {
@@ -1880,9 +1880,9 @@ export class clsUsersBL {
         '(errid:Watl000059)字段[用户(Users)|学院流水号(idXzCollege)]的长度不能超过4!值:$(pobjUsersEN.idXzCollege)(Users_CheckPropertyNew)',
       );
     }
-    if (null !== pobjUsersEN.idXzMajor && GetStrLen(pobjUsersEN.idXzMajor) > 8) {
+    if (null !== pobjUsersEN.id_XzMajor && GetStrLen(pobjUsersEN.id_XzMajor) > 8) {
       throw new Error(
-        '(errid:Watl000059)字段[用户(Users)|专业流水号(idXzMajor)]的长度不能超过8!值:$(pobjUsersEN.idXzMajor)(Users_CheckPropertyNew)',
+        '(errid:Watl000059)字段[用户(Users)|专业流水号(idXzMajor)]的长度不能超过8!值:$(pobjUsersEN.id_XzMajor)(Users_CheckPropertyNew)',
       );
     }
     if (null !== pobjUsersEN.stuIdTeacherId && GetStrLen(pobjUsersEN.stuIdTeacherId) > 20) {
@@ -2011,12 +2011,12 @@ export class clsUsersBL {
       );
     }
     if (
-      null !== pobjUsersEN.idSchool &&
-      undefined !== pobjUsersEN.idSchool &&
-      tzDataType.isString(pobjUsersEN.idSchool) === false
+      null !== pobjUsersEN.id_School &&
+      undefined !== pobjUsersEN.id_School &&
+      tzDataType.isString(pobjUsersEN.id_School) === false
     ) {
       throw new Error(
-        '(errid:Watl000060)字段[用户(Users)|学校编号(idSchool)]的值:[$(pobjUsersEN.idSchool)], 非法，应该为字符型!(Users_CheckPropertyNew)',
+        '(errid:Watl000060)字段[用户(Users)|学校编号(idSchool)]的值:[$(pobjUsersEN.id_School)], 非法，应该为字符型!(Users_CheckPropertyNew)',
       );
     }
     if (
@@ -2056,12 +2056,12 @@ export class clsUsersBL {
       );
     }
     if (
-      null !== pobjUsersEN.idXzMajor &&
-      undefined !== pobjUsersEN.idXzMajor &&
-      tzDataType.isString(pobjUsersEN.idXzMajor) === false
+      null !== pobjUsersEN.id_XzMajor &&
+      undefined !== pobjUsersEN.id_XzMajor &&
+      tzDataType.isString(pobjUsersEN.id_XzMajor) === false
     ) {
       throw new Error(
-        '(errid:Watl000060)字段[用户(Users)|专业流水号(idXzMajor)]的值:[$(pobjUsersEN.idXzMajor)], 非法，应该为字符型!(Users_CheckPropertyNew)',
+        '(errid:Watl000060)字段[用户(Users)|专业流水号(idXzMajor)]的值:[$(pobjUsersEN.id_XzMajor)], 非法，应该为字符型!(Users_CheckPropertyNew)',
       );
     }
     if (
@@ -2261,9 +2261,9 @@ export class clsUsersBL {
         '(errid:Watl000062)字段[用户(Users)|password(password)]的长度不能超过20!值:$(pobjUsersEN.password)(Users_CheckProperty4Update)',
       );
     }
-    if (null !== pobjUsersEN.idSchool && GetStrLen(pobjUsersEN.idSchool) > 4) {
+    if (null !== pobjUsersEN.id_School && GetStrLen(pobjUsersEN.id_School) > 4) {
       throw new Error(
-        '(errid:Watl000062)字段[用户(Users)|学校编号(idSchool)]的长度不能超过4!值:$(pobjUsersEN.idSchool)(Users_CheckProperty4Update)',
+        '(errid:Watl000062)字段[用户(Users)|学校编号(idSchool)]的长度不能超过4!值:$(pobjUsersEN.id_School)(Users_CheckProperty4Update)',
       );
     }
     if (null !== pobjUsersEN.beginYearMonth && GetStrLen(pobjUsersEN.beginYearMonth) > 8) {
@@ -2286,9 +2286,9 @@ export class clsUsersBL {
         '(errid:Watl000062)字段[用户(Users)|学院流水号(idXzCollege)]的长度不能超过4!值:$(pobjUsersEN.idXzCollege)(Users_CheckProperty4Update)',
       );
     }
-    if (null !== pobjUsersEN.idXzMajor && GetStrLen(pobjUsersEN.idXzMajor) > 8) {
+    if (null !== pobjUsersEN.id_XzMajor && GetStrLen(pobjUsersEN.id_XzMajor) > 8) {
       throw new Error(
-        '(errid:Watl000062)字段[用户(Users)|专业流水号(idXzMajor)]的长度不能超过8!值:$(pobjUsersEN.idXzMajor)(Users_CheckProperty4Update)',
+        '(errid:Watl000062)字段[用户(Users)|专业流水号(idXzMajor)]的长度不能超过8!值:$(pobjUsersEN.id_XzMajor)(Users_CheckProperty4Update)',
       );
     }
     if (null !== pobjUsersEN.stuIdTeacherId && GetStrLen(pobjUsersEN.stuIdTeacherId) > 20) {
@@ -2417,12 +2417,12 @@ export class clsUsersBL {
       );
     }
     if (
-      null !== pobjUsersEN.idSchool &&
-      undefined !== pobjUsersEN.idSchool &&
-      tzDataType.isString(pobjUsersEN.idSchool) === false
+      null !== pobjUsersEN.id_School &&
+      undefined !== pobjUsersEN.id_School &&
+      tzDataType.isString(pobjUsersEN.id_School) === false
     ) {
       throw new Error(
-        '(errid:Watl000063)字段[用户(Users)|学校编号(idSchool)]的值:[$(pobjUsersEN.idSchool)], 非法，应该为字符型!(Users_CheckProperty4Update)',
+        '(errid:Watl000063)字段[用户(Users)|学校编号(idSchool)]的值:[$(pobjUsersEN.id_School)], 非法，应该为字符型!(Users_CheckProperty4Update)',
       );
     }
     if (
@@ -2462,12 +2462,12 @@ export class clsUsersBL {
       );
     }
     if (
-      null !== pobjUsersEN.idXzMajor &&
-      undefined !== pobjUsersEN.idXzMajor &&
-      tzDataType.isString(pobjUsersEN.idXzMajor) === false
+      null !== pobjUsersEN.id_XzMajor &&
+      undefined !== pobjUsersEN.id_XzMajor &&
+      tzDataType.isString(pobjUsersEN.id_XzMajor) === false
     ) {
       throw new Error(
-        '(errid:Watl000063)字段[用户(Users)|专业流水号(idXzMajor)]的值:[$(pobjUsersEN.idXzMajor)], 非法，应该为字符型!(Users_CheckProperty4Update)',
+        '(errid:Watl000063)字段[用户(Users)|专业流水号(idXzMajor)]的值:[$(pobjUsersEN.id_XzMajor)], 非法，应该为字符型!(Users_CheckProperty4Update)',
       );
     }
     if (
@@ -2719,12 +2719,12 @@ export class clsUsersBL {
     objUsersENT.userStateId = objUsersENS.userStateId; //用户状态Id
     objUsersENT.password = objUsersENS.password; //password
     objUsersENT.isGpUser = objUsersENS.isGpUser; //是否Gp用户
-    objUsersENT.idSchool = objUsersENS.idSchool; //学校编号
+    objUsersENT.id_School = objUsersENS.id_School; //学校编号
     objUsersENT.beginYearMonth = objUsersENS.beginYearMonth; //开始年月
     objUsersENT.endYearMonth = objUsersENS.endYearMonth; //结束年月
     objUsersENT.idGradeBase = objUsersENS.idGradeBase; //年级流水号
     objUsersENT.idXzCollege = objUsersENS.idXzCollege; //学院流水号
-    objUsersENT.idXzMajor = objUsersENS.idXzMajor; //专业流水号
+    objUsersENT.id_XzMajor = objUsersENS.id_XzMajor; //专业流水号
     objUsersENT.isLeaved = objUsersENS.isLeaved; //isLeaved
     objUsersENT.stuIdTeacherId = objUsersENS.stuIdTeacherId; //学工号
     objUsersENT.email = objUsersENS.email; //电子邮箱

@@ -170,7 +170,7 @@ export function vUsersSimEx_FuncMapByFldName(strFldName: string, objvUsersSimEx:
   let strMsg = '';
   console.log(objvUsersSimEx);
   //如果是本表中字段，不需要映射
-  const arrFldName = clsvUsersSimEN.AttributeName;
+  const arrFldName = clsvUsersSimEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {
@@ -240,11 +240,11 @@ export async function vUsersSimEx_func(
     console.error(strMsg);
     throw new Error(strMsg);
   }
-  if (clsvUsersSimEN.AttributeName.indexOf(strOutFldName) == -1) {
+  if (clsvUsersSimEN._AttributeName.indexOf(strOutFldName) == -1) {
     const strMsg = Format(
       '输出字段名:[{0}]不正确，不在输出字段范围之内!({1})',
       strOutFldName,
-      clsvUsersSimEN.AttributeName.join(','),
+      clsvUsersSimEN._AttributeName.join(','),
     );
     console.error(strMsg);
     throw new Error(strMsg);

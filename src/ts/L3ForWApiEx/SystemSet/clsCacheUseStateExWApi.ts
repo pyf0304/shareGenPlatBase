@@ -107,7 +107,7 @@ export async function CacheUseStateEx_GetObjExLstByPagerAsync(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsCacheUseStateEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsCacheUseStateEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrCacheUseStateExObjLst) {
       await CacheUseStateEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -203,7 +203,7 @@ export function CacheUseStateEx_FuncMapByFldName(
   console.log(objCacheUseStateEx);
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsCacheUseStateEN.AttributeName;
+  const arrFldName = clsCacheUseStateEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {
@@ -240,4 +240,3 @@ export async function CacheUseStateEx_FilterFunByKey(strKey: string, value: any)
       return CacheUseState_FilterFunByKey(strKey, value);
   }
 }
-

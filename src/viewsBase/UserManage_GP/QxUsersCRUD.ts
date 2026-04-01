@@ -1211,7 +1211,7 @@ export abstract class QxUsersCRUD implements clsOperateList {
     arrQxUsersExObjLst: Array<clsQxUsersENEx>,
     arrDataColumn: Array<clsDataColumn>,
   ) {
-    const arrFldName = clsQxUsersEN.AttributeName;
+    const arrFldName = clsQxUsersEN._AttributeName;
     for (const objDataColumn of arrDataColumn) {
       if (IsNullOrEmpty(objDataColumn.fldName) == true) continue;
       if (arrFldName.indexOf(objDataColumn.fldName) > -1) continue;
@@ -1430,9 +1430,8 @@ export abstract class QxUsersCRUD implements clsOperateList {
           '=',
         );
 
-        const arrDepartmentId_DepartmentTypeId = await QxUsersEx_FuncMapKeyDepartmentTypeId(
-          objQxUsersCond,
-        );
+        const arrDepartmentId_DepartmentTypeId =
+          await QxUsersEx_FuncMapKeyDepartmentTypeId(objQxUsersCond);
         if (arrDepartmentIdInclude.length == 0) {
           arrDepartmentIdInclude = arrDepartmentId_DepartmentTypeId.map((x) => x.toString());
         } else {
@@ -1570,7 +1569,7 @@ export abstract class QxUsersCRUD implements clsOperateList {
         const objQxUsersEN = new clsQxUsersEN();
         ObjectAssign(objQxUsersEN, objInFor);
         objQxUsersEN.SetUserId(objInFor.userId);
-        objQxUsersEN.SetIdSchool(strIdSchool);
+        objQxUsersEN.SetId_School(strIdSchool);
         let returnBool = false;
         try {
           objQxUsersEN.sfUpdFldSetStr = objQxUsersEN.updFldString; //设置哪些字段被修改(脏字段)

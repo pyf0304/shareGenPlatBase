@@ -545,7 +545,7 @@ export class Login {
   //            try {
   //                const responseText = XzClg_GetObjLstAsync(strWhereCond).then((jsonData) => {
   //                    strIdCurrEduclsarrXzClgObjLst: Array<clsXzClgEN> = <Array<clsXzClgEN>>jsonData;
-  //                    BindDdl_ObjLst(ddlIdXzCollege, arrXzClgObjLst, clsXzClgEN.con_IdXzCollege, clsXzClgEN.con_CollegeName, "学院");
+  //                    BindDdl_ObjLst(ddlIdXzCollege, arrXzClgObjLst, clsXzClgEN.con_Id_XzCollege, clsXzClgEN.con_CollegeName, "学院");
   //                    console.log("完成BindDdl_IdXzCollege!");
   //                    resolve(jsonData);
   //                });
@@ -619,7 +619,7 @@ export class Login {
   //            alert("学院不能为空！");
   //            window.location.href = "#pagetwo";
   //        }
-  //        else if (this.idXzMajor == "") {
+  //        else if (this.id_XzMajor == "") {
   //            alert("专业不能为空！");
   //            window.location.href = "#pagetwo";
   //        }
@@ -716,7 +716,7 @@ export class Login {
   //        pobjUsersEN.SetPassword(this.RePassword;// password
   //        pobjUsersEN.SetIdGradeBase(this.idGradeBase;// 年级流水号
   //        pobjUsersEN.SetIdXzCollege(this.idXzCollege;// 学院流水号
-  //        pobjUsersEN.SetIdXzMajor(this.idXzMajor;// 专业流水号
+  //        pobjUsersEN.SetIdXzMajor(this.id_XzMajor;// 专业流水号
 
   //        pobjUsersEN.SetEmail(this.email;// 电子邮箱
   //        pobjUsersEN.SetIdentityID(this.identityID;// 身份编号

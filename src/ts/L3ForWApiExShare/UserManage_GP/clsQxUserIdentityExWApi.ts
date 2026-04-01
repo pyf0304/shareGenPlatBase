@@ -110,7 +110,7 @@ export async function QxUserIdentityEx_GetObjExLstByPagerAsync(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsQxUserIdentityEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsQxUserIdentityEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrQxUserIdentityExObjLst) {
       await QxUserIdentityEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -190,7 +190,7 @@ export function QxUserIdentityEx_FuncMapByFldName(
   console.log(objQxUserIdentityEx);
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsQxUserIdentityEN.AttributeName;
+  const arrFldName = clsQxUserIdentityEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {
@@ -240,7 +240,7 @@ export async function QxUserIdentityEx_GetObjExLstByPagerCache(
   const bolIsFuncMap = isFuncMapCache[isFuncMapKey];
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsQxUserIdentityEN.AttributeName.indexOf(objSortInfo.SortFld) == -1 &&
+    clsQxUserIdentityEN._AttributeName.indexOf(objSortInfo.SortFld) == -1 &&
     (bolIsFuncMap == false || bolIsFuncMap == undefined)
   ) {
     for (const newObj of arrQxUserIdentityExObjLst) {

@@ -1,8 +1,8 @@
 ﻿/**
  * 类名:QxCmProjectCRUDEx(界面:QxCmProjectCRUD,00140045)
  * 表名:QxCmProject(00140119)
- * 版本:2026.03.27.1(服务器:WIN-SRV103-116)
- * 日期:2026/03/30 06:30:16
+ * 版本:2026.03.27.1(服务器:PYF-AI)
+ * 日期:2026/03/31 22:55:56
  * 生成者:
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
@@ -31,7 +31,7 @@ export default class QxCmProjectCRUDEx extends QxCmProjectCRUD implements IShowL
    * 每页记录数,在扩展类可以修改
    **/
   public get pageSize(): number {
-    return 10;
+    return this._pageSize ?? 10;
   }
 
   /**

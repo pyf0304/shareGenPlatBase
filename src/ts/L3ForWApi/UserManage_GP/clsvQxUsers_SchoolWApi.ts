@@ -2,14 +2,14 @@
  /**
  * 类名:clsvQxUsers_SchoolWApi
  * 表名:vQxUsers_School(00140075)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:21:57
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:04:31
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
  应用类型:Vue应用InCore-TS(30)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:WA_访问层(TS)(WA_Access,0155)
@@ -21,21 +21,18 @@
 /**
  * vUsers_School(vQxUsers_School)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2025年04月13日.
+* Created by pyf on 2026年04月01日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
 import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
 import { Storage } from '@/utils/Storage';
 import { IsNullOrEmpty,Format } from "@/ts/PubFun/clsString";
-import { ConditionCollection } from "@/ts/PubFun/ConditionCollection";
 import { clsvQxUsers_SchoolEN } from "@/ts/L0Entity/UserManage_GP/clsvQxUsers_SchoolEN";
-import { GetExceptionStr, GetObjKeys, myShowErrorMsg, ObjectAssign } from "@/ts/PubFun/clsCommFunc4Web";
-import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
+import { GetExceptionStr, myShowErrorMsg, ObjectAssign } from "@/ts/PubFun/clsCommFunc4Web";
 import { clsSysPara4WebApi, GetWebApiUrl_GP } from "@/ts/PubConfig/clsSysPara4WebApi";
 import { stuTopPara } from "@/ts/PubFun/stuTopPara";
 import { stuRangePara } from "@/ts/PubFun/stuRangePara";
-import { stuPagerPara } from "@/ts/PubFun/stuPagerPara";
 
  export const vQxUsers_School_Controller = "vQxUsers_SchoolApi";
  export const vQxUsers_School_ConstructorName = "vQxUsers_School";
@@ -119,7 +116,7 @@ throw(error.statusText);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -132,7 +129,7 @@ return a.userId.localeCompare(b.userId);
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -147,7 +144,7 @@ else return a.userName.localeCompare(b.userName);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -231,11 +228,11 @@ if (a.stuTeacherId == null) return -1;
 if (b.stuTeacherId == null) return 1;
 return a.stuTeacherId.localeCompare(b.stuTeacherId);
 }
-case clsvQxUsers_SchoolEN.con_IdGradeBase:
+case clsvQxUsers_SchoolEN.con_Id_GradeBase:
 return (a: clsvQxUsers_SchoolEN, b: clsvQxUsers_SchoolEN) => {
-if (a.idGradeBase == null) return -1;
-if (b.idGradeBase == null) return 1;
-return a.idGradeBase.localeCompare(b.idGradeBase);
+if (a.id_GradeBase == null) return -1;
+if (b.id_GradeBase == null) return 1;
+return a.id_GradeBase.localeCompare(b.id_GradeBase);
 }
 case clsvQxUsers_SchoolEN.con_GradeBaseName:
 return (a: clsvQxUsers_SchoolEN, b: clsvQxUsers_SchoolEN) => {
@@ -373,11 +370,11 @@ if (b.stuTeacherId == null) return -1;
 if (a.stuTeacherId == null) return 1;
 return b.stuTeacherId.localeCompare(a.stuTeacherId);
 }
-case clsvQxUsers_SchoolEN.con_IdGradeBase:
+case clsvQxUsers_SchoolEN.con_Id_GradeBase:
 return (a: clsvQxUsers_SchoolEN, b: clsvQxUsers_SchoolEN) => {
-if (b.idGradeBase == null) return -1;
-if (a.idGradeBase == null) return 1;
-return b.idGradeBase.localeCompare(a.idGradeBase);
+if (b.id_GradeBase == null) return -1;
+if (a.id_GradeBase == null) return 1;
+return b.id_GradeBase.localeCompare(a.id_GradeBase);
 }
 case clsvQxUsers_SchoolEN.con_GradeBaseName:
 return (a: clsvQxUsers_SchoolEN, b: clsvQxUsers_SchoolEN) => {
@@ -447,7 +444,7 @@ strMsg = `字段名:[${strKey}]在表对象:[vQxUsers_School]中不存在!(in ${
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -519,9 +516,9 @@ case clsvQxUsers_SchoolEN.con_StuTeacherId:
 return (obj: clsvQxUsers_SchoolEN) => {
 return obj.stuTeacherId === value;
 }
-case clsvQxUsers_SchoolEN.con_IdGradeBase:
+case clsvQxUsers_SchoolEN.con_Id_GradeBase:
 return (obj: clsvQxUsers_SchoolEN) => {
-return obj.idGradeBase === value;
+return obj.id_GradeBase === value;
 }
 case clsvQxUsers_SchoolEN.con_GradeBaseName:
 return (obj: clsvQxUsers_SchoolEN) => {
@@ -1097,73 +1094,12 @@ throw(error.statusText);
 }
 }
 //该表没有使用Cache,不需要生成[GetObjLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerCache)
-
- /**
- * 根据分页条件获取相应的记录对象列表,只获取一页
- * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
- * @param objPagerPara:分页获取对象列表的参数对象
- * @returns 获取的相应记录对象列表
- **/
-export  async function vQxUsers_School_GetObjLstByPagerAsync(objPagerPara: stuPagerPara): Promise<Array<clsvQxUsers_SchoolEN>>  
-{
-const strThisFuncName = "GetObjLstByPagerAsync";
-if (objPagerPara.pageIndex == 0) return new Array<clsvQxUsers_SchoolEN>();
-const strAction = "GetObjLstByPager";
-const strUrl = GetWebApiUrl_GP(vQxUsers_School_Controller, strAction);
-
-const token = Storage.get(ACCESS_TOKEN_KEY);
-//console.error('token:', token);
-const config = {
-headers: {
-Authorization: `${ token}`,
-},
-};
-try
-{
-const response = await axios.post(strUrl, objPagerPara, config);
-const data = response.data;
-if (data.errorId == 0)
-{
-const returnObjLst = data.returnObjLst;
-if (returnObjLst == null)
-{
-const strNullInfo = Format("获取数据为null, 请注意!(in {0}.{1})", vQxUsers_School_ConstructorName, strThisFuncName);
-console.error(strNullInfo);
-throw(strNullInfo);
-}
-//console.log(returnObjLst);
-const arrObjLst = vQxUsers_School_GetObjLstByJSONObjLst(returnObjLst);
-return arrObjLst;
-}
-else
-{
-console.error(data.errorMsg);
-throw(data.errorMsg);
-}
-} catch (error: any) {
-console.error(error);
-if (error.statusText == undefined)
-{
-throw error;
-}
-if (error.statusText == "error")
-{
-const strInfo = Format("网络错误!访问地址:{0}不成功!(in {1}.{2})", strUrl, vQxUsers_School_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else if (error.statusText == "Not Found")
-{
-const strInfo = Format("网络错误!访问地址:{0}可能不存在!(in {1}.{2})", strUrl, vQxUsers_School_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else
-{
-throw(error.statusText);
-}
-}
-}
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
+//该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjExLstByPagerCache)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_CopyToEx)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMapByFldName)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByExKey)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMap)
 //该表没有使用Cache,不需要生成[IsExistRecordCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_IsExistRecordCache)
 
  /**
@@ -1382,7 +1318,7 @@ return strServiceUrl;
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -1406,7 +1342,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -1432,7 +1368,7 @@ return arrvQxUsers_SchoolObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrvQxUsers_SchoolObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -1451,7 +1387,7 @@ return arrvQxUsers_SchoolObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -1560,10 +1496,10 @@ if (Object.prototype.hasOwnProperty.call(objvQxUsers_SchoolCond.dicFldComparison
 const strComparisonOpStuTeacherId:string = objvQxUsers_SchoolCond.dicFldComparisonOp[clsvQxUsers_SchoolEN.con_StuTeacherId];
 strWhereCond += Format(" And {0} {2} '{1}'", clsvQxUsers_SchoolEN.con_StuTeacherId, objvQxUsers_SchoolCond.stuTeacherId, strComparisonOpStuTeacherId);
 }
-if (Object.prototype.hasOwnProperty.call(objvQxUsers_SchoolCond.dicFldComparisonOp, clsvQxUsers_SchoolEN.con_IdGradeBase) == true)
+if (Object.prototype.hasOwnProperty.call(objvQxUsers_SchoolCond.dicFldComparisonOp, clsvQxUsers_SchoolEN.con_Id_GradeBase) == true)
 {
-const strComparisonOpIdGradeBase:string = objvQxUsers_SchoolCond.dicFldComparisonOp[clsvQxUsers_SchoolEN.con_IdGradeBase];
-strWhereCond += Format(" And {0} {2} '{1}'", clsvQxUsers_SchoolEN.con_IdGradeBase, objvQxUsers_SchoolCond.idGradeBase, strComparisonOpIdGradeBase);
+const strComparisonOpId_GradeBase:string = objvQxUsers_SchoolCond.dicFldComparisonOp[clsvQxUsers_SchoolEN.con_Id_GradeBase];
+strWhereCond += Format(" And {0} {2} '{1}'", clsvQxUsers_SchoolEN.con_Id_GradeBase, objvQxUsers_SchoolCond.id_GradeBase, strComparisonOpId_GradeBase);
 }
 if (Object.prototype.hasOwnProperty.call(objvQxUsers_SchoolCond.dicFldComparisonOp, clsvQxUsers_SchoolEN.con_GradeBaseName) == true)
 {

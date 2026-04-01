@@ -78,7 +78,7 @@ export function SexEx_CopyToEx(objSexENS: clsSexEN): clsSexENEx {
   try {
     ObjectAssign(objSexENT, objSexENS);
     return objSexENT;
-  } catch (e:any) {
+  } catch (e: any) {
     const strMsg = Format(
       '(errid:Watl000067)Copy表对象数据出错,{0}.(in {1}.{2})',
       e,
@@ -128,7 +128,7 @@ export async function SexEx_GetObjExLstByPagerAsync(
     }
     arrSex_Sel = arrSex_Sel.slice(intStart, intEnd);
     return arrSex_Sel;
-  } catch (e:any) {
+  } catch (e: any) {
     const strMsg = Format(
       '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
       e,
@@ -180,7 +180,7 @@ export function SexEx_FuncMapByFldName(strFldName: string, objSexEx: clsSexENEx)
   console.log(objSexEx);
   let strMsg = '';
   //如果是本表中字段，不需要映射
-  const arrFldName = clsSexEN.AttributeName;
+  const arrFldName = clsSexEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

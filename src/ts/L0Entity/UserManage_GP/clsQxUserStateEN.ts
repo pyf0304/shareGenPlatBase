@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxUserStateEN
  * 表名:QxUserState(00140016)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:28:56
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:00:23
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsQxUserStateEN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = "03"; //localStorage
-public static PrimaryTypeId = "03"; //自增
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "QxUserState"; //当前表名,与该类相关的表名
-public static _KeyFldName= "UserStateId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 3;
-public static AttributeName = ["userStateId", "userStateName", "memo"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = "03"; //localStorage
+public static readonly _PrimaryTypeId: string = "03"; //自增
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "QxUserState"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "UserStateId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 3;
+public static readonly _AttributeName = ["userStateId", "userStateName", "memo"];
 //以下是属性变量
 
 /**
@@ -172,19 +172,19 @@ public memo = "";    //备注
  * 常量:"UserStateId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserStateId(): string {return "userStateId";}    //用户状态Id
+ public static readonly con_UserStateId = "userStateId";    //用户状态Id
 
  /**
  * 常量:"UserStateName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserStateName(): string {return "userStateName";}    //用户状态名
+ public static readonly con_UserStateName = "userStateName";    //用户状态名
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 设置条件字段值.
@@ -206,6 +206,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名

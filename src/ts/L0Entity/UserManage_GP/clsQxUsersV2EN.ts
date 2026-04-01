@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxUsersV2EN
  * 表名:QxUsersV2(00140110)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:28:58
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:00:54
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsQxUsersV2EN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = ""; //
-public static PrimaryTypeId = "02"; //identity
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "QxUsersV2"; //当前表名,与该类相关的表名
-public static _KeyFldName= "id"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 23;
-public static AttributeName = ["createTime", "updateTime", "id", "departmentIdInt", "name", "userName", "password", "psalt", "nickName", "headImg", "email", "phone", "remark", "status", "openId", "updUser", "isArchive", "identityId", "stuTeacherId", "effitiveBeginDate", "effitiveEndDate", "userId", "effectiveDate"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = ""; //
+public static readonly _PrimaryTypeId: string = "02"; //identity
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "QxUsersV2"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "id"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 23;
+public static readonly _AttributeName = ["createTime", "updateTime", "id", "departmentIdInt", "name", "userName", "password", "psalt", "nickName", "headImg", "email", "phone", "remark", "status", "openId", "updUser", "isArchive", "identityId", "stuTeacherId", "effitiveBeginDate", "effitiveEndDate", "userId", "effectiveDate"];
 //以下是属性变量
 
 /**
@@ -612,139 +612,139 @@ public effectiveDate = "";    //有效日期
  * 常量:"CreateTime"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_CreateTime(): string {return "createTime";}    //建立时间
+ public static readonly con_CreateTime = "createTime";    //建立时间
 
  /**
  * 常量:"updateTime"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_updateTime(): string {return "updateTime";}    //修改时间
+ public static readonly con_updateTime = "updateTime";    //修改时间
 
  /**
  * 常量:"id"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_id(): string {return "id";}    //id
+ public static readonly con_id = "id";    //id
 
  /**
  * 常量:"DepartmentIdInt"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DepartmentIdInt(): string {return "departmentIdInt";}    //部门Id
+ public static readonly con_DepartmentIdInt = "departmentIdInt";    //部门Id
 
  /**
  * 常量:"name"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_name(): string {return "name";}    //姓名
+ public static readonly con_name = "name";    //姓名
 
  /**
  * 常量:"UserName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserName(): string {return "userName";}    //用户名
+ public static readonly con_UserName = "userName";    //用户名
 
  /**
  * 常量:"Password"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Password(): string {return "password";}    //口令
+ public static readonly con_Password = "password";    //口令
 
  /**
  * 常量:"psalt"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_psalt(): string {return "psalt";}    //密码盐值
+ public static readonly con_psalt = "psalt";    //密码盐值
 
  /**
  * 常量:"nickName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_nickName(): string {return "nickName";}    //呢称
+ public static readonly con_nickName = "nickName";    //呢称
 
  /**
  * 常量:"headImg"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_headImg(): string {return "headImg";}    //头像
+ public static readonly con_headImg = "headImg";    //头像
 
  /**
  * 常量:"Email"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Email(): string {return "email";}    //邮箱
+ public static readonly con_Email = "email";    //邮箱
 
  /**
  * 常量:"phone"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_phone(): string {return "phone";}    //电话号码
+ public static readonly con_phone = "phone";    //电话号码
 
  /**
  * 常量:"remark"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_remark(): string {return "remark";}    //备注
+ public static readonly con_remark = "remark";    //备注
 
  /**
  * 常量:"status"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_status(): string {return "status";}    //用户状态Id
+ public static readonly con_status = "status";    //用户状态Id
 
  /**
  * 常量:"OpenId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_OpenId(): string {return "openId";}    //微信openid
+ public static readonly con_OpenId = "openId";    //微信openid
 
  /**
  * 常量:"UpdUser"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdUser(): string {return "updUser";}    //修改用户
+ public static readonly con_UpdUser = "updUser";    //修改用户
 
  /**
  * 常量:"IsArchive"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IsArchive(): string {return "isArchive";}    //是否存档
+ public static readonly con_IsArchive = "isArchive";    //是否存档
 
  /**
  * 常量:"IdentityId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IdentityId(): string {return "identityId";}    //身份编号
+ public static readonly con_IdentityId = "identityId";    //身份编号
 
  /**
  * 常量:"StuTeacherId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_StuTeacherId(): string {return "stuTeacherId";}    //学工号
+ public static readonly con_StuTeacherId = "stuTeacherId";    //学工号
 
  /**
  * 常量:"EffitiveBeginDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_EffitiveBeginDate(): string {return "effitiveBeginDate";}    //有效开始日期
+ public static readonly con_EffitiveBeginDate = "effitiveBeginDate";    //有效开始日期
 
  /**
  * 常量:"EffitiveEndDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_EffitiveEndDate(): string {return "effitiveEndDate";}    //有效结束日期
+ public static readonly con_EffitiveEndDate = "effitiveEndDate";    //有效结束日期
 
  /**
  * 常量:"UserId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserId(): string {return "userId";}    //用户ID
+ public static readonly con_UserId = "userId";    //用户ID
 
  /**
  * 常量:"EffectiveDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_EffectiveDate(): string {return "effectiveDate";}    //有效日期
+ public static readonly con_EffectiveDate = "effectiveDate";    //有效日期
 
  /**
  * 设置条件字段值.
@@ -766,6 +766,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名

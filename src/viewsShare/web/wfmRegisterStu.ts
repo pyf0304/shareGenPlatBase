@@ -86,7 +86,7 @@ export class wfmRegisterStu extends QxUsers_Edit {
       return;
     }
     if (userType == UserTypeMap.university) {
-      if (IsNullOrEmpty(refQxUsers_Edit.value.idXzMajor) == true) {
+      if (IsNullOrEmpty(refQxUsers_Edit.value.id_XzMajor) == true) {
         strMsg = Format('专业不能为空！');
 
         message.warning(strMsg);
@@ -122,7 +122,7 @@ export class wfmRegisterStu extends QxUsers_Edit {
     objUsersEN.SetPassword(refQxUsers_Edit.value.password); //密码
     // objUsersEN.SetDepartmentId(strDepartmentIdInGP);
     objUsersEN.SetIdXzCollege(refQxUsers_Edit.value.idXzCollege);
-    objUsersEN.SetIdXzMajor(refQxUsers_Edit.value.idXzMajor);
+    objUsersEN.SetIdXzMajor(refQxUsers_Edit.value.id_XzMajor);
     objUsersEN.SetIdGradeBase(refQxUsers_Edit.value.idGradeBase);
     objUsersEN.SetIdGrade(refQxUsers_Edit.value.idGrade);
 
@@ -179,7 +179,7 @@ export class wfmRegisterStu extends QxUsers_Edit {
   //     clsON.SetPassword(this.password);//密码
 
   //     clsON.SetIdXzCollege( this.idXzCollege);
-  //     clsON.SetIdXzMajor( this.idXzMajor);
+  //     clsON.SetIdXzMajor( this.id_XzMajor);
   //     clsON.SetIdGradeBase( this.idGradeBase);
   //     clsON.SetIsAudit( false);
   //     clsON.SetUserStateId("02");

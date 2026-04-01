@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxUserLoginNameEN
  * 表名:QxUserLoginName(00140051)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:09
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:00:37
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsQxUserLoginNameEN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = "03"; //localStorage
-public static PrimaryTypeId = "01"; //关键字
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "QxUserLoginName"; //当前表名,与该类相关的表名
-public static _KeyFldName= "UserLoginName"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 6;
-public static AttributeName = ["userLoginName", "userId", "updUserId", "updDate", "updTime", "memo"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = "03"; //localStorage
+public static readonly _PrimaryTypeId: string = "01"; //关键字
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "QxUserLoginName"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "UserLoginName"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 6;
+public static readonly _AttributeName = ["userLoginName", "userId", "updUserId", "updDate", "updTime", "memo"];
 //以下是属性变量
 
 /**
@@ -238,37 +238,37 @@ public memo = "";    //备注
  * 常量:"UserLoginName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserLoginName(): string {return "userLoginName";}    //用户登录名
+ public static readonly con_UserLoginName = "userLoginName";    //用户登录名
 
  /**
  * 常量:"UserId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserId(): string {return "userId";}    //用户ID
+ public static readonly con_UserId = "userId";    //用户ID
 
  /**
  * 常量:"UpdUserId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdUserId(): string {return "updUserId";}    //修改用户Id
+ public static readonly con_UpdUserId = "updUserId";    //修改用户Id
 
  /**
  * 常量:"UpdDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdDate(): string {return "updDate";}    //修改日期
+ public static readonly con_UpdDate = "updDate";    //修改日期
 
  /**
  * 常量:"UpdTime"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdTime(): string {return "updTime";}    //修改时间
+ public static readonly con_UpdTime = "updTime";    //修改时间
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 设置条件字段值.
@@ -290,6 +290,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名
@@ -298,6 +299,6 @@ this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 public static hasProperty(propName: string) : boolean {
 //return propName in new clsQxUserLoginNameEN();
 const instance = new clsQxUserLoginNameEN();
-return instance.hasOwnProperty(propName);
+return Object.prototype.hasOwnProperty.call(instance, propName);
 }
 }

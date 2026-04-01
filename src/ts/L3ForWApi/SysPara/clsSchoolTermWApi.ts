@@ -445,11 +445,11 @@ export async function SchoolTerm_func(
     console.error(strMsg);
     throw new Error(strMsg);
   }
-  if (clsSchoolTermEN.AttributeName.indexOf(strOutFldName) == -1) {
+  if (clsSchoolTermEN._AttributeName.indexOf(strOutFldName) == -1) {
     const strMsg = Format(
       '输出字段名:[{0}]不正确,不在输出字段范围之内!({1})',
       strOutFldName,
-      clsSchoolTermEN.AttributeName.join(','),
+      clsSchoolTermEN._AttributeName.join(','),
     );
     console.error(strMsg);
     throw new Error(strMsg);
@@ -3065,4 +3065,3 @@ export function SchoolTerm_GetObjFromJsonObj(objSchoolTermENS: clsSchoolTermEN):
   ObjectAssign(objSchoolTermENT, objSchoolTermENS);
   return objSchoolTermENT;
 }
-

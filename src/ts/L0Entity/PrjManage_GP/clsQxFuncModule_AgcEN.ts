@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxFuncModule_AgcEN
  * 表名:QxFuncModule_Agc(00140101)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:33
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:02:35
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:工程管理(PrjManage_GP)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsQxFuncModule_AgcEN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = "05"; //未知
-public static PrimaryTypeId = "01"; //关键字
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "QxFuncModule_Agc"; //当前表名,与该类相关的表名
-public static _KeyFldName= "FuncModuleAgcId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 11;
-public static AttributeName = ["funcModuleAgcId", "funcModuleName", "funcModuleEnName", "funcModuleNameSim", "qxPrjId", "orderNum", "useStateId", "updUser", "updDate", "memo", "synchDate"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = "05"; //未知
+public static readonly _PrimaryTypeId: string = "01"; //关键字
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "QxFuncModule_Agc"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "FuncModuleAgcId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 11;
+public static readonly _AttributeName = ["funcModuleAgcId", "funcModuleName", "funcModuleEnName", "funcModuleNameSim", "qxPrjId", "orderNum", "useStateId", "updUser", "updDate", "memo", "synchDate"];
 //以下是属性变量
 
 /**
@@ -52,7 +52,7 @@ private mstrFuncModuleEnName = "";    //模块英文名
 private mstrFuncModuleNameSim = "";    //模块名_Sim
 private mstrQxPrjId = "";    //项目Id
 private mintOrderNum = 0;    //排序号
-private mstrUseStateId = "";    //UseStateId
+private mstrUseStateId = "";    //使用状态Id
 private mstrUpdUser = "";    //修改用户
 private mstrUpdDate = "";    //修改日期
 private mstrMemo = "";    //备注
@@ -143,7 +143,7 @@ if (value  != undefined)
 }
 
 /**
- * UseStateId(说明:;字段类型:char;字段长度:4;是否可空:False)
+ * 使用状态Id(说明:;字段类型:char;字段长度:2;是否可空:False)
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsProperty)
 */
  public SetUseStateId (value: string)
@@ -337,7 +337,7 @@ public funcModuleEnName = "";    //模块英文名
 public funcModuleNameSim = "";    //模块名_Sim
 public qxPrjId = "";    //项目Id
 public orderNum = 0;    //排序号
-public useStateId = "";    //UseStateId
+public useStateId = "";    //使用状态Id
 public updUser = "";    //修改用户
 public updDate = "";    //修改日期
 public memo = "";    //备注
@@ -348,67 +348,67 @@ public synchDate = "";    //同步日期
  * 常量:"FuncModuleAgcId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_FuncModuleAgcId(): string {return "funcModuleAgcId";}    //功能模块Id
+ public static readonly con_FuncModuleAgcId = "funcModuleAgcId";    //功能模块Id
 
  /**
  * 常量:"FuncModuleName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_FuncModuleName(): string {return "funcModuleName";}    //模块名
+ public static readonly con_FuncModuleName = "funcModuleName";    //模块名
 
  /**
  * 常量:"FuncModuleEnName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_FuncModuleEnName(): string {return "funcModuleEnName";}    //模块英文名
+ public static readonly con_FuncModuleEnName = "funcModuleEnName";    //模块英文名
 
  /**
  * 常量:"FuncModuleNameSim"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_FuncModuleNameSim(): string {return "funcModuleNameSim";}    //模块名_Sim
+ public static readonly con_FuncModuleNameSim = "funcModuleNameSim";    //模块名_Sim
 
  /**
  * 常量:"QxPrjId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_QxPrjId(): string {return "qxPrjId";}    //项目Id
+ public static readonly con_QxPrjId = "qxPrjId";    //项目Id
 
  /**
  * 常量:"OrderNum"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_OrderNum(): string {return "orderNum";}    //排序号
+ public static readonly con_OrderNum = "orderNum";    //排序号
 
  /**
  * 常量:"UseStateId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UseStateId(): string {return "useStateId";}    //UseStateId
+ public static readonly con_UseStateId = "useStateId";    //使用状态Id
 
  /**
  * 常量:"UpdUser"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdUser(): string {return "updUser";}    //修改用户
+ public static readonly con_UpdUser = "updUser";    //修改用户
 
  /**
  * 常量:"UpdDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdDate(): string {return "updDate";}    //修改日期
+ public static readonly con_UpdDate = "updDate";    //修改日期
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 常量:"SynchDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_SynchDate(): string {return "synchDate";}    //同步日期
+ public static readonly con_SynchDate = "synchDate";    //同步日期
 
  /**
  * 设置条件字段值.
@@ -430,6 +430,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名
@@ -438,6 +439,6 @@ this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 public static hasProperty(propName: string) : boolean {
 //return propName in new clsQxFuncModule_AgcEN();
 const instance = new clsQxFuncModule_AgcEN();
-return instance.hasOwnProperty(propName);
+return Object.prototype.hasOwnProperty.call(instance, propName);
 }
 }

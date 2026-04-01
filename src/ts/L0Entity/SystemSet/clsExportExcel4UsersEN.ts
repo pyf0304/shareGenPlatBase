@@ -2,12 +2,12 @@
  /**
  * 类名:clsExportExcel4UsersEN
  * 表名:ExportExcel4Users(00140066)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:27
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:02:59
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:系统设置(SystemSet)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsExportExcel4UsersEN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = "05"; //未知
-public static PrimaryTypeId = "02"; //identity
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "ExportExcel4Users"; //当前表名,与该类相关的表名
-public static _KeyFldName= "mId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 11;
-public static AttributeName = ["mId", "idExportExcel4Users", "fieldName", "fieldCnName", "isExport", "orderNum", "updDate", "updUserId", "memo", "userId", "viewName"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = "05"; //未知
+public static readonly _PrimaryTypeId: string = "02"; //identity
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "ExportExcel4Users"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "mId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 11;
+public static readonly _AttributeName = ["mId", "id_ExportExcel4Users", "fieldName", "fieldCnName", "isExport", "orderNum", "updDate", "updUserId", "memo", "userId", "viewName"];
 //以下是属性变量
 
 /**
@@ -47,7 +47,7 @@ public static AttributeName = ["mId", "idExportExcel4Users", "fieldName", "field
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsPrivateVar)
 */
 private mlngmId = 0;    //流水号
-private mstrIdExportExcel4Users = "";    //导出Excel用户字段流水号
+private mstrId_ExportExcel4Users = "";    //导出Excel用户字段流水号
 private mstrFieldName = "";    //字段名
 private mstrFieldCnName = "";    //字段中文名称
 private mbolIsExport = false;    //是否导出
@@ -76,12 +76,12 @@ if (value  != undefined)
  * 导出Excel用户字段流水号(说明:;字段类型:char;字段长度:8;是否可空:True)
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsProperty)
 */
- public SetIdExportExcel4Users (value: string)
+ public SetId_ExportExcel4Users (value: string)
 {
 if (value  != undefined)
 {
- this.idExportExcel4Users = value;
-    this.hmProperty["idExportExcel4Users"] = true;
+ this.id_ExportExcel4Users = value;
+    this.hmProperty["id_ExportExcel4Users"] = true;
    this.sfUpdFldSetStr = this.updFldString;
 }
 }
@@ -226,8 +226,8 @@ switch (strFldName)
 {
 case clsExportExcel4UsersEN.con_mId:
 return this.mId;
-case clsExportExcel4UsersEN.con_IdExportExcel4Users:
-return this.idExportExcel4Users;
+case clsExportExcel4UsersEN.con_Id_ExportExcel4Users:
+return this.id_ExportExcel4Users;
 case clsExportExcel4UsersEN.con_FieldName:
 return this.fieldName;
 case clsExportExcel4UsersEN.con_FieldCnName:
@@ -274,9 +274,9 @@ case clsExportExcel4UsersEN.con_mId:
 this.mId = Number(strValue);
     this.hmProperty["mId"] = true;
 break;
-case clsExportExcel4UsersEN.con_IdExportExcel4Users:
-this.idExportExcel4Users = strValue;
-    this.hmProperty["idExportExcel4Users"] = true;
+case clsExportExcel4UsersEN.con_Id_ExportExcel4Users:
+this.id_ExportExcel4Users = strValue;
+    this.hmProperty["id_ExportExcel4Users"] = true;
 break;
 case clsExportExcel4UsersEN.con_FieldName:
 this.fieldName = strValue;
@@ -332,7 +332,7 @@ break;
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsPublicVar)
 */
 public mId = 0;    //流水号
-public idExportExcel4Users = "";    //导出Excel用户字段流水号
+public id_ExportExcel4Users = "";    //导出Excel用户字段流水号
 public fieldName = "";    //字段名
 public fieldCnName = "";    //字段中文名称
 public isExport = false;    //是否导出
@@ -348,67 +348,67 @@ public viewName = "";    //界面名称
  * 常量:"mId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_mId(): string {return "mId";}    //流水号
+ public static readonly con_mId = "mId";    //流水号
 
  /**
- * 常量:"IdExportExcel4Users"
+ * 常量:"Id_ExportExcel4Users"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IdExportExcel4Users(): string {return "idExportExcel4Users";}    //导出Excel用户字段流水号
+ public static readonly con_Id_ExportExcel4Users = "id_ExportExcel4Users";    //导出Excel用户字段流水号
 
  /**
  * 常量:"FieldName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_FieldName(): string {return "fieldName";}    //字段名
+ public static readonly con_FieldName = "fieldName";    //字段名
 
  /**
  * 常量:"FieldCnName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_FieldCnName(): string {return "fieldCnName";}    //字段中文名称
+ public static readonly con_FieldCnName = "fieldCnName";    //字段中文名称
 
  /**
  * 常量:"IsExport"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IsExport(): string {return "isExport";}    //是否导出
+ public static readonly con_IsExport = "isExport";    //是否导出
 
  /**
  * 常量:"OrderNum"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_OrderNum(): string {return "orderNum";}    //排序号
+ public static readonly con_OrderNum = "orderNum";    //排序号
 
  /**
  * 常量:"UpdDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdDate(): string {return "updDate";}    //修改日期
+ public static readonly con_UpdDate = "updDate";    //修改日期
 
  /**
  * 常量:"UpdUserId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdUserId(): string {return "updUserId";}    //修改用户Id
+ public static readonly con_UpdUserId = "updUserId";    //修改用户Id
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 常量:"UserId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserId(): string {return "userId";}    //用户ID
+ public static readonly con_UserId = "userId";    //用户ID
 
  /**
  * 常量:"ViewName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_ViewName(): string {return "viewName";}    //界面名称
+ public static readonly con_ViewName = "viewName";    //界面名称
 
  /**
  * 设置条件字段值.
@@ -430,6 +430,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名
@@ -438,6 +439,6 @@ this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 public static hasProperty(propName: string) : boolean {
 //return propName in new clsExportExcel4UsersEN();
 const instance = new clsExportExcel4UsersEN();
-return instance.hasOwnProperty(propName);
+return Object.prototype.hasOwnProperty.call(instance, propName);
 }
 }

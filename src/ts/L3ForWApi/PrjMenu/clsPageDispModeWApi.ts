@@ -226,9 +226,8 @@ export async function PageDispMode_GetObjByPageDispModeIdCache(
       return objPageDispMode;
     } else {
       if (bolTryAsyncOnce == true) {
-        const objPageDispModeConst = await PageDispMode_GetObjByPageDispModeIdAsync(
-          strPageDispModeId,
-        );
+        const objPageDispModeConst =
+          await PageDispMode_GetObjByPageDispModeIdAsync(strPageDispModeId);
         if (objPageDispModeConst != null) {
           PageDispMode_ReFreshThisCache();
           return objPageDispModeConst;
@@ -477,11 +476,11 @@ export async function PageDispMode_func(
     console.error(strMsg);
     throw new Error(strMsg);
   }
-  if (clsPageDispModeEN.AttributeName.indexOf(strOutFldName) == -1) {
+  if (clsPageDispModeEN._AttributeName.indexOf(strOutFldName) == -1) {
     const strMsg = Format(
       '输出字段名:[{0}]不正确,不在输出字段范围之内!({1})',
       strOutFldName,
-      clsPageDispModeEN.AttributeName.join(','),
+      clsPageDispModeEN._AttributeName.join(','),
     );
     console.error(strMsg);
     throw new Error(strMsg);
@@ -3316,4 +3315,3 @@ export function PageDispMode_GetObjFromJsonObj(
   ObjectAssign(objPageDispModeENT, objPageDispModeENS);
   return objPageDispModeENT;
 }
-

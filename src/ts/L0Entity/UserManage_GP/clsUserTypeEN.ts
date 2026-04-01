@@ -2,12 +2,12 @@
  /**
  * 类名:clsUserTypeEN
  * 表名:UserType(00140127)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:19
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:01:09
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsUserTypeEN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = "03"; //localStorage
-public static PrimaryTypeId = "01"; //关键字
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "UserType"; //当前表名,与该类相关的表名
-public static _KeyFldName= "UserTypeId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 5;
-public static AttributeName = ["userTypeId", "userTypeName", "userTypeNameSim", "userTypeENName", "memo"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = "03"; //localStorage
+public static readonly _PrimaryTypeId: string = "01"; //关键字
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "UserType"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "UserTypeId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 5;
+public static readonly _AttributeName = ["userTypeId", "userTypeName", "userTypeNameSim", "userTypeENName", "memo"];
 //以下是属性变量
 
 /**
@@ -216,31 +216,31 @@ public memo = "";    //备注
  * 常量:"UserTypeId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserTypeId(): string {return "userTypeId";}    //用户类型Id
+ public static readonly con_UserTypeId = "userTypeId";    //用户类型Id
 
  /**
  * 常量:"UserTypeName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserTypeName(): string {return "userTypeName";}    //用户类型名
+ public static readonly con_UserTypeName = "userTypeName";    //用户类型名
 
  /**
  * 常量:"UserTypeNameSim"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserTypeNameSim(): string {return "userTypeNameSim";}    //用户类型简称
+ public static readonly con_UserTypeNameSim = "userTypeNameSim";    //用户类型简称
 
  /**
  * 常量:"UserTypeENName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserTypeENName(): string {return "userTypeENName";}    //用户类型英文名
+ public static readonly con_UserTypeENName = "userTypeENName";    //用户类型英文名
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 设置条件字段值.
@@ -262,6 +262,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名
@@ -270,7 +271,7 @@ this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 public static hasProperty(propName: string) : boolean {
 //return propName in new clsUserTypeEN();
 const instance = new clsUserTypeEN();
-return instance.hasOwnProperty(propName);
+return Object.prototype.hasOwnProperty.call(instance, propName);
 }
 }
  /**

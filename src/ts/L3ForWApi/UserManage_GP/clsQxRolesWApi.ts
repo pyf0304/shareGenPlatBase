@@ -2,14 +2,14 @@
  /**
  * 类名:clsQxRolesWApi
  * 表名:QxRoles(00140014)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:27:56
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:00:17
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
  应用类型:Vue应用InCore-TS(30)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:WA_访问层(TS)(WA_Access,0155)
@@ -21,7 +21,7 @@
 /**
  * 角色(QxRoles)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2025年06月13日.
+* Created by pyf on 2026年04月01日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
@@ -38,8 +38,8 @@ import { clsQxRolesENEx } from "@/ts/L0Entity/UserManage_GP/clsQxRolesENEx";
 import { clsQxRolesEN } from "@/ts/L0Entity/UserManage_GP/clsQxRolesEN";
 import { UserType_func } from "@/ts/L3ForWApi/UserManage_GP/clsUserTypeWApi";
 import { clsUserTypeEN } from "@/ts/L0Entity/UserManage_GP/clsUserTypeEN";
-import { RoleType_func } from "@/ts/L3ForWApi/UserManage_GP/clsRoleTypeWApi";
-import { clsRoleTypeEN } from "@/ts/L0Entity/UserManage_GP/clsRoleTypeEN";
+import { QxRoleType_func } from "@/ts/L3ForWApi/UserManage_GP/clsQxRoleTypeWApi";
+import { clsQxRoleTypeEN } from "@/ts/L0Entity/UserManage_GP/clsQxRoleTypeEN";
 import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
 import { clsSysPara4WebApi, GetWebApiUrl_GP } from "@/ts/PubConfig/clsSysPara4WebApi";
 import { stuTopPara } from "@/ts/PubFun/stuTopPara";
@@ -244,7 +244,7 @@ return null;
  * @param objQxRoles:所给的对象
  * @returns 对象
 */
-export  async function QxRoles_UpdateObjInLstCache(objQxRoles: clsQxRolesEN,strQxPrjId: string) {
+export  async function QxRoles_UpdateObjInLstCache(objQxRoles: clsQxRolesEN ,strQxPrjId: string) {
 const strThisFuncName = "UpdateObjInLstCache";
 try
 {
@@ -270,7 +270,7 @@ alert(strMsg);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -283,7 +283,7 @@ return a.roleId.localeCompare(b.roleId);
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -298,7 +298,7 @@ else return a.roleName.localeCompare(b.roleName);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -462,7 +462,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxRoles]中不存在!(in ${ qxRoles
  * @param strRoleId:所给的关键字
  * @returns 对象
 */
-export  async function QxRoles_GetNameByRoleIdCache(strRoleId: string,strQxPrjId: string) {
+export  async function QxRoles_GetNameByRoleIdCache(strRoleId: string ,strQxPrjId: string) {
 
 if (IsNullOrEmpty(strRoleId) == true)
 {
@@ -505,7 +505,7 @@ return "";
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -575,7 +575,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxRoles]中不存在!(in ${ qxRoles
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_func)
  * @param strInFldName:输入字段名
  * @param strOutFldName:输出字段名
@@ -607,10 +607,10 @@ const strMsg = Format("输入字段名:[{0}]不正确!", strInFldName);
 console.error(strMsg);
 throw new Error(strMsg);
 }
-if (clsQxRolesEN.AttributeName.indexOf(strOutFldName) == -1)
+if (clsQxRolesEN._AttributeName.indexOf(strOutFldName) == -1)
 {
 const strMsg = Format("输出字段名:[{0}]不正确,不在输出字段范围之内!({1})",
-strOutFldName, clsQxRolesEN.AttributeName.join(','));
+strOutFldName, clsQxRolesEN._AttributeName.join(','));
 console.error(strMsg);
 throw new Error(strMsg);
 }
@@ -628,7 +628,7 @@ return objQxRoles.GetFldValue(strOutFldName).toString();
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_funcKey)
  * @param strInFldName:输入字段名
  * @param strInValue:输入字段值
@@ -975,23 +975,23 @@ throw(error.statusText);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_ClientCache)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function QxRoles_GetObjLstClientCache(strQxPrjId: string)
+export  async function QxRoles_GetObjLstClientCache(strQxPrjId: string) 
 {
 const strThisFuncName = "GetObjLstClientCache";
 //初始化列表缓存
 let strWhereCond = "1=1";
-if (IsNullOrEmpty(clsQxRolesEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsQxRolesEN._WhereFormat) == false)
 {
-strWhereCond = Format(clsQxRolesEN.WhereFormat, strQxPrjId);
+strWhereCond = Format(clsQxRolesEN._WhereFormat, strQxPrjId);
 }
 else
 {
 strWhereCond = Format("QxPrjId='{0}'", strQxPrjId);
 }
 const strKey = Format("{0}_{1}", clsQxRolesEN._CurrTabName, strQxPrjId);
-if (IsNullOrEmpty(clsQxRolesEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsQxRolesEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsQxRolesEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsQxRolesEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -1031,18 +1031,18 @@ export  async function QxRoles_GetObjLstlocalStorage(strQxPrjId: string)
 const strThisFuncName = "GetObjLstlocalStorage";
 //初始化列表缓存
 let strWhereCond = "1=1";
-if (IsNullOrEmpty(clsQxRolesEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsQxRolesEN._WhereFormat) == false)
 {
-strWhereCond = Format(clsQxRolesEN.WhereFormat, strQxPrjId);
+strWhereCond = Format(clsQxRolesEN._WhereFormat, strQxPrjId);
 }
 else
 {
 strWhereCond = Format("{0}='{1}'",clsQxRolesEN.con_QxPrjId, strQxPrjId);
 }
 const strKey = Format("{0}_{1}", clsQxRolesEN._CurrTabName, strQxPrjId);
-if (IsNullOrEmpty(clsQxRolesEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsQxRolesEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsQxRolesEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsQxRolesEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -1078,7 +1078,7 @@ throw (strMsg);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_localStorage_PureCache)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function QxRoles_GetObjLstlocalStoragePureCache(strQxPrjId: string)
+export  async function QxRoles_GetObjLstlocalStoragePureCache(strQxPrjId: string) 
 {
 //初始化列表缓存
 const strKey = Format("{0}_{1}", clsQxRolesEN._CurrTabName, strQxPrjId);
@@ -1176,18 +1176,18 @@ export  async function QxRoles_GetObjLstsessionStorage(strQxPrjId: string)
 const strThisFuncName = "GetObjLstsessionStorage";
 //初始化列表缓存
 let strWhereCond = "1=1";
-if (IsNullOrEmpty(clsQxRolesEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsQxRolesEN._WhereFormat) == false)
 {
-strWhereCond = Format(clsQxRolesEN.WhereFormat, strQxPrjId);
+strWhereCond = Format(clsQxRolesEN._WhereFormat, strQxPrjId);
 }
 else
 {
 strWhereCond = Format("{0}='{1}'",clsQxRolesEN.con_QxPrjId, strQxPrjId);
 }
 const strKey = Format("{0}_{1}", clsQxRolesEN._CurrTabName, strQxPrjId);
-if (IsNullOrEmpty(clsQxRolesEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsQxRolesEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsQxRolesEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsQxRolesEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -1265,7 +1265,7 @@ console.error(strMsg);
 throw (strMsg);
 }
 let arrQxRolesObjLstCache;
-switch (clsQxRolesEN.CacheModeId)
+switch (clsQxRolesEN._CacheModeId)
 {
 case "04"://sessionStorage
 arrQxRolesObjLstCache = await QxRoles_GetObjLstsessionStorage(strQxPrjId);
@@ -1288,11 +1288,11 @@ return arrQxRolesObjLstCache;
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_PureCacheAsync)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function QxRoles_GetObjLstPureCache(strQxPrjId: string)
+export  async function QxRoles_GetObjLstPureCache(strQxPrjId: string) 
 {
 //const strThisFuncName = "GetObjLstPureCache";
 let arrQxRolesObjLstCache;
-switch (clsQxRolesEN.CacheModeId)
+switch (clsQxRolesEN._CacheModeId)
 {
 case "04"://sessionStorage
 arrQxRolesObjLstCache = await QxRoles_GetObjLstsessionStoragePureCache(strQxPrjId);
@@ -1943,7 +1943,7 @@ await QxRoles_FuncMapByFldName(strFldName, newObj);
 const bolIsFuncMap = isFuncMapCache[isFuncMapKey];
 if (
 IsNullOrEmpty(objSortInfo.SortFld) == false &&
-clsQxRolesEN.AttributeName.indexOf(objSortInfo.SortFld) == -1 &&
+clsQxRolesEN._AttributeName.indexOf(objSortInfo.SortFld) == -1 &&
 (bolIsFuncMap == false || bolIsFuncMap == undefined)
 )
 {
@@ -2077,7 +2077,7 @@ alert(strMsg);
 /**
  * 根据扩展字段名去调用相应的映射函数
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMapByFldName)
  * @param strFldName:扩展字段名
  * @param  obj{0}Ex:需要转换的对象
@@ -2089,7 +2089,7 @@ const strThisFuncName = QxRoles_FuncMapByFldName.name;
 strFldName = strFldName.replace('|Ex', '');
 let strMsg = "";
 //如果是本表中字段,不需要映射
-const arrFldName = clsQxRolesEN.AttributeName;
+const arrFldName = clsQxRolesEN._AttributeName;
 if (arrFldName.indexOf(strFldName) > -1) return;
 //针对扩展字段进行映射
 switch (strFldName)
@@ -2110,7 +2110,7 @@ console.error(strMsg);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByExKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -2225,7 +2225,7 @@ try
 {
 if (IsNullOrEmpty(objQxRoles.roleTypeName) == true){
  const RoleTypeRoleTypeId = objQxRoles.roleTypeId;
- const RoleTypeRoleTypeName = await RoleType_func(clsRoleTypeEN.con_RoleTypeId, clsRoleTypeEN.con_RoleTypeName, RoleTypeRoleTypeId );
+ const RoleTypeRoleTypeName = await QxRoleType_func(clsQxRoleTypeEN.con_RoleTypeId, clsQxRoleTypeEN.con_RoleTypeName, RoleTypeRoleTypeId );
  objQxRoles.roleTypeName = RoleTypeRoleTypeName;
 }
 }
@@ -2419,7 +2419,7 @@ throw(error.statusText);
  /** 添加新记录,保存函数
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_AddNewObjSave)
  **/
-export  async function QxRoles_AddNewObjSave(objQxRolesEN: clsQxRolesEN): Promise<AddRecordResult>{
+export  async function QxRoles_AddNewObjSave(objQxRolesEN: clsQxRolesEN ): Promise<AddRecordResult>{
 const strThisFuncName = 'AddNewObjSave';
 try
 {
@@ -2792,7 +2792,7 @@ throw(error.statusText);
  * @param objstrRoleIdCond:条件对象
  * @returns 对象列表子集
 */
-export  async function QxRoles_IsExistRecordCache(objQxRolesCond: ConditionCollection,strQxPrjId: string) {
+export  async function QxRoles_IsExistRecordCache(objQxRolesCond: ConditionCollection ,strQxPrjId: string) {
 const strThisFuncName = "IsExistRecordCache";
 const arrQxRolesObjLstCache = await QxRoles_GetObjLstCache(strQxPrjId);
 if (arrQxRolesObjLstCache == null) return false;
@@ -3327,15 +3327,16 @@ return strServiceUrl;
 export  function QxRoles_ReFreshCache(strQxPrjId: string):void
 {
 
+
 if (IsNullOrEmpty(strQxPrjId) == true)
 {
-  const strMsg = Format("参数:[strQxPrjId]不能为空!(In clsQxRolesWApi.clsQxRolesWApi.ReFreshCache)");
+  const strMsg = Format("参数:[strQxPrjId]不能为空！(In clsQxRolesWApi.clsQxRolesWApi.ReFreshCache)");
 console.error(strMsg);
  throw (strMsg);
 }
 if (strQxPrjId.length != 4)
 {
-const strMsg = Format("缓存分类变量:[strQxPrjId]的长度:[{0}]不正确!(clsQxRolesWApi.clsQxRolesWApi.ReFreshCache)", strQxPrjId.length);
+const strMsg = Format("缓存分类变量:[strQxPrjId]的长度:[{0}]不正确！(clsQxRolesWApi.clsQxRolesWApi.ReFreshCache)", strQxPrjId.length);
 console.error(strMsg);
 throw (strMsg);
 }
@@ -3344,7 +3345,7 @@ throw (strMsg);
 console.trace(strMsg);
 // 静态的对象列表,用于清空相关缓存,针对记录较少,作为参数表可以使用
 const strKey = Format("{0}_{1}", clsQxRolesEN._CurrTabName, strQxPrjId);
-switch (clsQxRolesEN.CacheModeId)
+switch (clsQxRolesEN._CacheModeId)
 {
 case "04"://sessionStorage
 sessionStorage.removeItem(strKey);
@@ -3369,22 +3370,23 @@ clsQxRolesEN._RefreshTimeLst.push(clsDateTime.getTodayDateTimeStr(0));
 export  function QxRoles_ReFreshThisCache(strQxPrjId: string):void
 {
 
+
 if (IsNullOrEmpty(strQxPrjId) == true)
 {
-  const strMsg = Format("参数:[strQxPrjId]不能为空!(In clsQxRolesWApi.QxRoles_ReFreshThisCache)");
+  const strMsg = Format("参数:[strQxPrjId]不能为空！(In clsQxRolesWApi.QxRoles_ReFreshThisCache)");
 console.error(strMsg);
  throw (strMsg);
 }
 if (strQxPrjId.length != 4)
 {
-const strMsg = Format("缓存分类变量:[strQxPrjId]的长度:[{0}]不正确!(clsQxRolesWApi.QxRoles_ReFreshThisCache)", strQxPrjId.length);
+const strMsg = Format("缓存分类变量:[strQxPrjId]的长度:[{0}]不正确！(clsQxRolesWApi.QxRoles_ReFreshThisCache)", strQxPrjId.length);
 console.error(strMsg);
 throw (strMsg);
 }
 if (clsSysPara4WebApi.spSetRefreshCacheOn == true)
 {
 const strKey = Format("{0}_{1}", clsQxRolesEN._CurrTabName, strQxPrjId);
-switch (clsQxRolesEN.CacheModeId)
+switch (clsQxRolesEN._CacheModeId)
 {
 case "04"://sessionStorage
 sessionStorage.removeItem(strKey);
@@ -3856,7 +3858,7 @@ if (IsNullOrEmpty(pobjQxRolesEN.qxPrjId) == false && pobjQxRolesEN.qxPrjId != '[
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -3881,7 +3883,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -3907,7 +3909,7 @@ return arrQxRolesObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrQxRolesObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -3926,7 +3928,7 @@ return arrQxRolesObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象

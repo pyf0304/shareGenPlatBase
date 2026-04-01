@@ -170,7 +170,7 @@ export function RoleTypeEx_FuncMapByFldName(strFldName: string, objRoleTypeEx: c
   strFldName = strFldName.replace('|Ex', '');
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsRoleTypeEN.AttributeName;
+  const arrFldName = clsRoleTypeEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

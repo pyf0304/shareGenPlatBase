@@ -106,7 +106,7 @@ export async function QxFuncModuleEx_GetObjExLstByPagerAsync(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsQxFuncModuleEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsQxFuncModuleEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrQxFuncModuleExObjLst) {
       await QxFuncModuleEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -186,7 +186,7 @@ export function QxFuncModuleEx_FuncMapByFldName(
   console.log(objQxFuncModuleEx);
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsQxFuncModuleEN.AttributeName;
+  const arrFldName = clsQxFuncModuleEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

@@ -2,14 +2,14 @@
  /**
  * 类名:clsExportExcel4UsersWApi
  * 表名:ExportExcel4Users(00140066)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:27
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:03:00
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
  应用类型:Vue应用InCore-TS(30)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:系统设置(SystemSet)
  * 框架-层名:WA_访问层(TS)(WA_Access,0155)
@@ -21,21 +21,19 @@
 /**
  * 导出Excel用户字段(ExportExcel4Users)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2025年04月13日.
+* Created by pyf on 2026年04月01日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
 import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
 import { Storage } from '@/utils/Storage';
-import { ConditionCollection } from "@/ts/PubFun/ConditionCollection";
+import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
 import { GetStrLen,tzDataType,Format,IsNullOrEmpty } from "@/ts/PubFun/clsString";
 import { clsExportExcel4UsersEN } from "@/ts/L0Entity/SystemSet/clsExportExcel4UsersEN";
 import { GetExceptionStr, myShowErrorMsg, ObjectAssign } from "@/ts/PubFun/clsCommFunc4Web";
-import { AddRecordResult } from "@/ts/PubFun/AddRecordResult";
 import { clsSysPara4WebApi, GetWebApiUrl_GP } from "@/ts/PubConfig/clsSysPara4WebApi";
 import { stuTopPara } from "@/ts/PubFun/stuTopPara";
 import { stuRangePara } from "@/ts/PubFun/stuRangePara";
-import { stuPagerPara } from "@/ts/PubFun/stuPagerPara";
 
  export const exportExcel4Users_Controller = "ExportExcel4UsersApi";
  export const exportExcel4Users_ConstructorName = "exportExcel4Users";
@@ -120,7 +118,7 @@ throw(error.statusText);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -133,7 +131,7 @@ return a.mId-b.mId;
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -141,14 +139,14 @@ return a.mId-b.mId;
 */
 export  function ExportExcel4Users_SortFunDefa2Fld(a:clsExportExcel4UsersEN , b:clsExportExcel4UsersEN): number 
 {
-if (a.idExportExcel4Users == b.idExportExcel4Users) return a.fieldName.localeCompare(b.fieldName);
-else return a.idExportExcel4Users.localeCompare(b.idExportExcel4Users);
+if (a.id_ExportExcel4Users == b.id_ExportExcel4Users) return a.fieldName.localeCompare(b.fieldName);
+else return a.id_ExportExcel4Users.localeCompare(b.id_ExportExcel4Users);
 }
 
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -166,9 +164,9 @@ case clsExportExcel4UsersEN.con_mId:
 return (a: clsExportExcel4UsersEN, b: clsExportExcel4UsersEN) => {
 return a.mId-b.mId;
 }
-case clsExportExcel4UsersEN.con_IdExportExcel4Users:
+case clsExportExcel4UsersEN.con_Id_ExportExcel4Users:
 return (a: clsExportExcel4UsersEN, b: clsExportExcel4UsersEN) => {
-return a.idExportExcel4Users.localeCompare(b.idExportExcel4Users);
+return a.id_ExportExcel4Users.localeCompare(b.id_ExportExcel4Users);
 }
 case clsExportExcel4UsersEN.con_FieldName:
 return (a: clsExportExcel4UsersEN, b: clsExportExcel4UsersEN) => {
@@ -231,9 +229,9 @@ case clsExportExcel4UsersEN.con_mId:
 return (a: clsExportExcel4UsersEN, b: clsExportExcel4UsersEN) => {
 return b.mId-a.mId;
 }
-case clsExportExcel4UsersEN.con_IdExportExcel4Users:
+case clsExportExcel4UsersEN.con_Id_ExportExcel4Users:
 return (a: clsExportExcel4UsersEN, b: clsExportExcel4UsersEN) => {
-return b.idExportExcel4Users.localeCompare(a.idExportExcel4Users);
+return b.id_ExportExcel4Users.localeCompare(a.id_ExportExcel4Users);
 }
 case clsExportExcel4UsersEN.con_FieldName:
 return (a: clsExportExcel4UsersEN, b: clsExportExcel4UsersEN) => {
@@ -294,7 +292,7 @@ strMsg = `字段名:[${strKey}]在表对象:[ExportExcel4Users]中不存在!(in 
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -310,9 +308,9 @@ case clsExportExcel4UsersEN.con_mId:
 return (obj: clsExportExcel4UsersEN) => {
 return obj.mId === value;
 }
-case clsExportExcel4UsersEN.con_IdExportExcel4Users:
+case clsExportExcel4UsersEN.con_Id_ExportExcel4Users:
 return (obj: clsExportExcel4UsersEN) => {
-return obj.idExportExcel4Users === value;
+return obj.id_ExportExcel4Users === value;
 }
 case clsExportExcel4UsersEN.con_FieldName:
 return (obj: clsExportExcel4UsersEN) => {
@@ -884,73 +882,7 @@ throw(error.statusText);
 }
 }
 //该表没有使用Cache,不需要生成[GetObjLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerCache)
-
- /**
- * 根据分页条件获取相应的记录对象列表,只获取一页
- * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
- * @param objPagerPara:分页获取对象列表的参数对象
- * @returns 获取的相应记录对象列表
- **/
-export  async function ExportExcel4Users_GetObjLstByPagerAsync(objPagerPara: stuPagerPara): Promise<Array<clsExportExcel4UsersEN>>  
-{
-const strThisFuncName = "GetObjLstByPagerAsync";
-if (objPagerPara.pageIndex == 0) return new Array<clsExportExcel4UsersEN>();
-const strAction = "GetObjLstByPager";
-const strUrl = GetWebApiUrl_GP(exportExcel4Users_Controller, strAction);
-
-const token = Storage.get(ACCESS_TOKEN_KEY);
-//console.error('token:', token);
-const config = {
-headers: {
-Authorization: `${ token}`,
-},
-};
-try
-{
-const response = await axios.post(strUrl, objPagerPara, config);
-const data = response.data;
-if (data.errorId == 0)
-{
-const returnObjLst = data.returnObjLst;
-if (returnObjLst == null)
-{
-const strNullInfo = Format("获取数据为null, 请注意!(in {0}.{1})", exportExcel4Users_ConstructorName, strThisFuncName);
-console.error(strNullInfo);
-throw(strNullInfo);
-}
-//console.log(returnObjLst);
-const arrObjLst = ExportExcel4Users_GetObjLstByJSONObjLst(returnObjLst);
-return arrObjLst;
-}
-else
-{
-console.error(data.errorMsg);
-throw(data.errorMsg);
-}
-} catch (error: any) {
-console.error(error);
-if (error.statusText == undefined)
-{
-throw error;
-}
-if (error.statusText == "error")
-{
-const strInfo = Format("网络错误!访问地址:{0}不成功!(in {1}.{2})", strUrl, exportExcel4Users_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else if (error.statusText == "Not Found")
-{
-const strInfo = Format("网络错误!访问地址:{0}可能不存在!(in {1}.{2})", strUrl, exportExcel4Users_ConstructorName, strThisFuncName);
-console.error(strInfo);
-throw(strInfo);
-}
-else
-{
-throw(error.statusText);
-}
-}
-}
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
 
  /**
  * 调用WebApi来删除记录,根据关键字来删除记录
@@ -1066,6 +998,11 @@ throw(error.statusText);
 }
 }
 }
+//该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjExLstByPagerCache)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_CopyToEx)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMapByFldName)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByExKey)
+//该表没有应用在界面视图的列表区,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMap)
 
  /**
  * 根据条件删除记录
@@ -1188,7 +1125,7 @@ throw(error.statusText);
  /** 添加新记录,保存函数
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_AddNewObjSave)
  **/
-export  async function ExportExcel4Users_AddNewObjSave(objExportExcel4UsersEN: clsExportExcel4UsersEN): Promise<AddRecordResult>{
+export  async function ExportExcel4Users_AddNewObjSave(objExportExcel4UsersEN: clsExportExcel4UsersEN ): Promise<AddRecordResult>{
 const strThisFuncName = 'AddNewObjSave';
 try
 {
@@ -1835,7 +1772,7 @@ return strServiceUrl;
 export  function ExportExcel4Users_CheckPropertyNew(pobjExportExcel4UsersEN: clsExportExcel4UsersEN)
 {
 //检查字段非空, 即数据表要求非常非空的字段,不能为空!
-if (IsNullOrEmpty(pobjExportExcel4UsersEN.idExportExcel4Users) === true )
+if (IsNullOrEmpty(pobjExportExcel4UsersEN.id_ExportExcel4Users) === true )
 {
  throw new Error(`(errid:Watl000411)字段[导出Excel用户字段流水号]不能为空(In 导出Excel用户字段)!(clsExportExcel4UsersBL:CheckPropertyNew0)`);
 }
@@ -1858,9 +1795,9 @@ if (null === pobjExportExcel4UsersEN.orderNum
  throw new Error(`(errid:Watl000411)字段[排序号]不能为空(In 导出Excel用户字段)!(clsExportExcel4UsersBL:CheckPropertyNew0)`);
 }
 //检查字段长度, 若字符型字段长度超出规定的长度,即非法!
-if (IsNullOrEmpty(pobjExportExcel4UsersEN.idExportExcel4Users) == false && GetStrLen(pobjExportExcel4UsersEN.idExportExcel4Users) > 8)
+if (IsNullOrEmpty(pobjExportExcel4UsersEN.id_ExportExcel4Users) == false && GetStrLen(pobjExportExcel4UsersEN.id_ExportExcel4Users) > 8)
 {
- throw new Error(`(errid:Watl000413)字段[导出Excel用户字段流水号(idExportExcel4Users)]的长度不能超过8(In 导出Excel用户字段(ExportExcel4Users))!值:${pobjExportExcel4UsersEN.idExportExcel4Users}(clsExportExcel4UsersBL:CheckPropertyNew)`);
+ throw new Error(`(errid:Watl000413)字段[导出Excel用户字段流水号(id_ExportExcel4Users)]的长度不能超过8(In 导出Excel用户字段(ExportExcel4Users))!值:${pobjExportExcel4UsersEN.id_ExportExcel4Users}(clsExportExcel4UsersBL:CheckPropertyNew)`);
 }
 if (IsNullOrEmpty(pobjExportExcel4UsersEN.fieldName) == false && GetStrLen(pobjExportExcel4UsersEN.fieldName) > 50)
 {
@@ -1895,9 +1832,9 @@ if (null != pobjExportExcel4UsersEN.mId && undefined !== pobjExportExcel4UsersEN
 {
  throw new Error(`(errid:Watl000414)字段[流水号(mId)]的值:[${pobjExportExcel4UsersEN.mId}], 非法,应该为数值型(In 导出Excel用户字段(ExportExcel4Users))!(clsExportExcel4UsersBL:CheckPropertyNew0)`);
 }
-if (IsNullOrEmpty(pobjExportExcel4UsersEN.idExportExcel4Users) == false && undefined !== pobjExportExcel4UsersEN.idExportExcel4Users && tzDataType.isString(pobjExportExcel4UsersEN.idExportExcel4Users) === false)
+if (IsNullOrEmpty(pobjExportExcel4UsersEN.id_ExportExcel4Users) == false && undefined !== pobjExportExcel4UsersEN.id_ExportExcel4Users && tzDataType.isString(pobjExportExcel4UsersEN.id_ExportExcel4Users) === false)
 {
- throw new Error(`(errid:Watl000414)字段[导出Excel用户字段流水号(idExportExcel4Users)]的值:[${pobjExportExcel4UsersEN.idExportExcel4Users}], 非法,应该为字符型(In 导出Excel用户字段(ExportExcel4Users))!(clsExportExcel4UsersBL:CheckPropertyNew0)`);
+ throw new Error(`(errid:Watl000414)字段[导出Excel用户字段流水号(id_ExportExcel4Users)]的值:[${pobjExportExcel4UsersEN.id_ExportExcel4Users}], 非法,应该为字符型(In 导出Excel用户字段(ExportExcel4Users))!(clsExportExcel4UsersBL:CheckPropertyNew0)`);
 }
 if (IsNullOrEmpty(pobjExportExcel4UsersEN.fieldName) == false && undefined !== pobjExportExcel4UsersEN.fieldName && tzDataType.isString(pobjExportExcel4UsersEN.fieldName) === false)
 {
@@ -1946,9 +1883,9 @@ if (IsNullOrEmpty(pobjExportExcel4UsersEN.viewName) == false && undefined !== po
 export  function ExportExcel4Users_CheckProperty4Update(pobjExportExcel4UsersEN: clsExportExcel4UsersEN)
 {
 //检查字段长度, 若字符型字段长度超出规定的长度,即非法!
-if (IsNullOrEmpty(pobjExportExcel4UsersEN.idExportExcel4Users) == false && GetStrLen(pobjExportExcel4UsersEN.idExportExcel4Users) > 8)
+if (IsNullOrEmpty(pobjExportExcel4UsersEN.id_ExportExcel4Users) == false && GetStrLen(pobjExportExcel4UsersEN.id_ExportExcel4Users) > 8)
 {
- throw new Error(`(errid:Watl000416)字段[导出Excel用户字段流水号(idExportExcel4Users)]的长度不能超过8(In 导出Excel用户字段(ExportExcel4Users))!值:${pobjExportExcel4UsersEN.idExportExcel4Users}(clsExportExcel4UsersBL:CheckProperty4Update)`);
+ throw new Error(`(errid:Watl000416)字段[导出Excel用户字段流水号(id_ExportExcel4Users)]的长度不能超过8(In 导出Excel用户字段(ExportExcel4Users))!值:${pobjExportExcel4UsersEN.id_ExportExcel4Users}(clsExportExcel4UsersBL:CheckProperty4Update)`);
 }
 if (IsNullOrEmpty(pobjExportExcel4UsersEN.fieldName) == false && GetStrLen(pobjExportExcel4UsersEN.fieldName) > 50)
 {
@@ -1983,9 +1920,9 @@ if (null != pobjExportExcel4UsersEN.mId && undefined !== pobjExportExcel4UsersEN
 {
  throw new Error(`(errid:Watl000417)字段[流水号(mId)]的值:[${pobjExportExcel4UsersEN.mId}], 非法,应该为数值型(In 导出Excel用户字段(ExportExcel4Users))!(clsExportExcel4UsersBL:CheckProperty4Update)`);
 }
-if (IsNullOrEmpty(pobjExportExcel4UsersEN.idExportExcel4Users) == false && undefined !== pobjExportExcel4UsersEN.idExportExcel4Users && tzDataType.isString(pobjExportExcel4UsersEN.idExportExcel4Users) === false)
+if (IsNullOrEmpty(pobjExportExcel4UsersEN.id_ExportExcel4Users) == false && undefined !== pobjExportExcel4UsersEN.id_ExportExcel4Users && tzDataType.isString(pobjExportExcel4UsersEN.id_ExportExcel4Users) === false)
 {
- throw new Error(`(errid:Watl000417)字段[导出Excel用户字段流水号(idExportExcel4Users)]的值:[${pobjExportExcel4UsersEN.idExportExcel4Users}], 非法,应该为字符型(In 导出Excel用户字段(ExportExcel4Users))!(clsExportExcel4UsersBL:CheckProperty4Update)`);
+ throw new Error(`(errid:Watl000417)字段[导出Excel用户字段流水号(id_ExportExcel4Users)]的值:[${pobjExportExcel4UsersEN.id_ExportExcel4Users}], 非法,应该为字符型(In 导出Excel用户字段(ExportExcel4Users))!(clsExportExcel4UsersBL:CheckProperty4Update)`);
 }
 if (IsNullOrEmpty(pobjExportExcel4UsersEN.fieldName) == false && undefined !== pobjExportExcel4UsersEN.fieldName && tzDataType.isString(pobjExportExcel4UsersEN.fieldName) === false)
 {
@@ -2036,7 +1973,7 @@ if (null === pobjExportExcel4UsersEN.mId
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -2061,7 +1998,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -2087,7 +2024,7 @@ return arrExportExcel4UsersObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrExportExcel4UsersObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -2106,7 +2043,7 @@ return arrExportExcel4UsersObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-04-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -2145,10 +2082,10 @@ if (Object.prototype.hasOwnProperty.call(objExportExcel4UsersCond.dicFldComparis
 const strComparisonOpmId:string = objExportExcel4UsersCond.dicFldComparisonOp[clsExportExcel4UsersEN.con_mId];
 strWhereCond += Format(" And {0} {2} {1}", clsExportExcel4UsersEN.con_mId, objExportExcel4UsersCond.mId, strComparisonOpmId);
 }
-if (Object.prototype.hasOwnProperty.call(objExportExcel4UsersCond.dicFldComparisonOp, clsExportExcel4UsersEN.con_IdExportExcel4Users) == true)
+if (Object.prototype.hasOwnProperty.call(objExportExcel4UsersCond.dicFldComparisonOp, clsExportExcel4UsersEN.con_Id_ExportExcel4Users) == true)
 {
-const strComparisonOpIdExportExcel4Users:string = objExportExcel4UsersCond.dicFldComparisonOp[clsExportExcel4UsersEN.con_IdExportExcel4Users];
-strWhereCond += Format(" And {0} {2} '{1}'", clsExportExcel4UsersEN.con_IdExportExcel4Users, objExportExcel4UsersCond.idExportExcel4Users, strComparisonOpIdExportExcel4Users);
+const strComparisonOpId_ExportExcel4Users:string = objExportExcel4UsersCond.dicFldComparisonOp[clsExportExcel4UsersEN.con_Id_ExportExcel4Users];
+strWhereCond += Format(" And {0} {2} '{1}'", clsExportExcel4UsersEN.con_Id_ExportExcel4Users, objExportExcel4UsersCond.id_ExportExcel4Users, strComparisonOpId_ExportExcel4Users);
 }
 if (Object.prototype.hasOwnProperty.call(objExportExcel4UsersCond.dicFldComparisonOp, clsExportExcel4UsersEN.con_FieldName) == true)
 {
@@ -2207,14 +2144,14 @@ strWhereCond += Format(" And {0} {2} '{1}'", clsExportExcel4UsersEN.con_ViewName
  /**
  *获取唯一性条件串(Uniqueness)--ExportExcel4Users(导出Excel用户字段),根据唯一约束条件来生成
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_GetUniquenessConditionString)
- * @param strIdExportExcel4Users: 导出Excel用户字段流水号(要求唯一的字段)
+ * @param strId_ExportExcel4Users: 导出Excel用户字段流水号(要求唯一的字段)
  * @param strFieldName: 字段名(要求唯一的字段)
  * @returns 条件串(strWhereCond)
  **/
 export  function ExportExcel4Users_GetUniCondStr(objExportExcel4UsersEN: clsExportExcel4UsersEN ):string
 {
 let strWhereCond = " 1 = 1 ";
- strWhereCond +=  Format(" and IdExportExcel4Users = '{0}'", objExportExcel4UsersEN.idExportExcel4Users);
+ strWhereCond +=  Format(" and Id_ExportExcel4Users = '{0}'", objExportExcel4UsersEN.id_ExportExcel4Users);
  strWhereCond +=  Format(" and FieldName = '{0}'", objExportExcel4UsersEN.fieldName);
  return strWhereCond;
 }
@@ -2222,7 +2159,7 @@ let strWhereCond = " 1 = 1 ";
  /**
  *获取唯一性条件串(Uniqueness)--ExportExcel4Users(导出Excel用户字段),根据唯一约束条件来生成
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_GetUniquenessConditionString4Update)
- * @param strIdExportExcel4Users: 导出Excel用户字段流水号(要求唯一的字段)
+ * @param strId_ExportExcel4Users: 导出Excel用户字段流水号(要求唯一的字段)
  * @param strFieldName: 字段名(要求唯一的字段)
  * @returns 条件串(strWhereCond)
  **/
@@ -2230,7 +2167,7 @@ export  function ExportExcel4Users_GetUniCondStr4Update(objExportExcel4UsersEN: 
 {
 let strWhereCond = " 1 = 1 ";
  strWhereCond += Format(" and mId <> '{0}'", objExportExcel4UsersEN.mId);
- strWhereCond +=  Format(" and IdExportExcel4Users = '{0}'", objExportExcel4UsersEN.idExportExcel4Users);
+ strWhereCond +=  Format(" and Id_ExportExcel4Users = '{0}'", objExportExcel4UsersEN.id_ExportExcel4Users);
  strWhereCond +=  Format(" and FieldName = '{0}'", objExportExcel4UsersEN.fieldName);
  return strWhereCond;
 }

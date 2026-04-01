@@ -232,7 +232,7 @@
             case '确认添加':
               //这是一个单表的插入的代码,由于逻辑层太简单,
               //就把逻辑层合并到控制层,
-              if (['02', '03', '06'].indexOf(clsQxUserRoleRelationEN.PrimaryTypeId) > -1) {
+              if (['02', '03', '06'].indexOf(clsQxUserRoleRelationEN._PrimaryTypeId) > -1) {
                 const returnKeyId = await objPage_Edit.value.AddNewRecordWithReturnKeySave();
                 if (returnKeyId != 0) {
                   hideDialog();

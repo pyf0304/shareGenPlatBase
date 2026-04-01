@@ -168,9 +168,8 @@ export async function vXzMajorDirection_GetObjByMajorDirectionIdlocalStorage(
     return objvXzMajorDirectionCache;
   }
   try {
-    const objvXzMajorDirection = await vXzMajorDirection_GetObjByMajorDirectionIdAsync(
-      strMajorDirectionId,
-    );
+    const objvXzMajorDirection =
+      await vXzMajorDirection_GetObjByMajorDirectionIdAsync(strMajorDirectionId);
     if (objvXzMajorDirection != null) {
       localStorage.setItem(strKey, JSON.stringify(objvXzMajorDirection));
       const strInfo = Format('Key:[${ strKey}]的缓存已经建立!');
@@ -230,9 +229,8 @@ export async function vXzMajorDirection_GetObjByMajorDirectionIdCache(
       return objvXzMajorDirection;
     } else {
       if (bolTryAsyncOnce == true) {
-        const objvXzMajorDirectionConst = await vXzMajorDirection_GetObjByMajorDirectionIdAsync(
-          strMajorDirectionId,
-        );
+        const objvXzMajorDirectionConst =
+          await vXzMajorDirection_GetObjByMajorDirectionIdAsync(strMajorDirectionId);
         if (objvXzMajorDirectionConst != null) {
           vXzMajorDirection_ReFreshThisCache();
           return objvXzMajorDirectionConst;
@@ -281,8 +279,8 @@ export function vXzMajorDirection_SortFunDefa2Fld(
   a: clsvXzMajorDirectionEN,
   b: clsvXzMajorDirectionEN,
 ): number {
-  if (a.idXzMajor == b.idXzMajor) return a.majorId.localeCompare(b.majorId);
-  else return a.idXzMajor.localeCompare(b.idXzMajor);
+  if (a.id_XzMajor == b.id_XzMajor) return a.majorId.localeCompare(b.majorId);
+  else return a.id_XzMajor.localeCompare(b.id_XzMajor);
 }
 
 /**
@@ -305,7 +303,7 @@ export function vXzMajorDirection_SortFunByKey(strKey: string, AscOrDesc: string
         };
       case clsvXzMajorDirectionEN.con_IdXzMajor:
         return (a: clsvXzMajorDirectionEN, b: clsvXzMajorDirectionEN) => {
-          return a.idXzMajor.localeCompare(b.idXzMajor);
+          return a.id_XzMajor.localeCompare(b.id_XzMajor);
         };
       case clsvXzMajorDirectionEN.con_MajorId:
         return (a: clsvXzMajorDirectionEN, b: clsvXzMajorDirectionEN) => {
@@ -365,7 +363,7 @@ export function vXzMajorDirection_SortFunByKey(strKey: string, AscOrDesc: string
         };
       case clsvXzMajorDirectionEN.con_IdXzMajor:
         return (a: clsvXzMajorDirectionEN, b: clsvXzMajorDirectionEN) => {
-          return b.idXzMajor.localeCompare(a.idXzMajor);
+          return b.id_XzMajor.localeCompare(a.id_XzMajor);
         };
       case clsvXzMajorDirectionEN.con_MajorId:
         return (a: clsvXzMajorDirectionEN, b: clsvXzMajorDirectionEN) => {
@@ -440,7 +438,7 @@ export async function vXzMajorDirection_FilterFunByKey(strKey: string, value: an
       };
     case clsvXzMajorDirectionEN.con_IdXzMajor:
       return (obj: clsvXzMajorDirectionEN) => {
-        return obj.idXzMajor === value;
+        return obj.id_XzMajor === value;
       };
     case clsvXzMajorDirectionEN.con_MajorId:
       return (obj: clsvXzMajorDirectionEN) => {
@@ -507,11 +505,11 @@ export async function vXzMajorDirection_func(
     console.error(strMsg);
     throw new Error(strMsg);
   }
-  if (clsvXzMajorDirectionEN.AttributeName.indexOf(strOutFldName) == -1) {
+  if (clsvXzMajorDirectionEN._AttributeName.indexOf(strOutFldName) == -1) {
     const strMsg = Format(
       '输出字段名:[{0}]不正确,不在输出字段范围之内!({1})',
       strOutFldName,
-      clsvXzMajorDirectionEN.AttributeName.join(','),
+      clsvXzMajorDirectionEN._AttributeName.join(','),
     );
     console.error(strMsg);
     throw new Error(strMsg);
@@ -520,9 +518,8 @@ export async function vXzMajorDirection_func(
   if (IsNullOrEmpty(strMajorDirectionId) == true) {
     return '';
   }
-  const objvXzMajorDirection = await vXzMajorDirection_GetObjByMajorDirectionIdCache(
-    strMajorDirectionId,
-  );
+  const objvXzMajorDirection =
+    await vXzMajorDirection_GetObjByMajorDirectionIdCache(strMajorDirectionId);
   if (objvXzMajorDirection == null) return '';
   if (objvXzMajorDirection.GetFldValue(strOutFldName) == null) return '';
   return objvXzMajorDirection.GetFldValue(strOutFldName).toString();
@@ -2375,7 +2372,7 @@ export function vXzMajorDirection_GetCombineCondition(
     strWhereCond += Format(
       " And {0} {2} '{1}'",
       clsvXzMajorDirectionEN.con_IdXzMajor,
-      objvXzMajorDirectionCond.idXzMajor,
+      objvXzMajorDirectionCond.id_XzMajor,
       strComparisonOpIdXzMajor,
     );
   }
@@ -2525,7 +2522,7 @@ export function vXzMajorDirection_CopyObjTo(
   objvXzMajorDirectionENT: clsvXzMajorDirectionEN,
 ): void {
   objvXzMajorDirectionENT.majorDirectionId = objvXzMajorDirectionENS.majorDirectionId; //研究方向Id
-  objvXzMajorDirectionENT.idXzMajor = objvXzMajorDirectionENS.idXzMajor; //专业流水号
+  objvXzMajorDirectionENT.id_XzMajor = objvXzMajorDirectionENS.id_XzMajor; //专业流水号
   objvXzMajorDirectionENT.majorId = objvXzMajorDirectionENS.majorId; //专业Id
   objvXzMajorDirectionENT.majorName = objvXzMajorDirectionENS.majorName; //专业名称
   objvXzMajorDirectionENT.majorDirectionName = objvXzMajorDirectionENS.majorDirectionName; //研究方向名

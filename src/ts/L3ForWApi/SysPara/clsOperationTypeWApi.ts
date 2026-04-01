@@ -228,9 +228,8 @@ export async function OperationType_GetObjByOperationTypeIdCache(
       return objOperationType;
     } else {
       if (bolTryAsyncOnce == true) {
-        const objOperationTypeConst = await OperationType_GetObjByOperationTypeIdAsync(
-          strOperationTypeId,
-        );
+        const objOperationTypeConst =
+          await OperationType_GetObjByOperationTypeIdAsync(strOperationTypeId);
         if (objOperationTypeConst != null) {
           OperationType_ReFreshThisCache();
           return objOperationTypeConst;
@@ -501,11 +500,11 @@ export async function OperationType_func(
     console.error(strMsg);
     throw new Error(strMsg);
   }
-  if (clsOperationTypeEN.AttributeName.indexOf(strOutFldName) == -1) {
+  if (clsOperationTypeEN._AttributeName.indexOf(strOutFldName) == -1) {
     const strMsg = Format(
       '输出字段名:[{0}]不正确,不在输出字段范围之内!({1})',
       strOutFldName,
-      clsOperationTypeEN.AttributeName.join(','),
+      clsOperationTypeEN._AttributeName.join(','),
     );
     console.error(strMsg);
     throw new Error(strMsg);
@@ -3413,4 +3412,3 @@ export function OperationType_GetObjFromJsonObj(
   ObjectAssign(objOperationTypeENT, objOperationTypeENS);
   return objOperationTypeENT;
 }
-

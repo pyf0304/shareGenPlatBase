@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxUserRoleRelationEN
  * 表名:QxUserRoleRelation(00140013)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:28:03
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:00:13
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsQxUserRoleRelationEN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = ""; //
-public static PrimaryTypeId = "02"; //identity
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "QxUserRoleRelation"; //当前表名,与该类相关的表名
-public static _KeyFldName= "mId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 8;
-public static AttributeName = ["mId", "userId", "roleId", "idSchool", "qxPrjId", "updDate", "updUser", "memo"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = ""; //
+public static readonly _PrimaryTypeId: string = "02"; //identity
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "QxUserRoleRelation"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "mId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 8;
+public static readonly _AttributeName = ["mId", "userId", "roleId", "id_School", "qxPrjId", "updDate", "updUser", "memo"];
 //以下是属性变量
 
 /**
@@ -49,7 +49,7 @@ public static AttributeName = ["mId", "userId", "roleId", "idSchool", "qxPrjId",
 private mlngmId = 0;    //流水号
 private mstrUserId = "";    //用户ID
 private mstrRoleId = "";    //角色Id
-private mstrIdSchool = "";    //学校流水号
+private mstrId_School = "";    //学校流水号
 private mstrQxPrjId = "";    //项目Id
 private mstrUpdDate = "";    //修改日期
 private mstrUpdUser = "";    //修改用户
@@ -101,12 +101,12 @@ if (value  != undefined)
  * 学校流水号(说明:;字段类型:char;字段长度:4;是否可空:True)
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsProperty)
 */
- public SetIdSchool (value: string)
+ public SetId_School (value: string)
 {
 if (value  != undefined)
 {
- this.idSchool = value;
-    this.hmProperty["idSchool"] = true;
+ this.id_School = value;
+    this.hmProperty["id_School"] = true;
    this.sfUpdFldSetStr = this.updFldString;
 }
 }
@@ -185,8 +185,8 @@ case clsQxUserRoleRelationEN.con_UserId:
 return this.userId;
 case clsQxUserRoleRelationEN.con_RoleId:
 return this.roleId;
-case clsQxUserRoleRelationEN.con_IdSchool:
-return this.idSchool;
+case clsQxUserRoleRelationEN.con_Id_School:
+return this.id_School;
 case clsQxUserRoleRelationEN.con_QxPrjId:
 return this.qxPrjId;
 case clsQxUserRoleRelationEN.con_UpdDate:
@@ -231,9 +231,9 @@ case clsQxUserRoleRelationEN.con_RoleId:
 this.roleId = strValue;
     this.hmProperty["roleId"] = true;
 break;
-case clsQxUserRoleRelationEN.con_IdSchool:
-this.idSchool = strValue;
-    this.hmProperty["idSchool"] = true;
+case clsQxUserRoleRelationEN.con_Id_School:
+this.id_School = strValue;
+    this.hmProperty["id_School"] = true;
 break;
 case clsQxUserRoleRelationEN.con_QxPrjId:
 this.qxPrjId = strValue;
@@ -271,7 +271,7 @@ break;
 public mId = 0;    //流水号
 public userId = "";    //用户ID
 public roleId = "";    //角色Id
-public idSchool = "";    //学校流水号
+public id_School = "";    //学校流水号
 public qxPrjId = "";    //项目Id
 public updDate = "";    //修改日期
 public updUser = "";    //修改用户
@@ -282,49 +282,49 @@ public memo = "";    //备注
  * 常量:"mId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_mId(): string {return "mId";}    //流水号
+ public static readonly con_mId = "mId";    //流水号
 
  /**
  * 常量:"UserId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserId(): string {return "userId";}    //用户ID
+ public static readonly con_UserId = "userId";    //用户ID
 
  /**
  * 常量:"RoleId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_RoleId(): string {return "roleId";}    //角色Id
+ public static readonly con_RoleId = "roleId";    //角色Id
 
  /**
- * 常量:"IdSchool"
+ * 常量:"Id_School"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IdSchool(): string {return "idSchool";}    //学校流水号
+ public static readonly con_Id_School = "id_School";    //学校流水号
 
  /**
  * 常量:"QxPrjId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_QxPrjId(): string {return "qxPrjId";}    //项目Id
+ public static readonly con_QxPrjId = "qxPrjId";    //项目Id
 
  /**
  * 常量:"UpdDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdDate(): string {return "updDate";}    //修改日期
+ public static readonly con_UpdDate = "updDate";    //修改日期
 
  /**
  * 常量:"UpdUser"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdUser(): string {return "updUser";}    //修改用户
+ public static readonly con_UpdUser = "updUser";    //修改用户
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 设置条件字段值.
@@ -346,6 +346,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名

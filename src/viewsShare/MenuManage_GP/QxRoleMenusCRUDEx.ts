@@ -563,7 +563,7 @@ export class QxRoleMenusCRUDEx extends QxPrjMenusCRUD implements IShowList {
     arrQxPrjMenusExObjLst: Array<clsQxPrjMenusENEx>,
     arrDataColumn: Array<clsDataColumn>,
   ) {
-    const arrFldName = clsQxPrjMenusEN.AttributeName;
+    const arrFldName = clsQxPrjMenusEN._AttributeName;
     for (const objDataColumn of arrDataColumn) {
       if (IsNullOrEmpty(objDataColumn.fldName) == true) continue;
       if (arrFldName.indexOf(objDataColumn.fldName) > -1) continue;

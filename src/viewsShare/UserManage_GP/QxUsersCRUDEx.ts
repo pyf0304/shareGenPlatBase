@@ -589,7 +589,7 @@ export default class QxUsersCRUDEx extends QxUsersCRUD implements IShowList {
         viewVarSet.sortQxUsersBy = `XzClg|CollegeName ${sortDirection}|QxUsers.IdXzCollege = XzClg.IdXzCollege`;
         break;
       case 'schoolName|Ex':
-        viewVarSet.sortQxUsersBy = `XzSchool|SchoolName ${sortDirection}|QxUsers.IdSchool = XzSchool.IdSchool`;
+        viewVarSet.sortQxUsersBy = `XzSchool|SchoolName ${sortDirection}|QxUsers.id_School = XzSchool.id_School`;
         break;
       case 'gradeBaseName|Ex':
         viewVarSet.sortQxUsersBy = `XzGradeBase|GradeBaseName ${sortDirection}|QxUsers.IdGradeBase = XzGradeBase.IdGradeBase`;

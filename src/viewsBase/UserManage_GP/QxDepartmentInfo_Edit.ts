@@ -2,12 +2,12 @@
  /**
  * 类名:QxDepartmentInfo_Edit(界面:QxDepartmentInfoCRUD,00140034)
  * 表名:QxDepartmentInfo(00140030)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:02:42
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:11:06
  * 生成者:
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  * 模块中文名:用户管理(UserManage_GP)
  * 框架-层名:Vue_编辑区后台_TS(TS)(Vue_ViewScript_EditCS_TS,0257)
@@ -195,7 +195,7 @@ try
 this.opType = "Add";
 const bolIsSuccess = await this.ShowDialog_QxDepartmentInfo(this.opType);
 if (bolIsSuccess == false) return;
-if (['02', '03', '06'].indexOf(clsQxDepartmentInfoEN.PrimaryTypeId) > -1)
+if (['02', '03', '06'].indexOf(clsQxDepartmentInfoEN._PrimaryTypeId) > -1)
 {
 await this.AddNewRecordWithMaxId();
 }
@@ -293,7 +293,7 @@ break;
 case "确认添加":
 //这是一个单表的插入的代码,由于逻辑层太简单,
 //就把逻辑层合并到控制层,
-if (['02', '03', '06'].indexOf(clsQxDepartmentInfoEN.PrimaryTypeId) > -1)
+if (['02', '03', '06'].indexOf(clsQxDepartmentInfoEN._PrimaryTypeId) > -1)
 {
 returnKeyId = await this.AddNewRecordWithMaxIdSave();
 if (IsNullOrEmpty(returnKeyId) == false)

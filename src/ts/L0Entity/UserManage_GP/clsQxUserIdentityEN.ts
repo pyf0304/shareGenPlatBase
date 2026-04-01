@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxUserIdentityEN
  * 表名:QxUserIdentity(00140042)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:28:01
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:00:34
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsQxUserIdentityEN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = "03"; //localStorage
-public static PrimaryTypeId = "01"; //关键字
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "QxUserIdentity"; //当前表名,与该类相关的表名
-public static _KeyFldName= "IdentityId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 5;
-public static AttributeName = ["identityId", "identityDesc", "identityEnName", "userType", "memo"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = "03"; //localStorage
+public static readonly _PrimaryTypeId: string = "01"; //关键字
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "QxUserIdentity"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "IdentityId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 5;
+public static readonly _AttributeName = ["identityId", "identityDesc", "identityEnName", "userType", "memo"];
 //以下是属性变量
 
 /**
@@ -216,31 +216,31 @@ public memo = "";    //备注
  * 常量:"IdentityId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IdentityId(): string {return "identityId";}    //身份编号
+ public static readonly con_IdentityId = "identityId";    //身份编号
 
  /**
  * 常量:"IdentityDesc"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IdentityDesc(): string {return "identityDesc";}    //身份描述
+ public static readonly con_IdentityDesc = "identityDesc";    //身份描述
 
  /**
  * 常量:"IdentityEnName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IdentityEnName(): string {return "identityEnName";}    //身份英文名
+ public static readonly con_IdentityEnName = "identityEnName";    //身份英文名
 
  /**
  * 常量:"UserType"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserType(): string {return "userType";}    //用户类型
+ public static readonly con_UserType = "userType";    //用户类型
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 设置条件字段值.
@@ -262,6 +262,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名

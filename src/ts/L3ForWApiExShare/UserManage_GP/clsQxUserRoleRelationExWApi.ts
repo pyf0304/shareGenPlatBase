@@ -540,7 +540,7 @@ export function QxUserRoleRelationEx_FuncMapByFldName(
   const strThisFuncName = QxUserRoleRelationEx_FuncMapByFldName.name;
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsQxUserRoleRelationEN.AttributeName;
+  const arrFldName = clsQxUserRoleRelationEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {
@@ -1128,7 +1128,7 @@ export async function QxUserRoleRelationEx_FuncMapSchoolName(
   const strThisFuncName = QxUserRoleRelationEx_FuncMapSchoolName.name;
   try {
     if (IsNullOrEmpty(objQxUserRoleRelation.schoolName) == true) {
-      const XzSchoolidSchool = objQxUserRoleRelation.idSchool;
+      const XzSchoolidSchool = objQxUserRoleRelation.id_School;
       const XzSchoolSchoolName = await XzSchool_func(
         clsXzSchoolEN.con_IdSchool,
         clsXzSchoolEN.con_SchoolName,

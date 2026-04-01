@@ -193,7 +193,7 @@ export function vXzGradeBaseEx_FuncMapByFldName(
   console.log(objvXzGradeBaseEx);
   let strMsg = '';
   //如果是本表中字段，不需要映射
-  const arrFldName = clsvXzGradeBaseEN.AttributeName;
+  const arrFldName = clsvXzGradeBaseEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

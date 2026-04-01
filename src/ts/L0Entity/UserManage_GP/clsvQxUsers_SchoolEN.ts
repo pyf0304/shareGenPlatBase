@@ -2,12 +2,12 @@
  /**
  * 类名:clsvQxUsers_SchoolEN
  * 表名:vQxUsers_School(00140075)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:21:57
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:04:30
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTabV } from '@/ts/PubFun/clsGeneralTabV';
 export class  clsvQxUsers_SchoolEN extends clsGeneralTabV
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = "05"; //未知
-public static PrimaryTypeId = "01"; //关键字
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "vQxUsers_School"; //当前表名,与该类相关的表名
-public static _KeyFldName= "UserId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 26;
-public static AttributeName = ["userId", "userName", "departmentId", "departmentName", "departmentAbbrName", "departmentTypeId", "departmentTypeName", "upDepartmentId", "upDepartmentName", "userStateId", "userStateName", "identityId", "identityDesc", "cardNo", "stuTeacherId", "idGradeBase", "gradeBaseName", "enterSchoolDate", "isOffed", "beginYearMonth", "endYearMonth", "cardState", "isLeaved", "updDate", "updUser", "memo"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = "05"; //未知
+public static readonly _PrimaryTypeId: string = "01"; //关键字
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "vQxUsers_School"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "UserId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 26;
+public static readonly _AttributeName = ["userId", "userName", "departmentId", "departmentName", "departmentAbbrName", "departmentTypeId", "departmentTypeName", "upDepartmentId", "upDepartmentName", "userStateId", "userStateName", "identityId", "identityDesc", "cardNo", "stuTeacherId", "id_GradeBase", "gradeBaseName", "enterSchoolDate", "isOffed", "beginYearMonth", "endYearMonth", "cardState", "isLeaved", "updDate", "updUser", "memo"];
 //以下是属性变量
 
 /**
@@ -83,8 +83,8 @@ case clsvQxUsers_SchoolEN.con_CardNo:
 return this.cardNo;
 case clsvQxUsers_SchoolEN.con_StuTeacherId:
 return this.stuTeacherId;
-case clsvQxUsers_SchoolEN.con_IdGradeBase:
-return this.idGradeBase;
+case clsvQxUsers_SchoolEN.con_Id_GradeBase:
+return this.id_GradeBase;
 case clsvQxUsers_SchoolEN.con_GradeBaseName:
 return this.gradeBaseName;
 case clsvQxUsers_SchoolEN.con_EnterSchoolDate:
@@ -172,8 +172,8 @@ break;
 case clsvQxUsers_SchoolEN.con_StuTeacherId:
 this.stuTeacherId = strValue;
 break;
-case clsvQxUsers_SchoolEN.con_IdGradeBase:
-this.idGradeBase = strValue;
+case clsvQxUsers_SchoolEN.con_Id_GradeBase:
+this.id_GradeBase = strValue;
 break;
 case clsvQxUsers_SchoolEN.con_GradeBaseName:
 this.gradeBaseName = strValue;
@@ -234,7 +234,7 @@ public identityId = "";    //身份编号
 public identityDesc = "";    //身份描述
 public cardNo = "";    //卡号
 public stuTeacherId = "";    //学工号
-public idGradeBase = "";    //年级流水号
+public id_GradeBase = "";    //入学年级流水号
 public gradeBaseName = "";    //年级名称
 public enterSchoolDate = "";    //进校日期
 public isOffed = false;    //是否毕业
@@ -251,157 +251,157 @@ public memo = "";    //备注
  * 常量:"UserId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserId(): string {return "userId";}    //用户ID
+ public static readonly con_UserId = "userId";    //用户ID
 
  /**
  * 常量:"UserName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserName(): string {return "userName";}    //用户名
+ public static readonly con_UserName = "userName";    //用户名
 
  /**
  * 常量:"DepartmentId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DepartmentId(): string {return "departmentId";}    //部门Id
+ public static readonly con_DepartmentId = "departmentId";    //部门Id
 
  /**
  * 常量:"DepartmentName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DepartmentName(): string {return "departmentName";}    //部门名
+ public static readonly con_DepartmentName = "departmentName";    //部门名
 
  /**
  * 常量:"DepartmentAbbrName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DepartmentAbbrName(): string {return "departmentAbbrName";}    //名称缩写
+ public static readonly con_DepartmentAbbrName = "departmentAbbrName";    //名称缩写
 
  /**
  * 常量:"DepartmentTypeId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DepartmentTypeId(): string {return "departmentTypeId";}    //部门类型ID
+ public static readonly con_DepartmentTypeId = "departmentTypeId";    //部门类型ID
 
  /**
  * 常量:"DepartmentTypeName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DepartmentTypeName(): string {return "departmentTypeName";}    //部门类型名
+ public static readonly con_DepartmentTypeName = "departmentTypeName";    //部门类型名
 
  /**
  * 常量:"UpDepartmentId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpDepartmentId(): string {return "upDepartmentId";}    //所属部门号
+ public static readonly con_UpDepartmentId = "upDepartmentId";    //所属部门号
 
  /**
  * 常量:"UpDepartmentName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpDepartmentName(): string {return "upDepartmentName";}    //上级部门
+ public static readonly con_UpDepartmentName = "upDepartmentName";    //上级部门
 
  /**
  * 常量:"UserStateId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserStateId(): string {return "userStateId";}    //用户状态Id
+ public static readonly con_UserStateId = "userStateId";    //用户状态Id
 
  /**
  * 常量:"UserStateName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UserStateName(): string {return "userStateName";}    //用户状态名
+ public static readonly con_UserStateName = "userStateName";    //用户状态名
 
  /**
  * 常量:"IdentityId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IdentityId(): string {return "identityId";}    //身份编号
+ public static readonly con_IdentityId = "identityId";    //身份编号
 
  /**
  * 常量:"IdentityDesc"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IdentityDesc(): string {return "identityDesc";}    //身份描述
+ public static readonly con_IdentityDesc = "identityDesc";    //身份描述
 
  /**
  * 常量:"CardNo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_CardNo(): string {return "cardNo";}    //卡号
+ public static readonly con_CardNo = "cardNo";    //卡号
 
  /**
  * 常量:"StuTeacherId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_StuTeacherId(): string {return "stuTeacherId";}    //学工号
+ public static readonly con_StuTeacherId = "stuTeacherId";    //学工号
 
  /**
- * 常量:"IdGradeBase"
+ * 常量:"Id_GradeBase"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IdGradeBase(): string {return "idGradeBase";}    //年级流水号
+ public static readonly con_Id_GradeBase = "id_GradeBase";    //入学年级流水号
 
  /**
  * 常量:"GradeBaseName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_GradeBaseName(): string {return "gradeBaseName";}    //年级名称
+ public static readonly con_GradeBaseName = "gradeBaseName";    //年级名称
 
  /**
  * 常量:"EnterSchoolDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_EnterSchoolDate(): string {return "enterSchoolDate";}    //进校日期
+ public static readonly con_EnterSchoolDate = "enterSchoolDate";    //进校日期
 
  /**
  * 常量:"IsOffed"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IsOffed(): string {return "isOffed";}    //是否毕业
+ public static readonly con_IsOffed = "isOffed";    //是否毕业
 
  /**
  * 常量:"BeginYearMonth"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_BeginYearMonth(): string {return "beginYearMonth";}    //开始年月
+ public static readonly con_BeginYearMonth = "beginYearMonth";    //开始年月
 
  /**
  * 常量:"EndYearMonth"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_EndYearMonth(): string {return "endYearMonth";}    //结束年月
+ public static readonly con_EndYearMonth = "endYearMonth";    //结束年月
 
  /**
  * 常量:"CardState"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_CardState(): string {return "cardState";}    //卡状态
+ public static readonly con_CardState = "cardState";    //卡状态
 
  /**
  * 常量:"IsLeaved"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IsLeaved(): string {return "isLeaved";}    //IsLeaved
+ public static readonly con_IsLeaved = "isLeaved";    //IsLeaved
 
  /**
  * 常量:"UpdDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdDate(): string {return "updDate";}    //修改日期
+ public static readonly con_UpdDate = "updDate";    //修改日期
 
  /**
  * 常量:"UpdUser"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdUser(): string {return "updUser";}    //修改用户
+ public static readonly con_UpdUser = "updUser";    //修改用户
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 设置条件字段值.
@@ -423,6 +423,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名
@@ -431,6 +432,6 @@ this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 public static hasProperty(propName: string) : boolean {
 //return propName in new clsvQxUsers_SchoolEN();
 const instance = new clsvQxUsers_SchoolEN();
-return instance.hasOwnProperty(propName);
+return Object.prototype.hasOwnProperty.call(instance, propName);
 }
 }

@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxUserRoleRelationENEx
  * 表名:QxUserRoleRelation(00140013)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:28:05
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:00:15
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:实体扩展层(TS)(EntityLayerEx,0191)
@@ -74,55 +74,55 @@ return strValue;
  * 常量:"DepartmentName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_DepartmentName(): string {return "departmentName";}    //部门名
+ public static readonly con_DepartmentName = "departmentName";    //部门名
 
  /**
  * 常量:"DepartmentTypeName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_DepartmentTypeName(): string {return "departmentTypeName";}    //部门类型名
+ public static readonly con_DepartmentTypeName = "departmentTypeName";    //部门类型名
 
  /**
  * 常量:"RoleName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_RoleName(): string {return "roleName";}    //角色名称
+ public static readonly con_RoleName = "roleName";    //角色名称
 
  /**
  * 常量:"UserName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_UserName(): string {return "userName";}    //用户名
+ public static readonly con_UserName = "userName";    //用户名
 
  /**
  * 常量:"PrjName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_PrjName(): string {return "prjName";}    //工程名
+ public static readonly con_PrjName = "prjName";    //工程名
 
  /**
  * 常量:"DepartmentId"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_DepartmentId(): string {return "departmentId";}    //部门Id
+ public static readonly con_DepartmentId = "departmentId";    //部门Id
 
  /**
  * 常量:"OrderNum"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_OrderNum(): string {return "orderNum";}    //排序号
+ public static readonly con_OrderNum = "orderNum";    //排序号
 
  /**
  * 常量:"DepartmentAbbrName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_DepartmentAbbrName(): string {return "departmentAbbrName";}    //名称缩写
+ public static readonly con_DepartmentAbbrName = "departmentAbbrName";    //名称缩写
 
  /**
  * 常量:"SchoolName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_SchoolName(): string {return "schoolName";}    //学校名称
+ public static readonly con_SchoolName = "schoolName";    //学校名称
 
 public departmentName = "";    //部门名
 public departmentTypeName = "";    //部门类型名
@@ -133,6 +133,7 @@ public departmentId = "";    //部门Id
 public orderNum = 0;    //排序号
 public departmentAbbrName = "";    //名称缩写
 public schoolName = "";    //学校名称
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名

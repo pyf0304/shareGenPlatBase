@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxViewInfoEN
  * 表名:QxViewInfo(00140017)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:16
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:01:40
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:界面管理(InterfaceMan)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsQxViewInfoEN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = "05"; //未知
-public static PrimaryTypeId = "06"; //前缀自增
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "QxViewInfo"; //当前表名,与该类相关的表名
-public static _KeyFldName= "ViewId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 15;
-public static AttributeName = ["viewId", "viewName", "viewCnName", "fileName", "filePath", "defaMenuName", "viewTypeCode", "dataBaseName", "qxPrjId", "viewFunction", "viewDetail", "moduleId", "updDate", "updUserId", "memo"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = "05"; //未知
+public static readonly _PrimaryTypeId: string = "06"; //前缀自增
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "QxViewInfo"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "ViewId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 15;
+public static readonly _AttributeName = ["viewId", "viewName", "viewCnName", "fileName", "filePath", "defaMenuName", "viewTypeCode", "dataBaseName", "qxPrjId", "viewFunction", "viewDetail", "moduleId", "updDate", "updUserId", "memo"];
 //以下是属性变量
 
 /**
@@ -436,91 +436,91 @@ public memo = "";    //备注
  * 常量:"ViewId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_ViewId(): string {return "viewId";}    //界面编号
+ public static readonly con_ViewId = "viewId";    //界面编号
 
  /**
  * 常量:"ViewName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_ViewName(): string {return "viewName";}    //界面名称
+ public static readonly con_ViewName = "viewName";    //界面名称
 
  /**
  * 常量:"ViewCnName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_ViewCnName(): string {return "viewCnName";}    //界面中文名称
+ public static readonly con_ViewCnName = "viewCnName";    //界面中文名称
 
  /**
  * 常量:"FileName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_FileName(): string {return "fileName";}    //文件名
+ public static readonly con_FileName = "fileName";    //文件名
 
  /**
  * 常量:"FilePath"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_FilePath(): string {return "filePath";}    //文件路径
+ public static readonly con_FilePath = "filePath";    //文件路径
 
  /**
  * 常量:"DefaMenuName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DefaMenuName(): string {return "defaMenuName";}    //缺省菜单名
+ public static readonly con_DefaMenuName = "defaMenuName";    //缺省菜单名
 
  /**
  * 常量:"ViewTypeCode"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_ViewTypeCode(): string {return "viewTypeCode";}    //界面类型码
+ public static readonly con_ViewTypeCode = "viewTypeCode";    //界面类型码
 
  /**
  * 常量:"DataBaseName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DataBaseName(): string {return "dataBaseName";}    //数据库名称
+ public static readonly con_DataBaseName = "dataBaseName";    //数据库名称
 
  /**
  * 常量:"QxPrjId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_QxPrjId(): string {return "qxPrjId";}    //项目Id
+ public static readonly con_QxPrjId = "qxPrjId";    //项目Id
 
  /**
  * 常量:"ViewFunction"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_ViewFunction(): string {return "viewFunction";}    //界面功能
+ public static readonly con_ViewFunction = "viewFunction";    //界面功能
 
  /**
  * 常量:"ViewDetail"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_ViewDetail(): string {return "viewDetail";}    //界面详细信息
+ public static readonly con_ViewDetail = "viewDetail";    //界面详细信息
 
  /**
  * 常量:"ModuleId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_ModuleId(): string {return "moduleId";}    //模块号
+ public static readonly con_ModuleId = "moduleId";    //模块号
 
  /**
  * 常量:"UpdDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdDate(): string {return "updDate";}    //修改日期
+ public static readonly con_UpdDate = "updDate";    //修改日期
 
  /**
  * 常量:"UpdUserId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdUserId(): string {return "updUserId";}    //修改用户Id
+ public static readonly con_UpdUserId = "updUserId";    //修改用户Id
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 设置条件字段值.
@@ -542,6 +542,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名
@@ -550,6 +551,6 @@ this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 public static hasProperty(propName: string) : boolean {
 //return propName in new clsQxViewInfoEN();
 const instance = new clsQxViewInfoEN();
-return instance.hasOwnProperty(propName);
+return Object.prototype.hasOwnProperty.call(instance, propName);
 }
 }

@@ -2,12 +2,12 @@
  /**
  * 类名:QxPrjMenuSetVueShare(界面:QxPrjMenuSetCRUD,00140043)
  * 表名:QxPrjMenuSet(00140045)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:04:41
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:13:01
  * 生成者:
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  * 模块中文名:菜单管理(MenuManage_GP)
  * 框架-层名:Vue共享(TS)(Vue_Share_TS,0264)
@@ -23,6 +23,7 @@ import { clsQxPrjMenuSetEN } from "@/ts/L0Entity/MenuManage_GP/clsQxPrjMenuSetEN
 
 const ascOrDesc4SortFun = ref ('Asc');
 const sortQxPrjMenuSetBy = ref ('');
+
 const viewVarSet = reactive({
 ascOrDesc4SortFun,
 sortQxPrjMenuSetBy,
@@ -82,7 +83,7 @@ export { featureVarSet };
 
 
  /** 把所有的查询控件内容组合成一个条件串
- * (AutoGCLib.Vue_Share_TS4TypeScript:Gen_vue_ts_setup_fun_CombineCondition)
+ * (AutoGCLib.Vue_Share_TS4TypeScript:Gen_Share_method_CombineCondition)
  * @returns 条件串(strWhereCond)
  **/
 export const  CombineQxPrjMenuSetCondition = async():Promise<string> =>
@@ -118,7 +119,7 @@ return strWhereCond;
 };
 
  /** 把所有的查询控件内容组合成一个条件串
- * (AutoGCLib.Vue_Share_TS4TypeScript:Gen_vue_ts_setup_fun_CombineConditionObj)
+ * (AutoGCLib.Vue_Share_TS4TypeScript:Gen_Share_method_CombineConditionObj)
  * @returns 条件串(strWhereCond)
  **/
 export const CombineQxPrjMenuSetConditionObj=async (): Promise<ConditionCollection> =>
@@ -159,7 +160,7 @@ return objQxPrjMenuSetCond;
 };
 
  /** 把所有的查询控件内容组合成一个条件串
- * (AutoGCLib.Vue_Share_TS4TypeScript:Gen_vue_ts_setup_fun_CombineConditionObj4ExportExcel)
+ * (AutoGCLib.Vue_Share_TS4TypeScript:Gen_Share_method_CombineConditionObj4ExportExcel)
  * @returns 条件串(strWhereCond)
  **/
 export const CombineQxPrjMenuSetConditionObj4ExportExcel = async ():Promise<ConditionCollection> => 

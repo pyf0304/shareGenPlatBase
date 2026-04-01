@@ -2,12 +2,12 @@
  /**
  * 类名:clsCommonDataNodeEN
  * 表名:CommonDataNode(00140120)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:26
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:04:10
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:AI模块(AIModule)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsCommonDataNodeEN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = "04"; //sessionStorage
-public static PrimaryTypeId = "02"; //identity
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "CommonDataNode"; //当前表名,与该类相关的表名
-public static _KeyFldName= "mId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 2;
-public static AttributeName = ["mId", "dateTimeSim"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = "04"; //sessionStorage
+public static readonly _PrimaryTypeId: string = "02"; //identity
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "CommonDataNode"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "mId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 2;
+public static readonly _AttributeName = ["mId", "dateTimeSim"];
 //以下是属性变量
 
 /**
@@ -150,13 +150,13 @@ public dateTimeSim = "";    //简化日期时间
  * 常量:"mId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_mId(): string {return "mId";}    //流水号
+ public static readonly con_mId = "mId";    //流水号
 
  /**
  * 常量:"DateTimeSim"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_DateTimeSim(): string {return "dateTimeSim";}    //简化日期时间
+ public static readonly con_DateTimeSim = "dateTimeSim";    //简化日期时间
 
  /**
  * 设置条件字段值.
@@ -178,6 +178,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名
@@ -186,6 +187,6 @@ this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 public static hasProperty(propName: string) : boolean {
 //return propName in new clsCommonDataNodeEN();
 const instance = new clsCommonDataNodeEN();
-return instance.hasOwnProperty(propName);
+return Object.prototype.hasOwnProperty.call(instance, propName);
 }
 }

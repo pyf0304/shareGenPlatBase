@@ -2,8 +2,8 @@
  /**
  * 类名:clsQxCmProjectWApi
  * 表名:QxCmProject(00140119)
- * 版本:2026.03.27.1(服务器:WIN-SRV103-116)
- * 日期:2026/03/29 07:03:07
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:04:06
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
@@ -21,7 +21,7 @@
 /**
  * QxCmProject(QxCmProject)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2026年03月29日.
+* Created by pyf on 2026年04月01日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
@@ -128,7 +128,7 @@ throw(error.statusText);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2026-03-29
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -141,7 +141,7 @@ return a.cmPrjId.localeCompare(b.cmPrjId);
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2026-03-29
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -156,7 +156,7 @@ else return a.cmPrjName.localeCompare(b.cmPrjName);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2026-03-29
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -256,7 +256,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxCmProject]中不存在!(in ${ qxC
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2026-03-29
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -1041,7 +1041,7 @@ alert(strMsg);
 /**
  * 根据扩展字段名去调用相应的映射函数
  * 作者:pyf
- * 日期:2026-03-29
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMapByFldName)
  * @param strFldName:扩展字段名
  * @param  obj{0}Ex:需要转换的对象
@@ -1070,7 +1070,7 @@ console.error(strMsg);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2026-03-29
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByExKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -1949,9 +1949,9 @@ if (IsNullOrEmpty(pobjQxCmProjectEN.qxPrjId) == false && GetStrLen(pobjQxCmProje
 {
  throw new Error(`(errid:Watl000413)字段[项目Id(qxPrjId)]的长度不能超过4(In QxCmProject(QxCmProject))!值:${pobjQxCmProjectEN.qxPrjId}(clsQxCmProjectBL:CheckPropertyNew)`);
 }
-if (IsNullOrEmpty(pobjQxCmProjectEN.useStateId) == false && GetStrLen(pobjQxCmProjectEN.useStateId) > 4)
+if (IsNullOrEmpty(pobjQxCmProjectEN.useStateId) == false && GetStrLen(pobjQxCmProjectEN.useStateId) > 2)
 {
- throw new Error(`(errid:Watl000413)字段[使用状态Id(useStateId)]的长度不能超过4(In QxCmProject(QxCmProject))!值:${pobjQxCmProjectEN.useStateId}(clsQxCmProjectBL:CheckPropertyNew)`);
+ throw new Error(`(errid:Watl000413)字段[使用状态Id(useStateId)]的长度不能超过2(In QxCmProject(QxCmProject))!值:${pobjQxCmProjectEN.useStateId}(clsQxCmProjectBL:CheckPropertyNew)`);
 }
 if (IsNullOrEmpty(pobjQxCmProjectEN.updDate) == false && GetStrLen(pobjQxCmProjectEN.updDate) > 20)
 {
@@ -2017,9 +2017,9 @@ if (IsNullOrEmpty(pobjQxCmProjectEN.qxPrjId) == false && GetStrLen(pobjQxCmProje
 {
  throw new Error(`(errid:Watl000416)字段[项目Id(qxPrjId)]的长度不能超过4(In QxCmProject(QxCmProject))!值:${pobjQxCmProjectEN.qxPrjId}(clsQxCmProjectBL:CheckProperty4Update)`);
 }
-if (IsNullOrEmpty(pobjQxCmProjectEN.useStateId) == false && GetStrLen(pobjQxCmProjectEN.useStateId) > 4)
+if (IsNullOrEmpty(pobjQxCmProjectEN.useStateId) == false && GetStrLen(pobjQxCmProjectEN.useStateId) > 2)
 {
- throw new Error(`(errid:Watl000416)字段[使用状态Id(useStateId)]的长度不能超过4(In QxCmProject(QxCmProject))!值:${pobjQxCmProjectEN.useStateId}(clsQxCmProjectBL:CheckProperty4Update)`);
+ throw new Error(`(errid:Watl000416)字段[使用状态Id(useStateId)]的长度不能超过2(In QxCmProject(QxCmProject))!值:${pobjQxCmProjectEN.useStateId}(clsQxCmProjectBL:CheckProperty4Update)`);
 }
 if (IsNullOrEmpty(pobjQxCmProjectEN.updDate) == false && GetStrLen(pobjQxCmProjectEN.updDate) > 20)
 {
@@ -2075,7 +2075,7 @@ if (IsNullOrEmpty(pobjQxCmProjectEN.cmPrjId) === true
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2026-03-29
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -2100,7 +2100,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2026-03-29
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -2126,7 +2126,7 @@ return arrQxCmProjectObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2026-03-29
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrQxCmProjectObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -2145,7 +2145,7 @@ return arrQxCmProjectObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2026-03-29
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象

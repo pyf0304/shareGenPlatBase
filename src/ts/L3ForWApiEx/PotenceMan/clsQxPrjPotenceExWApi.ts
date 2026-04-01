@@ -121,7 +121,7 @@ export async function QxPrjPotenceEx_GetObjExLstByPagerAsync(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsQxPrjPotenceEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsQxPrjPotenceEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrQxPrjPotenceExObjLst) {
       await QxPrjPotenceEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -345,7 +345,7 @@ export function QxPrjPotenceEx_FuncMapByFldName(
   const strThisFuncName = QxPrjPotenceEx_FuncMapByFldName.name;
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsQxPrjPotenceEN.AttributeName;
+  const arrFldName = clsQxPrjPotenceEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

@@ -108,7 +108,7 @@ export async function XzSchoolEx_GetObjExLstByPagerAsync(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsXzSchoolEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsXzSchoolEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrXzSchoolExObjLst) {
       await XzSchoolEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -183,7 +183,7 @@ export function XzSchoolEx_FuncMapByFldName(strFldName: string, objXzSchoolEx: c
   strFldName = strFldName.replace('|Ex', '');
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsXzSchoolEN.AttributeName;
+  const arrFldName = clsXzSchoolEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {
@@ -244,7 +244,7 @@ export async function XzSchoolEx_GetObjExLstByPagerCache(
   //从缓存中获取对象，如果缓存中不存在就扩展复制
   const arrNewObj = new Array<clsXzSchoolENEx>();
   const arrXzSchoolExObjLst = arrXzSchoolObjLst.map((obj) => {
-    const cacheKey = `${obj.idSchool}`;
+    const cacheKey = `${obj.id_School}`;
     if (xzSchoolCache[cacheKey]) {
       const oldObj = xzSchoolCache[cacheKey];
       return oldObj;
@@ -264,12 +264,12 @@ export async function XzSchoolEx_GetObjExLstByPagerCache(
   const bolIsFuncMap = isFuncMapCache[isFuncMapKey];
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsXzSchoolEN.AttributeName.indexOf(objSortInfo.SortFld) == -1 &&
+    clsXzSchoolEN._AttributeName.indexOf(objSortInfo.SortFld) == -1 &&
     (bolIsFuncMap == false || bolIsFuncMap == undefined)
   ) {
     for (const newObj of arrXzSchoolExObjLst) {
       await XzSchoolEx_FuncMapByFldName(objSortInfo.SortFld, newObj);
-      const cacheKey = `${newObj.idSchool}`;
+      const cacheKey = `${newObj.id_School}`;
       xzSchoolCache[cacheKey] = newObj;
     }
     isFuncMapCache[isFuncMapKey] = true;

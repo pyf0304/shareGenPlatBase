@@ -2,12 +2,12 @@
  /**
  * 类名:clsvQxPotenceTypeEN
  * 表名:vQxPotenceType(00140026)
- * 版本:2025.02.27.1(服务器:WIN-SRV103-116)
- * 日期:2025/03/16 20:47:23
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:04:24
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:权限管理(PotenceMan)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTabV } from '@/ts/PubFun/clsGeneralTabV';
 export class  clsvQxPotenceTypeEN extends clsGeneralTabV
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = "05"; //未知
-public static PrimaryTypeId = "01"; //关键字
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "vQxPotenceType"; //当前表名,与该类相关的表名
-public static _KeyFldName= "PotenceTypeId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 15;
-public static AttributeName = ["potenceTypeId", "potenceTypeName", "qxPrjId", "prjName", "funcModuleId", "funcModuleName", "funcModuleNameSim", "orderNum", "inUse", "viewId", "viewName", "isVisible", "updDate", "updUserId", "memo"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = "05"; //未知
+public static readonly _PrimaryTypeId: string = "01"; //关键字
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "vQxPotenceType"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "PotenceTypeId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 15;
+public static readonly _AttributeName = ["potenceTypeId", "potenceTypeName", "qxPrjId", "prjName", "funcModuleId", "funcModuleName", "funcModuleNameSim", "orderNum", "inUse", "viewId", "viewName", "isVisible", "updDate", "updUserId", "memo"];
 //以下是属性变量
 
 /**
@@ -185,91 +185,91 @@ public memo = "";    //备注
  * 常量:"PotenceTypeId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_PotenceTypeId(): string {return "potenceTypeId";}    //权限类型Id
+ public static readonly con_PotenceTypeId = "potenceTypeId";    //权限类型Id
 
  /**
  * 常量:"PotenceTypeName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_PotenceTypeName(): string {return "potenceTypeName";}    //权限类型名
+ public static readonly con_PotenceTypeName = "potenceTypeName";    //权限类型名
 
  /**
  * 常量:"QxPrjId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_QxPrjId(): string {return "qxPrjId";}    //项目Id
+ public static readonly con_QxPrjId = "qxPrjId";    //项目Id
 
  /**
  * 常量:"PrjName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_PrjName(): string {return "prjName";}    //工程名
+ public static readonly con_PrjName = "prjName";    //工程名
 
  /**
  * 常量:"FuncModuleId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_FuncModuleId(): string {return "funcModuleId";}    //模块Id
+ public static readonly con_FuncModuleId = "funcModuleId";    //模块Id
 
  /**
  * 常量:"FuncModuleName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_FuncModuleName(): string {return "funcModuleName";}    //模块名
+ public static readonly con_FuncModuleName = "funcModuleName";    //模块名
 
  /**
  * 常量:"FuncModuleNameSim"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_FuncModuleNameSim(): string {return "funcModuleNameSim";}    //模块名_Sim
+ public static readonly con_FuncModuleNameSim = "funcModuleNameSim";    //模块名_Sim
 
  /**
  * 常量:"OrderNum"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_OrderNum(): string {return "orderNum";}    //排序号
+ public static readonly con_OrderNum = "orderNum";    //排序号
 
  /**
  * 常量:"InUse"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_InUse(): string {return "inUse";}    //是否在用
+ public static readonly con_InUse = "inUse";    //是否在用
 
  /**
  * 常量:"ViewId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_ViewId(): string {return "viewId";}    //界面编号
+ public static readonly con_ViewId = "viewId";    //界面编号
 
  /**
  * 常量:"ViewName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_ViewName(): string {return "viewName";}    //界面名称
+ public static readonly con_ViewName = "viewName";    //界面名称
 
  /**
  * 常量:"IsVisible"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IsVisible(): string {return "isVisible";}    //是否显示
+ public static readonly con_IsVisible = "isVisible";    //是否显示
 
  /**
  * 常量:"UpdDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdDate(): string {return "updDate";}    //修改日期
+ public static readonly con_UpdDate = "updDate";    //修改日期
 
  /**
  * 常量:"UpdUserId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdUserId(): string {return "updUserId";}    //修改用户Id
+ public static readonly con_UpdUserId = "updUserId";    //修改用户Id
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 设置条件字段值.
@@ -291,6 +291,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名
@@ -299,6 +300,6 @@ this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 public static hasProperty(propName: string) : boolean {
 //return propName in new clsvQxPotenceTypeEN();
 const instance = new clsvQxPotenceTypeEN();
-return instance.hasOwnProperty(propName);
+return Object.prototype.hasOwnProperty.call(instance, propName);
 }
 }

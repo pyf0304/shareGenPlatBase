@@ -209,7 +209,7 @@
           );
           if (bolIsSuccess == false) return;
           // objPage_Edit.value.SetEventFunc();
-          if (['02', '03', '06'].indexOf(clsQxRoleRightRelationEN.PrimaryTypeId) > -1) {
+          if (['02', '03', '06'].indexOf(clsQxRoleRightRelationEN._PrimaryTypeId) > -1) {
             await objPage_Edit.value.AddNewRecordWithMaxId();
           } else {
             await objPage_Edit.value.AddNewRecord();

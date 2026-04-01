@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxServer4SynchEN
  * 表名:QxServer4Synch(00140091)
- * 版本:2025.04.07.1(服务器:WIN-SRV103-116)
- * 日期:2025/04/13 09:22:22
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:03:06
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:数据同步(DataSynch)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsQxServer4SynchEN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = "05"; //未知
-public static PrimaryTypeId = "03"; //自增
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "QxServer4Synch"; //当前表名,与该类相关的表名
-public static _KeyFldName= "ServerId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 9;
-public static AttributeName = ["serverId", "serverName", "ipAddress", "webApiAddress", "isSelf", "inUse", "updDate", "updUser", "memo"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = "05"; //未知
+public static readonly _PrimaryTypeId: string = "03"; //自增
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "QxServer4Synch"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "ServerId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 9;
+public static readonly _AttributeName = ["serverId", "serverName", "ipAddress", "webApiAddress", "isSelf", "inUse", "updDate", "updUser", "memo"];
 //以下是属性变量
 
 /**
@@ -304,55 +304,55 @@ public memo = "";    //备注
  * 常量:"ServerId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_ServerId(): string {return "serverId";}    //服务器Id
+ public static readonly con_ServerId = "serverId";    //服务器Id
 
  /**
  * 常量:"ServerName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_ServerName(): string {return "serverName";}    //服务器名
+ public static readonly con_ServerName = "serverName";    //服务器名
 
  /**
  * 常量:"IpAddress"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IpAddress(): string {return "ipAddress";}    //IP地址
+ public static readonly con_IpAddress = "ipAddress";    //IP地址
 
  /**
  * 常量:"WebApiAddress"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_WebApiAddress(): string {return "webApiAddress";}    //WApi地址
+ public static readonly con_WebApiAddress = "webApiAddress";    //WApi地址
 
  /**
  * 常量:"IsSelf"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_IsSelf(): string {return "isSelf";}    //是否当前服务器
+ public static readonly con_IsSelf = "isSelf";    //是否当前服务器
 
  /**
  * 常量:"InUse"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_InUse(): string {return "inUse";}    //是否在用
+ public static readonly con_InUse = "inUse";    //是否在用
 
  /**
  * 常量:"UpdDate"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdDate(): string {return "updDate";}    //修改日期
+ public static readonly con_UpdDate = "updDate";    //修改日期
 
  /**
  * 常量:"UpdUser"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_UpdUser(): string {return "updUser";}    //修改用户
+ public static readonly con_UpdUser = "updUser";    //修改用户
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 设置条件字段值.
@@ -374,6 +374,7 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名
@@ -382,6 +383,6 @@ this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 public static hasProperty(propName: string) : boolean {
 //return propName in new clsQxServer4SynchEN();
 const instance = new clsQxServer4SynchEN();
-return instance.hasOwnProperty(propName);
+return Object.prototype.hasOwnProperty.call(instance, propName);
 }
 }

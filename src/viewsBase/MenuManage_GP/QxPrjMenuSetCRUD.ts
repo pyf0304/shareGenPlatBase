@@ -656,7 +656,7 @@ export abstract class QxPrjMenuSetCRUD implements clsOperateList {
     arrQxPrjMenuSetExObjLst: Array<clsQxPrjMenuSetENEx>,
     arrDataColumn: Array<clsDataColumn>,
   ) {
-    const arrFldName = clsQxPrjMenuSetEN.AttributeName;
+    const arrFldName = clsQxPrjMenuSetEN._AttributeName;
     for (const objDataColumn of arrDataColumn) {
       if (IsNullOrEmpty(objDataColumn.fldName) == true) continue;
       if (arrFldName.indexOf(objDataColumn.fldName) > -1) continue;

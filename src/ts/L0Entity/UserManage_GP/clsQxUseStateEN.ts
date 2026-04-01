@@ -2,8 +2,8 @@
  /**
  * 类名:clsQxUseStateEN
  * 表名:QxUseState(00140133)
- * 版本:2026.03.27.1(服务器:WIN-SRV103-116)
- * 日期:2026/03/31 00:50:57
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:01:36
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
@@ -51,7 +51,7 @@ private mstrUseStateName = "";    //使用状态名称
 private mstrMemo = "";    //备注
 
 /**
- * 使用状态Id(说明:;字段类型:char;字段长度:4;是否可空:False)
+ * 使用状态Id(说明:;字段类型:char;字段长度:2;是否可空:False)
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsProperty)
 */
  public SetUseStateId (value: string)

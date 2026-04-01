@@ -121,7 +121,7 @@ export async function StudentInfoEx_GetObjExLstByPagerAsyncBak(
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (
     IsNullOrEmpty(objSortInfo.SortFld) == false &&
-    clsStudentInfoEN.AttributeName.indexOf(objSortInfo.SortFld) == -1
+    clsStudentInfoEN._AttributeName.indexOf(objSortInfo.SortFld) == -1
   ) {
     for (const objInFor of arrStudentInfoExObjLst) {
       await StudentInfoEx_FuncMapByFldName(objSortInfo.SortFld, objInFor);
@@ -298,7 +298,7 @@ export function StudentInfoEx_FuncMapByFldName(
   const strThisFuncName = StudentInfoEx_FuncMapByFldName.name;
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsStudentInfoEN.AttributeName;
+  const arrFldName = clsStudentInfoEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {
@@ -600,7 +600,7 @@ export async function StudentInfoEx_FuncMapMajorName(objStudentInfo: clsStudentI
   const strThisFuncName = StudentInfoEx_FuncMapMajorName.name;
   try {
     if (IsNullOrEmpty(objStudentInfo.majorName) == true) {
-      const XzMajoridXzMajor = objStudentInfo.idXzMajor;
+      const XzMajoridXzMajor = objStudentInfo.id_XzMajor;
       const XzMajorMajorName = await XzMajor_func(
         clsXzMajorEN.con_IdXzMajor,
         clsXzMajorEN.con_MajorName,
@@ -774,8 +774,8 @@ export async function StudentInfoEx_SynchStudentToPlatform(
   objUsersEN.userName = objStudentInfo.stuName;
   objUsersEN.userStateId = '01';
   objUsersEN.idXzCollege = objStudentInfo.idXzCollege;
-  objUsersEN.idSchool = objStudentInfo.idSchool;
-  // objUsersEN.idXzMajor = objStudentInfo.idXzMajor;
+  objUsersEN.id_School = objStudentInfo.id_School;
+  // objUsersEN.id_XzMajor = objStudentInfo.id_XzMajor;
   objUsersEN.idGradeBase = objStudentInfo.idGradeBase;
   // objUsersEN.idGrade = objStudentInfo.idGrade;
 
@@ -911,7 +911,7 @@ export async function StudentInfoEx_FuncMapSchoolNameA(objStudentInfo: clsStuden
   const strThisFuncName = StudentInfoEx_FuncMapSchoolNameA.name;
   try {
     if (IsNullOrEmpty(objStudentInfo.schoolNameA) == true) {
-      const XzSchoolIdSchool = objStudentInfo.idSchool;
+      const XzSchoolIdSchool = objStudentInfo.id_School;
       const XzSchoolSchoolNameA = await XzSchool_func(
         clsXzSchoolEN.con_IdSchool,
         clsXzSchoolEN.con_SchoolNameA,
@@ -939,7 +939,7 @@ export async function StudentInfoEx_FuncMapSchoolName(objStudentInfo: clsStudent
   const strThisFuncName = StudentInfoEx_FuncMapSchoolName.name;
   try {
     if (IsNullOrEmpty(objStudentInfo.schoolName) == true) {
-      const XzSchoolIdSchool = objStudentInfo.idSchool;
+      const XzSchoolIdSchool = objStudentInfo.id_School;
       const XzSchoolSchoolName = await XzSchool_func(
         clsXzSchoolEN.con_IdSchool,
         clsXzSchoolEN.con_SchoolName,

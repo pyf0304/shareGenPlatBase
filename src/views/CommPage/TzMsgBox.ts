@@ -292,7 +292,7 @@ export abstract class TzMsgBox {
     this.isVisible = pobjXzMajorEN.isVisible; // 是否显示
     this.majorEnglishName = pobjXzMajorEN.majorEnglishName; // 英文名
     this.majorExplain = pobjXzMajorEN.majorExplain; // 专业说明
-    this.idXzMajorShoolType = pobjXzMajorEN.idXzMajorShoolType; // 专业类型
+    this.id_XzMajorShoolType = pobjXzMajorEN.id_XzMajorShoolType; // 专业类型
     this.idXzCollege = pobjXzMajorEN.idXzCollege; // 学院
     this.majorDirection = pobjXzMajorEN.majorDirection; // 专业方向
     this.memo = pobjXzMajorEN.memo; // 备注
@@ -340,10 +340,10 @@ export abstract class TzMsgBox {
   public async CloseBoxReturn(): Promise<boolean> {
     const strThisFuncName = this.CloseBoxReturn.name;
     const objXzMajorEN = new clsXzMajorEN();
-    objXzMajorEN.idXzMajor = this.keyId;
+    objXzMajorEN.id_XzMajor = this.keyId;
 
     objXzMajorEN.sfUpdFldSetStr = objXzMajorEN.updFldString; //设置哪些字段被修改(脏字段)
-    if (objXzMajorEN.idXzMajor == '' || objXzMajorEN.idXzMajor == undefined) {
+    if (objXzMajorEN.id_XzMajor == '' || objXzMajorEN.id_XzMajor == undefined) {
       console.error('关键字不能为空!');
       throw '关键字不能为空!';
     }

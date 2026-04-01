@@ -12,8 +12,6 @@ import { clsPubLocalStorage } from '@/ts/PubFun/clsPubLocalStorage';
 
 import { enumQxRoles } from '@/ts/L0Entity/UserManage_GP/clsQxRolesEN';
 
-import { XzMajor_GetNameByIdXzMajorCache } from '@/ts/L3ForWApi/BaseInfo/clsXzMajorWApi';
-
 import {
   QxUserRoleRelationEx_GetObjByUserIdAndRoleId,
   QxUserRoleRelationEx_GetObjLstByUserIdAndPrjId,
@@ -24,7 +22,6 @@ import {
   QxRoles_GetObjByRoleIdCache,
   QxRoles_GetObjLstByRoleIdLstCache,
 } from '@/ts/L3ForWApi/UserManage_GP/clsQxRolesWApi';
-import { TeacherInfoEx_GetObjByTeacherId } from '@/ts/L3ForWApiExShare/BaseInfo/clsTeacherInfoExWApi';
 import { clsQxUserRoleRelationEN } from '@/ts/L0Entity/UserManage_GP/clsQxUserRoleRelationEN';
 import { usevQxUsersSimStore } from '@/store/modulesShare/vQxUserSim';
 import { vStudentInfo_SimEx_GetObjByStuId } from '@/ts/L3ForWApiExShare/UserManage/clsvStudentInfo_SimExWApi';
@@ -37,9 +34,7 @@ interface UserState {
   roleName: string;
   userTypeId: string;
   roleTypeId: string;
-  idSchool: string;
-  idXzMajor: string;
-  majorName: string;
+  id_School: string;
   avatar: string;
   menuSetId: string;
   // like [ 'sys:user:add', 'sys:user:update' ]
@@ -61,9 +56,8 @@ export const useUserStore = defineStore('user', {
     userTypeId: userInfo == null ? '' : userInfo.userTypeId,
     roleTypeId: userInfo == null ? '' : userInfo.roleTypeId,
 
-    idSchool: userInfo == null ? '' : userInfo.idSchool,
-    idXzMajor: userInfo == null ? '' : userInfo.idXzMajor,
-    majorName: userInfo == null ? '' : userInfo.majorName,
+    id_School: userInfo == null ? '' : userInfo.id_School,
+
     avatar: userInfo == null ? '' : userInfo.avatar,
     menuSetId: userInfo == null ? '' : userInfo.menuSetId,
 
@@ -99,14 +93,9 @@ export const useUserStore = defineStore('user', {
     getMenuSetId(): string {
       return this.menuSetId;
     },
-    getMajorName(): string {
-      return this.majorName ?? '无';
-    },
-    getIdXzMajor(): string {
-      return this.idXzMajor ?? '';
-    },
-    getIdSchool(): string {
-      return this.idSchool ?? '';
+
+    getId_School(): string {
+      return this.id_School ?? '';
     },
 
     getUserType(): UserType {
@@ -157,7 +146,7 @@ export const useUserStore = defineStore('user', {
         this.roleId,
       );
       if (objQxUserRoleRelationEN != null) {
-        this.idSchool = objQxUserRoleRelationEN.idSchool;
+        this.id_School = objQxUserRoleRelationEN.id_School;
       }
       Storage.setV2('userInfo', this);
     },
@@ -186,7 +175,7 @@ export const useUserStore = defineStore('user', {
 
         this.userId = arrUserRoleRelation[0].userId;
         this.roleId = arrUserRoleRelation[0].roleId;
-        this.idSchool = arrUserRoleRelation[0].idSchool;
+        this.id_School = arrUserRoleRelation[0].id_School;
         const vQxUsersSimStore = usevQxUsersSimStore();
         const strUserName = await vQxUsersSimStore.getUserName(this.userId);
         const strRoleName = await QxRoles_GetNameByRoleIdCache(
@@ -206,36 +195,10 @@ export const useUserStore = defineStore('user', {
         this.roleNames = arrRoleNames;
         if (this.roleId == enumQxRoles.Regular_Student_00620003) {
           const objStudent = await vStudentInfo_SimEx_GetObjByStuId(this.userId);
-          if (objStudent != null) {
-            this.idXzMajor = objStudent.idXzMajor;
-            if (objStudent.idXzMajor.length > 0) {
-              const strMajorName = await XzMajor_GetNameByIdXzMajorCache(this.idXzMajor);
-              this.majorName = strMajorName;
-            }
-          } else {
-            this.idXzMajor = '';
-            this.majorName = '';
-          }
         } else if (
           this.roleId == enumQxRoles.System_Admin_00620001 ||
           this.roleId == enumQxRoles.Regular_Teacher_00620002
         ) {
-          try {
-            const objTeacher = await TeacherInfoEx_GetObjByTeacherId(this.userId);
-            if (objTeacher != null) {
-              this.idXzMajor = objTeacher.idXzMajor;
-              if (objTeacher.idXzMajor.length > 0) {
-                const strMajorName = await XzMajor_GetNameByIdXzMajorCache(this.idXzMajor);
-                this.majorName = strMajorName;
-              }
-            } else {
-              this.idXzMajor = '';
-
-              this.majorName = '';
-            }
-          } catch (e) {
-            console.error(e);
-          }
         }
         // if (userStore.getUserId != '') {
         //   if (userStore.getUserId != arrUserRoleRelation[0].userId) {

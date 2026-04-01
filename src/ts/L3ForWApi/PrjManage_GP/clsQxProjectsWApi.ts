@@ -2,14 +2,14 @@
  /**
  * 类名:clsQxProjectsWApi
  * 表名:QxProjects(00140006)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:27:46
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:02:22
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
  应用类型:Vue应用InCore-TS(30)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:工程管理(PrjManage_GP)
  * 框架-层名:WA_访问层(TS)(WA_Access,0155)
@@ -21,7 +21,7 @@
 /**
  * 工程(QxProjects)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2025年06月13日.
+* Created by pyf on 2026年04月01日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
@@ -237,7 +237,7 @@ return null;
  * @param objQxProjects:所给的对象
  * @returns 对象
 */
-export  async function QxProjects_UpdateObjInLstCache(objQxProjects: clsQxProjectsEN) {
+export  async function QxProjects_UpdateObjInLstCache(objQxProjects: clsQxProjectsEN ) {
 const strThisFuncName = "UpdateObjInLstCache";
 try
 {
@@ -263,7 +263,7 @@ alert(strMsg);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -276,7 +276,7 @@ return a.qxPrjId.localeCompare(b.qxPrjId);
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -291,7 +291,7 @@ else return a.prjName.localeCompare(b.prjName);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -411,7 +411,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxProjects]中不存在!(in ${ qxPr
  * @param strQxPrjId:所给的关键字
  * @returns 对象
 */
-export  async function QxProjects_GetNameByQxPrjIdCache(strQxPrjId: string) {
+export  async function QxProjects_GetNameByQxPrjIdCache(strQxPrjId: string ) {
 
 if (IsNullOrEmpty(strQxPrjId) == true)
 {
@@ -454,7 +454,7 @@ return "";
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -508,7 +508,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxProjects]中不存在!(in ${ qxPr
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_func)
  * @param strInFldName:输入字段名
  * @param strOutFldName:输出字段名
@@ -525,10 +525,10 @@ const strMsg = Format("输入字段名:[{0}]不正确!", strInFldName);
 console.error(strMsg);
 throw new Error(strMsg);
 }
-if (clsQxProjectsEN.AttributeName.indexOf(strOutFldName) == -1)
+if (clsQxProjectsEN._AttributeName.indexOf(strOutFldName) == -1)
 {
 const strMsg = Format("输出字段名:[{0}]不正确,不在输出字段范围之内!({1})",
-strOutFldName, clsQxProjectsEN.AttributeName.join(','));
+strOutFldName, clsQxProjectsEN._AttributeName.join(','));
 console.error(strMsg);
 throw new Error(strMsg);
 }
@@ -546,7 +546,7 @@ return objQxProjects.GetFldValue(strOutFldName).toString();
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_funcKey)
  * @param strInFldName:输入字段名
  * @param strInValue:输入字段值
@@ -885,13 +885,13 @@ const strThisFuncName = "GetObjLstClientCache";
 //初始化列表缓存
 let strWhereCond = "1=1";
 const strKey = clsQxProjectsEN._CurrTabName;
-if (IsNullOrEmpty(clsQxProjectsEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsQxProjectsEN._WhereFormat) == false)
 {
-strWhereCond = clsQxProjectsEN.WhereFormat;
+strWhereCond = clsQxProjectsEN._WhereFormat;
 }
-if (IsNullOrEmpty(clsQxProjectsEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsQxProjectsEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsQxProjectsEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsQxProjectsEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -926,19 +926,19 @@ throw (strMsg);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_localStorage)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function QxProjects_GetObjLstlocalStorage() 
+export  async function QxProjects_GetObjLstlocalStorage()
 {
 const strThisFuncName = "GetObjLstlocalStorage";
 //初始化列表缓存
 let strWhereCond = "1=1";
 const strKey = clsQxProjectsEN._CurrTabName;
-if (IsNullOrEmpty(clsQxProjectsEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsQxProjectsEN._WhereFormat) == false)
 {
-strWhereCond = clsQxProjectsEN.WhereFormat;
+strWhereCond = clsQxProjectsEN._WhereFormat;
 }
-if (IsNullOrEmpty(clsQxProjectsEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsQxProjectsEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsQxProjectsEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsQxProjectsEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -1067,19 +1067,19 @@ throw(error.statusText);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_sessionStorage)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function QxProjects_GetObjLstsessionStorage() 
+export  async function QxProjects_GetObjLstsessionStorage()
 {
 const strThisFuncName = "GetObjLstsessionStorage";
 //初始化列表缓存
 let strWhereCond = "1=1";
 const strKey = clsQxProjectsEN._CurrTabName;
-if (IsNullOrEmpty(clsQxProjectsEN.WhereFormat) == false)
+if (IsNullOrEmpty(clsQxProjectsEN._WhereFormat) == false)
 {
-strWhereCond = clsQxProjectsEN.WhereFormat;
+strWhereCond = clsQxProjectsEN._WhereFormat;
 }
-if (IsNullOrEmpty(clsQxProjectsEN.CacheAddiCondition) == false)
+if (IsNullOrEmpty(clsQxProjectsEN._CacheAddiCondition) == false)
 {
-strWhereCond += Format(" and {0}", clsQxProjectsEN.CacheAddiCondition);
+strWhereCond += Format(" and {0}", clsQxProjectsEN._CacheAddiCondition);
 }
 if (strKey == "")
 {
@@ -1115,7 +1115,7 @@ throw (strMsg);
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_sessionStorage_PureCache)
  * @returns 从本地缓存中获取的对象列表
  **/
-export  async function QxProjects_GetObjLstsessionStoragePureCache() 
+export  async function QxProjects_GetObjLstsessionStoragePureCache()
 {
 //初始化列表缓存
 const strKey = clsQxProjectsEN._CurrTabName;
@@ -1144,7 +1144,7 @@ export  async function QxProjects_GetObjLstCache(): Promise<Array<clsQxProjectsE
 //const strThisFuncName = "GetObjLst_Cache";
 
 let arrQxProjectsObjLstCache;
-switch (clsQxProjectsEN.CacheModeId)
+switch (clsQxProjectsEN._CacheModeId)
 {
 case "04"://sessionStorage
 arrQxProjectsObjLstCache = await QxProjects_GetObjLstsessionStorage();
@@ -1171,7 +1171,7 @@ export  async function QxProjects_GetObjLstPureCache()
 {
 //const strThisFuncName = "GetObjLstPureCache";
 let arrQxProjectsObjLstCache;
-switch (clsQxProjectsEN.CacheModeId)
+switch (clsQxProjectsEN._CacheModeId)
 {
 case "04"://sessionStorage
 arrQxProjectsObjLstCache = await QxProjects_GetObjLstsessionStoragePureCache();
@@ -1790,7 +1790,7 @@ throw(error.statusText);
  /** 添加新记录,保存函数
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_AddNewObjSave)
  **/
-export  async function QxProjects_AddNewObjSave(objQxProjectsEN: clsQxProjectsEN): Promise<AddRecordResult>{
+export  async function QxProjects_AddNewObjSave(objQxProjectsEN: clsQxProjectsEN ): Promise<AddRecordResult>{
 const strThisFuncName = 'AddNewObjSave';
 try
 {
@@ -2163,7 +2163,7 @@ throw(error.statusText);
  * @param objstrQxPrjIdCond:条件对象
  * @returns 对象列表子集
 */
-export  async function QxProjects_IsExistRecordCache(objQxProjectsCond: ConditionCollection) {
+export  async function QxProjects_IsExistRecordCache(objQxProjectsCond: ConditionCollection ) {
 const strThisFuncName = "IsExistRecordCache";
 const arrQxProjectsObjLstCache = await QxProjects_GetObjLstCache();
 if (arrQxProjectsObjLstCache == null) return false;
@@ -2694,11 +2694,12 @@ return strServiceUrl;
 export  function QxProjects_ReFreshCache():void
 {
 
+
  const strMsg:string = Format("刷新缓存成功!");
 console.trace(strMsg);
 // 静态的对象列表,用于清空相关缓存,针对记录较少,作为参数表可以使用
 const strKey = clsQxProjectsEN._CurrTabName;
-switch (clsQxProjectsEN.CacheModeId)
+switch (clsQxProjectsEN._CacheModeId)
 {
 case "04"://sessionStorage
 sessionStorage.removeItem(strKey);
@@ -2722,10 +2723,11 @@ clsQxProjectsEN._RefreshTimeLst.push(clsDateTime.getTodayDateTimeStr(0));
  **/
 export  function QxProjects_ReFreshThisCache():void
 {
+
 if (clsSysPara4WebApi.spSetRefreshCacheOn == true)
 {
 const strKey = clsQxProjectsEN._CurrTabName;
-switch (clsQxProjectsEN.CacheModeId)
+switch (clsQxProjectsEN._CacheModeId)
 {
 case "04"://sessionStorage
 sessionStorage.removeItem(strKey);
@@ -2972,7 +2974,7 @@ if (IsNullOrEmpty(pobjQxProjectsEN.qxPrjDataBaseId) == false && pobjQxProjectsEN
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -2997,7 +2999,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -3023,7 +3025,7 @@ return arrQxProjectsObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrQxProjectsObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -3042,7 +3044,7 @@ return arrQxProjectsObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-06-13
+ * 日期:2026-04-01
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象

@@ -2,12 +2,12 @@
  /**
  * 类名:clsvQxUsersSimENEx
  * 表名:vQxUsersSim(00140121)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:29:04
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:04:23
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:用户管理(UserManage_GP)
  * 框架-层名:实体扩展层(TS)(EntityLayerEx,0191)
@@ -60,16 +60,17 @@ return strValue;
  * 常量:"DepartmentName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_DepartmentName(): string {return "departmentName";}    //部门名
+ public static readonly con_DepartmentName = "departmentName";    //部门名
 
  /**
  * 常量:"UserNameEx"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_UserNameEx(): string {return "userNameEx";}    //用户名
+ public static readonly con_UserNameEx = "userNameEx";    //用户名
 
 public departmentName = "";    //部门名
 public userNameEx = "";    //用户名
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名

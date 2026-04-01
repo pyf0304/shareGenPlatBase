@@ -1,5 +1,4 @@
-﻿
- /**
+﻿/**
  * 类名:clsvQxPotenceTypeExWApi
  * 表名:vQxPotenceType(00140026)
  * 版本:2025.02.27.1(服务器:WIN-SRV103-116)
@@ -18,72 +17,78 @@
    *      2、需要公共函数层(TzPubFunction.dll)的版本:2017.12.21.01
  **/
 
- /**
+/**
  * v权限类型(vQxPotenceType)
  * (AutoGCLib.WA_AccessEx4TypeScript:GeneCode)
-* Created by pyf on 2025年03月16日.
-* 注意:该类必须与调用界面处于同一个包,否则调用不成功!
+ * Created by pyf on 2025年03月16日.
+ * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
-import { ObjectAssign } from "@/ts/PubFun/clsCommFunc4Web";
-import { clsvQxPotenceTypeENEx } from "@/ts/L0Entity/PotenceMan/clsvQxPotenceTypeENEx";
-import { vQxPotenceType_GetObjLstByPagerAsync,vQxPotenceType_SortFunByKey } from "@/ts/L3ForWApi/PotenceMan/clsvQxPotenceTypeWApi";
-import { clsvQxPotenceTypeEN } from "@/ts/L0Entity/PotenceMan/clsvQxPotenceTypeEN";
-import { Format,IsNullOrEmpty } from "@/ts/PubFun/clsString";
-import { clsSysPara4WebApi } from "@/ts/PubConfig/clsSysPara4WebApi";
-import { stuPagerPara } from "@/ts/PubFun/stuPagerPara";
+import { ObjectAssign } from '@/ts/PubFun/clsCommFunc4Web';
+import { clsvQxPotenceTypeENEx } from '@/ts/L0Entity/PotenceMan/clsvQxPotenceTypeENEx';
+import {
+  vQxPotenceType_GetObjLstByPagerAsync,
+  vQxPotenceType_SortFunByKey,
+} from '@/ts/L3ForWApi/PotenceMan/clsvQxPotenceTypeWApi';
+import { clsvQxPotenceTypeEN } from '@/ts/L0Entity/PotenceMan/clsvQxPotenceTypeEN';
+import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
+import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
+import { stuPagerPara } from '@/ts/PubFun/stuPagerPara';
 
-export const vQxPotenceTypeEx_Controller = "vQxPotenceTypeExApi";
-export const vQxPotenceTypeEx_ConstructorName = "vQxPotenceTypeEx";
+export const vQxPotenceTypeEx_Controller = 'vQxPotenceTypeExApi';
+export const vQxPotenceTypeEx_ConstructorName = 'vQxPotenceTypeEx';
 
- /**
+/**
  * 获取WebApi的地址
  * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetWebApiUrl)
  * @returns 返回当前文件中Web服务的地址
  **/
-export  function vQxPotenceTypeEx_GetWebApiUrl(strController: string, strAction: string): string {
-let strServiceUrl:string;
-let strCurrIPAddressAndPort = "";
-if (clsSysPara4WebApi.bolIsLocalHost == false)
-{
-strCurrIPAddressAndPort = clsSysPara4WebApi.CurrIPAddressAndPort;
-}
-else
-{
-strCurrIPAddressAndPort = clsSysPara4WebApi.CurrIPAddressAndPort_Local;
-}
-if (IsNullOrEmpty(clsSysPara4WebApi.CurrPrx) == true)
-{
-strServiceUrl = Format("{0}/{1}/{2}", strCurrIPAddressAndPort, strController, strAction);
-}
-else
-{
-strServiceUrl = Format("{0}/{1}/{2}/{3}", strCurrIPAddressAndPort, clsSysPara4WebApi.CurrPrx, strController, strAction);
-}
-return strServiceUrl;
+export function vQxPotenceTypeEx_GetWebApiUrl(strController: string, strAction: string): string {
+  let strServiceUrl: string;
+  let strCurrIPAddressAndPort = '';
+  if (clsSysPara4WebApi.bolIsLocalHost == false) {
+    strCurrIPAddressAndPort = clsSysPara4WebApi.CurrIPAddressAndPort;
+  } else {
+    strCurrIPAddressAndPort = clsSysPara4WebApi.CurrIPAddressAndPort_Local;
+  }
+  if (IsNullOrEmpty(clsSysPara4WebApi.CurrPrx) == true) {
+    strServiceUrl = Format('{0}/{1}/{2}', strCurrIPAddressAndPort, strController, strAction);
+  } else {
+    strServiceUrl = Format(
+      '{0}/{1}/{2}/{3}',
+      strCurrIPAddressAndPort,
+      clsSysPara4WebApi.CurrPrx,
+      strController,
+      strAction,
+    );
+  }
+  return strServiceUrl;
 }
 
- /**
+/**
  * 把同一个类的对象,复制到另一个对象
  * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_CopyToEx)
  * @param objvQxPotenceTypeENS:源对象
  * @returns 目标对象=>clsvQxPotenceTypeEN:objvQxPotenceTypeENT
  **/
-export  function vQxPotenceTypeEx_CopyToEx(objvQxPotenceTypeENS:clsvQxPotenceTypeEN ): clsvQxPotenceTypeENEx
-{
-const strThisFuncName  = vQxPotenceTypeEx_CopyToEx.name;
- const objvQxPotenceTypeENT = new clsvQxPotenceTypeENEx();
-try
-{
-ObjectAssign(objvQxPotenceTypeENT, objvQxPotenceTypeENS);
- return objvQxPotenceTypeENT;
-}
-catch (e)
-{
-const strMsg = Format("(errid:Watl000067)Copy表对象数据出错,{0}.(in {1}.{2})", e, vQxPotenceTypeEx_ConstructorName, strThisFuncName);
-console.error(strMsg);
-alert(strMsg);
- return objvQxPotenceTypeENT;
-}
+export function vQxPotenceTypeEx_CopyToEx(
+  objvQxPotenceTypeENS: clsvQxPotenceTypeEN,
+): clsvQxPotenceTypeENEx {
+  const strThisFuncName = vQxPotenceTypeEx_CopyToEx.name;
+  const objvQxPotenceTypeENT = new clsvQxPotenceTypeENEx();
+  try {
+    ObjectAssign(objvQxPotenceTypeENT, objvQxPotenceTypeENS);
+    return objvQxPotenceTypeENT;
+  } catch (e) {
+    const strMsg = Format(
+      '(errid:Watl000067)Copy表对象数据出错,{0}.(in {1}.{2})',
+      e,
+      vQxPotenceTypeEx_ConstructorName,
+      strThisFuncName,
+    );
+    console.error(strMsg);
+    alert(strMsg);
+    return objvQxPotenceTypeENT;
+  }
 }
 //该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerCache)
 
@@ -92,33 +97,41 @@ alert(strMsg);
  * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
  * @param objPagerPara:分页参数结构
  * @returns 对象列表
-*/
-export  async function vQxPotenceTypeEx_GetObjExLstByPagerAsync(objPagerPara: stuPagerPara):Promise<Array<clsvQxPotenceTypeENEx>> {
-const strThisFuncName = "GetObjExLstByPagerAsync";
-const arrvQxPotenceTypeObjLst = await vQxPotenceType_GetObjLstByPagerAsync(objPagerPara);
-const arrvQxPotenceTypeExObjLst = arrvQxPotenceTypeObjLst.map(vQxPotenceTypeEx_CopyToEx);
-if (arrvQxPotenceTypeExObjLst.length == 0) return arrvQxPotenceTypeExObjLst;
-let arrvQxPotenceTypeSel: Array < clsvQxPotenceTypeENEx > = arrvQxPotenceTypeExObjLst;
-try {
-if (objPagerPara.orderBy != null && objPagerPara.orderBy.length>0) {
-const sstrSplit: string[] = objPagerPara.orderBy.split(" ");
-let strSortType = "asc";
-const strSortFld = sstrSplit[0];
-if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-arrvQxPotenceTypeSel = arrvQxPotenceTypeSel.sort(vQxPotenceTypeEx_SortFunByKey(strSortFld, strSortType));
-}
-else {
-//如果排序字段名[OrderBy]为空,就调用排序函数
-arrvQxPotenceTypeSel = arrvQxPotenceTypeSel.sort(objPagerPara.sortFun);
-}
-return arrvQxPotenceTypeSel;
-}
-catch (e) {
-const strMsg = Format("错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})", e, objPagerPara.whereCond, vQxPotenceTypeEx_ConstructorName, strThisFuncName);
-console.error(strMsg);
-throw new Error(strMsg);
-}
-return new Array<clsvQxPotenceTypeENEx>();
+ */
+export async function vQxPotenceTypeEx_GetObjExLstByPagerAsync(
+  objPagerPara: stuPagerPara,
+): Promise<Array<clsvQxPotenceTypeENEx>> {
+  const strThisFuncName = 'GetObjExLstByPagerAsync';
+  const arrvQxPotenceTypeObjLst = await vQxPotenceType_GetObjLstByPagerAsync(objPagerPara);
+  const arrvQxPotenceTypeExObjLst = arrvQxPotenceTypeObjLst.map(vQxPotenceTypeEx_CopyToEx);
+  if (arrvQxPotenceTypeExObjLst.length == 0) return arrvQxPotenceTypeExObjLst;
+  let arrvQxPotenceTypeSel: Array<clsvQxPotenceTypeENEx> = arrvQxPotenceTypeExObjLst;
+  try {
+    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
+      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
+      let strSortType = 'asc';
+      const strSortFld = sstrSplit[0];
+      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
+      arrvQxPotenceTypeSel = arrvQxPotenceTypeSel.sort(
+        vQxPotenceTypeEx_SortFunByKey(strSortFld, strSortType),
+      );
+    } else {
+      //如果排序字段名[OrderBy]为空,就调用排序函数
+      arrvQxPotenceTypeSel = arrvQxPotenceTypeSel.sort(objPagerPara.sortFun);
+    }
+    return arrvQxPotenceTypeSel;
+  } catch (e) {
+    const strMsg = Format(
+      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
+      e,
+      objPagerPara.whereCond,
+      vQxPotenceTypeEx_ConstructorName,
+      strThisFuncName,
+    );
+    console.error(strMsg);
+    throw new Error(strMsg);
+  }
+  return new Array<clsvQxPotenceTypeENEx>();
 }
 
 /**
@@ -129,26 +142,20 @@ return new Array<clsvQxPotenceTypeENEx>();
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
  * @returns 返回两个对象比较的结果
-*/
-export  function vQxPotenceTypeEx_SortFunByKey(strKey:string, AscOrDesc: string)
-{
-strKey = strKey.replace('|Ex', '');
-if (AscOrDesc == "Asc" || AscOrDesc == "")
-{
-switch (strKey)
-{
-        default:
-return vQxPotenceType_SortFunByKey(strKey, AscOrDesc);
- }
- }
-  else
- {
-switch (strKey)
-{
-        default:
-return vQxPotenceType_SortFunByKey(strKey, AscOrDesc);
- }
- }
+ */
+export function vQxPotenceTypeEx_SortFunByKey(strKey: string, AscOrDesc: string) {
+  strKey = strKey.replace('|Ex', '');
+  if (AscOrDesc == 'Asc' || AscOrDesc == '') {
+    switch (strKey) {
+      default:
+        return vQxPotenceType_SortFunByKey(strKey, AscOrDesc);
+    }
+  } else {
+    switch (strKey) {
+      default:
+        return vQxPotenceType_SortFunByKey(strKey, AscOrDesc);
+    }
+  }
 }
 
 /**
@@ -159,22 +166,26 @@ return vQxPotenceType_SortFunByKey(strKey, AscOrDesc);
  * @param strFldName:扩展字段名
  * @param  obj{0}Ex:需要转换的对象
  * @returns 针对扩展字段名对转换对象进行函数映射
-*/
-export  function vQxPotenceTypeEx_FuncMapByFldName(strFldName: string, objvQxPotenceTypeEx: clsvQxPotenceTypeENEx)
-{
-const strThisFuncName = vQxPotenceTypeEx_FuncMapByFldName.name;
-console.log(objvQxPotenceTypeEx);
-strFldName = strFldName.replace('|Ex', '');
-let strMsg = "";
-//如果是本表中字段,不需要映射
-const arrFldName = clsvQxPotenceTypeEN.AttributeName;
-if (arrFldName.indexOf(strFldName) > -1) return;
-//针对扩展字段进行映射
-switch (strFldName)
-{
-
-        default:
-    strMsg = Format("扩展字段:[{0}]在字段值函数映射中不存在!(in {1})", strFldName, strThisFuncName);
-console.error(strMsg);
- }
+ */
+export function vQxPotenceTypeEx_FuncMapByFldName(
+  strFldName: string,
+  objvQxPotenceTypeEx: clsvQxPotenceTypeENEx,
+) {
+  const strThisFuncName = vQxPotenceTypeEx_FuncMapByFldName.name;
+  console.log(objvQxPotenceTypeEx);
+  strFldName = strFldName.replace('|Ex', '');
+  let strMsg = '';
+  //如果是本表中字段,不需要映射
+  const arrFldName = clsvQxPotenceTypeEN._AttributeName;
+  if (arrFldName.indexOf(strFldName) > -1) return;
+  //针对扩展字段进行映射
+  switch (strFldName) {
+    default:
+      strMsg = Format(
+        '扩展字段:[{0}]在字段值函数映射中不存在!(in {1})',
+        strFldName,
+        strThisFuncName,
+      );
+      console.error(strMsg);
+  }
 }

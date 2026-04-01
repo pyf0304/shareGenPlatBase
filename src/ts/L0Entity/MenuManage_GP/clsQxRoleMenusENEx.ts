@@ -2,12 +2,12 @@
  /**
  * 类名:clsQxRoleMenusENEx
  * 表名:QxRoleMenus(00140007)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:27:49
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/01 02:02:18
  * 生成者:pyf
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:菜单管理(MenuManage_GP)
  * 框架-层名:实体扩展层(TS)(EntityLayerEx,0191)
@@ -80,73 +80,73 @@ return strValue;
  * 常量:"MenuName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_MenuName(): string {return "menuName";}    //菜单名
+ public static readonly con_MenuName = "menuName";    //菜单名
 
  /**
  * 常量:"RoleName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_RoleName(): string {return "roleName";}    //角色名称
+ public static readonly con_RoleName = "roleName";    //角色名称
 
  /**
  * 常量:"MenuSetName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_MenuSetName(): string {return "menuSetName";}    //菜单集名称
+ public static readonly con_MenuSetName = "menuSetName";    //菜单集名称
 
  /**
  * 常量:"OrderNum"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_OrderNum(): string {return "orderNum";}    //排序号
+ public static readonly con_OrderNum = "orderNum";    //排序号
 
  /**
  * 常量:"InUse"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_InUse(): string {return "inUse";}    //是否在用
+ public static readonly con_InUse = "inUse";    //是否在用
 
  /**
  * 常量:"IsLeafNode"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_IsLeafNode(): string {return "isLeafNode";}    //是否叶子
+ public static readonly con_IsLeafNode = "isLeafNode";    //是否叶子
 
  /**
  * 常量:"PageDispModeId"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_PageDispModeId(): string {return "pageDispModeId";}    //页面显示模式Id
+ public static readonly con_PageDispModeId = "pageDispModeId";    //页面显示模式Id
 
  /**
  * 常量:"UpMenuId"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_UpMenuId(): string {return "upMenuId";}    //上级菜单Id
+ public static readonly con_UpMenuId = "upMenuId";    //上级菜单Id
 
  /**
  * 常量:"LinkFile"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_LinkFile(): string {return "linkFile";}    //链接文件
+ public static readonly con_LinkFile = "linkFile";    //链接文件
 
  /**
  * 常量:"PrjName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_PrjName(): string {return "prjName";}    //工程名
+ public static readonly con_PrjName = "prjName";    //工程名
 
  /**
  * 常量:"DateTimeSim"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_DateTimeSim(): string {return "dateTimeSim";}    //简化日期时间
+ public static readonly con_DateTimeSim = "dateTimeSim";    //简化日期时间
 
  /**
  * 常量:"PageDispModeName"
  * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_PropertyNameConst)
  */
- public static get con_PageDispModeName(): string {return "pageDispModeName";}    //页面显示模式名称
+ public static readonly con_PageDispModeName = "pageDispModeName";    //页面显示模式名称
 
 public menuName = "";    //菜单名
 public roleName = "";    //角色名称
@@ -160,6 +160,7 @@ public linkFile = "";    //链接文件
 public prjName = "";    //工程名
 public dateTimeSim = "";    //简化日期时间
 public pageDispModeName = "";    //页面显示模式名称
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名
