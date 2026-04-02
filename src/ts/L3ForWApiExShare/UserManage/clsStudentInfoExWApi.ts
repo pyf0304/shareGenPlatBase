@@ -47,7 +47,7 @@ import {
   QxUsersEx_AddNewUsers,
   QxUsersEx_AddUserRoleRelation,
 } from '@/ts/L3ForWApiExShare/UserManage_GP/clsQxUsersExWApi';
-import { XzSchool_func } from '@/ts/L3ForWApi/SystemSet/clsXzSchoolWApi';
+import { vQx_XzSchool_func } from '@/ts/L3ForWApi/SystemSet/clsXzSchoolWApi';
 import { clsXzSchoolEN } from '@/ts/L0Entity/SystemSet/clsXzSchoolEN';
 import { enumUserType } from '@/ts/L0Entity/UserManage_GP/clsUserTypeEN';
 
@@ -519,7 +519,7 @@ export async function StudentInfoEx_FuncMapGradeBaseName(objStudentInfo: clsStud
   const strThisFuncName = StudentInfoEx_FuncMapGradeBaseName.name;
   try {
     if (IsNullOrEmpty(objStudentInfo.gradeBaseName) == true) {
-      const XzGradeBaseidGradeBase = objStudentInfo.idGradeBase;
+      const XzGradeBaseidGradeBase = objStudentInfo.id_GradeBase;
       const XzGradeBaseGradeBaseName = await XzGradeBase_func(
         clsXzGradeBaseEN.con_IdGradeBase,
         clsXzGradeBaseEN.con_GradeBaseName,
@@ -576,7 +576,7 @@ export async function StudentInfoEx_FuncMapCollegeName(objStudentInfo: clsStuden
   try {
     const xzClgStore = useXzClgStore();
     if (IsNullOrEmpty(objStudentInfo.collegeName) == true) {
-      const XzClgidXzCollege = objStudentInfo.idXzCollege;
+      const XzClgidXzCollege = objStudentInfo.id_XzCollege;
       const XzClgCollegeName = await xzClgStore.getCollegeName(XzClgidXzCollege);
       objStudentInfo.collegeName = XzClgCollegeName;
     }
@@ -760,7 +760,7 @@ export async function StudentInfoEx_SynchStudentToPlatform(
 
   const strCurrDate = clsDateTime.getTodayDateTimeStr(0);
   if (objStudentInfo.userTypeId == enumUserType.UniversityUser_05) {
-    if (IsNullOrEmpty(objStudentInfo.idXzCollege) == true) {
+    if (IsNullOrEmpty(objStudentInfo.id_XzCollege) == true) {
       const strMsg = Format(
         '该学生：{0}({1})没有相关学院部门，请设置学院部门再同步到统一平台！',
         objStudentInfo.stuName,
@@ -773,19 +773,19 @@ export async function StudentInfoEx_SynchStudentToPlatform(
   objUsersEN.userId = objStudentInfo.stuId;
   objUsersEN.userName = objStudentInfo.stuName;
   objUsersEN.userStateId = '01';
-  objUsersEN.idXzCollege = objStudentInfo.idXzCollege;
+  objUsersEN.id_XzCollege = objStudentInfo.id_XzCollege;
   objUsersEN.id_School = objStudentInfo.id_School;
   // objUsersEN.id_XzMajor = objStudentInfo.id_XzMajor;
-  objUsersEN.idGradeBase = objStudentInfo.idGradeBase;
+  objUsersEN.id_GradeBase = objStudentInfo.id_GradeBase;
   // objUsersEN.idGrade = objStudentInfo.idGrade;
 
   //objUsersEN.IdentityID = "04";
-  if (IsNullOrEmpty(objStudentInfo.idXzCollege) == true) {
+  if (IsNullOrEmpty(objStudentInfo.id_XzCollege) == true) {
     objUsersEN.departmentId = '000000';
   } else {
     try {
       const strDepartmentIdInGP = await XzClgEx_GetDepartmentIdInGPByIdCollege(
-        objStudentInfo.idXzCollege,
+        objStudentInfo.id_XzCollege,
       );
       if (IsNullOrEmpty(strDepartmentIdInGP) == true) {
         objUsersEN.departmentId = '000000';
@@ -912,7 +912,7 @@ export async function StudentInfoEx_FuncMapSchoolNameA(objStudentInfo: clsStuden
   try {
     if (IsNullOrEmpty(objStudentInfo.schoolNameA) == true) {
       const XzSchoolIdSchool = objStudentInfo.id_School;
-      const XzSchoolSchoolNameA = await XzSchool_func(
+      const XzSchoolSchoolNameA = await vQx_XzSchool_func(
         clsXzSchoolEN.con_IdSchool,
         clsXzSchoolEN.con_SchoolNameA,
         XzSchoolIdSchool,
@@ -940,7 +940,7 @@ export async function StudentInfoEx_FuncMapSchoolName(objStudentInfo: clsStudent
   try {
     if (IsNullOrEmpty(objStudentInfo.schoolName) == true) {
       const XzSchoolIdSchool = objStudentInfo.id_School;
-      const XzSchoolSchoolName = await XzSchool_func(
+      const XzSchoolSchoolName = await vQx_XzSchool_func(
         clsXzSchoolEN.con_IdSchool,
         clsXzSchoolEN.con_SchoolName,
         XzSchoolIdSchool,

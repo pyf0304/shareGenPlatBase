@@ -29,9 +29,9 @@ export class clsvStudentInfo_Sim {
     'idPolitics',
     'idStuType',
     'idGrade',
-    'idGradeBase',
+    'id_GradeBase',
     'idXzMajor',
-    'idXzCollege',
+    'id_XzCollege',
     'idAdminCls',
     'userId',
   ];
@@ -48,9 +48,9 @@ export class clsvStudentInfo_Sim {
   public idPolitics = ''; //政治面貌流水号
   public idStuType = ''; //学生类别流水号
   public idGrade = ''; //年级流水号
-  public idGradeBase = ''; //入学年级流水号
+  public id_GradeBase = ''; //入学年级流水号
   public idXzMajor = ''; //专业流水号
-  public idXzCollege = ''; //学院流水号
+  public id_XzCollege = ''; //学院流水号
   public idAdminCls = ''; //行政班流水号
   public userId = ''; //用户ID
 
@@ -78,11 +78,11 @@ export class clsvStudentInfo_Sim {
       case clsvStudentInfo_Sim.con_IdGrade:
         return this.idGrade;
       case clsvStudentInfo_Sim.con_IdGradeBase:
-        return this.idGradeBase;
+        return this.id_GradeBase;
       case clsvStudentInfo_Sim.con_IdXzMajor:
         return this.id_XzMajor;
       case clsvStudentInfo_Sim.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       case clsvStudentInfo_Sim.con_IdAdminCls:
         return this.idAdminCls;
       case clsvStudentInfo_Sim.con_UserId:
@@ -151,11 +151,11 @@ export class clsvStudentInfo_Sim {
   } //年级流水号
 
   /**
-   * 常量:"IdGradeBase"
+   * 常量:"id_GradeBase"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
   public static get con_IdGradeBase(): string {
-    return 'idGradeBase';
+    return 'id_GradeBase';
   } //入学年级流水号
 
   /**
@@ -167,11 +167,11 @@ export class clsvStudentInfo_Sim {
   } //专业流水号
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
   public static get con_IdXzCollege(): string {
-    return 'idXzCollege';
+    return 'id_XzCollege';
   } //学院流水号
 
   /**

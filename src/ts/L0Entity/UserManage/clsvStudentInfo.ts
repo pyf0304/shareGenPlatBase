@@ -38,7 +38,7 @@ export class clsvStudentInfo {
     'idStuType',
     'stuTypeID',
     'stuTypeDesc',
-    'idXzCollege',
+    'id_XzCollege',
     'collegeId',
     'collegeName',
     'collegeIdInGP',
@@ -47,7 +47,7 @@ export class clsvStudentInfo {
     'majorId',
     'majorName',
     'isNormal',
-    'idGradeBase',
+    'id_GradeBase',
     'gradeBaseName',
     'idAdminCls',
     'adminClsName',
@@ -105,7 +105,7 @@ export class clsvStudentInfo {
   public idStuType = ''; //学生类别流水号
   public stuTypeID = ''; //学生类别ID
   public stuTypeDesc = ''; //学生类别名称
-  public idXzCollege = ''; //学院流水号
+  public id_XzCollege = ''; //学院流水号
   public collegeId = ''; //学院ID
   public collegeName = ''; //学院名称
   public collegeIdInGP = ''; //CollegeIdInGP
@@ -114,7 +114,7 @@ export class clsvStudentInfo {
   public majorId = ''; //专业Id
   public majorName = ''; //专业名称
   public isNormal = false; //IsNormal
-  public idGradeBase = ''; //入学年级流水号
+  public id_GradeBase = ''; //入学年级流水号
   public gradeBaseName = ''; //年级名称
   public idAdminCls = ''; //行政班流水号
   public adminClsName = ''; //行政班名称
@@ -192,7 +192,7 @@ export class clsvStudentInfo {
       case clsvStudentInfo.con_StuTypeDesc:
         return this.stuTypeDesc;
       case clsvStudentInfo.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       case clsvStudentInfo.con_CollegeId:
         return this.collegeId;
       case clsvStudentInfo.con_CollegeName:
@@ -210,7 +210,7 @@ export class clsvStudentInfo {
       case clsvStudentInfo.con_IsNormal:
         return this.isNormal;
       case clsvStudentInfo.con_IdGradeBase:
-        return this.idGradeBase;
+        return this.id_GradeBase;
       case clsvStudentInfo.con_GradeBaseName:
         return this.gradeBaseName;
       case clsvStudentInfo.con_IdAdminCls:
@@ -415,11 +415,11 @@ export class clsvStudentInfo {
   } //学生类别名称
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
   public static get con_IdXzCollege(): string {
-    return 'idXzCollege';
+    return 'id_XzCollege';
   } //学院流水号
 
   /**
@@ -487,11 +487,11 @@ export class clsvStudentInfo {
   } //IsNormal
 
   /**
-   * 常量:"IdGradeBase"
+   * 常量:"id_GradeBase"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
   public static get con_IdGradeBase(): string {
-    return 'idGradeBase';
+    return 'id_GradeBase';
   } //入学年级流水号
 
   /**

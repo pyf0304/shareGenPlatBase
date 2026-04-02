@@ -1,13 +1,13 @@
-
+﻿
  /**
  * 类名:clsCacheModeENEx
- * 表名:CacheMode(01120688)
- * 版本:2024.12.05.1(服务器:WIN-SRV103-116)
- * 日期:2024/12/05 10:25:05
+ * 表名:CacheMode(00140135)
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/02 01:33:08
  * 生成者:pyf
- 工程名称:问卷调查(0112)
- CM工程:通用用户权限管理平台(000041, 变量首字母小写)-全部函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ 工程名称:统一平台(0014)
+ CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:系统设置(SystemSet)
  * 框架-层名:实体扩展层(TS)(EntityLayerEx,0191)
@@ -52,37 +52,13 @@ return strValue;
 }
 
 /**
- * 设置对象中某字段名的值.
- * (AutoGCLib.EntityLayerEx4TypeScript:Gen_ENEx_SetFldValue)
- * @param strFldName:字段名
- * @param strValue:字段值
- * @returns 字段值
-*/
-public SetFldValue(strFldName: string, strValue:string)
-{
-const strThisFuncName = "SetFldValue";
-let strMsg = "";
-switch (strFldName)
-{
-case "sfUpdFldSetStr":
-this.sfUpdFldSetStr = strValue;
-break;
-case "sfFldComparisonOp":
-this.sfFldComparisonOp = strValue;
-break;
-default:
-strMsg = `字段名:[${strFldName}]在表对象:[CacheMode]中不存在!(in ${this.constructor.name}.${strThisFuncName})`;
-console.error(strMsg);
-break;
-}
-}
-/**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名
 * @returns 是否是属性
 */
 public static hasProperty(propName: string) : boolean {
+//return propName in new clsCacheModeENEx();
 const instance = new clsCacheModeENEx();
-return instance.hasOwnProperty(propName);
+return Object.prototype.hasOwnProperty.call(instance, propName);
 }
 }

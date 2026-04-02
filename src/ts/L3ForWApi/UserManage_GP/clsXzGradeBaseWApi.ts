@@ -218,7 +218,7 @@ export async function XzGradeBase_GetObjByIdGradeBaseCache(
   const arrXzGradeBaseObjLstCache = await XzGradeBase_GetObjLstCache();
   try {
     const arrXzGradeBaseSel = arrXzGradeBaseObjLstCache.filter(
-      (x) => x.idGradeBase == strIdGradeBase,
+      (x) => x.id_GradeBase == strIdGradeBase,
     );
     let objXzGradeBase: clsXzGradeBaseEN;
     if (arrXzGradeBaseSel.length > 0) {
@@ -257,9 +257,11 @@ export async function XzGradeBase_UpdateObjInLstCache(objXzGradeBase: clsXzGrade
   const strThisFuncName = 'UpdateObjInLstCache';
   try {
     const arrXzGradeBaseObjLstCache = await XzGradeBase_GetObjLstCache();
-    const obj = arrXzGradeBaseObjLstCache.find((x) => x.idGradeBase == objXzGradeBase.idGradeBase);
+    const obj = arrXzGradeBaseObjLstCache.find(
+      (x) => x.id_GradeBase == objXzGradeBase.id_GradeBase,
+    );
     if (obj != null) {
-      objXzGradeBase.idGradeBase = obj.idGradeBase;
+      objXzGradeBase.id_GradeBase = obj.id_GradeBase;
       ObjectAssign(obj, objXzGradeBase);
     } else {
       arrXzGradeBaseObjLstCache.push(objXzGradeBase);
@@ -286,7 +288,7 @@ export async function XzGradeBase_UpdateObjInLstCache(objXzGradeBase: clsXzGrade
  * @returns 返回两个对象比较的结果
  */
 export function XzGradeBase_SortFunDefa(a: clsXzGradeBaseEN, b: clsXzGradeBaseEN): number {
-  return a.idGradeBase.localeCompare(b.idGradeBase);
+  return a.id_GradeBase.localeCompare(b.id_GradeBase);
 }
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
@@ -318,7 +320,7 @@ export function XzGradeBase_SortFunByKey(strKey: string, AscOrDesc: string) {
     switch (strKey) {
       case clsXzGradeBaseEN.con_IdGradeBase:
         return (a: clsXzGradeBaseEN, b: clsXzGradeBaseEN) => {
-          return a.idGradeBase.localeCompare(b.idGradeBase);
+          return a.id_GradeBase.localeCompare(b.id_GradeBase);
         };
       case clsXzGradeBaseEN.con_GradeBaseId:
         return (a: clsXzGradeBaseEN, b: clsXzGradeBaseEN) => {
@@ -438,7 +440,7 @@ export function XzGradeBase_SortFunByKey(strKey: string, AscOrDesc: string) {
     switch (strKey) {
       case clsXzGradeBaseEN.con_IdGradeBase:
         return (a: clsXzGradeBaseEN, b: clsXzGradeBaseEN) => {
-          return b.idGradeBase.localeCompare(a.idGradeBase);
+          return b.id_GradeBase.localeCompare(a.id_GradeBase);
         };
       case clsXzGradeBaseEN.con_GradeBaseId:
         return (a: clsXzGradeBaseEN, b: clsXzGradeBaseEN) => {
@@ -583,7 +585,7 @@ export async function XzGradeBase_GetNameByIdGradeBaseCache(strIdGradeBase: stri
   if (arrXzGradeBaseObjLstCache == null) return '';
   try {
     const arrXzGradeBaseSel = arrXzGradeBaseObjLstCache.filter(
-      (x) => x.idGradeBase == strIdGradeBase,
+      (x) => x.id_GradeBase == strIdGradeBase,
     );
     let objXzGradeBase: clsXzGradeBaseEN;
     if (arrXzGradeBaseSel.length > 0) {
@@ -619,7 +621,7 @@ export async function XzGradeBase_FilterFunByKey(strKey: string, value: any) {
   switch (strKey) {
     case clsXzGradeBaseEN.con_IdGradeBase:
       return (obj: clsXzGradeBaseEN) => {
-        return obj.idGradeBase === value;
+        return obj.id_GradeBase === value;
       };
     case clsXzGradeBaseEN.con_GradeBaseId:
       return (obj: clsXzGradeBaseEN) => {
@@ -849,7 +851,7 @@ export async function XzGradeBase_funcKey(
       break;
   }
   if (arrXzGradeBaseSel.length == 0) return [];
-  return arrXzGradeBaseSel.map((x) => x.idGradeBase);
+  return arrXzGradeBaseSel.map((x) => x.id_GradeBase);
 }
 
 /**
@@ -1589,7 +1591,7 @@ export async function XzGradeBase_GetObjLstByIdGradeBaseLstCache(arrIdGradeBaseL
   try {
     const arrXzGradeBaseObjLstCache = await XzGradeBase_GetObjLstCache();
     const arrXzGradeBaseSel = arrXzGradeBaseObjLstCache.filter(
-      (x) => arrIdGradeBaseLst.indexOf(x.idGradeBase) > -1,
+      (x) => arrIdGradeBaseLst.indexOf(x.id_GradeBase) > -1,
     );
     return arrXzGradeBaseSel;
   } catch (e) {
@@ -2123,7 +2125,7 @@ export async function XzGradeBase_AddNewRecordAsync(
 ): Promise<boolean> {
   const strThisFuncName = 'AddNewRecordAsync';
   const strAction = 'AddNewRecord';
-  if (objXzGradeBaseEN.idGradeBase === null || objXzGradeBaseEN.idGradeBase === '') {
+  if (objXzGradeBaseEN.id_GradeBase === null || objXzGradeBaseEN.id_GradeBase === '') {
     const strMsg = '需要的对象的关键字为空,不能添加!';
     throw strMsg;
   }
@@ -2251,9 +2253,9 @@ export async function XzGradeBase_AddNewObjSave(
   try {
     //检查唯一性条件
     let returnBool = false;
-    const bolIsExist = await XzGradeBase_IsExistAsync(objXzGradeBaseEN.idGradeBase);
+    const bolIsExist = await XzGradeBase_IsExistAsync(objXzGradeBaseEN.id_GradeBase);
     if (bolIsExist == true) {
-      const strMsg = Format('添加记录时,关键字：{0}已经存在!', objXzGradeBaseEN.idGradeBase);
+      const strMsg = Format('添加记录时,关键字：{0}已经存在!', objXzGradeBaseEN.id_GradeBase);
       console.error(strMsg);
       throw strMsg;
     }
@@ -2265,7 +2267,7 @@ export async function XzGradeBase_AddNewObjSave(
       //显示信息框
       throw strInfo;
     }
-    return { keyword: objXzGradeBaseEN.idGradeBase, success: returnBool }; //一定要有一个返回值,否则会出错!
+    return { keyword: objXzGradeBaseEN.id_GradeBase, success: returnBool }; //一定要有一个返回值,否则会出错!
   } catch (e) {
     const strMsg = `添加记录不成功,${e}.(in ${xzGradeBase_ConstructorName}.${strThisFuncName})`;
     console.error(strMsg);
@@ -2281,7 +2283,7 @@ export async function XzGradeBase_UpdateObjSave(
 ): Promise<boolean> {
   const strThisFuncName = 'UpdateObjSave';
   objXzGradeBaseEN.sfUpdFldSetStr = objXzGradeBaseEN.updFldString; //设置哪些字段被修改(脏字段)
-  if (objXzGradeBaseEN.idGradeBase == '' || objXzGradeBaseEN.idGradeBase == undefined) {
+  if (objXzGradeBaseEN.id_GradeBase == '' || objXzGradeBaseEN.id_GradeBase == undefined) {
     console.error('关键字不能为空!');
     throw '关键字不能为空!';
   }
@@ -2382,7 +2384,7 @@ export async function XzGradeBase_UpdateRecordAsync(
   ) {
     const strMsg = Format(
       '对象(关键字: {0})的【修改字段集】为空,不能修改!',
-      objXzGradeBaseEN.idGradeBase,
+      objXzGradeBaseEN.id_GradeBase,
     );
     throw strMsg;
   }
@@ -2451,7 +2453,7 @@ export async function XzGradeBase_EditRecordExAsync(
   ) {
     const strMsg = Format(
       '对象(关键字: {0})的【修改字段集】为空,不能修改!',
-      objXzGradeBaseEN.idGradeBase,
+      objXzGradeBaseEN.id_GradeBase,
     );
     throw strMsg;
   }
@@ -2522,7 +2524,7 @@ export async function XzGradeBase_UpdateWithConditionAsync(
   ) {
     const strMsg = Format(
       '对象(关键字: {0})的【修改字段集】为空,不能修改!',
-      objXzGradeBaseEN.idGradeBase,
+      objXzGradeBaseEN.id_GradeBase,
     );
     throw new Error(strMsg);
   }
@@ -2745,7 +2747,7 @@ export async function XzGradeBase_IsExistCache(strIdGradeBase: string) {
   if (arrXzGradeBaseObjLstCache == null) return false;
   try {
     const arrXzGradeBaseSel = arrXzGradeBaseObjLstCache.filter(
-      (x) => x.idGradeBase == strIdGradeBase,
+      (x) => x.id_GradeBase == strIdGradeBase,
     );
     if (arrXzGradeBaseSel.length > 0) {
       return true;
@@ -3218,7 +3220,7 @@ export async function XzGradeBase_GetArrXzGradeBaseByIsVisible(bolIsVisible: boo
   if (arrObjLstSel == null) return null;
   arrObjLstSel = arrObjLstSel.filter((x) => x.isVisible == bolIsVisible);
   const obj0 = new clsXzGradeBaseEN();
-  obj0.idGradeBase = '0';
+  obj0.id_GradeBase = '0';
   obj0.gradeBaseName = '选入学年级...';
   arrXzGradeBase.push(obj0);
   arrObjLstSel.forEach((x) => arrXzGradeBase.push(x));
@@ -3237,7 +3239,7 @@ export async function XzGradeBase_GetArrXzGradeBase() {
   const arrObjLstSel = await XzGradeBase_GetObjLstCache();
   if (arrObjLstSel == null) return null;
   const obj0 = new clsXzGradeBaseEN();
-  obj0.idGradeBase = '0';
+  obj0.id_GradeBase = '0';
   obj0.gradeBaseName = '选入学年级...';
   arrXzGradeBase.push(obj0);
   arrObjLstSel.forEach((x) => arrXzGradeBase.push(x));
@@ -3278,11 +3280,11 @@ export function XzGradeBase_CheckPropertyNew(pobjXzGradeBaseEN: clsXzGradeBaseEN
   }
   //检查字段长度, 若字符型字段长度超出规定的长度,即非法!
   if (
-    IsNullOrEmpty(pobjXzGradeBaseEN.idGradeBase) == false &&
-    GetStrLen(pobjXzGradeBaseEN.idGradeBase) > 4
+    IsNullOrEmpty(pobjXzGradeBaseEN.id_GradeBase) == false &&
+    GetStrLen(pobjXzGradeBaseEN.id_GradeBase) > 4
   ) {
     throw new Error(
-      `(errid:Watl000413)字段[入学年级流水号(idGradeBase)]的长度不能超过4(In 年级(XzGradeBase))!值:${pobjXzGradeBaseEN.idGradeBase}(clsXzGradeBaseBL:CheckPropertyNew)`,
+      `(errid:Watl000413)字段[入学年级流水号(id_GradeBase)]的长度不能超过4(In 年级(XzGradeBase))!值:${pobjXzGradeBaseEN.id_GradeBase}(clsXzGradeBaseBL:CheckPropertyNew)`,
     );
   }
   if (
@@ -3401,12 +3403,12 @@ export function XzGradeBase_CheckPropertyNew(pobjXzGradeBaseEN: clsXzGradeBaseEN
   }
   //检查字段的数据类型是否正确
   if (
-    IsNullOrEmpty(pobjXzGradeBaseEN.idGradeBase) == false &&
-    undefined !== pobjXzGradeBaseEN.idGradeBase &&
-    tzDataType.isString(pobjXzGradeBaseEN.idGradeBase) === false
+    IsNullOrEmpty(pobjXzGradeBaseEN.id_GradeBase) == false &&
+    undefined !== pobjXzGradeBaseEN.id_GradeBase &&
+    tzDataType.isString(pobjXzGradeBaseEN.id_GradeBase) === false
   ) {
     throw new Error(
-      `(errid:Watl000414)字段[入学年级流水号(idGradeBase)]的值:[${pobjXzGradeBaseEN.idGradeBase}], 非法,应该为字符型(In 年级(XzGradeBase))!(clsXzGradeBaseBL:CheckPropertyNew0)`,
+      `(errid:Watl000414)字段[入学年级流水号(id_GradeBase)]的值:[${pobjXzGradeBaseEN.id_GradeBase}], 非法,应该为字符型(In 年级(XzGradeBase))!(clsXzGradeBaseBL:CheckPropertyNew0)`,
     );
   }
   if (
@@ -3609,11 +3611,11 @@ export function XzGradeBase_CheckPropertyNew(pobjXzGradeBaseEN: clsXzGradeBaseEN
 export function XzGradeBase_CheckProperty4Update(pobjXzGradeBaseEN: clsXzGradeBaseEN) {
   //检查字段长度, 若字符型字段长度超出规定的长度,即非法!
   if (
-    IsNullOrEmpty(pobjXzGradeBaseEN.idGradeBase) == false &&
-    GetStrLen(pobjXzGradeBaseEN.idGradeBase) > 4
+    IsNullOrEmpty(pobjXzGradeBaseEN.id_GradeBase) == false &&
+    GetStrLen(pobjXzGradeBaseEN.id_GradeBase) > 4
   ) {
     throw new Error(
-      `(errid:Watl000416)字段[入学年级流水号(idGradeBase)]的长度不能超过4(In 年级(XzGradeBase))!值:${pobjXzGradeBaseEN.idGradeBase}(clsXzGradeBaseBL:CheckProperty4Update)`,
+      `(errid:Watl000416)字段[入学年级流水号(id_GradeBase)]的长度不能超过4(In 年级(XzGradeBase))!值:${pobjXzGradeBaseEN.id_GradeBase}(clsXzGradeBaseBL:CheckProperty4Update)`,
     );
   }
   if (
@@ -3732,12 +3734,12 @@ export function XzGradeBase_CheckProperty4Update(pobjXzGradeBaseEN: clsXzGradeBa
   }
   //检查字段的数据类型是否正确
   if (
-    IsNullOrEmpty(pobjXzGradeBaseEN.idGradeBase) == false &&
-    undefined !== pobjXzGradeBaseEN.idGradeBase &&
-    tzDataType.isString(pobjXzGradeBaseEN.idGradeBase) === false
+    IsNullOrEmpty(pobjXzGradeBaseEN.id_GradeBase) == false &&
+    undefined !== pobjXzGradeBaseEN.id_GradeBase &&
+    tzDataType.isString(pobjXzGradeBaseEN.id_GradeBase) === false
   ) {
     throw new Error(
-      `(errid:Watl000417)字段[入学年级流水号(idGradeBase)]的值:[${pobjXzGradeBaseEN.idGradeBase}], 非法,应该为字符型(In 年级(XzGradeBase))!(clsXzGradeBaseBL:CheckProperty4Update)`,
+      `(errid:Watl000417)字段[入学年级流水号(id_GradeBase)]的值:[${pobjXzGradeBaseEN.id_GradeBase}], 非法,应该为字符型(In 年级(XzGradeBase))!(clsXzGradeBaseBL:CheckProperty4Update)`,
     );
   }
   if (
@@ -3931,8 +3933,8 @@ export function XzGradeBase_CheckProperty4Update(pobjXzGradeBaseEN: clsXzGradeBa
   }
   //检查主键是否为Null或者空!
   if (
-    IsNullOrEmpty(pobjXzGradeBaseEN.idGradeBase) === true ||
-    pobjXzGradeBaseEN.idGradeBase.toString() === '0'
+    IsNullOrEmpty(pobjXzGradeBaseEN.id_GradeBase) === true ||
+    pobjXzGradeBaseEN.id_GradeBase.toString() === '0'
   ) {
     throw new Error(
       `(errid:Watl000064)字段[入学年级流水号]不能为空(In 年级)!(clsXzGradeBaseBL:CheckProperty4Update)`,
@@ -4045,7 +4047,7 @@ export function XzGradeBase_GetCombineCondition(objXzGradeBaseCond: clsXzGradeBa
     strWhereCond += Format(
       " And {0} {2} '{1}'",
       clsXzGradeBaseEN.con_IdGradeBase,
-      objXzGradeBaseCond.idGradeBase,
+      objXzGradeBaseCond.id_GradeBase,
       strComparisonOpIdGradeBase,
     );
   }
@@ -4354,7 +4356,7 @@ export function XzGradeBase_CopyObjTo(
   objXzGradeBaseENS: clsXzGradeBaseEN,
   objXzGradeBaseENT: clsXzGradeBaseEN,
 ): void {
-  objXzGradeBaseENT.idGradeBase = objXzGradeBaseENS.idGradeBase; //入学年级流水号
+  objXzGradeBaseENT.id_GradeBase = objXzGradeBaseENS.id_GradeBase; //入学年级流水号
   objXzGradeBaseENT.gradeBaseId = objXzGradeBaseENS.gradeBaseId; //年级代号
   objXzGradeBaseENT.gradeBaseName = objXzGradeBaseENS.gradeBaseName; //年级名称
   objXzGradeBaseENT.gradeBaseNameA = objXzGradeBaseENS.gradeBaseNameA; //年级名称缩写

@@ -58,8 +58,9 @@ import { clsSysPara4WebApi, GetWebApiUrl_GP } from '@/ts/PubConfig/clsSysPara4We
 import { clsQxUsersEN } from '@/ts/L0Entity/UserManage_GP/clsQxUsersEN';
 import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
 import axios from 'axios';
-import { XzSchool_func } from '@/ts/L3ForWApi/SystemSet/clsXzSchoolWApi';
+
 import { clsXzSchoolEN } from '@/ts/L0Entity/SystemSet/clsXzSchoolEN';
+import { vQx_XzSchool_func } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_XzSchoolWApi';
 
 export const qxUserRoleRelationEx_Controller = 'QxUserRoleRelationExApi';
 export const qxUserRoleRelationEx_ConstructorName = 'qxUserRoleRelationEx';
@@ -1129,7 +1130,7 @@ export async function QxUserRoleRelationEx_FuncMapSchoolName(
   try {
     if (IsNullOrEmpty(objQxUserRoleRelation.schoolName) == true) {
       const XzSchoolidSchool = objQxUserRoleRelation.id_School;
-      const XzSchoolSchoolName = await XzSchool_func(
+      const XzSchoolSchoolName = await vQx_XzSchool_func(
         clsXzSchoolEN.con_IdSchool,
         clsXzSchoolEN.con_SchoolName,
         XzSchoolidSchool,

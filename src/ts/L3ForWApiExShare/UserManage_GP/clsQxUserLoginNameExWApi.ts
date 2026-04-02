@@ -26,7 +26,6 @@
 import { ObjectAssign, GetSortExpressInfo, GetObjKeys } from '@/ts/PubFun/clsCommFunc4Web';
 import {
   QxUserLoginName_GetObjLstCache,
-  QxUserLoginName_GetObjLstByPagerAsync,
   QxUserLoginName_SortFunByKey,
 } from '@/ts/L3ForWApi/UserManage_GP/clsQxUserLoginNameWApi';
 import { stuPagerPara } from '@/ts/PubFun/stuPagerPara';
@@ -91,48 +90,6 @@ export function QxUserLoginNameEx_CopyToEx(
     alert(strMsg);
     return objQxUserLoginNameENT;
   }
-}
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function QxUserLoginNameEx_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsQxUserLoginNameENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrQxUserLoginNameObjLst = await QxUserLoginName_GetObjLstByPagerAsync(objPagerPara);
-  const arrQxUserLoginNameExObjLst = arrQxUserLoginNameObjLst.map(QxUserLoginNameEx_CopyToEx);
-  if (arrQxUserLoginNameExObjLst.length == 0) return arrQxUserLoginNameExObjLst;
-  let arrQxUserLoginNameSel: Array<clsQxUserLoginNameENEx> = arrQxUserLoginNameExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrQxUserLoginNameSel = arrQxUserLoginNameSel.sort(
-        QxUserLoginNameEx_SortFunByKey(strSortFld, strSortType),
-      );
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrQxUserLoginNameSel = arrQxUserLoginNameSel.sort(objPagerPara.sortFun);
-    }
-    return arrQxUserLoginNameSel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      qxUserLoginNameEx_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsQxUserLoginNameENEx>();
 }
 
 /**

@@ -19,10 +19,10 @@
 
 export class clsXzClg {
   public static _CurrTabName = 'XzClg'; //当前表名,与该类相关的表名
-  public static _KeyFldName = 'IdXzCollege'; //当前表中的关键字名称,与该类相关的表中关键字名
+  public static _KeyFldName = 'id_XzCollege'; //当前表中的关键字名称,与该类相关的表中关键字名
   public static mintAttributeCount = 18;
   public static AttributeName = [
-    'idXzCollege',
+    'id_XzCollege',
     'collegeId',
     'collegeName',
     'collegeIdInGP',
@@ -47,7 +47,7 @@ export class clsXzClg {
    * 设置对象中公共属性.
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_ClsPublicVar)
    */
-  public idXzCollege = ''; //学院流水号
+  public id_XzCollege = ''; //学院流水号
   public collegeId = ''; //学院ID
   public collegeName = ''; //学院名称
   public collegeIdInGP = ''; //CollegeIdInGP
@@ -76,7 +76,7 @@ export class clsXzClg {
     let strMsg = '';
     switch (strFldName) {
       case clsXzClg.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       case clsXzClg.con_CollegeId:
         return this.collegeId;
       case clsXzClg.con_CollegeName:
@@ -119,11 +119,11 @@ export class clsXzClg {
   }
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
   public static get con_IdXzCollege(): string {
-    return 'idXzCollege';
+    return 'id_XzCollege';
   } //学院流水号
 
   /**

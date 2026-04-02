@@ -333,9 +333,9 @@ export function vStudentInfo_Sim_SortFunByKey(strKey: string, AscOrDesc: string)
         };
       case clsvStudentInfo_SimEN.con_IdGradeBase:
         return (a: clsvStudentInfo_SimEN, b: clsvStudentInfo_SimEN) => {
-          if (a.idGradeBase == null) return -1;
-          if (b.idGradeBase == null) return 1;
-          return a.idGradeBase.localeCompare(b.idGradeBase);
+          if (a.id_GradeBase == null) return -1;
+          if (b.id_GradeBase == null) return 1;
+          return a.id_GradeBase.localeCompare(b.id_GradeBase);
         };
       case clsvStudentInfo_SimEN.con_IdXzMajor:
         return (a: clsvStudentInfo_SimEN, b: clsvStudentInfo_SimEN) => {
@@ -343,9 +343,9 @@ export function vStudentInfo_Sim_SortFunByKey(strKey: string, AscOrDesc: string)
         };
       case clsvStudentInfo_SimEN.con_Id_XzCollege:
         return (a: clsvStudentInfo_SimEN, b: clsvStudentInfo_SimEN) => {
-          if (a.idXzCollege == null) return -1;
-          if (b.idXzCollege == null) return 1;
-          return a.idXzCollege.localeCompare(b.idXzCollege);
+          if (a.id_XzCollege == null) return -1;
+          if (b.id_XzCollege == null) return 1;
+          return a.id_XzCollege.localeCompare(b.id_XzCollege);
         };
       case clsvStudentInfo_SimEN.con_IdAdminCls:
         return (a: clsvStudentInfo_SimEN, b: clsvStudentInfo_SimEN) => {
@@ -400,9 +400,9 @@ export function vStudentInfo_Sim_SortFunByKey(strKey: string, AscOrDesc: string)
         };
       case clsvStudentInfo_SimEN.con_IdGradeBase:
         return (a: clsvStudentInfo_SimEN, b: clsvStudentInfo_SimEN) => {
-          if (b.idGradeBase == null) return -1;
-          if (a.idGradeBase == null) return 1;
-          return b.idGradeBase.localeCompare(a.idGradeBase);
+          if (b.id_GradeBase == null) return -1;
+          if (a.id_GradeBase == null) return 1;
+          return b.id_GradeBase.localeCompare(a.id_GradeBase);
         };
       case clsvStudentInfo_SimEN.con_IdXzMajor:
         return (a: clsvStudentInfo_SimEN, b: clsvStudentInfo_SimEN) => {
@@ -410,9 +410,9 @@ export function vStudentInfo_Sim_SortFunByKey(strKey: string, AscOrDesc: string)
         };
       case clsvStudentInfo_SimEN.con_Id_XzCollege:
         return (a: clsvStudentInfo_SimEN, b: clsvStudentInfo_SimEN) => {
-          if (b.idXzCollege == null) return -1;
-          if (a.idXzCollege == null) return 1;
-          return b.idXzCollege.localeCompare(a.idXzCollege);
+          if (b.id_XzCollege == null) return -1;
+          if (a.id_XzCollege == null) return 1;
+          return b.id_XzCollege.localeCompare(a.id_XzCollege);
         };
       case clsvStudentInfo_SimEN.con_IdAdminCls:
         return (a: clsvStudentInfo_SimEN, b: clsvStudentInfo_SimEN) => {
@@ -527,7 +527,7 @@ export async function vStudentInfo_Sim_FilterFunByKey(strKey: string, value: any
       };
     case clsvStudentInfo_SimEN.con_IdGradeBase:
       return (obj: clsvStudentInfo_SimEN) => {
-        return obj.idGradeBase === value;
+        return obj.id_GradeBase === value;
       };
     case clsvStudentInfo_SimEN.con_IdXzMajor:
       return (obj: clsvStudentInfo_SimEN) => {
@@ -535,7 +535,7 @@ export async function vStudentInfo_Sim_FilterFunByKey(strKey: string, value: any
       };
     case clsvStudentInfo_SimEN.con_Id_XzCollege:
       return (obj: clsvStudentInfo_SimEN) => {
-        return obj.idXzCollege === value;
+        return obj.id_XzCollege === value;
       };
     case clsvStudentInfo_SimEN.con_IdAdminCls:
       return (obj: clsvStudentInfo_SimEN) => {
@@ -2731,7 +2731,7 @@ export function vStudentInfo_Sim_GetCombineCondition(
     strWhereCond += Format(
       " And {0} {2} '{1}'",
       clsvStudentInfo_SimEN.con_IdGradeBase,
-      objvStudentInfo_SimCond.idGradeBase,
+      objvStudentInfo_SimCond.id_GradeBase,
       strComparisonOpIdGradeBase,
     );
   }
@@ -2761,7 +2761,7 @@ export function vStudentInfo_Sim_GetCombineCondition(
     strWhereCond += Format(
       " And {0} {2} '{1}'",
       clsvStudentInfo_SimEN.con_Id_XzCollege,
-      objvStudentInfo_SimCond.idXzCollege,
+      objvStudentInfo_SimCond.id_XzCollege,
       strComparisonOpIdXzCollege,
     );
   }
@@ -2815,9 +2815,9 @@ export function vStudentInfo_Sim_CopyObjTo(
   objvStudentInfo_SimENT.idPolitics = objvStudentInfo_SimENS.idPolitics; //政治面貌流水号
   objvStudentInfo_SimENT.idStuType = objvStudentInfo_SimENS.idStuType; //学生类别流水号
   objvStudentInfo_SimENT.idGrade = objvStudentInfo_SimENS.idGrade; //年级流水号
-  objvStudentInfo_SimENT.idGradeBase = objvStudentInfo_SimENS.idGradeBase; //入学年级流水号
+  objvStudentInfo_SimENT.id_GradeBase = objvStudentInfo_SimENS.id_GradeBase; //入学年级流水号
   objvStudentInfo_SimENT.id_XzMajor = objvStudentInfo_SimENS.id_XzMajor; //专业流水号
-  objvStudentInfo_SimENT.idXzCollege = objvStudentInfo_SimENS.idXzCollege; //学院流水号
+  objvStudentInfo_SimENT.id_XzCollege = objvStudentInfo_SimENS.id_XzCollege; //学院流水号
   objvStudentInfo_SimENT.idAdminCls = objvStudentInfo_SimENS.idAdminCls; //行政班流水号
   objvStudentInfo_SimENT.userId = objvStudentInfo_SimENS.userId; //用户ID
 }

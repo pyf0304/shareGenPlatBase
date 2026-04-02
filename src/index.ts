@@ -50,7 +50,7 @@ import { vTeacherInfo_Sim_func } from '@/ts/L3ForWApi/BaseInfo/clsvTeacherInfo_S
 import { clsXzSchoolEN } from '@/ts/L0Entity/SystemSet/clsXzSchoolEN';
 import {
   XzSchool_BindDdl_IdSchoolInDivCache,
-  XzSchool_func,
+  vQx_XzSchool_func,
   XzSchool_funcKey,
   XzSchool_GetArrXzSchool,
   XzSchool_GetObjByIdSchoolAsync,
@@ -199,7 +199,7 @@ export {
   XzSchool_GetObjByIdSchoolCache,
   XzSchool_GetArrXzSchool,
   XzSchool_BindDdl_IdSchoolInDivCache,
-  XzSchool_func,
+  vQx_XzSchool_func,
   XzSchool_funcKey,
 };
 export { XzGrade_GetArrXzGrade, XzGrade_BindDdl_IdGradeInDivCache };

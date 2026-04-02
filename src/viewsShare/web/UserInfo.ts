@@ -127,7 +127,7 @@ export class UserInfo {
   public async selectMajor_Click() {
     try {
       //clsPrjInfoEN objPrjInfo = clsPrjInfoBL.GetObjByPrjID_Cache(strPrjId);
-      const strWhereCond = ` idXzCollege='${this.idXzCollege}'`;
+      const strWhereCond = ` id_XzCollege='${this.id_XzCollege}'`;
       await this.BindDdl_idXzMajor('ddlIdXzMajor', strWhereCond);
     } catch (e: any) {
       const strMsg = `获取数据有问题,${e}.`;
@@ -281,9 +281,9 @@ export class UserInfo {
   }
 
   public Clear() {
-    this.idXzCollege = '';
+    this.id_XzCollege = '';
     this.id_XzMajor = '';
-    this.idGradeBase = '';
+    this.id_GradeBase = '';
     this.email = '';
     this.password = '';
   }
@@ -295,9 +295,9 @@ export class UserInfo {
       $('#EditheadPic').attr('src', strheadPic);
     }
 
-    this.idXzCollege = pobjUsersEN.idXzCollege;
+    this.id_XzCollege = pobjUsersEN.id_XzCollege;
     this.id_XzMajor = pobjUsersEN.id_XzMajor;
-    this.idGradeBase = pobjUsersEN.idGradeBase; // idGradeBase
+    this.id_GradeBase = pobjUsersEN.id_GradeBase; // id_GradeBase
     this.email = pobjUsersEN.email; // EMail
     this.userName = pobjUsersEN.userName;
     $('#txtUploadheadPicUrl').val('');
@@ -306,11 +306,11 @@ export class UserInfo {
   //提交
   public async btnOKUpd_Click(strListDiv: string) {
     console.log(strListDiv);
-    if (this.idXzCollege == '') {
+    if (this.id_XzCollege == '') {
       alert('学院不能为空！');
     } else if (this.id_XzMajor == '') {
       alert('专业不能为空！');
-    } else if (this.idGradeBase == '') {
+    } else if (this.id_GradeBase == '') {
       alert('年级不能为空！');
     }
     //else if (this.password == "") {
@@ -402,9 +402,9 @@ export class UserInfo {
     const divName = this.getDivName();
     if (divName == null) return;
     const userStore = useUserStore();
-    pobjUsersEN.SetIdXzCollege(this.idXzCollege); // 学院流水号
+    pobjUsersEN.SetIdXzCollege(this.id_XzCollege); // 学院流水号
     pobjUsersEN.SetIdXzMajor(this.id_XzMajor); // 专业流水号
-    pobjUsersEN.SetIdGradeBase(this.idGradeBase); // 年级流水号
+    pobjUsersEN.SetIdGradeBase(this.id_GradeBase); // 年级流水号
     pobjUsersEN.SetEmail(this.email); // 电子邮箱
     if (this.password != '' && this.RePassword != '') {
       pobjUsersEN.SetPassword(this.password); // password
@@ -421,7 +421,7 @@ export class UserInfo {
 
   public PutDataToUsersClass2(pobjQxUsersEN: clsQxUsersEN) {
     const userStore = useUserStore();
-    pobjQxUsersEN.SetId_XzCollege(this.idXzCollege); // 学院流水号
+    pobjQxUsersEN.SetId_XzCollege(this.id_XzCollege); // 学院流水号
     pobjQxUsersEN.SetEmail(this.email); // 电子邮箱
     if (this.password != '' && this.RePassword != '') {
       pobjQxUsersEN.SetPassword(this.password); // password
@@ -480,7 +480,7 @@ export class UserInfo {
   /*
    * 年级流水号
    */
-  public set idGradeBase(value: string) {
+  public set id_GradeBase(value: string) {
     const divName = this.getDivName();
     if (divName == null) return;
     SetSelectValueByIdInDivObj(divName, 'ddlIdGradeBase', value);
@@ -488,7 +488,7 @@ export class UserInfo {
   /*
    * 年级流水号
    */
-  public get idGradeBase(): string {
+  public get id_GradeBase(): string {
     const divName = this.getDivName();
 
     return GetSelectValueInDivObj(divName, 'ddlIdGradeBase');
@@ -497,7 +497,7 @@ export class UserInfo {
   /*
    * 学院流水号
    */
-  public set idXzCollege(value: string) {
+  public set id_XzCollege(value: string) {
     const divName = this.getDivName();
     if (divName == null) return;
     SetSelectValueByIdInDivObj(divName, 'ddlIdXzCollege', value);
@@ -505,7 +505,7 @@ export class UserInfo {
   /*
    * 学院流水号
    */
-  public get idXzCollege(): string {
+  public get id_XzCollege(): string {
     const divName = this.getDivName();
 
     return GetSelectValueInDivObj(divName, 'ddlIdXzCollege');

@@ -45,7 +45,7 @@ export class clsvStudentInfoEN extends clsGeneralTabV {
     'idStuType',
     'stuTypeID',
     'stuTypeDesc',
-    'idXzCollege',
+    'id_XzCollege',
     'collegeId',
     'collegeName',
     'collegeIdInGP',
@@ -54,7 +54,7 @@ export class clsvStudentInfoEN extends clsGeneralTabV {
     'majorId',
     'majorName',
     'isNormal',
-    'idGradeBase',
+    'id_GradeBase',
     'gradeBaseName',
     'idAdminCls',
     'adminClsName',
@@ -142,7 +142,7 @@ export class clsvStudentInfoEN extends clsGeneralTabV {
       case clsvStudentInfoEN.con_StuTypeDesc:
         return this.stuTypeDesc;
       case clsvStudentInfoEN.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       case clsvStudentInfoEN.con_CollegeId:
         return this.collegeId;
       case clsvStudentInfoEN.con_CollegeName:
@@ -160,7 +160,7 @@ export class clsvStudentInfoEN extends clsGeneralTabV {
       case clsvStudentInfoEN.con_IsNormal:
         return this.isNormal;
       case clsvStudentInfoEN.con_IdGradeBase:
-        return this.idGradeBase;
+        return this.id_GradeBase;
       case clsvStudentInfoEN.con_GradeBaseName:
         return this.gradeBaseName;
       case clsvStudentInfoEN.con_IdAdminCls:
@@ -298,7 +298,7 @@ export class clsvStudentInfoEN extends clsGeneralTabV {
         this.stuTypeDesc = strValue;
         break;
       case clsvStudentInfoEN.con_Id_XzCollege:
-        this.idXzCollege = strValue;
+        this.id_XzCollege = strValue;
         break;
       case clsvStudentInfoEN.con_CollegeId:
         this.collegeId = strValue;
@@ -325,7 +325,7 @@ export class clsvStudentInfoEN extends clsGeneralTabV {
         this.isNormal = Boolean(strValue);
         break;
       case clsvStudentInfoEN.con_IdGradeBase:
-        this.idGradeBase = strValue;
+        this.id_GradeBase = strValue;
         break;
       case clsvStudentInfoEN.con_GradeBaseName:
         this.gradeBaseName = strValue;
@@ -459,7 +459,7 @@ export class clsvStudentInfoEN extends clsGeneralTabV {
   public idStuType = ''; //学生类别流水号
   public stuTypeID = ''; //学生类别ID
   public stuTypeDesc = ''; //学生类别名称
-  public idXzCollege = ''; //学院流水号
+  public id_XzCollege = ''; //学院流水号
   public collegeId = ''; //学院ID
   public collegeName = ''; //学院名称
   public collegeIdInGP = ''; //CollegeIdInGP
@@ -468,7 +468,7 @@ export class clsvStudentInfoEN extends clsGeneralTabV {
   public majorId = ''; //专业Id
   public majorName = ''; //专业名称
   public isNormal = false; //IsNormal
-  public idGradeBase = ''; //入学年级流水号
+  public id_GradeBase = ''; //入学年级流水号
   public gradeBaseName = ''; //年级名称
   public idAdminCls = ''; //行政班流水号
   public adminClsName = ''; //行政班名称
@@ -633,11 +633,11 @@ export class clsvStudentInfoEN extends clsGeneralTabV {
   } //学生类别名称
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
    */
   public static get con_IdXzCollege(): string {
-    return 'idXzCollege';
+    return 'id_XzCollege';
   } //学院流水号
 
   /**
@@ -705,11 +705,11 @@ export class clsvStudentInfoEN extends clsGeneralTabV {
   } //IsNormal
 
   /**
-   * 常量:"IdGradeBase"
+   * 常量:"id_GradeBase"
    * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
    */
   public static get con_IdGradeBase(): string {
-    return 'idGradeBase';
+    return 'id_GradeBase';
   } //入学年级流水号
 
   /**

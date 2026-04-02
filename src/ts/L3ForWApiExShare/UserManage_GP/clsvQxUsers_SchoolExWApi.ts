@@ -25,10 +25,7 @@
  **/
 import { ObjectAssign } from '@/ts/PubFun/clsCommFunc4Web';
 import { clsvQxUsers_SchoolENEx } from '@/ts/L0Entity/UserManage_GP/clsvQxUsers_SchoolENEx';
-import {
-  vQxUsers_School_GetObjLstByPagerAsync,
-  vQxUsers_School_SortFunByKey,
-} from '@/ts/L3ForWApi/UserManage_GP/clsvQxUsers_SchoolWApi';
+import { vQxUsers_School_SortFunByKey } from '@/ts/L3ForWApi/UserManage_GP/clsvQxUsers_SchoolWApi';
 import { clsvQxUsers_SchoolEN } from '@/ts/L0Entity/UserManage_GP/clsvQxUsers_SchoolEN';
 import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
 import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
@@ -91,48 +88,6 @@ export function vQxUsers_SchoolEx_CopyToEx(
   }
 }
 //该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerCache)
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function vQxUsers_SchoolEx_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsvQxUsers_SchoolENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrvQxUsers_SchoolObjLst = await vQxUsers_School_GetObjLstByPagerAsync(objPagerPara);
-  const arrvQxUsers_SchoolExObjLst = arrvQxUsers_SchoolObjLst.map(vQxUsers_SchoolEx_CopyToEx);
-  if (arrvQxUsers_SchoolExObjLst.length == 0) return arrvQxUsers_SchoolExObjLst;
-  let arrvQxUsers_SchoolSel: Array<clsvQxUsers_SchoolENEx> = arrvQxUsers_SchoolExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrvQxUsers_SchoolSel = arrvQxUsers_SchoolSel.sort(
-        vQxUsers_SchoolEx_SortFunByKey(strSortFld, strSortType),
-      );
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrvQxUsers_SchoolSel = arrvQxUsers_SchoolSel.sort(objPagerPara.sortFun);
-    }
-    return arrvQxUsers_SchoolSel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      vQxUsers_SchoolEx_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsvQxUsers_SchoolENEx>();
-}
 
 /**
  * 排序函数。根据关键字字段的值进行比较

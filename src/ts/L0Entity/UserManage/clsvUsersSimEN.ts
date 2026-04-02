@@ -32,7 +32,7 @@ export class clsvUsersSimEN extends clsGeneralTabV {
   public static AttributeName = [
     'userId',
     'userName',
-    'idXzCollege',
+    'id_XzCollege',
     'collegeName',
     'idXzMajor',
     'majorName',
@@ -63,7 +63,7 @@ export class clsvUsersSimEN extends clsGeneralTabV {
       case clsvUsersSimEN.con_UserName:
         return this.userName;
       case clsvUsersSimEN.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       case clsvUsersSimEN.con_CollegeName:
         return this.collegeName;
       case clsvUsersSimEN.con_IdXzMajor:
@@ -101,7 +101,7 @@ export class clsvUsersSimEN extends clsGeneralTabV {
         this.userName = strValue;
         break;
       case clsvUsersSimEN.con_Id_XzCollege:
-        this.idXzCollege = strValue;
+        this.id_XzCollege = strValue;
         break;
       case clsvUsersSimEN.con_CollegeName:
         this.collegeName = strValue;
@@ -134,7 +134,7 @@ export class clsvUsersSimEN extends clsGeneralTabV {
    */
   public userId = ''; //用户ID
   public userName = ''; //用户名
-  public idXzCollege = ''; //学院流水号
+  public id_XzCollege = ''; //学院流水号
   public collegeName = ''; //学院名称
   public idXzMajor = ''; //专业流水号
   public majorName = ''; //专业名称
@@ -158,11 +158,11 @@ export class clsvUsersSimEN extends clsGeneralTabV {
   } //用户名
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
    */
   public static get con_IdXzCollege(): string {
-    return 'idXzCollege';
+    return 'id_XzCollege';
   } //学院流水号
 
   /**

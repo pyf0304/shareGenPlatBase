@@ -344,7 +344,7 @@
             <td class="text-left">
               <input
                 id="txtIdGradeBase"
-                v-model="idGradeBase"
+                v-model="id_GradeBase"
                 class="form-control form-control-sm"
                 style="width: 150px"
               />
@@ -380,7 +380,7 @@
             <td class="text-left">
               <input
                 id="txtIdXzCollege"
-                v-model="idXzCollege"
+                v-model="id_XzCollege"
                 class="form-control form-control-sm"
                 style="width: 150px"
               />
@@ -441,9 +441,9 @@
       const updUser = ref('');
       const detailInfoTab = ref('');
       const memo = ref('');
-      const idGradeBase = ref('');
+      const id_GradeBase = ref('');
       const idSchool = ref('');
-      const idXzCollege = ref('');
+      const id_XzCollege = ref('');
 
       const arrQxDepartmentInfo = ref<clsQxDepartmentInfoEN[] | null>([]);
       const arrQxUserState = ref<clsQxUserStateEN[] | null>([]);
@@ -488,9 +488,9 @@
         pobjQxUsersEN.SetUpdUser(userStore.getUserId); // 修改用户
         pobjQxUsersEN.SetDetailInfoTab(detailInfoTab.value); // 详细信息表
         pobjQxUsersEN.SetMemo(memo.value); // 备注
-        pobjQxUsersEN.SetId_GradeBase(idGradeBase.value); // 年级流水号
+        pobjQxUsersEN.SetId_GradeBase(id_GradeBase.value); // 年级流水号
         pobjQxUsersEN.SetId_School(idSchool.value); // 学校流水号
-        pobjQxUsersEN.SetId_XzCollege(idXzCollege.value); // 学院Id
+        pobjQxUsersEN.SetId_XzCollege(id_XzCollege.value); // 学院Id
         return pobjQxUsersEN;
       }
 
@@ -518,9 +518,9 @@
         synchDate.value = pobjQxUsersEN.synchDate; // 同步日期
         detailInfoTab.value = pobjQxUsersEN.detailInfoTab; // 详细信息表
         memo.value = pobjQxUsersEN.memo; // 备注
-        idGradeBase.value = pobjQxUsersEN.id_GradeBase; // 年级流水号
+        id_GradeBase.value = pobjQxUsersEN.id_GradeBase; // 年级流水号
         idSchool.value = pobjQxUsersEN.id_School; // 学校流水号
-        idXzCollege.value = pobjQxUsersEN.id_XzCollege; // 学院Id
+        id_XzCollege.value = pobjQxUsersEN.id_XzCollege; // 学院Id
       }
 
       /**
@@ -545,9 +545,9 @@
         synchDate.value = '';
         detailInfoTab.value = '';
         memo.value = '';
-        idGradeBase.value = '';
+        id_GradeBase.value = '';
         idSchool.value = '';
-        idXzCollege.value = '';
+        id_XzCollege.value = '';
       }
 
       /** 函数功能:事件函数,当单击<确定修改>时发生的事件函数,
@@ -683,9 +683,9 @@
         updUser,
         detailInfoTab,
         memo,
-        idGradeBase,
+        id_GradeBase,
         idSchool,
-        idXzCollege,
+        id_XzCollege,
         arrQxDepartmentInfo,
         arrQxUserState,
         arrQxUserIdentity,

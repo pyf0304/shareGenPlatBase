@@ -245,7 +245,7 @@
   import { clsQxUsersV2EN } from '@/ts/L0Entity/UserManage_GP/clsQxUsersV2EN';
   import { clsQxDepartmentInfoV2EN } from '@/ts/L0Entity/UserManage_GP/clsQxDepartmentInfoV2EN';
   import { QxDepartmentInfoV2_GetArrQxDepartmentInfoV2 } from '@/ts/L3ForWApi/UserManage_GP/clsQxDepartmentInfoV2WApi';
-  import { refDivEdit } from '@/views/UserManage_GP/QxUsersV2VueShare';
+  import { refDivEdit } from '@/viewsShare/UserManage_GP/QxUsersV2VueShare';
   import { useUserStore } from '@/store/modulesShare/user';
   import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
   import { QxUsersV2_Edit } from '@/viewsBase/UserManage_GP/QxUsersV2_Edit';

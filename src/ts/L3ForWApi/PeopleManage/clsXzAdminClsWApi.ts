@@ -330,7 +330,7 @@ export function XzAdminCls_SortFunByKey(strKey: string, AscOrDesc: string) {
         };
       case clsXzAdminClsEN.con_Id_XzCollege:
         return (a: clsXzAdminClsEN, b: clsXzAdminClsEN) => {
-          return a.idXzCollege.localeCompare(b.idXzCollege);
+          return a.id_XzCollege.localeCompare(b.id_XzCollege);
         };
       case clsXzAdminClsEN.con_IdUniZone:
         return (a: clsXzAdminClsEN, b: clsXzAdminClsEN) => {
@@ -356,7 +356,7 @@ export function XzAdminCls_SortFunByKey(strKey: string, AscOrDesc: string) {
         };
       case clsXzAdminClsEN.con_IdGradeBase:
         return (a: clsXzAdminClsEN, b: clsXzAdminClsEN) => {
-          return a.idGradeBase.localeCompare(b.idGradeBase);
+          return a.id_GradeBase.localeCompare(b.id_GradeBase);
         };
       case clsXzAdminClsEN.con_AdminClsId:
         return (a: clsXzAdminClsEN, b: clsXzAdminClsEN) => {
@@ -415,7 +415,7 @@ export function XzAdminCls_SortFunByKey(strKey: string, AscOrDesc: string) {
         };
       case clsXzAdminClsEN.con_Id_XzCollege:
         return (a: clsXzAdminClsEN, b: clsXzAdminClsEN) => {
-          return b.idXzCollege.localeCompare(a.idXzCollege);
+          return b.id_XzCollege.localeCompare(a.id_XzCollege);
         };
       case clsXzAdminClsEN.con_IdUniZone:
         return (a: clsXzAdminClsEN, b: clsXzAdminClsEN) => {
@@ -441,7 +441,7 @@ export function XzAdminCls_SortFunByKey(strKey: string, AscOrDesc: string) {
         };
       case clsXzAdminClsEN.con_IdGradeBase:
         return (a: clsXzAdminClsEN, b: clsXzAdminClsEN) => {
-          return b.idGradeBase.localeCompare(a.idGradeBase);
+          return b.id_GradeBase.localeCompare(a.id_GradeBase);
         };
       case clsXzAdminClsEN.con_AdminClsId:
         return (a: clsXzAdminClsEN, b: clsXzAdminClsEN) => {
@@ -557,7 +557,7 @@ export async function XzAdminCls_FilterFunByKey(strKey: string, value: any) {
       };
     case clsXzAdminClsEN.con_Id_XzCollege:
       return (obj: clsXzAdminClsEN) => {
-        return obj.idXzCollege === value;
+        return obj.id_XzCollege === value;
       };
     case clsXzAdminClsEN.con_IdUniZone:
       return (obj: clsXzAdminClsEN) => {
@@ -577,7 +577,7 @@ export async function XzAdminCls_FilterFunByKey(strKey: string, value: any) {
       };
     case clsXzAdminClsEN.con_IdGradeBase:
       return (obj: clsXzAdminClsEN) => {
-        return obj.idGradeBase === value;
+        return obj.id_GradeBase === value;
       };
     case clsXzAdminClsEN.con_AdminClsId:
       return (obj: clsXzAdminClsEN) => {
@@ -3298,16 +3298,16 @@ export function XzAdminCls_CheckPropertyNew(pobjXzAdminClsEN: clsXzAdminClsEN) {
     );
   }
   if (
-    IsNullOrEmpty(pobjXzAdminClsEN.idXzCollege) === true ||
-    pobjXzAdminClsEN.idXzCollege.toString() === '0'
+    IsNullOrEmpty(pobjXzAdminClsEN.id_XzCollege) === true ||
+    pobjXzAdminClsEN.id_XzCollege.toString() === '0'
   ) {
     throw new Error(
       `(errid:Watl000411)字段[学院流水号]不能为空(In 行政班)!(clsXzAdminClsBL:CheckPropertyNew0)`,
     );
   }
   if (
-    IsNullOrEmpty(pobjXzAdminClsEN.idGradeBase) === true ||
-    pobjXzAdminClsEN.idGradeBase.toString() === '0'
+    IsNullOrEmpty(pobjXzAdminClsEN.id_GradeBase) === true ||
+    pobjXzAdminClsEN.id_GradeBase.toString() === '0'
   ) {
     throw new Error(
       `(errid:Watl000411)字段[入学年级流水号]不能为空(In 行政班)!(clsXzAdminClsBL:CheckPropertyNew0)`,
@@ -3339,11 +3339,11 @@ export function XzAdminCls_CheckPropertyNew(pobjXzAdminClsEN: clsXzAdminClsEN) {
     );
   }
   if (
-    IsNullOrEmpty(pobjXzAdminClsEN.idXzCollege) == false &&
-    GetStrLen(pobjXzAdminClsEN.idXzCollege) > 4
+    IsNullOrEmpty(pobjXzAdminClsEN.id_XzCollege) == false &&
+    GetStrLen(pobjXzAdminClsEN.id_XzCollege) > 4
   ) {
     throw new Error(
-      `(errid:Watl000413)字段[学院流水号(idXzCollege)]的长度不能超过4(In 行政班(XzAdminCls))!值:${pobjXzAdminClsEN.idXzCollege}(clsXzAdminClsBL:CheckPropertyNew)`,
+      `(errid:Watl000413)字段[学院流水号(id_XzCollege)]的长度不能超过4(In 行政班(XzAdminCls))!值:${pobjXzAdminClsEN.id_XzCollege}(clsXzAdminClsBL:CheckPropertyNew)`,
     );
   }
   if (
@@ -3368,11 +3368,11 @@ export function XzAdminCls_CheckPropertyNew(pobjXzAdminClsEN: clsXzAdminClsEN) {
     );
   }
   if (
-    IsNullOrEmpty(pobjXzAdminClsEN.idGradeBase) == false &&
-    GetStrLen(pobjXzAdminClsEN.idGradeBase) > 4
+    IsNullOrEmpty(pobjXzAdminClsEN.id_GradeBase) == false &&
+    GetStrLen(pobjXzAdminClsEN.id_GradeBase) > 4
   ) {
     throw new Error(
-      `(errid:Watl000413)字段[入学年级流水号(idGradeBase)]的长度不能超过4(In 行政班(XzAdminCls))!值:${pobjXzAdminClsEN.idGradeBase}(clsXzAdminClsBL:CheckPropertyNew)`,
+      `(errid:Watl000413)字段[入学年级流水号(id_GradeBase)]的长度不能超过4(In 行政班(XzAdminCls))!值:${pobjXzAdminClsEN.id_GradeBase}(clsXzAdminClsBL:CheckPropertyNew)`,
     );
   }
   if (
@@ -3441,12 +3441,12 @@ export function XzAdminCls_CheckPropertyNew(pobjXzAdminClsEN: clsXzAdminClsEN) {
     );
   }
   if (
-    IsNullOrEmpty(pobjXzAdminClsEN.idXzCollege) == false &&
-    undefined !== pobjXzAdminClsEN.idXzCollege &&
-    tzDataType.isString(pobjXzAdminClsEN.idXzCollege) === false
+    IsNullOrEmpty(pobjXzAdminClsEN.id_XzCollege) == false &&
+    undefined !== pobjXzAdminClsEN.id_XzCollege &&
+    tzDataType.isString(pobjXzAdminClsEN.id_XzCollege) === false
   ) {
     throw new Error(
-      `(errid:Watl000414)字段[学院流水号(idXzCollege)]的值:[${pobjXzAdminClsEN.idXzCollege}], 非法,应该为字符型(In 行政班(XzAdminCls))!(clsXzAdminClsBL:CheckPropertyNew0)`,
+      `(errid:Watl000414)字段[学院流水号(id_XzCollege)]的值:[${pobjXzAdminClsEN.id_XzCollege}], 非法,应该为字符型(In 行政班(XzAdminCls))!(clsXzAdminClsBL:CheckPropertyNew0)`,
     );
   }
   if (
@@ -3486,12 +3486,12 @@ export function XzAdminCls_CheckPropertyNew(pobjXzAdminClsEN: clsXzAdminClsEN) {
     );
   }
   if (
-    IsNullOrEmpty(pobjXzAdminClsEN.idGradeBase) == false &&
-    undefined !== pobjXzAdminClsEN.idGradeBase &&
-    tzDataType.isString(pobjXzAdminClsEN.idGradeBase) === false
+    IsNullOrEmpty(pobjXzAdminClsEN.id_GradeBase) == false &&
+    undefined !== pobjXzAdminClsEN.id_GradeBase &&
+    tzDataType.isString(pobjXzAdminClsEN.id_GradeBase) === false
   ) {
     throw new Error(
-      `(errid:Watl000414)字段[入学年级流水号(idGradeBase)]的值:[${pobjXzAdminClsEN.idGradeBase}], 非法,应该为字符型(In 行政班(XzAdminCls))!(clsXzAdminClsBL:CheckPropertyNew0)`,
+      `(errid:Watl000414)字段[入学年级流水号(id_GradeBase)]的值:[${pobjXzAdminClsEN.id_GradeBase}], 非法,应该为字符型(In 行政班(XzAdminCls))!(clsXzAdminClsBL:CheckPropertyNew0)`,
     );
   }
   if (
@@ -3583,11 +3583,11 @@ export function XzAdminCls_CheckProperty4Update(pobjXzAdminClsEN: clsXzAdminClsE
     );
   }
   if (
-    IsNullOrEmpty(pobjXzAdminClsEN.idXzCollege) == false &&
-    GetStrLen(pobjXzAdminClsEN.idXzCollege) > 4
+    IsNullOrEmpty(pobjXzAdminClsEN.id_XzCollege) == false &&
+    GetStrLen(pobjXzAdminClsEN.id_XzCollege) > 4
   ) {
     throw new Error(
-      `(errid:Watl000416)字段[学院流水号(idXzCollege)]的长度不能超过4(In 行政班(XzAdminCls))!值:${pobjXzAdminClsEN.idXzCollege}(clsXzAdminClsBL:CheckProperty4Update)`,
+      `(errid:Watl000416)字段[学院流水号(id_XzCollege)]的长度不能超过4(In 行政班(XzAdminCls))!值:${pobjXzAdminClsEN.id_XzCollege}(clsXzAdminClsBL:CheckProperty4Update)`,
     );
   }
   if (
@@ -3612,11 +3612,11 @@ export function XzAdminCls_CheckProperty4Update(pobjXzAdminClsEN: clsXzAdminClsE
     );
   }
   if (
-    IsNullOrEmpty(pobjXzAdminClsEN.idGradeBase) == false &&
-    GetStrLen(pobjXzAdminClsEN.idGradeBase) > 4
+    IsNullOrEmpty(pobjXzAdminClsEN.id_GradeBase) == false &&
+    GetStrLen(pobjXzAdminClsEN.id_GradeBase) > 4
   ) {
     throw new Error(
-      `(errid:Watl000416)字段[入学年级流水号(idGradeBase)]的长度不能超过4(In 行政班(XzAdminCls))!值:${pobjXzAdminClsEN.idGradeBase}(clsXzAdminClsBL:CheckProperty4Update)`,
+      `(errid:Watl000416)字段[入学年级流水号(id_GradeBase)]的长度不能超过4(In 行政班(XzAdminCls))!值:${pobjXzAdminClsEN.id_GradeBase}(clsXzAdminClsBL:CheckProperty4Update)`,
     );
   }
   if (
@@ -3685,12 +3685,12 @@ export function XzAdminCls_CheckProperty4Update(pobjXzAdminClsEN: clsXzAdminClsE
     );
   }
   if (
-    IsNullOrEmpty(pobjXzAdminClsEN.idXzCollege) == false &&
-    undefined !== pobjXzAdminClsEN.idXzCollege &&
-    tzDataType.isString(pobjXzAdminClsEN.idXzCollege) === false
+    IsNullOrEmpty(pobjXzAdminClsEN.id_XzCollege) == false &&
+    undefined !== pobjXzAdminClsEN.id_XzCollege &&
+    tzDataType.isString(pobjXzAdminClsEN.id_XzCollege) === false
   ) {
     throw new Error(
-      `(errid:Watl000417)字段[学院流水号(idXzCollege)]的值:[${pobjXzAdminClsEN.idXzCollege}], 非法,应该为字符型(In 行政班(XzAdminCls))!(clsXzAdminClsBL:CheckProperty4Update)`,
+      `(errid:Watl000417)字段[学院流水号(id_XzCollege)]的值:[${pobjXzAdminClsEN.id_XzCollege}], 非法,应该为字符型(In 行政班(XzAdminCls))!(clsXzAdminClsBL:CheckProperty4Update)`,
     );
   }
   if (
@@ -3730,12 +3730,12 @@ export function XzAdminCls_CheckProperty4Update(pobjXzAdminClsEN: clsXzAdminClsE
     );
   }
   if (
-    IsNullOrEmpty(pobjXzAdminClsEN.idGradeBase) == false &&
-    undefined !== pobjXzAdminClsEN.idGradeBase &&
-    tzDataType.isString(pobjXzAdminClsEN.idGradeBase) === false
+    IsNullOrEmpty(pobjXzAdminClsEN.id_GradeBase) == false &&
+    undefined !== pobjXzAdminClsEN.id_GradeBase &&
+    tzDataType.isString(pobjXzAdminClsEN.id_GradeBase) === false
   ) {
     throw new Error(
-      `(errid:Watl000417)字段[入学年级流水号(idGradeBase)]的值:[${pobjXzAdminClsEN.idGradeBase}], 非法,应该为字符型(In 行政班(XzAdminCls))!(clsXzAdminClsBL:CheckProperty4Update)`,
+      `(errid:Watl000417)字段[入学年级流水号(id_GradeBase)]的值:[${pobjXzAdminClsEN.id_GradeBase}], 非法,应该为字符型(In 行政班(XzAdminCls))!(clsXzAdminClsBL:CheckProperty4Update)`,
     );
   }
   if (
@@ -3945,7 +3945,7 @@ export function XzAdminCls_GetCombineCondition(objXzAdminClsCond: clsXzAdminClsE
     strWhereCond += Format(
       " And {0} {2} '{1}'",
       clsXzAdminClsEN.con_Id_XzCollege,
-      objXzAdminClsCond.idXzCollege,
+      objXzAdminClsCond.id_XzCollege,
       strComparisonOpIdXzCollege,
     );
   }
@@ -4020,7 +4020,7 @@ export function XzAdminCls_GetCombineCondition(objXzAdminClsCond: clsXzAdminClsE
     strWhereCond += Format(
       " And {0} {2} '{1}'",
       clsXzAdminClsEN.con_IdGradeBase,
-      objXzAdminClsCond.idGradeBase,
+      objXzAdminClsCond.id_GradeBase,
       strComparisonOpIdGradeBase,
     );
   }
@@ -4155,12 +4155,12 @@ export function XzAdminCls_CopyObjTo(
   objXzAdminClsENT.idAdminCls = objXzAdminClsENS.idAdminCls; //行政班流水号
   objXzAdminClsENT.adminClsName = objXzAdminClsENS.adminClsName; //行政班名称
   objXzAdminClsENT.id_XzMajor = objXzAdminClsENS.id_XzMajor; //专业流水号
-  objXzAdminClsENT.idXzCollege = objXzAdminClsENS.idXzCollege; //学院流水号
+  objXzAdminClsENT.id_XzCollege = objXzAdminClsENS.id_XzCollege; //学院流水号
   objXzAdminClsENT.idUniZone = objXzAdminClsENS.idUniZone; //校区流水号
   objXzAdminClsENT.currentStuQty = objXzAdminClsENS.currentStuQty; //当前学生数
   objXzAdminClsENT.headTeacherId = objXzAdminClsENS.headTeacherId; //班主任Id
   objXzAdminClsENT.idGrade = objXzAdminClsENS.idGrade; //年级流水号
-  objXzAdminClsENT.idGradeBase = objXzAdminClsENS.idGradeBase; //入学年级流水号
+  objXzAdminClsENT.id_GradeBase = objXzAdminClsENS.id_GradeBase; //入学年级流水号
   objXzAdminClsENT.adminClsId = objXzAdminClsENS.adminClsId; //行政班代号
   objXzAdminClsENT.idAdminClsType = objXzAdminClsENS.idAdminClsType; //行政班级类型流水号
   objXzAdminClsENT.adminClsIndex = objXzAdminClsENS.adminClsIndex; //AdminClsIndex

@@ -24,9 +24,9 @@ export class clsQxUsers {
   public static AttributeName = [
     'userId',
     'userName',
-    'idXzCollege',
+    'id_XzCollege',
     'userStateId',
-    'idGradeBase',
+    'id_GradeBase',
     'password',
     'idSchool',
     'email',
@@ -51,11 +51,11 @@ export class clsQxUsers {
    */
   public userId = ''; //用户ID
   public userName = ''; //用户名
-  public idXzCollege = ''; //学院流水号
+  public id_XzCollege = ''; //学院流水号
   public userStateId = ''; //用户状态Id
-  public idGradeBase = ''; //入学年级流水号
+  public id_GradeBase = ''; //入学年级流水号
   public password = ''; //口令
-  public idSchool = ''; //学校流水号
+  public id_School = ''; //学校流水号
   public email = ''; //电子邮箱
   public phoneNumber = ''; //电话
   public effitiveBeginDate = ''; //有效开始日期
@@ -84,14 +84,14 @@ export class clsQxUsers {
       case clsQxUsers.con_UserName:
         return this.userName;
       case clsQxUsers.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       case clsQxUsers.con_UserStateId:
         return this.userStateId;
-      case clsQxUsers.con_IdGradeBase:
-        return this.idGradeBase;
+      case clsQxUsers.con_Id_GradeBase:
+        return this.id_GradeBase;
       case clsQxUsers.con_Password:
         return this.password;
-      case clsQxUsers.con_IdSchool:
+      case clsQxUsers.con_Id_School:
         return this.id_School;
       case clsQxUsers.con_Email:
         return this.email;
@@ -143,11 +143,11 @@ export class clsQxUsers {
   } //用户名
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
-  public static get con_IdXzCollege(): string {
-    return 'idXzCollege';
+  public static get con_Id_XzCollege(): string {
+    return 'id_XzCollege';
   } //学院流水号
 
   /**
@@ -159,11 +159,11 @@ export class clsQxUsers {
   } //用户状态Id
 
   /**
-   * 常量:"IdGradeBase"
+   * 常量:"id_GradeBase"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
-  public static get con_IdGradeBase(): string {
-    return 'idGradeBase';
+  public static get con_Id_GradeBase(): string {
+    return 'id_GradeBase';
   } //入学年级流水号
 
   /**
@@ -178,7 +178,7 @@ export class clsQxUsers {
    * 常量:"IdSchool"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
-  public static get con_IdSchool(): string {
+  public static get con_Id_School(): string {
     return 'idSchool';
   } //学校流水号
 

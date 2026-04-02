@@ -489,7 +489,7 @@ export class Login {
   //    public async selectMajor_Click() {
   //        try {
   //            //clsPrjInfoEN objPrjInfo = clsPrjInfoBL.GetObjByPrjID_Cache(strPrjId);
-  //            strWhereCond = " idXzCollege='" + this.idXzCollege + "'";
+  //            strWhereCond = " id_XzCollege='" + this.id_XzCollege + "'";
   //            const ddl_idXzMajor = await this.BindDdl_idXzMajor("ddlIdXzMajor", strWhereCond);
 
   //        }
@@ -615,7 +615,7 @@ export class Login {
 
   //    //注册方法
   //    public async btnRegister_Click(strListDiv: string) {
-  //        if (this.idXzCollege == "") {
+  //        if (this.id_XzCollege == "") {
   //            alert("学院不能为空！");
   //            window.location.href = "#pagetwo";
   //        }
@@ -623,7 +623,7 @@ export class Login {
   //            alert("专业不能为空！");
   //            window.location.href = "#pagetwo";
   //        }
-  //        else if (this.idGradeBase == "") {
+  //        else if (this.id_GradeBase == "") {
   //            alert("年级不能为空！");
   //            window.location.href = "#pagetwo";
   //        }
@@ -714,8 +714,8 @@ export class Login {
   //        pobjUsersEN.SetUserName(this.userName;// 用户名
   //        pobjUsersEN.SetUserStateId("02";// 用户状态Id
   //        pobjUsersEN.SetPassword(this.RePassword;// password
-  //        pobjUsersEN.SetIdGradeBase(this.idGradeBase;// 年级流水号
-  //        pobjUsersEN.SetIdXzCollege(this.idXzCollege;// 学院流水号
+  //        pobjUsersEN.SetIdGradeBase(this.id_GradeBase;// 年级流水号
+  //        pobjUsersEN.SetIdXzCollege(this.id_XzCollege;// 学院流水号
   //        pobjUsersEN.SetIdXzMajor(this.id_XzMajor;// 专业流水号
 
   //        pobjUsersEN.SetEmail(this.email;// 电子邮箱
@@ -730,25 +730,25 @@ export class Login {
   //  /*
   //  * 年级流水号
   // */
-  //  public set idGradeBase(value: string) {
+  //  public set id_GradeBase(value: string) {
   //      $("#ddlIdGradeBase").val(value);
   //  }
   //  /*
   //  * 年级流水号
   // */
-  //  public get idGradeBase(): string {
+  //  public get id_GradeBase(): string {
   //      return $("#ddlIdGradeBase").val();
   //  }
   //  /*
   //  * 学院流水号
   // */
-  //  public set idXzCollege(value: string) {
+  //  public set id_XzCollege(value: string) {
   //      $("#ddlIdXzCollege").val(value);
   //  }
   //  /*
   //  * 学院流水号
   // */
-  //  public get idXzCollege(): string {
+  //  public get id_XzCollege(): string {
   //      return $("#ddlIdXzCollege").val();
   //  }
 

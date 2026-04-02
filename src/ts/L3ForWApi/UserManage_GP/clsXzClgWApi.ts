@@ -221,7 +221,7 @@ export async function XzClg_GetObjByIdXzCollegeCache(
   }
   const arrXzClgObjLstCache = await XzClg_GetObjLstCache(strIdSchool);
   try {
-    const arrXzClgSel = arrXzClgObjLstCache.filter((x) => x.idXzCollege == strIdXzCollege);
+    const arrXzClgSel = arrXzClgObjLstCache.filter((x) => x.id_XzCollege == strIdXzCollege);
     let objXzClg: clsXzClgEN;
     if (arrXzClgSel.length > 0) {
       objXzClg = arrXzClgSel[0];
@@ -259,9 +259,9 @@ export async function XzClg_UpdateObjInLstCache(objXzClg: clsXzClgEN, strIdSchoo
   const strThisFuncName = 'UpdateObjInLstCache';
   try {
     const arrXzClgObjLstCache = await XzClg_GetObjLstCache(strIdSchool);
-    const obj = arrXzClgObjLstCache.find((x) => x.idXzCollege == objXzClg.idXzCollege);
+    const obj = arrXzClgObjLstCache.find((x) => x.id_XzCollege == objXzClg.id_XzCollege);
     if (obj != null) {
-      objXzClg.idXzCollege = obj.idXzCollege;
+      objXzClg.id_XzCollege = obj.id_XzCollege;
       ObjectAssign(obj, objXzClg);
     } else {
       arrXzClgObjLstCache.push(objXzClg);
@@ -288,7 +288,7 @@ export async function XzClg_UpdateObjInLstCache(objXzClg: clsXzClgEN, strIdSchoo
  * @returns 返回两个对象比较的结果
  */
 export function XzClg_SortFunDefa(a: clsXzClgEN, b: clsXzClgEN): number {
-  return a.idXzCollege.localeCompare(b.idXzCollege);
+  return a.id_XzCollege.localeCompare(b.id_XzCollege);
 }
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
@@ -320,7 +320,7 @@ export function XzClg_SortFunByKey(strKey: string, AscOrDesc: string) {
     switch (strKey) {
       case clsXzClgEN.con_Id_XzCollege:
         return (a: clsXzClgEN, b: clsXzClgEN) => {
-          return a.idXzCollege.localeCompare(b.idXzCollege);
+          return a.id_XzCollege.localeCompare(b.id_XzCollege);
         };
       case clsXzClgEN.con_CollegeId:
         return (a: clsXzClgEN, b: clsXzClgEN) => {
@@ -417,7 +417,7 @@ export function XzClg_SortFunByKey(strKey: string, AscOrDesc: string) {
     switch (strKey) {
       case clsXzClgEN.con_Id_XzCollege:
         return (a: clsXzClgEN, b: clsXzClgEN) => {
-          return b.idXzCollege.localeCompare(a.idXzCollege);
+          return b.id_XzCollege.localeCompare(a.id_XzCollege);
         };
       case clsXzClgEN.con_CollegeId:
         return (a: clsXzClgEN, b: clsXzClgEN) => {
@@ -538,7 +538,7 @@ export async function XzClg_GetNameByIdXzCollegeCache(strIdXzCollege: string, st
   const arrXzClgObjLstCache = await XzClg_GetObjLstCache(strIdSchool);
   if (arrXzClgObjLstCache == null) return '';
   try {
-    const arrXzClgSel = arrXzClgObjLstCache.filter((x) => x.idXzCollege == strIdXzCollege);
+    const arrXzClgSel = arrXzClgObjLstCache.filter((x) => x.id_XzCollege == strIdXzCollege);
     let objXzClg: clsXzClgEN;
     if (arrXzClgSel.length > 0) {
       objXzClg = arrXzClgSel[0];
@@ -573,7 +573,7 @@ export async function XzClg_FilterFunByKey(strKey: string, value: any) {
   switch (strKey) {
     case clsXzClgEN.con_Id_XzCollege:
       return (obj: clsXzClgEN) => {
-        return obj.idXzCollege === value;
+        return obj.id_XzCollege === value;
       };
     case clsXzClgEN.con_CollegeId:
       return (obj: clsXzClgEN) => {
@@ -801,7 +801,7 @@ export async function XzClg_funcKey(
       break;
   }
   if (arrXzClgSel.length == 0) return [];
-  return arrXzClgSel.map((x) => x.idXzCollege);
+  return arrXzClgSel.map((x) => x.id_XzCollege);
 }
 
 /**
@@ -1562,7 +1562,7 @@ export async function XzClg_GetObjLstByIdXzCollegeLstCache(
   try {
     const arrXzClgObjLstCache = await XzClg_GetObjLstCache(strIdSchool);
     const arrXzClgSel = arrXzClgObjLstCache.filter(
-      (x) => arrIdXzCollegeLst.indexOf(x.idXzCollege) > -1,
+      (x) => arrIdXzCollegeLst.indexOf(x.id_XzCollege) > -1,
     );
     return arrXzClgSel;
   } catch (e) {
@@ -1903,7 +1903,7 @@ export async function XzClg_DelXzClgsByCondAsync(strWhereCond: string): Promise<
 export async function XzClg_AddNewRecordAsync(objXzClgEN: clsXzClgEN): Promise<boolean> {
   const strThisFuncName = 'AddNewRecordAsync';
   const strAction = 'AddNewRecord';
-  if (objXzClgEN.idXzCollege === null || objXzClgEN.idXzCollege === '') {
+  if (objXzClgEN.id_XzCollege === null || objXzClgEN.id_XzCollege === '') {
     const strMsg = '需要的对象的关键字为空,不能添加!';
     throw strMsg;
   }
@@ -2027,9 +2027,9 @@ export async function XzClg_AddNewObjSave(objXzClgEN: clsXzClgEN): Promise<AddRe
   try {
     //检查唯一性条件
     let returnBool = false;
-    const bolIsExist = await XzClg_IsExistAsync(objXzClgEN.idXzCollege);
+    const bolIsExist = await XzClg_IsExistAsync(objXzClgEN.id_XzCollege);
     if (bolIsExist == true) {
-      const strMsg = Format('添加记录时,关键字：{0}已经存在!', objXzClgEN.idXzCollege);
+      const strMsg = Format('添加记录时,关键字：{0}已经存在!', objXzClgEN.id_XzCollege);
       console.error(strMsg);
       throw strMsg;
     }
@@ -2041,7 +2041,7 @@ export async function XzClg_AddNewObjSave(objXzClgEN: clsXzClgEN): Promise<AddRe
       //显示信息框
       throw strInfo;
     }
-    return { keyword: objXzClgEN.idXzCollege, success: returnBool }; //一定要有一个返回值,否则会出错!
+    return { keyword: objXzClgEN.id_XzCollege, success: returnBool }; //一定要有一个返回值,否则会出错!
   } catch (e) {
     const strMsg = `添加记录不成功,${e}.(in ${xzClg_ConstructorName}.${strThisFuncName})`;
     console.error(strMsg);
@@ -2055,7 +2055,7 @@ export async function XzClg_AddNewObjSave(objXzClgEN: clsXzClgEN): Promise<AddRe
 export async function XzClg_UpdateObjSave(objXzClgEN: clsXzClgEN): Promise<boolean> {
   const strThisFuncName = 'UpdateObjSave';
   objXzClgEN.sfUpdFldSetStr = objXzClgEN.updFldString; //设置哪些字段被修改(脏字段)
-  if (objXzClgEN.idXzCollege == '' || objXzClgEN.idXzCollege == undefined) {
+  if (objXzClgEN.id_XzCollege == '' || objXzClgEN.id_XzCollege == undefined) {
     console.error('关键字不能为空!');
     throw '关键字不能为空!';
   }
@@ -2154,7 +2154,7 @@ export async function XzClg_UpdateRecordAsync(objXzClgEN: clsXzClgEN): Promise<b
   ) {
     const strMsg = Format(
       '对象(关键字: {0})的【修改字段集】为空,不能修改!',
-      objXzClgEN.idXzCollege,
+      objXzClgEN.id_XzCollege,
     );
     throw strMsg;
   }
@@ -2221,7 +2221,7 @@ export async function XzClg_EditRecordExAsync(objXzClgEN: clsXzClgEN): Promise<b
   ) {
     const strMsg = Format(
       '对象(关键字: {0})的【修改字段集】为空,不能修改!',
-      objXzClgEN.idXzCollege,
+      objXzClgEN.id_XzCollege,
     );
     throw strMsg;
   }
@@ -2292,7 +2292,7 @@ export async function XzClg_UpdateWithConditionAsync(
   ) {
     const strMsg = Format(
       '对象(关键字: {0})的【修改字段集】为空,不能修改!',
-      objXzClgEN.idXzCollege,
+      objXzClgEN.id_XzCollege,
     );
     throw new Error(strMsg);
   }
@@ -2510,7 +2510,7 @@ export async function XzClg_IsExistCache(strIdXzCollege: string, strIdSchool: st
   const arrXzClgObjLstCache = await XzClg_GetObjLstCache(strIdSchool);
   if (arrXzClgObjLstCache == null) return false;
   try {
-    const arrXzClgSel = arrXzClgObjLstCache.filter((x) => x.idXzCollege == strIdXzCollege);
+    const arrXzClgSel = arrXzClgObjLstCache.filter((x) => x.id_XzCollege == strIdXzCollege);
     if (arrXzClgSel.length > 0) {
       return true;
     } else {
@@ -3117,7 +3117,7 @@ export async function XzClg_GetArrXzClgByUserTypeIdCache(
   if (arrObjLstSel == null) return null;
   arrObjLstSel = arrObjLstSel.filter((x) => x.userTypeId == strUserTypeId);
   const obj0 = new clsXzClgEN();
-  obj0.idXzCollege = '0';
+  obj0.id_XzCollege = '0';
   obj0.collegeName = '选XzClg...';
   arrXzClg.push(obj0);
   arrObjLstSel.forEach((x) => arrXzClg.push(x));
@@ -3154,7 +3154,7 @@ export async function XzClg_GetArrXzClgByIdSchool(strIdSchool: string) {
   if (arrObjLstSel == null) return null;
   arrObjLstSel = arrObjLstSel.filter((x) => x.id_School == strIdSchool);
   const obj0 = new clsXzClgEN();
-  obj0.idXzCollege = '0';
+  obj0.id_XzCollege = '0';
   obj0.collegeName = '选xzClg...';
   arrXzClg.push(obj0);
   arrObjLstSel.forEach((x) => arrXzClg.push(x));
@@ -3183,9 +3183,9 @@ export function XzClg_CheckPropertyNew(pobjXzClgEN: clsXzClgEN) {
     );
   }
   //检查字段长度, 若字符型字段长度超出规定的长度,即非法!
-  if (IsNullOrEmpty(pobjXzClgEN.idXzCollege) == false && GetStrLen(pobjXzClgEN.idXzCollege) > 4) {
+  if (IsNullOrEmpty(pobjXzClgEN.id_XzCollege) == false && GetStrLen(pobjXzClgEN.id_XzCollege) > 4) {
     throw new Error(
-      `(errid:Watl000413)字段[学院Id(idXzCollege)]的长度不能超过4(In XzClg(XzClg))!值:${pobjXzClgEN.idXzCollege}(clsXzClgBL:CheckPropertyNew)`,
+      `(errid:Watl000413)字段[学院Id(id_XzCollege)]的长度不能超过4(In XzClg(XzClg))!值:${pobjXzClgEN.id_XzCollege}(clsXzClgBL:CheckPropertyNew)`,
     );
   }
   if (IsNullOrEmpty(pobjXzClgEN.collegeId) == false && GetStrLen(pobjXzClgEN.collegeId) > 4) {
@@ -3267,12 +3267,12 @@ export function XzClg_CheckPropertyNew(pobjXzClgEN: clsXzClgEN) {
   }
   //检查字段的数据类型是否正确
   if (
-    IsNullOrEmpty(pobjXzClgEN.idXzCollege) == false &&
-    undefined !== pobjXzClgEN.idXzCollege &&
-    tzDataType.isString(pobjXzClgEN.idXzCollege) === false
+    IsNullOrEmpty(pobjXzClgEN.id_XzCollege) == false &&
+    undefined !== pobjXzClgEN.id_XzCollege &&
+    tzDataType.isString(pobjXzClgEN.id_XzCollege) === false
   ) {
     throw new Error(
-      `(errid:Watl000414)字段[学院Id(idXzCollege)]的值:[${pobjXzClgEN.idXzCollege}], 非法,应该为字符型(In XzClg(XzClg))!(clsXzClgBL:CheckPropertyNew0)`,
+      `(errid:Watl000414)字段[学院Id(id_XzCollege)]的值:[${pobjXzClgEN.id_XzCollege}], 非法,应该为字符型(In XzClg(XzClg))!(clsXzClgBL:CheckPropertyNew0)`,
     );
   }
   if (
@@ -3429,9 +3429,9 @@ export function XzClg_CheckPropertyNew(pobjXzClgEN: clsXzClgEN) {
  */
 export function XzClg_CheckProperty4Update(pobjXzClgEN: clsXzClgEN) {
   //检查字段长度, 若字符型字段长度超出规定的长度,即非法!
-  if (IsNullOrEmpty(pobjXzClgEN.idXzCollege) == false && GetStrLen(pobjXzClgEN.idXzCollege) > 4) {
+  if (IsNullOrEmpty(pobjXzClgEN.id_XzCollege) == false && GetStrLen(pobjXzClgEN.id_XzCollege) > 4) {
     throw new Error(
-      `(errid:Watl000416)字段[学院Id(idXzCollege)]的长度不能超过4(In XzClg(XzClg))!值:${pobjXzClgEN.idXzCollege}(clsXzClgBL:CheckProperty4Update)`,
+      `(errid:Watl000416)字段[学院Id(id_XzCollege)]的长度不能超过4(In XzClg(XzClg))!值:${pobjXzClgEN.id_XzCollege}(clsXzClgBL:CheckProperty4Update)`,
     );
   }
   if (IsNullOrEmpty(pobjXzClgEN.collegeId) == false && GetStrLen(pobjXzClgEN.collegeId) > 4) {
@@ -3513,12 +3513,12 @@ export function XzClg_CheckProperty4Update(pobjXzClgEN: clsXzClgEN) {
   }
   //检查字段的数据类型是否正确
   if (
-    IsNullOrEmpty(pobjXzClgEN.idXzCollege) == false &&
-    undefined !== pobjXzClgEN.idXzCollege &&
-    tzDataType.isString(pobjXzClgEN.idXzCollege) === false
+    IsNullOrEmpty(pobjXzClgEN.id_XzCollege) == false &&
+    undefined !== pobjXzClgEN.id_XzCollege &&
+    tzDataType.isString(pobjXzClgEN.id_XzCollege) === false
   ) {
     throw new Error(
-      `(errid:Watl000417)字段[学院Id(idXzCollege)]的值:[${pobjXzClgEN.idXzCollege}], 非法,应该为字符型(In XzClg(XzClg))!(clsXzClgBL:CheckProperty4Update)`,
+      `(errid:Watl000417)字段[学院Id(id_XzCollege)]的值:[${pobjXzClgEN.id_XzCollege}], 非法,应该为字符型(In XzClg(XzClg))!(clsXzClgBL:CheckProperty4Update)`,
     );
   }
   if (
@@ -3666,7 +3666,7 @@ export function XzClg_CheckProperty4Update(pobjXzClgEN: clsXzClgEN) {
     );
   }
   //检查主键是否为Null或者空!
-  if (IsNullOrEmpty(pobjXzClgEN.idXzCollege) === true) {
+  if (IsNullOrEmpty(pobjXzClgEN.id_XzCollege) === true) {
     throw new Error(
       `(errid:Watl000064)字段[学院Id]不能为空(In XzClg)!(clsXzClgBL:CheckProperty4Update)`,
     );
@@ -3776,7 +3776,7 @@ export function XzClg_GetCombineCondition(objXzClgCond: clsXzClgEN): string {
     strWhereCond += Format(
       " And {0} {2} '{1}'",
       clsXzClgEN.con_Id_XzCollege,
-      objXzClgCond.idXzCollege,
+      objXzClgCond.id_XzCollege,
       strComparisonOpIdXzCollege,
     );
   }

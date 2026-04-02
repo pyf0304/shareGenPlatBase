@@ -30,9 +30,9 @@ export class clsStudentInfo {
     'idEthnic',
     'idUniZone',
     'idStuType',
-    'idXzCollege',
+    'id_XzCollege',
     'idXzMajor',
-    'idGradeBase',
+    'id_GradeBase',
     'idGrade',
     'idXsStatus',
     'idAdminCls',
@@ -80,9 +80,9 @@ export class clsStudentInfo {
   public idEthnic = ''; //民族流水号
   public idUniZone = ''; //校区流水号
   public idStuType = ''; //学生类别流水号
-  public idXzCollege = ''; //学院流水号
+  public id_XzCollege = ''; //学院流水号
   public idXzMajor = ''; //专业流水号
-  public idGradeBase = ''; //入学年级流水号
+  public id_GradeBase = ''; //入学年级流水号
   public idGrade = ''; //年级流水号
   public idXsStatus = ''; //学生状态流水号
   public idAdminCls = ''; //行政班流水号
@@ -142,11 +142,11 @@ export class clsStudentInfo {
       case clsStudentInfo.con_IdStuType:
         return this.idStuType;
       case clsStudentInfo.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       case clsStudentInfo.con_IdXzMajor:
         return this.id_XzMajor;
       case clsStudentInfo.con_IdGradeBase:
-        return this.idGradeBase;
+        return this.id_GradeBase;
       case clsStudentInfo.con_IdGrade:
         return this.idGrade;
       case clsStudentInfo.con_IdXsStatus:
@@ -283,11 +283,11 @@ export class clsStudentInfo {
   } //学生类别流水号
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
   public static get con_IdXzCollege(): string {
-    return 'idXzCollege';
+    return 'id_XzCollege';
   } //学院流水号
 
   /**
@@ -299,11 +299,11 @@ export class clsStudentInfo {
   } //专业流水号
 
   /**
-   * 常量:"IdGradeBase"
+   * 常量:"id_GradeBase"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
   public static get con_IdGradeBase(): string {
-    return 'idGradeBase';
+    return 'id_GradeBase';
   } //入学年级流水号
 
   /**

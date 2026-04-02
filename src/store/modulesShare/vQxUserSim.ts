@@ -1,6 +1,5 @@
 import { useQxUserRoleRelationStore } from '@/store/modulesShare/qxUserRoleRelation';
-import { useStudentInfoStore } from '@/store/modulesShare/studentInfo';
-import { useTeacherInfoStore } from '@/store/modulesShare/teacherInfo';
+
 import { enumQxRoles } from '@/ts/L0Entity/UserManage_GP/clsQxRolesEN';
 import { clsvQxUsersSim } from '@/ts/L0Entity/UserManage_GP/clsvQxUsersSim';
 import { clsvQxUsersSimEN } from '@/ts/L0Entity/UserManage_GP/clsvQxUsersSimEN';
@@ -81,31 +80,7 @@ export const usevQxUsersSimStore = defineStore('vUserSim', {
       this.userLst.push(objvUserSim);
       return objvUserSim.userName;
     },
-    /** 登录成功之后, 获取用户信息以及生成权限路由 */
-    async getIdXzMajor(strUserId: string, strPrjId: string): Promise<string> {
-      // const wsStore = useWsStore();
-      const teacherInfoStore = useTeacherInfoStore();
-      const studentInfoStore = useStudentInfoStore();
-      const qxUserRoleRelationStore = useQxUserRoleRelationStore();
-      const arrRoleIds = await qxUserRoleRelationStore.getRoleIds(strUserId, strPrjId);
-      let strIdXzMajor = '';
-      if (arrRoleIds.indexOf(enumQxRoles.Regular_Student_00620003) > -1) {
-        strIdXzMajor = await studentInfoStore.getIdXzMajorByStuId(strUserId);
-        return strIdXzMajor;
-      } else if (
-        arrRoleIds.indexOf(enumQxRoles.System_Admin_00620001) > -1 ||
-        arrRoleIds.indexOf(enumQxRoles.Regular_Teacher_00620002) > -1
-      ) {
-        try {
-          return await teacherInfoStore.getIdXzMajorByTeacherId(strUserId);
-        } catch (e) {
-          console.error(e);
-          return '';
-        }
-      }
-      return '';
-      // Storage.set('userInfo', this);
-    },
+
     async getObj(strUserId: string): Promise<clsvQxUsersSim | null> {
       if (strUserId == '') return null;
       if (strUserId == null) return null;
@@ -182,7 +157,7 @@ export const usevQxUsersSimStore = defineStore('vUserSim', {
         case clsvQxUsersSimEN.con_UserName:
           return objvUserSim.userName;
         case clsvQxUsersSimEN.con_Id_XzCollege:
-          return objvUserSim.idXzCollege;
+          return objvUserSim.id_XzCollege;
         // case clsvQxUsersSimEN.con_CollegeName:
         //   return objvUserSim.collegeName;
         // case clsvQxUsersSimEN.con_IdXzMajor:

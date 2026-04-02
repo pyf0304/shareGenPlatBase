@@ -38,7 +38,7 @@ export class clsvQxUserRoleRelation {
     'identityId',
     'stuTeacherId',
     'collegeName',
-    'idXzCollege',
+    'id_XzCollege',
     'password',
   ];
   //以下是属性变量
@@ -63,7 +63,7 @@ export class clsvQxUserRoleRelation {
   public identityId = ''; //身份Id
   public stuTeacherId = ''; //学工号
   public collegeName = ''; //学院名称
-  public idXzCollege = ''; //学院流水号
+  public id_XzCollege = ''; //学院流水号
   public password = ''; //口令
 
   /**
@@ -108,7 +108,7 @@ export class clsvQxUserRoleRelation {
       case clsvQxUserRoleRelation.con_CollegeName:
         return this.collegeName;
       case clsvQxUserRoleRelation.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       case clsvQxUserRoleRelation.con_Password:
         return this.password;
       default:
@@ -247,11 +247,11 @@ export class clsvQxUserRoleRelation {
   } //学院名称
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
   public static get con_IdXzCollege(): string {
-    return 'idXzCollege';
+    return 'id_XzCollege';
   } //学院流水号
 
   /**

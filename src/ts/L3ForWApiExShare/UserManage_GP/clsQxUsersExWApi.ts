@@ -51,7 +51,7 @@ import { clsQxUserStateEN } from '@/ts/L0Entity/UserManage_GP/clsQxUserStateEN';
 import { clsQxUserIdentityEN } from '@/ts/L0Entity/UserManage_GP/clsQxUserIdentityEN';
 import { XzClg_funcKey } from '@/ts/L3ForWApi/UserManage_GP/clsXzClgWApi';
 import { clsXzClgEN } from '@/ts/L0Entity/UserManage_GP/clsXzClgEN';
-import { XzSchool_func, XzSchool_funcKey } from '@/ts/L3ForWApi/SystemSet/clsXzSchoolWApi';
+
 import { clsXzSchoolEN } from '@/ts/L0Entity/SystemSet/clsXzSchoolEN';
 import {
   XzGradeBase_func,
@@ -76,6 +76,10 @@ import {
 } from '@/ts/L3ForWApi/UserManage_GP/clsQxUsersWApi';
 import { useQxUserRoleRelationStore } from '@/store/modulesShare/qxUserRoleRelation';
 import { QxRoles_GetNameByRoleIdCache } from '@/ts/L3ForWApi/UserManage_GP/clsQxRolesWApi';
+import {
+  vQx_XzSchool_func,
+  vQx_XzSchool_funcKey,
+} from '@/ts/L3ForWApi/UserManage_GP/clsvQx_XzSchoolWApi';
 
 export const qxUsersEx_Controller = 'QxUsersExApi';
 export const qxUsersEx_ConstructorName = 'qxUsersEx';
@@ -372,7 +376,7 @@ export async function QxUsersEx_FuncMapCollegeName(objQxUsers: clsQxUsersENEx) {
   try {
     const xzClgStore = useXzClgStore();
     if (IsNullOrEmpty(objQxUsers.collegeName) == true) {
-      const XzClgIdXzCollege = objQxUsers.idXzCollege;
+      const XzClgIdXzCollege = objQxUsers.id_XzCollege;
       const XzClgCollegeName = await xzClgStore.getCollegeName(XzClgIdXzCollege);
       objQxUsers.collegeName = XzClgCollegeName;
     }
@@ -397,7 +401,7 @@ export async function QxUsersEx_FuncMapSchoolName(objQxUsers: clsQxUsersENEx) {
   try {
     if (IsNullOrEmpty(objQxUsers.schoolName) == true) {
       const XzSchoolidSchool = objQxUsers.id_School;
-      const XzSchoolSchoolName = await XzSchool_func(
+      const XzSchoolSchoolName = await vQx_XzSchool_func(
         clsXzSchoolEN.con_IdSchool,
         clsXzSchoolEN.con_SchoolName,
         XzSchoolidSchool,
@@ -424,7 +428,7 @@ export async function QxUsersEx_FuncMapGradeBaseName(objQxUsers: clsQxUsersENEx)
   const strThisFuncName = QxUsersEx_FuncMapGradeBaseName.name;
   try {
     if (IsNullOrEmpty(objQxUsers.gradeBaseName) == true) {
-      const XzGradeBaseIdGradeBase = objQxUsers.idGradeBase;
+      const XzGradeBaseIdGradeBase = objQxUsers.id_GradeBase;
       const XzGradeBaseGradeBaseName = await XzGradeBase_func(
         clsXzGradeBaseEN.con_IdGradeBase,
         clsXzGradeBaseEN.con_GradeBaseName,
@@ -794,7 +798,7 @@ export async function QxUsersEx_FuncMapKeySchoolName(
   try {
     if (IsNullOrEmpty(objQxUsers.schoolName) == true) return [];
     const XzSchoolSchoolName = objQxUsers.schoolName;
-    const arrIdSchool = await XzSchool_funcKey(
+    const arrIdSchool = await vQx_XzSchool_funcKey(
       clsXzSchoolEN.con_SchoolName,
       XzSchoolSchoolName,
       enumComparisonOp.Like_03,
@@ -1119,7 +1123,7 @@ export async function QxUsersEx_FuncMapSchoolNameA(objQxUsers: clsQxUsersENEx) {
   try {
     if (IsNullOrEmpty(objQxUsers.schoolNameA) == true) {
       const XzSchoolidSchool = objQxUsers.id_School;
-      const XzSchoolSchoolNameA = await XzSchool_func(
+      const XzSchoolSchoolNameA = await vQx_XzSchool_func(
         clsXzSchoolEN.con_IdSchool,
         clsXzSchoolEN.con_SchoolNameA,
         XzSchoolidSchool,

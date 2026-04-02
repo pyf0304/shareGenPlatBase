@@ -38,7 +38,6 @@ export class PageHead_Show {
           `${userStore.getUserId}-${userStore.getUserName}(${userStore.getRoleName})`,
         );
 
-        refPageHead.value.majorName = `${userStore.getMajorName}专业`;
         //获得被邀请数
         await this.Bind_QuestionsCount();
 

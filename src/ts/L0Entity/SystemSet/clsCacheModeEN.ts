@@ -1,13 +1,13 @@
-
+﻿
  /**
  * 类名:clsCacheModeEN
- * 表名:CacheMode(01120688)
- * 版本:2024.12.05.1(服务器:WIN-SRV103-116)
- * 日期:2024/12/05 10:25:04
+ * 表名:CacheMode(00140135)
+ * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
+ * 日期:2026/04/02 01:33:05
  * 生成者:pyf
- 工程名称:问卷调查(0112)
- CM工程:通用用户权限管理平台(000041, 变量首字母小写)-全部函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ 工程名称:统一平台(0014)
+ CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:系统设置(SystemSet)
  * 框架-层名:实体层(TS)(EntityLayer,0121)
@@ -22,15 +22,15 @@ import { clsGeneralTab } from '@/ts/PubFun/clsGeneralTab';
 export class  clsCacheModeEN extends clsGeneralTab
 {
 public static _RefreshTimeLst = new Array<string>();
-public static CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
-public static CacheModeId = "03"; //localStorage
-public static PrimaryTypeId = "03"; //自增
-public static IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
-public static WhereFormat = ""; //条件格式串
-public static _CurrTabName= "CacheMode"; //当前表名,与该类相关的表名
-public static _KeyFldName= "CacheModeId"; //当前表中的关键字名称,与该类相关的表中关键字名
-public static mintAttributeCount = 5;
-public static AttributeName = ["cacheModeId", "cacheModeName", "cacheModeENName", "inUse", "memo"];
+public static _CacheAddiCondition = "";//缓存附加条件,作为向后台调取数据的附加条件
+public static readonly _CacheModeId: string = "03"; //localStorage
+public static readonly _PrimaryTypeId: string = "01"; //关键字
+public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
+public static readonly _WhereFormat = ""; //条件格式串
+public static readonly _CurrTabName: string = "CacheMode"; //当前表名,与该类相关的表名
+public static readonly _KeyFldName: string = "CacheModeId"; //当前表中的关键字名称,与该类相关的表中关键字名
+public static readonly _AttributeCount = 5;
+public static readonly _AttributeName = ["cacheModeId", "cacheModeName", "cacheModeENName", "inUse", "memo"];
 //以下是属性变量
 
 /**
@@ -46,14 +46,14 @@ public static AttributeName = ["cacheModeId", "cacheModeName", "cacheModeENName"
  * 设置对象中私有属性.
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsPrivateVar)
 */
-private mstrCacheModeId = "";    //缓存方式Id
-private mstrCacheModeName = "";    //缓存方式名
-private mstrCacheModeENName = "";    //缓存方式英文名
+private mstrCacheModeId = "";    //CacheModeId
+private mstrCacheModeName = "";    //CacheModeName
+private mstrCacheModeENName = "";    //CacheModeENName
 private mbolInUse = false;    //是否在用
 private mstrMemo = "";    //备注
 
 /**
- * 缓存方式Id(说明:;字段类型:char;字段长度:2;是否可空:True)
+ * CacheModeId(说明:;字段类型:char;字段长度:2;是否可空:False)
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsProperty)
 */
  public SetCacheModeId (value: string)
@@ -67,7 +67,7 @@ if (value  != undefined)
 }
 
 /**
- * 缓存方式名(说明:;字段类型:varchar;字段长度:50;是否可空:True)
+ * CacheModeName(说明:;字段类型:varchar;字段长度:50;是否可空:False)
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsProperty)
 */
  public SetCacheModeName (value: string)
@@ -81,7 +81,7 @@ if (value  != undefined)
 }
 
 /**
- * 缓存方式英文名(说明:;字段类型:varchar;字段长度:50;是否可空:True)
+ * CacheModeENName(说明:;字段类型:varchar;字段长度:50;是否可空:True)
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsProperty)
 */
  public SetCacheModeENName (value: string)
@@ -205,9 +205,9 @@ break;
  * 设置对象中公共属性.
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsPublicVar)
 */
-public cacheModeId = "";    //缓存方式Id
-public cacheModeName = "";    //缓存方式名
-public cacheModeENName = "";    //缓存方式英文名
+public cacheModeId = "";    //CacheModeId
+public cacheModeName = "";    //CacheModeName
+public cacheModeENName = "";    //CacheModeENName
 public inUse = false;    //是否在用
 public memo = "";    //备注
 
@@ -216,31 +216,31 @@ public memo = "";    //备注
  * 常量:"CacheModeId"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_CacheModeId(): string {return "cacheModeId";}    //缓存方式Id
+ public static readonly con_CacheModeId = "cacheModeId";    //CacheModeId
 
  /**
  * 常量:"CacheModeName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_CacheModeName(): string {return "cacheModeName";}    //缓存方式名
+ public static readonly con_CacheModeName = "cacheModeName";    //CacheModeName
 
  /**
  * 常量:"CacheModeENName"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_CacheModeENName(): string {return "cacheModeENName";}    //缓存方式英文名
+ public static readonly con_CacheModeENName = "cacheModeENName";    //CacheModeENName
 
  /**
  * 常量:"InUse"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_InUse(): string {return "inUse";}    //是否在用
+ public static readonly con_InUse = "inUse";    //是否在用
 
  /**
  * 常量:"Memo"
  * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
  */
- public static get con_Memo(): string {return "memo";}    //备注
+ public static readonly con_Memo = "memo";    //备注
 
  /**
  * 设置条件字段值.
@@ -262,40 +262,15 @@ this.dicFldComparisonOp[strFldName] = strComparisonOp;
 }
 this.sfFldComparisonOp = JSON.stringify(this.dicFldComparisonOp);
 }
+
 /**
 * 判断一个字符串是否是类的属性
 * @param propName: 属性名
 * @returns 是否是属性
 */
 public static hasProperty(propName: string) : boolean {
+//return propName in new clsCacheModeEN();
 const instance = new clsCacheModeEN();
-return instance.hasOwnProperty(propName);
+return Object.prototype.hasOwnProperty.call(instance, propName);
 }
-}
- /**
- * 根据表内容设置enum列表
- * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_GeneEnumConstList)
- **/
- export class enumCacheMode
-{
- /**
- * Web服务器缓存
- **/
-static readonly WebServerCache_01 = "01";
- /**
- * 客户端缓存
- **/
-static readonly ClientCache_02 = "02";
- /**
- * localStorage
- **/
-static readonly localStorage_03 = "03";
- /**
- * sessionStorage
- **/
-static readonly sessionStorage_04 = "04";
- /**
- * 未知
- **/
-static readonly UnKnown_05 = "05";
 }

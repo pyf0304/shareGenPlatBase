@@ -24,7 +24,6 @@ import {
 } from '@/ts/L3ForWApi/UserManage_GP/clsQxRolesWApi';
 import { clsQxUserRoleRelationEN } from '@/ts/L0Entity/UserManage_GP/clsQxUserRoleRelationEN';
 import { usevQxUsersSimStore } from '@/store/modulesShare/vQxUserSim';
-import { vStudentInfo_SimEx_GetObjByStuId } from '@/ts/L3ForWApiExShare/UserManage/clsvStudentInfo_SimExWApi';
 
 interface UserState {
   token: string;
@@ -194,7 +193,6 @@ export const useUserStore = defineStore('user', {
         this.roleIds = arrRoleIds;
         this.roleNames = arrRoleNames;
         if (this.roleId == enumQxRoles.Regular_Student_00620003) {
-          const objStudent = await vStudentInfo_SimEx_GetObjByStuId(this.userId);
         } else if (
           this.roleId == enumQxRoles.System_Admin_00620001 ||
           this.roleId == enumQxRoles.Regular_Teacher_00620002

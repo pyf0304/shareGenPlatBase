@@ -30,9 +30,9 @@ export class clsvUsers {
     'isGpUser',
     'beginYearMonth',
     'endYearMonth',
-    'idGradeBase',
+    'id_GradeBase',
     'gradeBaseName',
-    'idXzCollege',
+    'id_XzCollege',
     'collegeId',
     'collegeName',
     'collegeNameA',
@@ -73,9 +73,9 @@ export class clsvUsers {
   public isGpUser = false; //是否Gp用户
   public beginYearMonth = ''; //开始年月
   public endYearMonth = ''; //结束年月
-  public idGradeBase = ''; //入学年级流水号
+  public id_GradeBase = ''; //入学年级流水号
   public gradeBaseName = ''; //年级名称
-  public idXzCollege = ''; //学院流水号
+  public id_XzCollege = ''; //学院流水号
   public collegeId = ''; //学院ID
   public collegeName = ''; //学院名称
   public collegeNameA = ''; //学院名称简写
@@ -128,11 +128,11 @@ export class clsvUsers {
       case clsvUsers.con_EndYearMonth:
         return this.endYearMonth;
       case clsvUsers.con_IdGradeBase:
-        return this.idGradeBase;
+        return this.id_GradeBase;
       case clsvUsers.con_GradeBaseName:
         return this.gradeBaseName;
       case clsvUsers.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       case clsvUsers.con_CollegeId:
         return this.collegeId;
       case clsvUsers.con_CollegeName:
@@ -255,11 +255,11 @@ export class clsvUsers {
   } //结束年月
 
   /**
-   * 常量:"IdGradeBase"
+   * 常量:"id_GradeBase"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
   public static get con_IdGradeBase(): string {
-    return 'idGradeBase';
+    return 'id_GradeBase';
   } //入学年级流水号
 
   /**
@@ -271,11 +271,11 @@ export class clsvUsers {
   } //年级名称
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
   public static get con_IdXzCollege(): string {
-    return 'idXzCollege';
+    return 'id_XzCollege';
   } //学院流水号
 
   /**

@@ -25,10 +25,7 @@
  **/
 import { ObjectAssign } from '@/ts/PubFun/clsCommFunc4Web';
 import { clsQxUserGroupsENEx } from '@/ts/L0Entity/UserManage_GP/clsQxUserGroupsENEx';
-import {
-  QxUserGroups_GetObjLstByPagerAsync,
-  QxUserGroups_SortFunByKey,
-} from '@/ts/L3ForWApi/UserManage_GP/clsQxUserGroupsWApi';
+import { QxUserGroups_SortFunByKey } from '@/ts/L3ForWApi/UserManage_GP/clsQxUserGroupsWApi';
 import { clsQxUserGroupsEN } from '@/ts/L0Entity/UserManage_GP/clsQxUserGroupsEN';
 import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
 import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
@@ -91,48 +88,6 @@ export function QxUserGroupsEx_CopyToEx(
   }
 }
 //该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerCache)
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function QxUserGroupsEx_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsQxUserGroupsENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrQxUserGroupsObjLst = await QxUserGroups_GetObjLstByPagerAsync(objPagerPara);
-  const arrQxUserGroupsExObjLst = arrQxUserGroupsObjLst.map(QxUserGroupsEx_CopyToEx);
-  if (arrQxUserGroupsExObjLst.length == 0) return arrQxUserGroupsExObjLst;
-  let arrQxUserGroupsSel: Array<clsQxUserGroupsENEx> = arrQxUserGroupsExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrQxUserGroupsSel = arrQxUserGroupsSel.sort(
-        QxUserGroupsEx_SortFunByKey(strSortFld, strSortType),
-      );
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrQxUserGroupsSel = arrQxUserGroupsSel.sort(objPagerPara.sortFun);
-    }
-    return arrQxUserGroupsSel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      qxUserGroupsEx_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsQxUserGroupsENEx>();
-}
 
 /**
  * 排序函数。根据关键字字段的值进行比较

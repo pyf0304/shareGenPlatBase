@@ -26,10 +26,10 @@ export class clsXzClgEN extends clsGeneralTab {
   public static readonly _IsUseDelSign = false; //使用删除标志,记录不能删除,仅设置删除标志
   public static readonly _WhereFormat = ''; //条件格式串
   public static readonly _CurrTabName: string = 'XzClg'; //当前表名,与该类相关的表名
-  public static readonly _KeyFldName: string = 'IdXzCollege'; //当前表中的关键字名称,与该类相关的表中关键字名
+  public static readonly _KeyFldName: string = 'id_XzCollege'; //当前表中的关键字名称,与该类相关的表中关键字名
   public static readonly _AttributeCount = 18;
   public static readonly _AttributeName = [
-    'idXzCollege',
+    'id_XzCollege',
     'collegeId',
     'collegeName',
     'collegeIdInGP',
@@ -87,8 +87,8 @@ export class clsXzClgEN extends clsGeneralTab {
    */
   public SetIdXzCollege(value: string) {
     if (value != undefined) {
-      this.idXzCollege = value;
-      this.hmProperty['idXzCollege'] = true;
+      this.id_XzCollege = value;
+      this.hmProperty['id_XzCollege'] = true;
       this.sfUpdFldSetStr = this.updFldString;
     }
   }
@@ -307,7 +307,7 @@ export class clsXzClgEN extends clsGeneralTab {
     let strMsg = '';
     switch (strFldName) {
       case clsXzClgEN.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       case clsXzClgEN.con_CollegeId:
         return this.collegeId;
       case clsXzClgEN.con_CollegeName:
@@ -365,8 +365,8 @@ export class clsXzClgEN extends clsGeneralTab {
     let strMsg = '';
     switch (strFldName) {
       case clsXzClgEN.con_Id_XzCollege:
-        this.idXzCollege = strValue;
-        this.hmProperty['idXzCollege'] = true;
+        this.id_XzCollege = strValue;
+        this.hmProperty['id_XzCollege'] = true;
         break;
       case clsXzClgEN.con_CollegeId:
         this.collegeId = strValue;
@@ -453,7 +453,7 @@ export class clsXzClgEN extends clsGeneralTab {
    * 设置对象中公共属性.
    * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_ClsPublicVar)
    */
-  public idXzCollege = ''; //学院流水号
+  public id_XzCollege = ''; //学院流水号
   public collegeId = ''; //学院ID
   public collegeName = ''; //学院名称
   public collegeIdInGP = ''; //CollegeIdInGP
@@ -473,10 +473,10 @@ export class clsXzClgEN extends clsGeneralTab {
   public memo = ''; //备注
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
    */
-  public static readonly con_IdXzCollege = 'idXzCollege'; //学院流水号
+  public static readonly con_IdXzCollege = 'id_XzCollege'; //学院流水号
 
   /**
    * 常量:"CollegeId"

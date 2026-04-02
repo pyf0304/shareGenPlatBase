@@ -1,12 +1,12 @@
 ﻿/**
  * 类名:QxUserRoleRelationCRUD(界面:QxUserRoleRelationCRUD,00140030)
  * 表名:QxUserRoleRelation(00140013)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:02:16
+ * 版本:2026.04.01.1(服务器:PYF-AI)
+ * 日期:2026/04/01 23:57:49
  * 生成者:
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  * 模块中文名:用户管理(UserManage_GP)
  * 框架-层名:Vue_界面后台_TS(TS)(Vue_ViewScriptCS_TS,0254)
@@ -40,7 +40,7 @@ import {
   QxUserRoleRelationEx_CopyToEx,
   QxUserRoleRelationEx_GetObjExLstByPagerAsync,
 } from '@/ts/L3ForWApiExShare/UserManage_GP/clsQxUserRoleRelationExWApi';
-import { XzSchool_BindDdl_IdSchoolInDivCache } from '@/ts/L3ForWApi/SystemSet/clsXzSchoolWApi';
+import { vQx_XzSchool_BindDdl_Id_SchoolInDivCache } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_XzSchoolWApi';
 import {
   GetCheckedKeyIdsInDivObj,
   GetSelectValueInDivObj,
@@ -79,10 +79,15 @@ export abstract class QxUserRoleRelationCRUD implements clsOperateList {
   public objPager: clsPager;
   public static objPageCRUD: QxUserRoleRelationCRUD;
   public static sortFunStatic: (ascOrDesc: string) => (x: any, y: any) => number;
+  /** 保存用户通过下拉框选择的每页记录数，null 时由子类 getter 提供默认值 */
+  protected _pageSize: number | null = null;
   constructor() {
     this.listPara = new ListPara(divVarSet.refDivLayout, divVarSet.refDivList);
     QxUserRoleRelationCRUD.objPageCRUD = this;
     this.objPager = new clsPager(this);
+    this.objPager.onPageSizeChange = (ps: number) => {
+      this._pageSize = ps;
+    };
   }
   /**
    * 获取当前组件的divList的层对象
@@ -106,7 +111,7 @@ export abstract class QxUserRoleRelationCRUD implements clsOperateList {
    * 每页记录数,在扩展类可以修改
    **/
   public get pageSize(): number {
-    return 5;
+    return this._pageSize ?? 10;
   }
   public recCount = 0;
 
@@ -415,40 +420,40 @@ export abstract class QxUserRoleRelationCRUD implements clsOperateList {
   }
 
   /**
-   * 设置绑定下拉框，针对字段:[IdSchool]
+   * 设置绑定下拉框，针对字段:[Id_School]
    * (AGC.BusinessLogicEx.clsASPDropDownListBLEx_Static:GC_SetBindDdl4TabFeature4QueryEdit_TS)
    **/
 
-  public async SetDdl_IdSchoolInDivInFeature() {
-    await XzSchool_BindDdl_IdSchoolInDivCache(divVarSet.refDivFunction, 'ddlIdSchool'); //
+  public async SetDdl_Id_SchoolInDivInFeature() {
+    await vQx_XzSchool_BindDdl_Id_SchoolInDivCache(divVarSet.refDivFunction, 'ddlId_School'); //
   }
 
-  /** 设置字段值-IdSchool
+  /** 设置字段值-Id_School
    * (AutoGCLib.Vue_ViewScriptCS_TS4TypeScript:Gen_Vue_Ts_btnSetFldValue_Click)
    **/
-  public async btnSetIdSchool_Click() {
-    const strThisFuncName = this.btnSetIdSchool_Click.name;
+  public async btnSetId_School_Click() {
+    const strThisFuncName = this.btnSetId_School_Click.name;
     try {
       const arrKeyIds = GetCheckedKeyIdsInDivObj(divVarSet.refDivList);
       if (arrKeyIds.length == 0) {
         alert(`请选择需要设置学校流水号的${this.thisTabName}记录!`);
         return '';
       }
-      const strIdSchool = GetSelectValueInDivObj(
+      const strId_School = GetSelectValueInDivObj(
         divVarSet.refDivFunction,
-        'ddlIdSchool_SetFldValue',
+        'ddlId_School_SetFldValue',
       );
-      if (strIdSchool == '') {
-        const strMsg = '请输入学校流水号(IdSchool)!';
+      if (strId_School == '') {
+        const strMsg = '请输入学校流水号(Id_School)!';
         console.error('Error: ', strMsg);
         //console.trace();
         alert(strMsg);
         return;
       }
-      //console.log('strIdSchool=' + strIdSchool);
+      //console.log('strId_School=' + strId_School);
       //console.log('arrKeyIds=');
       //console.log(arrKeyIds);
-      await this.SetIdSchool(arrKeyIds, strIdSchool);
+      await this.SetId_School(arrKeyIds, strId_School);
       await this.BindGv_QxUserRoleRelation4Func(divVarSet.refDivList);
     } catch (e) {
       const strMsg = `设置记录不成功,${e}.(in ${this.constructor.name}.${strThisFuncName}`;
@@ -993,18 +998,25 @@ export abstract class QxUserRoleRelationCRUD implements clsOperateList {
         },
       },
     ];
-    try {
-      await this.ExtendFldFuncMap(arrQxUserRoleRelationExObjLst, arrDataColumn);
-    } catch (e) {
-      const strMsg = `扩展字段值的映射出错,${e}.(in ${this.constructor.name}.${strThisFuncName}`;
-      console.error(strMsg);
-      alert(strMsg);
-      return;
-    }
     if (refQxUserRoleRelation_List.value != null) {
-      dataColumn.value = arrDataColumn;
+      try {
+        await this.ExtendTdFldFuncMap(arrQxUserRoleRelationExObjLst);
+      } catch (e) {
+        const strMsg = `扩展Td字段值的映射出错,${e}.(in ${this.constructor.name}.${strThisFuncName}`;
+        console.error(strMsg);
+        alert(strMsg);
+        return;
+      }
       await BindTabByList(arrQxUserRoleRelationExObjLst, this.dispAllErrMsg_q);
     } else {
+      try {
+        await this.ExtendFldFuncMap(arrQxUserRoleRelationExObjLst, arrDataColumn);
+      } catch (e) {
+        const strMsg = `扩展字段值的映射出错,${e}.(in ${this.constructor.name}.${strThisFuncName}`;
+        console.error(strMsg);
+        alert(strMsg);
+        return;
+      }
       const divDataLst = GetDivObjInDivObj(divContainer, 'divDataLst');
       if (divDataLst == null) {
         alert('在BindTab_QxUserRoleRelation4Func函数中，divDataLst不存在!');
@@ -1237,6 +1249,24 @@ export abstract class QxUserRoleRelationCRUD implements clsOperateList {
     await this.BindGv_QxUserRoleRelation4Func(this.listPara.listDiv);
   }
 
+  /** 扩展Td字段值的函数映射
+   * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_ExtendTdFldFuncMap)
+   * @param arrQxUserRoleRelationExObjLst:需要映射的对象列表
+   * @param arrDataColumn:用于绑定表的数据列信息
+   **/
+  public async ExtendTdFldFuncMap(arrQxUserRoleRelationExObjLst: Array<clsQxUserRoleRelationENEx>) {
+    const arrFldName = clsQxUserRoleRelationEN._AttributeName;
+    const tdFieldNames = refQxUserRoleRelation_List.value?.tdFieldNames;
+    for (const strFldName of tdFieldNames) {
+      if (IsNullOrEmpty(strFldName) == true) continue;
+      if (arrFldName.indexOf(strFldName) > -1) continue;
+      for (const objInFor of arrQxUserRoleRelationExObjLst) {
+        objInFor.qxPrjId = QxPrjId_Local.value;
+        await QxUserRoleRelation_FuncMapByFldName(strFldName, objInFor);
+      }
+    }
+  }
+
   /** 复制记录
    * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_CopyRecord)
    **/
@@ -1271,13 +1301,13 @@ export abstract class QxUserRoleRelationCRUD implements clsOperateList {
     }
   }
 
-  /** 设置字段值-IdSchool
+  /** 设置字段值-Id_School
    * (AutoGCLib.Vue_ViewScriptCS_TS4TypeScript:Gen_Vue_Ts_SetFieldValue)
    **/
-  public async SetIdSchool(arrmId: Array<string>, strIdSchool: string) {
-    const strThisFuncName = this.SetIdSchool.name;
-    if (strIdSchool == null || strIdSchool == '') {
-      const strMsg = '请输入学校流水号(IdSchool)!';
+  public async SetId_School(arrmId: Array<string>, strId_School: string) {
+    const strThisFuncName = this.SetId_School.name;
+    if (strId_School == null || strId_School == '') {
+      const strMsg = '请输入学校流水号(Id_School)!';
       console.error('Error: ', strMsg);
       //console.trace();
       alert(strMsg);
@@ -1297,7 +1327,7 @@ export abstract class QxUserRoleRelationCRUD implements clsOperateList {
         const objQxUserRoleRelationEN = new clsQxUserRoleRelationEN();
         ObjectAssign(objQxUserRoleRelationEN, objInFor);
         objQxUserRoleRelationEN.SetmId(objInFor.mId);
-        objQxUserRoleRelationEN.SetId_School(strIdSchool);
+        objQxUserRoleRelationEN.SetId_School(strId_School);
         let returnBool = false;
         try {
           objQxUserRoleRelationEN.sfUpdFldSetStr = objQxUserRoleRelationEN.updFldString; //设置哪些字段被修改(脏字段)

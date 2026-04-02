@@ -25,10 +25,7 @@
  **/
 import { ObjectAssign } from '@/ts/PubFun/clsCommFunc4Web';
 import { clsvQxRolesByUserNumENEx } from '@/ts/L0Entity/UserManage_GP/clsvQxRolesByUserNumENEx';
-import {
-  vQxRolesByUserNum_GetObjLstByPagerAsync,
-  vQxRolesByUserNum_SortFunByKey,
-} from '@/ts/L3ForWApi/UserManage_GP/clsvQxRolesByUserNumWApi';
+import { vQxRolesByUserNum_SortFunByKey } from '@/ts/L3ForWApi/UserManage_GP/clsvQxRolesByUserNumWApi';
 import { clsvQxRolesByUserNumEN } from '@/ts/L0Entity/UserManage_GP/clsvQxRolesByUserNumEN';
 import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
 import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
@@ -91,48 +88,6 @@ export function vQxRolesByUserNumEx_CopyToEx(
   }
 }
 //该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerCache)
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function vQxRolesByUserNumEx_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsvQxRolesByUserNumENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrvQxRolesByUserNumObjLst = await vQxRolesByUserNum_GetObjLstByPagerAsync(objPagerPara);
-  const arrvQxRolesByUserNumExObjLst = arrvQxRolesByUserNumObjLst.map(vQxRolesByUserNumEx_CopyToEx);
-  if (arrvQxRolesByUserNumExObjLst.length == 0) return arrvQxRolesByUserNumExObjLst;
-  let arrvQxRolesByUserNumSel: Array<clsvQxRolesByUserNumENEx> = arrvQxRolesByUserNumExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrvQxRolesByUserNumSel = arrvQxRolesByUserNumSel.sort(
-        vQxRolesByUserNumEx_SortFunByKey(strSortFld, strSortType),
-      );
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrvQxRolesByUserNumSel = arrvQxRolesByUserNumSel.sort(objPagerPara.sortFun);
-    }
-    return arrvQxRolesByUserNumSel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      vQxRolesByUserNumEx_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsvQxRolesByUserNumENEx>();
-}
 
 /**
  * 排序函数。根据关键字字段的值进行比较

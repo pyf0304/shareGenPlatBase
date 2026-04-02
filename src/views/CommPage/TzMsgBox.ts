@@ -293,7 +293,7 @@ export abstract class TzMsgBox {
     this.majorEnglishName = pobjXzMajorEN.majorEnglishName; // 英文名
     this.majorExplain = pobjXzMajorEN.majorExplain; // 专业说明
     this.id_XzMajorShoolType = pobjXzMajorEN.id_XzMajorShoolType; // 专业类型
-    this.idXzCollege = pobjXzMajorEN.idXzCollege; // 学院
+    this.id_XzCollege = pobjXzMajorEN.id_XzCollege; // 学院
     this.majorDirection = pobjXzMajorEN.majorDirection; // 专业方向
     this.memo = pobjXzMajorEN.memo; // 备注
   }
@@ -383,13 +383,13 @@ export abstract class TzMsgBox {
   /**
    * 学院流水号 (Used In Clear())
    **/
-  public set idXzCollege(value: string) {
+  public set id_XzCollege(value: string) {
     SetSelectValueByIdInDiv(this.divName4MsgBox, 'ddlid_XzCollege', value);
   }
   /**
    * 学院流水号 (Used In PutDataToClass())
    **/
-  public get idXzCollege(): string {
+  public get id_XzCollege(): string {
     const strValue = GetSelectValueInDiv(this.divName4MsgBox, 'ddlid_XzCollege');
     if (strValue == undefined) return '';
     else if (strValue == '0') return '';

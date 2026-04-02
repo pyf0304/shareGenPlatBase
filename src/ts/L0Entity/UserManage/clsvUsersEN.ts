@@ -37,9 +37,9 @@ export class clsvUsersEN extends clsGeneralTabV {
     'isGpUser',
     'beginYearMonth',
     'endYearMonth',
-    'idGradeBase',
+    'id_GradeBase',
     'gradeBaseName',
-    'idXzCollege',
+    'id_XzCollege',
     'collegeId',
     'collegeName',
     'collegeNameA',
@@ -102,11 +102,11 @@ export class clsvUsersEN extends clsGeneralTabV {
       case clsvUsersEN.con_EndYearMonth:
         return this.endYearMonth;
       case clsvUsersEN.con_IdGradeBase:
-        return this.idGradeBase;
+        return this.id_GradeBase;
       case clsvUsersEN.con_GradeBaseName:
         return this.gradeBaseName;
       case clsvUsersEN.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       case clsvUsersEN.con_CollegeId:
         return this.collegeId;
       case clsvUsersEN.con_CollegeName:
@@ -202,13 +202,13 @@ export class clsvUsersEN extends clsGeneralTabV {
         this.endYearMonth = strValue;
         break;
       case clsvUsersEN.con_IdGradeBase:
-        this.idGradeBase = strValue;
+        this.id_GradeBase = strValue;
         break;
       case clsvUsersEN.con_GradeBaseName:
         this.gradeBaseName = strValue;
         break;
       case clsvUsersEN.con_Id_XzCollege:
-        this.idXzCollege = strValue;
+        this.id_XzCollege = strValue;
         break;
       case clsvUsersEN.con_CollegeId:
         this.collegeId = strValue;
@@ -307,9 +307,9 @@ export class clsvUsersEN extends clsGeneralTabV {
   public isGpUser = false; //是否Gp用户
   public beginYearMonth = ''; //开始年月
   public endYearMonth = ''; //结束年月
-  public idGradeBase = ''; //入学年级流水号
+  public id_GradeBase = ''; //入学年级流水号
   public gradeBaseName = ''; //年级名称
-  public idXzCollege = ''; //学院流水号
+  public id_XzCollege = ''; //学院流水号
   public collegeId = ''; //学院ID
   public collegeName = ''; //学院名称
   public collegeNameA = ''; //学院名称简写
@@ -401,11 +401,11 @@ export class clsvUsersEN extends clsGeneralTabV {
   } //结束年月
 
   /**
-   * 常量:"IdGradeBase"
+   * 常量:"id_GradeBase"
    * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
    */
   public static get con_IdGradeBase(): string {
-    return 'idGradeBase';
+    return 'id_GradeBase';
   } //入学年级流水号
 
   /**
@@ -417,11 +417,11 @@ export class clsvUsersEN extends clsGeneralTabV {
   } //年级名称
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
    */
   public static get con_IdXzCollege(): string {
-    return 'idXzCollege';
+    return 'id_XzCollege';
   } //学院流水号
 
   /**

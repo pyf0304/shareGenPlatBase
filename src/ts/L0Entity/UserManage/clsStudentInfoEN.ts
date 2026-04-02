@@ -37,9 +37,9 @@ export class clsStudentInfoEN extends clsGeneralTab {
     'idEthnic',
     'idUniZone',
     'idStuType',
-    'idXzCollege',
+    'id_XzCollege',
     'idXzMajor',
-    'idGradeBase',
+    'id_GradeBase',
     'idGrade',
     'idXsStatus',
     'idAdminCls',
@@ -233,8 +233,8 @@ export class clsStudentInfoEN extends clsGeneralTab {
    */
   public SetIdXzCollege(value: string) {
     if (value != undefined) {
-      this.idXzCollege = value;
-      this.hmProperty['idXzCollege'] = true;
+      this.id_XzCollege = value;
+      this.hmProperty['id_XzCollege'] = true;
       this.sfUpdFldSetStr = this.updFldString;
     }
   }
@@ -257,8 +257,8 @@ export class clsStudentInfoEN extends clsGeneralTab {
    */
   public SetIdGradeBase(value: string) {
     if (value != undefined) {
-      this.idGradeBase = value;
-      this.hmProperty['idGradeBase'] = true;
+      this.id_GradeBase = value;
+      this.hmProperty['id_GradeBase'] = true;
       this.sfUpdFldSetStr = this.updFldString;
     }
   }
@@ -673,11 +673,11 @@ export class clsStudentInfoEN extends clsGeneralTab {
       case clsStudentInfoEN.con_IdStuType:
         return this.idStuType;
       case clsStudentInfoEN.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       case clsStudentInfoEN.con_IdXzMajor:
         return this.id_XzMajor;
       case clsStudentInfoEN.con_IdGradeBase:
-        return this.idGradeBase;
+        return this.id_GradeBase;
       case clsStudentInfoEN.con_IdGrade:
         return this.idGrade;
       case clsStudentInfoEN.con_IdXsStatus:
@@ -797,16 +797,16 @@ export class clsStudentInfoEN extends clsGeneralTab {
         this.hmProperty['idStuType'] = true;
         break;
       case clsStudentInfoEN.con_Id_XzCollege:
-        this.idXzCollege = strValue;
-        this.hmProperty['idXzCollege'] = true;
+        this.id_XzCollege = strValue;
+        this.hmProperty['id_XzCollege'] = true;
         break;
       case clsStudentInfoEN.con_IdXzMajor:
         this.id_XzMajor = strValue;
         this.hmProperty['idXzMajor'] = true;
         break;
       case clsStudentInfoEN.con_IdGradeBase:
-        this.idGradeBase = strValue;
-        this.hmProperty['idGradeBase'] = true;
+        this.id_GradeBase = strValue;
+        this.hmProperty['id_GradeBase'] = true;
         break;
       case clsStudentInfoEN.con_IdGrade:
         this.idGrade = strValue;
@@ -961,9 +961,9 @@ export class clsStudentInfoEN extends clsGeneralTab {
   public idEthnic = ''; //民族流水号
   public idUniZone = ''; //校区流水号
   public idStuType = ''; //学生类别流水号
-  public idXzCollege = ''; //学院流水号
+  public id_XzCollege = ''; //学院流水号
   public idXzMajor = ''; //专业流水号
-  public idGradeBase = ''; //入学年级流水号
+  public id_GradeBase = ''; //入学年级流水号
   public idGrade = ''; //年级流水号
   public idXsStatus = ''; //学生状态流水号
   public idAdminCls = ''; //行政班流水号
@@ -1062,11 +1062,11 @@ export class clsStudentInfoEN extends clsGeneralTab {
   } //学生类别流水号
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
    */
   public static get con_IdXzCollege(): string {
-    return 'idXzCollege';
+    return 'id_XzCollege';
   } //学院流水号
 
   /**
@@ -1078,11 +1078,11 @@ export class clsStudentInfoEN extends clsGeneralTab {
   } //专业流水号
 
   /**
-   * 常量:"IdGradeBase"
+   * 常量:"id_GradeBase"
    * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
    */
   public static get con_IdGradeBase(): string {
-    return 'idGradeBase';
+    return 'id_GradeBase';
   } //入学年级流水号
 
   /**

@@ -37,8 +37,6 @@ export class PageHead_GE {
           `${userStore.getUserName}(${userStore.getRoleName})`,
         );
 
-        $('#spanMajorName').html(`${userStore.getMajorName}专业`);
-
         // 判断角色
         // 管理员
         const isShowEduCls = PageHead_GE.GetPropValue('isShowEduCls');

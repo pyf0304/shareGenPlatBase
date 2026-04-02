@@ -294,7 +294,7 @@
                 class="text-primary"
                 style="width: 150px"
               >
-                {{ idGradeBase }}
+                {{ id_GradeBase }}
               </label>
             </td>
             <td class="text-right">
@@ -344,7 +344,7 @@
                 class="text-primary"
                 style="width: 150px"
               >
-                {{ idXzCollege }}
+                {{ id_XzCollege }}
               </label>
             </td>
           </tr>
@@ -509,10 +509,10 @@
       const synchDate = ref('');
       const memo = ref('');
       const detailInfoTab = ref('');
-      const idGradeBase = ref('');
+      const id_GradeBase = ref('');
       const idSchool = ref('');
       const headPic = ref('');
-      const idXzCollege = ref('');
+      const id_XzCollege = ref('');
       const departmentName = ref('');
       const departmentTypeId = ref('');
       const departmentTypeName = ref('');
@@ -548,10 +548,10 @@
         synchDate.value = pobjQxUsersENEx.synchDate; // 同步日期
         memo.value = pobjQxUsersENEx.memo; // 备注
         detailInfoTab.value = pobjQxUsersENEx.detailInfoTab; // 详细信息表
-        idGradeBase.value = pobjQxUsersENEx.id_GradeBase; // 年级流水号
+        id_GradeBase.value = pobjQxUsersENEx.id_GradeBase; // 年级流水号
         idSchool.value = pobjQxUsersENEx.id_School; // 学校流水号
         headPic.value = pobjQxUsersENEx.headPic; // 头像
-        idXzCollege.value = pobjQxUsersENEx.id_XzCollege; // 学院Id
+        id_XzCollege.value = pobjQxUsersENEx.id_XzCollege; // 学院Id
         departmentName.value = pobjQxUsersENEx.departmentName; // 部门名
         departmentTypeId.value = pobjQxUsersENEx.departmentTypeId; // 部门类型ID
         departmentTypeName.value = pobjQxUsersENEx.departmentTypeName; // 部门类型名
@@ -633,10 +633,10 @@
         synchDate,
         memo,
         detailInfoTab,
-        idGradeBase,
+        id_GradeBase,
         idSchool,
         headPic,
-        idXzCollege,
+        id_XzCollege,
         departmentName,
         departmentTypeId,
         departmentTypeName,

@@ -240,7 +240,7 @@ export function vUsersSim_SortFunDefa(a: clsvUsersSimEN, b: clsvUsersSimEN): num
  * @returns 返回两个对象比较的结果
  */
 export function vUsersSim_SortFunDefa2Fld(a: clsvUsersSimEN, b: clsvUsersSimEN): number {
-  if (a.userName == b.userName) return a.idXzCollege.localeCompare(b.idXzCollege);
+  if (a.userName == b.userName) return a.id_XzCollege.localeCompare(b.id_XzCollege);
   else return a.userName.localeCompare(b.userName);
 }
 
@@ -268,9 +268,9 @@ export function vUsersSim_SortFunByKey(strKey: string, AscOrDesc: string) {
         };
       case clsvUsersSimEN.con_Id_XzCollege:
         return (a: clsvUsersSimEN, b: clsvUsersSimEN) => {
-          if (a.idXzCollege == null) return -1;
-          if (b.idXzCollege == null) return 1;
-          return a.idXzCollege.localeCompare(b.idXzCollege);
+          if (a.id_XzCollege == null) return -1;
+          if (b.id_XzCollege == null) return 1;
+          return a.id_XzCollege.localeCompare(b.id_XzCollege);
         };
       case clsvUsersSimEN.con_CollegeName:
         return (a: clsvUsersSimEN, b: clsvUsersSimEN) => {
@@ -318,9 +318,9 @@ export function vUsersSim_SortFunByKey(strKey: string, AscOrDesc: string) {
         };
       case clsvUsersSimEN.con_Id_XzCollege:
         return (a: clsvUsersSimEN, b: clsvUsersSimEN) => {
-          if (b.idXzCollege == null) return -1;
-          if (a.idXzCollege == null) return 1;
-          return b.idXzCollege.localeCompare(a.idXzCollege);
+          if (b.id_XzCollege == null) return -1;
+          if (a.id_XzCollege == null) return 1;
+          return b.id_XzCollege.localeCompare(a.id_XzCollege);
         };
       case clsvUsersSimEN.con_CollegeName:
         return (a: clsvUsersSimEN, b: clsvUsersSimEN) => {
@@ -417,7 +417,7 @@ export async function vUsersSim_FilterFunByKey(strKey: string, value: any) {
       };
     case clsvUsersSimEN.con_Id_XzCollege:
       return (obj: clsvUsersSimEN) => {
-        return obj.idXzCollege === value;
+        return obj.id_XzCollege === value;
       };
     case clsvUsersSimEN.con_CollegeName:
       return (obj: clsvUsersSimEN) => {
@@ -2445,7 +2445,7 @@ export function vUsersSim_GetCombineCondition(objvUsersSimCond: clsvUsersSimEN):
     strWhereCond += Format(
       " And {0} {2} '{1}'",
       clsvUsersSimEN.con_Id_XzCollege,
-      objvUsersSimCond.idXzCollege,
+      objvUsersSimCond.id_XzCollege,
       strComparisonOpIdXzCollege,
     );
   }
@@ -2536,7 +2536,7 @@ export function vUsersSim_CopyObjTo(
 ): void {
   objvUsersSimENT.userId = objvUsersSimENS.userId; //用户ID
   objvUsersSimENT.userName = objvUsersSimENS.userName; //用户名
-  objvUsersSimENT.idXzCollege = objvUsersSimENS.idXzCollege; //学院流水号
+  objvUsersSimENT.id_XzCollege = objvUsersSimENS.id_XzCollege; //学院流水号
   objvUsersSimENT.collegeName = objvUsersSimENS.collegeName; //学院名称
   objvUsersSimENT.id_XzMajor = objvUsersSimENS.id_XzMajor; //专业流水号
   objvUsersSimENT.majorName = objvUsersSimENS.majorName; //专业名称

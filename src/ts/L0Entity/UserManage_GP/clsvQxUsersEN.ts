@@ -52,9 +52,9 @@ export class clsvQxUsersEN extends clsGeneralTabV {
     'synchDate',
     'updDate',
     'updUser',
-    'idXzCollege',
+    'id_XzCollege',
     'memo',
-    'idGradeBase',
+    'id_GradeBase',
     'email',
     'phoneNumber',
   ];
@@ -124,11 +124,11 @@ export class clsvQxUsersEN extends clsGeneralTabV {
       case clsvQxUsersEN.con_UpdUser:
         return this.updUser;
       case clsvQxUsersEN.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       case clsvQxUsersEN.con_Memo:
         return this.memo;
       case clsvQxUsersEN.con_IdGradeBase:
-        return this.idGradeBase;
+        return this.id_GradeBase;
       case clsvQxUsersEN.con_Email:
         return this.email;
       case clsvQxUsersEN.con_PhoneNumber:
@@ -223,13 +223,13 @@ export class clsvQxUsersEN extends clsGeneralTabV {
         this.updUser = strValue;
         break;
       case clsvQxUsersEN.con_Id_XzCollege:
-        this.idXzCollege = strValue;
+        this.id_XzCollege = strValue;
         break;
       case clsvQxUsersEN.con_Memo:
         this.memo = strValue;
         break;
       case clsvQxUsersEN.con_IdGradeBase:
-        this.idGradeBase = strValue;
+        this.id_GradeBase = strValue;
         break;
       case clsvQxUsersEN.con_Email:
         this.email = strValue;
@@ -274,9 +274,9 @@ export class clsvQxUsersEN extends clsGeneralTabV {
   public synchDate = ''; //同步日期
   public updDate = ''; //修改日期
   public updUser = ''; //修改用户
-  public idXzCollege = ''; //学院Id
+  public id_XzCollege = ''; //学院Id
   public memo = ''; //备注
-  public idGradeBase = ''; //年级流水号
+  public id_GradeBase = ''; //年级流水号
   public email = ''; //邮箱
   public phoneNumber = ''; //电话号码
 
@@ -465,11 +465,11 @@ export class clsvQxUsersEN extends clsGeneralTabV {
   } //修改用户
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
    */
   public static get con_IdXzCollege(): string {
-    return 'idXzCollege';
+    return 'id_XzCollege';
   } //学院Id
 
   /**
@@ -481,11 +481,11 @@ export class clsvQxUsersEN extends clsGeneralTabV {
   } //备注
 
   /**
-   * 常量:"IdGradeBase"
+   * 常量:"id_GradeBase"
    * (AutoGCLib.EntityLayer4TypeScript:Gen_EN_PropertyNameConst)
    */
   public static get con_IdGradeBase(): string {
-    return 'idGradeBase';
+    return 'id_GradeBase';
   } //年级流水号
 
   /**

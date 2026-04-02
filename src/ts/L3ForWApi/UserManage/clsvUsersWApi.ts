@@ -201,9 +201,9 @@ export function vUsers_SortFunByKey(strKey: string, AscOrDesc: string) {
         };
       case clsvUsersEN.con_IdGradeBase:
         return (a: clsvUsersEN, b: clsvUsersEN) => {
-          if (a.idGradeBase == null) return -1;
-          if (b.idGradeBase == null) return 1;
-          return a.idGradeBase.localeCompare(b.idGradeBase);
+          if (a.id_GradeBase == null) return -1;
+          if (b.id_GradeBase == null) return 1;
+          return a.id_GradeBase.localeCompare(b.id_GradeBase);
         };
       case clsvUsersEN.con_GradeBaseName:
         return (a: clsvUsersEN, b: clsvUsersEN) => {
@@ -213,9 +213,9 @@ export function vUsers_SortFunByKey(strKey: string, AscOrDesc: string) {
         };
       case clsvUsersEN.con_Id_XzCollege:
         return (a: clsvUsersEN, b: clsvUsersEN) => {
-          if (a.idXzCollege == null) return -1;
-          if (b.idXzCollege == null) return 1;
-          return a.idXzCollege.localeCompare(b.idXzCollege);
+          if (a.id_XzCollege == null) return -1;
+          if (b.id_XzCollege == null) return 1;
+          return a.id_XzCollege.localeCompare(b.id_XzCollege);
         };
       case clsvUsersEN.con_CollegeId:
         return (a: clsvUsersEN, b: clsvUsersEN) => {
@@ -411,9 +411,9 @@ export function vUsers_SortFunByKey(strKey: string, AscOrDesc: string) {
         };
       case clsvUsersEN.con_IdGradeBase:
         return (a: clsvUsersEN, b: clsvUsersEN) => {
-          if (b.idGradeBase == null) return -1;
-          if (a.idGradeBase == null) return 1;
-          return b.idGradeBase.localeCompare(a.idGradeBase);
+          if (b.id_GradeBase == null) return -1;
+          if (a.id_GradeBase == null) return 1;
+          return b.id_GradeBase.localeCompare(a.id_GradeBase);
         };
       case clsvUsersEN.con_GradeBaseName:
         return (a: clsvUsersEN, b: clsvUsersEN) => {
@@ -423,9 +423,9 @@ export function vUsers_SortFunByKey(strKey: string, AscOrDesc: string) {
         };
       case clsvUsersEN.con_Id_XzCollege:
         return (a: clsvUsersEN, b: clsvUsersEN) => {
-          if (b.idXzCollege == null) return -1;
-          if (a.idXzCollege == null) return 1;
-          return b.idXzCollege.localeCompare(a.idXzCollege);
+          if (b.id_XzCollege == null) return -1;
+          if (a.id_XzCollege == null) return 1;
+          return b.id_XzCollege.localeCompare(a.id_XzCollege);
         };
       case clsvUsersEN.con_CollegeId:
         return (a: clsvUsersEN, b: clsvUsersEN) => {
@@ -625,7 +625,7 @@ export async function vUsers_FilterFunByKey(strKey: string, value: any) {
       };
     case clsvUsersEN.con_IdGradeBase:
       return (obj: clsvUsersEN) => {
-        return obj.idGradeBase === value;
+        return obj.id_GradeBase === value;
       };
     case clsvUsersEN.con_GradeBaseName:
       return (obj: clsvUsersEN) => {
@@ -633,7 +633,7 @@ export async function vUsers_FilterFunByKey(strKey: string, value: any) {
       };
     case clsvUsersEN.con_Id_XzCollege:
       return (obj: clsvUsersEN) => {
-        return obj.idXzCollege === value;
+        return obj.id_XzCollege === value;
       };
     case clsvUsersEN.con_CollegeId:
       return (obj: clsvUsersEN) => {
@@ -1783,7 +1783,7 @@ export function vUsers_GetCombineCondition(objvUsersCond: clsvUsersEN): string {
     strWhereCond += Format(
       " And {0} {2} '{1}'",
       clsvUsersEN.con_IdGradeBase,
-      objvUsersCond.idGradeBase,
+      objvUsersCond.id_GradeBase,
       strComparisonOpIdGradeBase,
     );
   }
@@ -1813,7 +1813,7 @@ export function vUsers_GetCombineCondition(objvUsersCond: clsvUsersEN): string {
     strWhereCond += Format(
       " And {0} {2} '{1}'",
       clsvUsersEN.con_Id_XzCollege,
-      objvUsersCond.idXzCollege,
+      objvUsersCond.id_XzCollege,
       strComparisonOpIdXzCollege,
     );
   }
@@ -2191,9 +2191,9 @@ export function vUsers_CopyObjTo(objvUsersENS: clsvUsersEN, objvUsersENT: clsvUs
   objvUsersENT.isGpUser = objvUsersENS.isGpUser; //是否Gp用户
   objvUsersENT.beginYearMonth = objvUsersENS.beginYearMonth; //开始年月
   objvUsersENT.endYearMonth = objvUsersENS.endYearMonth; //结束年月
-  objvUsersENT.idGradeBase = objvUsersENS.idGradeBase; //入学年级流水号
+  objvUsersENT.id_GradeBase = objvUsersENS.id_GradeBase; //入学年级流水号
   objvUsersENT.gradeBaseName = objvUsersENS.gradeBaseName; //年级名称
-  objvUsersENT.idXzCollege = objvUsersENS.idXzCollege; //学院流水号
+  objvUsersENT.id_XzCollege = objvUsersENS.id_XzCollege; //学院流水号
   objvUsersENT.collegeId = objvUsersENS.collegeId; //学院ID
   objvUsersENT.collegeName = objvUsersENS.collegeName; //学院名称
   objvUsersENT.collegeNameA = objvUsersENS.collegeNameA; //学院名称简写

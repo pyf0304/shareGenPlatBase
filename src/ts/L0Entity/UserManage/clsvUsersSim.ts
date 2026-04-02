@@ -24,7 +24,7 @@ export class clsvUsersSim {
   public static AttributeName = [
     'userId',
     'userName',
-    'idXzCollege',
+    'id_XzCollege',
     'collegeName',
     'idXzMajor',
     'majorName',
@@ -39,7 +39,7 @@ export class clsvUsersSim {
    */
   public userId = ''; //用户ID
   public userName = ''; //用户名
-  public idXzCollege = ''; //学院流水号
+  public id_XzCollege = ''; //学院流水号
   public collegeName = ''; //学院名称
   public idXzMajor = ''; //专业流水号
   public majorName = ''; //专业名称
@@ -60,7 +60,7 @@ export class clsvUsersSim {
       case clsvUsersSim.con_UserName:
         return this.userName;
       case clsvUsersSim.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       case clsvUsersSim.con_CollegeName:
         return this.collegeName;
       case clsvUsersSim.con_IdXzMajor:
@@ -95,11 +95,11 @@ export class clsvUsersSim {
   } //用户名
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
   public static get con_IdXzCollege(): string {
-    return 'idXzCollege';
+    return 'id_XzCollege';
   } //学院流水号
 
   /**

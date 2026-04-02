@@ -1722,7 +1722,7 @@ export async function UsersEx_FuncMapCollegeName(objUsers: clsUsersENEx) {
   try {
     const xzClgStore = useXzClgStore();
     if (IsNullOrEmpty(objUsers.collegeName) == true) {
-      const XzClgidXzCollege = objUsers.idXzCollege;
+      const XzClgidXzCollege = objUsers.id_XzCollege;
       const XzClgCollegeName = await xzClgStore.getCollegeName(XzClgidXzCollege);
       objUsers.collegeName = XzClgCollegeName;
     }
@@ -1802,7 +1802,7 @@ export async function UsersEx_FuncMapGradeBaseName(objUsers: clsUsersENEx) {
   const strThisFuncName = UsersEx_FuncMapGradeBaseName.name;
   try {
     if (IsNullOrEmpty(objUsers.gradeBaseName) == true) {
-      const XzGradeBaseidGradeBase = objUsers.idGradeBase;
+      const XzGradeBaseidGradeBase = objUsers.id_GradeBase;
       const XzGradeBaseGradeBaseName = await XzGradeBase_func(
         clsXzGradeBaseEN.con_IdGradeBase,
         clsXzGradeBaseEN.con_GradeBaseName,

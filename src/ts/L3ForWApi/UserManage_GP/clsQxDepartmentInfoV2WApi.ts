@@ -3,7 +3,7 @@
  * 类名:clsQxDepartmentInfoV2WApi
  * 表名:QxDepartmentInfoV2(00140111)
  * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
- * 日期:2026/04/01 02:00:59
+ * 日期:2026/04/02 00:00:19
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
@@ -21,7 +21,7 @@
 /**
  * 部门V2(QxDepartmentInfoV2)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
-* Created by pyf on 2026年04月01日.
+* Created by pyf on 2026年04月02日.
 * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from "axios";
@@ -245,7 +245,7 @@ alert(strMsg);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2026-04-01
+ * 日期:2026-04-02
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -258,7 +258,7 @@ return a.departmentIdInt-b.departmentIdInt;
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2026-04-01
+ * 日期:2026-04-02
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -273,7 +273,7 @@ else return a.departmentName.localeCompare(b.departmentName);
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2026-04-01
+ * 日期:2026-04-02
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -450,7 +450,7 @@ return "";
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2026-04-01
+ * 日期:2026-04-02
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -512,7 +512,7 @@ strMsg = `字段名:[${strKey}]在表对象:[QxDepartmentInfoV2]中不存在!(in
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2026-04-01
+ * 日期:2026-04-02
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_func)
  * @param strInFldName:输入字段名
  * @param strOutFldName:输出字段名
@@ -550,7 +550,7 @@ return objQxDepartmentInfoV2.GetFldValue(strOutFldName).toString();
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2026-04-01
+ * 日期:2026-04-02
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_funcKey)
  * @param strInFldName:输入字段名
  * @param strInValue:输入字段值
@@ -2946,7 +2946,7 @@ if (IsNullOrEmpty(pobjQxDepartmentInfoV2EN.departmentTypeId) == false && pobjQxD
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2026-04-01
+ * 日期:2026-04-02
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -2971,7 +2971,7 @@ else return strJson;
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2026-04-01
+ * 日期:2026-04-02
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -2997,7 +2997,7 @@ return arrQxDepartmentInfoV2ObjLst;
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2026-04-01
+ * 日期:2026-04-02
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrQxDepartmentInfoV2ObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -3016,7 +3016,7 @@ return arrQxDepartmentInfoV2ObjLst;
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2026-04-01
+ * 日期:2026-04-02
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象

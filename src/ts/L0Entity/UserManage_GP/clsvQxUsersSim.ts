@@ -21,7 +21,7 @@ export class clsvQxUsersSim {
   public static _CurrTabName = 'vQxUsersSim'; //当前表名,与该类相关的表名
   public static _KeyFldName = 'UserId'; //当前表中的关键字名称,与该类相关的表中关键字名
   public static mintAttributeCount = 3;
-  public static AttributeName = ['userId', 'userName', 'idXzCollege'];
+  public static AttributeName = ['userId', 'userName', 'id_XzCollege'];
   //以下是属性变量
 
   /**
@@ -30,7 +30,7 @@ export class clsvQxUsersSim {
    */
   public userId = ''; //用户ID
   public userName = ''; //用户名
-  public idXzCollege = ''; //学院流水号
+  public id_XzCollege = ''; //学院流水号
 
   /**
    * 根据字段名获取对象中某字段的值.
@@ -46,7 +46,7 @@ export class clsvQxUsersSim {
       case clsvQxUsersSim.con_UserName:
         return this.userName;
       case clsvQxUsersSim.con_Id_XzCollege:
-        return this.idXzCollege;
+        return this.id_XzCollege;
       default:
         strMsg = `字段名:[${strFldName}]在表对象:[vQxUsersSim]中不存在!`;
         console.error(strMsg);
@@ -71,10 +71,10 @@ export class clsvQxUsersSim {
   } //用户名
 
   /**
-   * 常量:"IdXzCollege"
+   * 常量:"id_XzCollege"
    * (AutoGCLib.StoreEntityLayer4TypeScript:Gen_StoreEN_PropertyNameConst)
    */
   public static get con_IdXzCollege(): string {
-    return 'idXzCollege';
+    return 'id_XzCollege';
   } //学院流水号
 }

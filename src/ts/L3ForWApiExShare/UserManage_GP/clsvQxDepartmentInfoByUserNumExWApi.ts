@@ -25,10 +25,7 @@
  **/
 import { ObjectAssign } from '@/ts/PubFun/clsCommFunc4Web';
 import { clsvQxDepartmentInfoByUserNumENEx } from '@/ts/L0Entity/UserManage_GP/clsvQxDepartmentInfoByUserNumENEx';
-import {
-  vQxDepartmentInfoByUserNum_GetObjLstByPagerAsync,
-  vQxDepartmentInfoByUserNum_SortFunByKey,
-} from '@/ts/L3ForWApi/UserManage_GP/clsvQxDepartmentInfoByUserNumWApi';
+import { vQxDepartmentInfoByUserNum_SortFunByKey } from '@/ts/L3ForWApi/UserManage_GP/clsvQxDepartmentInfoByUserNumWApi';
 import { clsvQxDepartmentInfoByUserNumEN } from '@/ts/L0Entity/UserManage_GP/clsvQxDepartmentInfoByUserNumEN';
 import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
 import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
@@ -94,55 +91,6 @@ export function vQxDepartmentInfoByUserNumEx_CopyToEx(
   }
 }
 //该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerCache)
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function vQxDepartmentInfoByUserNumEx_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsvQxDepartmentInfoByUserNumENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrvQxDepartmentInfoByUserNumObjLst =
-    await vQxDepartmentInfoByUserNum_GetObjLstByPagerAsync(objPagerPara);
-  const arrvQxDepartmentInfoByUserNumExObjLst = arrvQxDepartmentInfoByUserNumObjLst.map(
-    vQxDepartmentInfoByUserNumEx_CopyToEx,
-  );
-  if (arrvQxDepartmentInfoByUserNumExObjLst.length == 0)
-    return arrvQxDepartmentInfoByUserNumExObjLst;
-  let arrvQxDepartmentInfoByUserNumSel: Array<clsvQxDepartmentInfoByUserNumENEx> =
-    arrvQxDepartmentInfoByUserNumExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrvQxDepartmentInfoByUserNumSel = arrvQxDepartmentInfoByUserNumSel.sort(
-        vQxDepartmentInfoByUserNumEx_SortFunByKey(strSortFld, strSortType),
-      );
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrvQxDepartmentInfoByUserNumSel = arrvQxDepartmentInfoByUserNumSel.sort(
-        objPagerPara.sortFun,
-      );
-    }
-    return arrvQxDepartmentInfoByUserNumSel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      vQxDepartmentInfoByUserNumEx_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsvQxDepartmentInfoByUserNumENEx>();
-}
 
 /**
  * 排序函数。根据关键字字段的值进行比较
