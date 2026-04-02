@@ -1,9 +1,9 @@
 ﻿import { Ref } from 'vue';
 import $ from 'jquery';
 import { clsPubFun4Web } from '@/ts/FunClass/clsPubFun4Web';
-import { clsLoginLogEN } from '@/ts/L0Entity/LogManage/clsLoginLogEN';
+import { clsQxLoginLogEN } from '@/ts/L0Entity/LogManage/clsQxLoginLogEN';
 
-import { LoginLog_AddNewRecordAsync } from '@/ts/L3ForWApi/LogManage/clsLoginLogWApi';
+import { QxLoginLog_AddNewRecordAsync } from '@/ts/L3ForWApi/LogManage/clsQxLoginLogWApi';
 import {
   UserDefaValueEx_getUserDefaValue,
   UserDefaValueEx_setUserDefaValue,
@@ -312,10 +312,10 @@ export class Login {
     const divName = this.getDivName();
     if (divName == null) return;
     //this.DivName = "divAddNewRecordSave";
-    const objLoginLogEN: clsLoginLogEN = new clsLoginLogEN();
+    const objLoginLogEN: clsQxLoginLogEN = new clsQxLoginLogEN();
     this.PutDataToLoginLogClass(objLoginLogEN, strResult);
     try {
-      const responseText2 = await LoginLog_AddNewRecordAsync(objLoginLogEN);
+      const responseText2 = await QxLoginLog_AddNewRecordAsync(objLoginLogEN);
       const returnBool = !!responseText2;
       if (returnBool == false) {
         HideDivInDivObj(divName, 'divLoading');
@@ -338,7 +338,7 @@ export class Login {
      (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_PutDataToClass)
      <param name = "pobjLoginLogEN">数据传输的目的类对象</param>
    */
-  public PutDataToLoginLogClass(pobjLoginLogEN: clsLoginLogEN, strResult: string) {
+  public PutDataToLoginLogClass(pobjLoginLogEN: clsQxLoginLogEN, strResult: string) {
     pobjLoginLogEN.SetLoginUserId(this.userId); // 登录用户Id
     pobjLoginLogEN.SetLoginLogNumber(this.getNowDateNunber());
     //pobjLoginLogEN.SetLoginIP(LoginIp;// 登录IP

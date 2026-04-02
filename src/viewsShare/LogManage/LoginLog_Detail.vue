@@ -168,7 +168,7 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { Format } from '@/ts/PubFun/clsString';
-  import LoginLog_DetailEx from '@/viewsShare/LogManage/LoginLog_DetailEx';
+  import QxLoginLog_DetailEx from '@/viewsShare/LogManage/QxLoginLog_DetailEx';
   export default defineComponent({
     name: 'LoginLogDetail',
     components: {
@@ -246,8 +246,8 @@
        *按钮单击,用于调用Js函数中btnDetail_Click
        *(AutoGCLib.Vue_ViewScript_Detail_TS4Html:Gen_Vue_JS_btnDetail_Click)
        **/
-      btnLoginLog_Detail_Click(strCommandName: string, strKeyId: string) {
-        LoginLog_DetailEx.btnDetail_Click(strCommandName, strKeyId, this.refDivDetail);
+      btnQxLoginLog_Detail_Click(strCommandName: string, strKeyId: string) {
+        QxLoginLog_DetailEx.btnDetail_Click(strCommandName, strKeyId, this.refDivDetail);
       },
     },
   });
@@ -259,4 +259,4 @@
     align-items: center;
   }
 </style>
-@/viewsShare/LogManage/LoginLog_DetailEx
+@/viewsShare/LogManage/QxLoginLog_DetailEx

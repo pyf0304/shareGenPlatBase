@@ -1,5 +1,5 @@
 /**
- * 类名:LoginLog_DetailEx(界面:LoginLogCRUD)
+ * 类名:QxLoginLog_DetailEx(界面:LoginLogCRUD)
  * 表名:LoginLog(01120357)
  * 版本:2024.08.18.1(服务器:WIN-SRV103-116)
  * 日期:2024/08/22 09:21:01
@@ -14,12 +14,12 @@
  **/
 //import * as $ from "jquery";
 //import * as QQ from "q";
-import { LoginLog_Detail } from '@/viewsBase/LogManage/LoginLog_Detail';
+import { QxLoginLog_Detail } from '@/viewsBase/LogManage/QxLoginLog_Detail';
 import LoginLogCRUDEx from '@/viewsShare/LogManage/LoginLogCRUDEx';
-/* LoginLog_DetailEx 的摘要说明。其中Q代表查询,U代表修改
+/* QxLoginLog_DetailEx 的摘要说明。其中Q代表查询,U代表修改
   (AutoGCLib.Vue_ViewScript_DetailCSEx_TS4TypeScript:GeneCode)
 */
-export default class LoginLog_DetailEx extends LoginLog_Detail {
+export default class QxLoginLog_DetailEx extends QxLoginLog_Detail {
   /**
   按钮单击,用于调用Js函数中btnClick
  (AutoGCLib.Vue_ViewScript_DetailCSEx_TS4TypeScript:Gen_Vue_TS_btnDetail_Click)
@@ -31,7 +31,7 @@ export default class LoginLog_DetailEx extends LoginLog_Detail {
   ) {
     const strThisFuncName = this.btnDetail_Click.name;
     const objLoginLogCRUD: LoginLogCRUDEx = new LoginLogCRUDEx();
-    const objPage: LoginLog_DetailEx = new LoginLog_DetailEx(objLoginLogCRUD);
+    const objPage: QxLoginLog_DetailEx = new QxLoginLog_DetailEx(objLoginLogCRUD);
 
     console.log(strKeyId, strThisFuncName, objPage);
     let strMsg;
@@ -40,11 +40,10 @@ export default class LoginLog_DetailEx extends LoginLog_Detail {
         objPage.btnDetailRecord_Click(strKeyId);
         break;
       default:
-        strMsg = `命令:${strCommandName} 在函数(LoginLog_Detail.btnClick)中没有被处理!`;
+        strMsg = `命令:${strCommandName} 在函数(QxLoginLog_Detail.btnClick)中没有被处理!`;
         console.error(strMsg);
         alert(strMsg);
         break;
     }
   }
 }
-

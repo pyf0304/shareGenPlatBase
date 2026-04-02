@@ -1,9 +1,10 @@
 ﻿//import $ from "jquery";
-import { XzGradeBaseEx_BindDdl_idGradeBaseInDivCache } from '@/ts/L3ForWApiExShare/SysPara/clsvXzGradeBaseExWApi';
+
 import { IsNullOrEmpty, Format } from '@/ts/PubFun/clsString';
 import { message } from '@/utils/myMessage';
 import { divVarSet } from '@/viewsShare/UserManage_GP/QxUsersVueShare';
 import { QxUsers_Edit } from '@/viewsBase/UserManage_GP/QxUsers_Edit';
+import { vQx_XzGradeBase_BindDdl_Id_GradeBaseByIsVisibleInDivCache } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_XzGradeBaseWApi';
 
 /* QxUsers_EditEx 的摘要说明。其中Q代表查询,U代表修改
   (AutoGCLib.Vue_ViewScript_EditCSEx_TS4TypeScript:GeneCode)
@@ -62,6 +63,10 @@ export default class QxUsers_EditEx extends QxUsers_Edit {
     }
   }
   public async SetDdl_IdGradeBaseInDiv() {
-    await XzGradeBaseEx_BindDdl_idGradeBaseInDivCache(divVarSet.refDivEdit, 'ddlIdGradeBase'); //
+    await vQx_XzGradeBase_BindDdl_Id_GradeBaseByIsVisibleInDivCache(
+      divVarSet.refDivEdit,
+      'ddlIdGradeBase',
+      true,
+    ); //
   }
 }

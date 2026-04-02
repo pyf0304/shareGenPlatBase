@@ -5,10 +5,6 @@ import { clsvQxUsersSim } from '@/ts/L0Entity/UserManage_GP/clsvQxUsersSim';
 import { clsvQxUsersSimEN } from '@/ts/L0Entity/UserManage_GP/clsvQxUsersSimEN';
 
 import {
-  Users_GetObjByUserIdAsync,
-  Users_UpdateRecordAsync,
-} from '@/ts/L3ForWApi/UserManage/clsUsersWApi';
-import {
   QxUsers_GetObjByUserIdAsync,
   QxUsers_UpdateRecordAsync,
 } from '@/ts/L3ForWApi/UserManage_GP/clsQxUsersWApi';
@@ -89,11 +85,11 @@ export const usevQxUsersSimStore = defineStore('vUserSim', {
 
       let objvUserSimEN = await vQxUsersSim_GetObjByUserIdAsync(strUserId);
       if (objvUserSimEN == null) {
-        const objUserEN = await Users_GetObjByUserIdAsync(strUserId);
+        const objUserEN = await QxUsers_GetObjByUserIdAsync(strUserId);
         if (objUserEN != null) {
           objUserEN.SetUserId(strUserId);
           objUserEN.SetUserStateId('01');
-          await Users_UpdateRecordAsync(objUserEN);
+          await QxUsers_UpdateRecordAsync(objUserEN);
           objvUserSimEN = await vQxUsersSim_GetObjByUserIdAsync(strUserId);
           if (objvUserSimEN == null) {
             const strMsg = `UserId=${strUserId} 的vUserSim中不存在，请检查！`;

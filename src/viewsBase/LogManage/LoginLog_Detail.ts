@@ -1,5 +1,5 @@
 ﻿/**
- * 类名:LoginLog_Detail(界面:LoginLogCRUD,01120242)
+ * 类名:QxLoginLog_Detail(界面:LoginLogCRUD,01120242)
  * 表名:LoginLog(01120357)
  * 版本:2024.12.07.1(服务器:WIN-SRV103-116)
  * 日期:2024/12/18 01:22:38
@@ -12,17 +12,17 @@
  * 框架-层名:Vue_详细信息后台_TS(TS)(Vue_ViewScript_DetailCS_TS,0260)
  * 编程语言:TypeScript
  **/
-import { LoginLog_GetObjByLoginLogIdAsync } from '@/ts/L3ForWApi/LogManage/clsLoginLogWApi';
+import { QxLoginLog_GetObjByLoginLogIdAsync } from '@/ts/L3ForWApi/LogManage/clsQxLoginLogWApi';
 import { IsNullOrEmpty, Format } from '@/ts/PubFun/clsString';
-import { clsLoginLogEN } from '@/ts/L0Entity/LogManage/clsLoginLogEN';
-import { divVarSet, refLoginLog_Detail } from '@/viewsShare/LogManage/LoginLogVueShare';
+import { clsQxLoginLogEN } from '@/ts/L0Entity/LogManage/clsQxLoginLogEN';
+import { divVarSet, refQxLoginLog_Detail } from '@/viewsShare/LogManage/LoginLogVueShare';
 import { SetLabelHtmlByIdInDivObj } from '@/ts/PubFun/clsCommFunc4Ctrl';
 import { IShowList } from '@/ts/PubFun/IShowList';
 import { enumPageDispMode } from '@/ts/PubFun/enumPageDispMode';
-/* LoginLog_Detail 的摘要说明。其中Q代表查询,U代表修改
+/* QxLoginLog_Detail 的摘要说明。其中Q代表查询,U代表修改
   (AutoGCLib.Vue_ViewScript_DetailCS_TS4TypeScript:GeneCode)
 */
-export abstract class LoginLog_Detail {
+export abstract class QxLoginLog_Detail {
   public static times4TestShowDialog = 0;
   public opType = '';
   public keyId = '';
@@ -52,8 +52,8 @@ export abstract class LoginLog_Detail {
    * (AutoGCLib.Vue_ViewScript_DetailCS_TS4TypeScript:Gen_Vue_TS_HideDialog)
    **/
   public HideDialog_LoginLog() {
-    if (LoginLog_Detail.strPageDispModeId == enumPageDispMode.PopupBox_01) {
-      refLoginLog_Detail.value.hideDialog();
+    if (QxLoginLog_Detail.strPageDispModeId == enumPageDispMode.PopupBox_01) {
+      refQxLoginLog_Detail.value.hideDialog();
     }
   }
 
@@ -63,8 +63,8 @@ export abstract class LoginLog_Detail {
    **/
   public async ShowDialog_LoginLog(strOp: string): Promise<boolean> {
     const strThisFuncName = this.ShowDialog_LoginLog.name;
-    if (LoginLog_Detail.strPageDispModeId == enumPageDispMode.PopupBox_01) {
-      if (refLoginLog_Detail.value == null) {
+    if (QxLoginLog_Detail.strPageDispModeId == enumPageDispMode.PopupBox_01) {
+      if (refQxLoginLog_Detail.value == null) {
         const strMsg = Format(
           '当前详细信息区的DetailObj为空，请检查！(in {0}.{1})',
           this.constructor.name,
@@ -74,12 +74,12 @@ export abstract class LoginLog_Detail {
         alert(strMsg);
         return false;
       }
-      await refLoginLog_Detail.value.showDialog();
+      await refQxLoginLog_Detail.value.showDialog();
     }
-    divVarSet.refDivDetail = refLoginLog_Detail.value.$refs.refDivDetail;
+    divVarSet.refDivDetail = refQxLoginLog_Detail.value.$refs.refDivDetail;
     if (divVarSet.refDivDetail == null) {
-      if (LoginLog_Detail.times4TestShowDialog < 2) {
-        LoginLog_Detail.times4TestShowDialog++;
+      if (QxLoginLog_Detail.times4TestShowDialog < 2) {
+        QxLoginLog_Detail.times4TestShowDialog++;
         setTimeout(() => {
           this.ShowDialog_LoginLog(strOp);
         }, 100);
@@ -95,7 +95,7 @@ export abstract class LoginLog_Detail {
       }
       return false;
     } else {
-      LoginLog_Detail.times4TestShowDialog = 0;
+      QxLoginLog_Detail.times4TestShowDialog = 0;
     }
     if (strOp === 'Detail') {
       this.btnCancelLoginLog = '关闭';
@@ -140,7 +140,7 @@ export abstract class LoginLog_Detail {
     const strThisFuncName = this.DetailRecord.name;
     this.btnCancelLoginLog = '关闭';
     try {
-      const objLoginLogEN = await LoginLog_GetObjByLoginLogIdAsync(lngLoginLogId);
+      const objLoginLogEN = await QxLoginLog_GetObjByLoginLogIdAsync(lngLoginLogId);
       if (objLoginLogEN == null) {
         const strMsg = Format(
           '根据关键字获取相应的记录的对象为空.(in {0}.{1})',
@@ -190,7 +190,7 @@ export abstract class LoginLog_Detail {
   (AutoGCLib.WA_ViewScript_DetailCS_TS4TypeScript:Gen_WApi_Ts_ShowDetailDataFromClass)
   <param name = "pobjLoginLogEN">表实体类对象</param>
 */
-  public ShowDetailDataFromLoginLogClass(pobjLoginLogEN: clsLoginLogEN) {
+  public ShowDetailDataFromLoginLogClass(pobjLoginLogEN: clsQxLoginLogEN) {
     this.loginLogNumber_d = pobjLoginLogEN.loginLogNumber; // LoginLogNumber
     this.loginIP_d = pobjLoginLogEN.loginIP; // LoginIP
     this.failReason_d = pobjLoginLogEN.failReason; // FailReason
@@ -205,7 +205,7 @@ export abstract class LoginLog_Detail {
    * 设置取消按钮的标题(Used In DetailRecord())
    **/
   public set btnCancelLoginLog(value: string) {
-    refLoginLog_Detail.value.strCancelButtonText = value;
+    refQxLoginLog_Detail.value.strCancelButtonText = value;
   }
   /**
    * FailReason (Used In ShowDetailDataFromClass())

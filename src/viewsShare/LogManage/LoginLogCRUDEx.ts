@@ -17,11 +17,11 @@ import { LoginLogCRUD } from '@/viewsBase/LogManage/LoginLogCRUD';
 import {
   viewVarSet,
   divVarSet,
-  refLoginLog_Edit,
-  refLoginLog_Detail,
+  refQxLoginLog_Edit,
+  refQxLoginLog_Detail,
 } from '@/viewsShare/LogManage/LoginLogVueShare';
 import { Format } from '@/ts/PubFun/clsString';
-import LoginLog_EditEx from '@/viewsShare/LogManage/LoginLog_EditEx';
+import QxLoginLog_EditEx from '@/viewsShare/LogManage/QxLoginLog_EditEx';
 import {
   GetCheckedKeyIdsInDivObj,
   GetFirstCheckedKeyIdInDivObj,
@@ -92,16 +92,16 @@ export default class LoginLogCRUDEx extends LoginLogCRUD implements IShowList {
       case 'CreateWithMaxId': //添加记录使用最大关键字
       case 'AddNewRecord': //添加记录
       case 'Create': //添加记录
-        objPageEdit = new LoginLog_EditEx('LoginLog_EditEx', objPage); //初始化编辑类,设置当前类为编辑类的父类，编辑返回的类
+        objPageEdit = new QxLoginLog_EditEx('QxLoginLog_EditEx', objPage); //初始化编辑类,设置当前类为编辑类的父类，编辑返回的类
         console.log(objPageEdit);
-        refLoginLog_Edit.value.btnLoginLog_Edit_Click(strCommandName, strKeyId);
+        refQxLoginLog_Edit.value.btnQxLoginLog_Edit_Click(strCommandName, strKeyId);
         break;
       case 'Detail': //详细信息
-        refLoginLog_Detail.value.btnLoginLog_Detail_Click(strCommandName, strKeyId);
+        refQxLoginLog_Detail.value.btnQxLoginLog_Detail_Click(strCommandName, strKeyId);
         break;
       case 'UpdateRecord': //修改记录
       case 'Update': //修改记录
-        objPageEdit = new LoginLog_EditEx('LoginLog_EditEx', objPage); //初始化编辑类,设置当前类为编辑类的父类，编辑返回的类
+        objPageEdit = new QxLoginLog_EditEx('QxLoginLog_EditEx', objPage); //初始化编辑类,设置当前类为编辑类的父类，编辑返回的类
         console.log(objPageEdit);
         strKeyId = GetFirstCheckedKeyIdInDivObj(divVarSet.refDivList);
         if (strKeyId == 'undefined') {
@@ -110,7 +110,7 @@ export default class LoginLogCRUDEx extends LoginLogCRUD implements IShowList {
           alert(strMsg);
           return;
         }
-        refLoginLog_Edit.value.btnLoginLog_Edit_Click(strCommandName, strKeyId);
+        refQxLoginLog_Edit.value.btnQxLoginLog_Edit_Click(strCommandName, strKeyId);
         break;
       case 'ExportExcel': //导出Excel
         objPage.btnExportExcel_Click();
@@ -140,4 +140,3 @@ export default class LoginLogCRUDEx extends LoginLogCRUD implements IShowList {
     await this.BindGv_LoginLog(this.thisDivList);
   }
 }
-

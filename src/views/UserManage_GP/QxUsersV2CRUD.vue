@@ -221,7 +221,7 @@
     nickName_q,
     email_q,
     phone_q,
-  } from '@/views/UserManage_GP/QxUsersV2VueShare';
+  } from '@/viewsShare/UserManage_GP/QxUsersV2VueShare';
   import { clsQxUsersV2EN } from '@/ts/L0Entity/UserManage_GP/clsQxUsersV2EN';
   import QxUsersV2_EditEx from '@/views/UserManage_GP/QxUsersV2_EditEx';
   import QxUsersV2_DetailEx from '@/views/UserManage_GP/QxUsersV2_DetailEx';

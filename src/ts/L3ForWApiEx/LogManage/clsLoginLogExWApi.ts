@@ -25,14 +25,14 @@ CM工程:研究生论文学习(变量首字母小写)-全部函数集
 //import $ from "jquery";
 import { ObjectAssign, GetSortExpressInfo, GetObjKeys } from '@/ts/PubFun/clsCommFunc4Web';
 import {
-  LoginLog_GetObjLstAsync,
-  LoginLog_SortFunByKey,
-  LoginLog_FilterFunByKey,
-} from '@/ts/L3ForWApi/LogManage/clsLoginLogWApi';
+  QxLoginLog_GetObjLstAsync,
+  QxLoginLog_SortFunByKey,
+  QxLoginLog_FilterFunByKey,
+} from '@/ts/L3ForWApi/LogManage/clsQxLoginLogWApi';
 import { stuPagerPara } from '@/ts/PubFun/stuPagerPara';
 
 import { IsNullOrEmpty, Format } from '@/ts/PubFun/clsString';
-import { clsLoginLogEN } from '@/ts/L0Entity/LogManage/clsLoginLogEN';
+import { clsQxLoginLogEN } from '@/ts/L0Entity/LogManage/clsQxLoginLogEN';
 
 import { clsLoginLogENEx } from '@/ts/L0Entity/LogManage/clsLoginLogENEx';
 
@@ -72,9 +72,9 @@ export function LoginLogEx_GetWebApiUrl(strController: string, strAction: string
  * 把同一个类的对象,复制到另一个对象
  * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_CopyToEx)
  * @param objLoginLogENS:源对象
- * @returns 目标对象=>clsLoginLogEN:objLoginLogENT
+ * @returns 目标对象=>clsQxLoginLogEN:objLoginLogENT
  **/
-export function LoginLogEx_CopyToEx(objLoginLogENS: clsLoginLogEN): clsLoginLogENEx {
+export function LoginLogEx_CopyToEx(objLoginLogENS: clsQxLoginLogEN): clsLoginLogENEx {
   const strThisFuncName = LoginLogEx_CopyToEx.name;
   const objLoginLogENT = new clsLoginLogENEx();
   try {
@@ -103,7 +103,7 @@ export async function LoginLogEx_GetObjExLstByPagerAsync(
   objPagerPara: stuPagerPara,
 ): Promise<Array<clsLoginLogENEx>> {
   const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrLoginLogObjLst = await LoginLog_GetObjLstAsync(objPagerPara.whereCond);
+  const arrLoginLogObjLst = await QxLoginLog_GetObjLstAsync(objPagerPara.whereCond);
   const arrLoginLogExObjLst = arrLoginLogObjLst.map(LoginLogEx_CopyToEx);
   const objSortInfo = GetSortExpressInfo(objPagerPara);
   if (IsNullOrEmpty(objSortInfo.SortFld) == false) {
@@ -112,7 +112,7 @@ export async function LoginLogEx_GetObjExLstByPagerAsync(
     }
   }
   if (arrLoginLogExObjLst.length == 0) return arrLoginLogExObjLst;
-  let arrLoginLog_Sel: Array<clsLoginLogENEx> = arrLoginLogExObjLst;
+  let arrQxLoginLog_Sel: Array<clsLoginLogENEx> = arrLoginLogExObjLst;
   try {
     let intStart: number = objPagerPara.pageSize * (objPagerPara.pageIndex - 1);
     if (intStart <= 0) intStart = 0;
@@ -122,13 +122,13 @@ export async function LoginLogEx_GetObjExLstByPagerAsync(
       let strSortType = 'asc';
       const strSortFld = sstrSplit[0];
       if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrLoginLog_Sel = arrLoginLog_Sel.sort(LoginLogEx_SortFunByKey(strSortFld, strSortType));
+      arrQxLoginLog_Sel = arrQxLoginLog_Sel.sort(LoginLogEx_SortFunByKey(strSortFld, strSortType));
     } else {
       //如果排序字段名[OrderBy]为空，就调用排序函数
-      arrLoginLog_Sel = arrLoginLog_Sel.sort(objPagerPara.sortFun);
+      arrQxLoginLog_Sel = arrQxLoginLog_Sel.sort(objPagerPara.sortFun);
     }
-    arrLoginLog_Sel = arrLoginLog_Sel.slice(intStart, intEnd);
-    return arrLoginLog_Sel;
+    arrQxLoginLog_Sel = arrQxLoginLog_Sel.slice(intStart, intEnd);
+    return arrQxLoginLog_Sel;
   } catch (e: any) {
     const strMsg = Format(
       '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
@@ -157,12 +157,12 @@ export function LoginLogEx_SortFunByKey(strKey: string, AscOrDesc: string) {
   if (AscOrDesc == 'Asc' || AscOrDesc == '') {
     switch (strKey) {
       default:
-        return LoginLog_SortFunByKey(strKey, AscOrDesc);
+        return QxLoginLog_SortFunByKey(strKey, AscOrDesc);
     }
   } else {
     switch (strKey) {
       default:
-        return LoginLog_SortFunByKey(strKey, AscOrDesc);
+        return QxLoginLog_SortFunByKey(strKey, AscOrDesc);
     }
   }
 }
@@ -181,7 +181,7 @@ export function LoginLogEx_FuncMapByFldName(strFldName: string, objLoginLogEx: c
   console.log(objLoginLogEx);
   let strMsg = '';
   //如果是本表中字段，不需要映射
-  const arrFldName = clsLoginLogEN._AttributeName;
+  const arrFldName = clsQxLoginLogEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {
@@ -209,6 +209,6 @@ export async function LoginLogEx_FilterFunByKey(strKey: string, value: any) {
   // const strMsg = '';
   switch (strKey) {
     default:
-      return LoginLog_FilterFunByKey(strKey, value);
+      return QxLoginLog_FilterFunByKey(strKey, value);
   }
 }

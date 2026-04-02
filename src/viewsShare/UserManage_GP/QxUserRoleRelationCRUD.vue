@@ -212,8 +212,10 @@
   import { QxRoles_GetArrQxRolesByQxPrjId } from '@/ts/L3ForWApi/UserManage_GP/clsQxRolesWApi';
   import { vQxUsersSimEx_GetArrvQxUsersSim } from '@/ts/L3ForWApiEx/UserManage_GP/clsvQxUsersSimExWApi';
   import { clsXzSchoolEN } from '@/ts/L0Entity/SystemSet/clsXzSchoolEN';
-  import { XzSchool_GetArrXzSchool } from '@/ts/L3ForWApi/SystemSet/clsXzSchoolWApi';
+
   import { clsvQxUsersSimENEx } from '@/ts/L0Entity/UserManage_GP/clsvQxUsersSimENEx';
+  import { vQx_XzSchool_GetArrvQx_XzSchool } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_XzSchoolWApi';
+  import { clsvQx_XzSchoolEN } from '@/ts/L0Entity/UserManage_GP/clsvQx_XzSchoolEN';
   export default defineComponent({
     name: 'QxUserRoleRelationCRUD',
     components: {
@@ -233,7 +235,7 @@
 
       const arrQxUsers = ref<clsvQxUsersSimENEx[] | null>([]);
       const arrQxRoles = ref<clsQxRolesEN[] | null>([]);
-      const arrXzSchool = ref<clsXzSchoolEN[] | null>([]);
+      const arrXzSchool = ref<clsvQx_XzSchoolEN[] | null>([]);
 
       /** 根据条件获取相应的对象列表
        * (AutoGCLib.Vue_ViewScript_TS4Html:Gen_Vue_setup_ts_btnQuery_Click)
@@ -362,7 +364,7 @@
           //console.log('strIdSchool=' + strIdSchool);
           //console.log('arrKeyIds=');
           //console.log(arrKeyIds);
-          await objPage.value.SetIdSchool(arrKeyIds, strIdSchool);
+          await objPage.value.SetId_School(arrKeyIds, strIdSchool);
           await objPage.value.BindGv_QxUserRoleRelation4Func(divVarSet.refDivList);
         } catch (e) {
           const strMsg = `设置记录不成功,${e}.(in ${thisConstructorName}.${strThisFuncName}`;
@@ -454,7 +456,7 @@
         arrQxRoles.value = await QxRoles_GetArrQxRolesByQxPrjId(QxPrjId_Local.value); //查询区域
         roleId_q.value = '0';
 
-        arrXzSchool.value = await XzSchool_GetArrXzSchool(); //查询区域
+        arrXzSchool.value = await vQx_XzSchool_GetArrvQx_XzSchool(); //查询区域
         idSchool_q.value = '0';
       }
 
@@ -462,7 +464,7 @@
        * (AutoGCLib.Vue_ViewScript_TS4Html:Gen_Vue_setup_Ts_BindDdl4FeatureRegion)
        **/
       async function BindDdl4FeatureRegion() {
-        arrXzSchool.value = await XzSchool_GetArrXzSchool(); //功能区域
+        arrXzSchool.value = await vQx_XzSchool_GetArrvQx_XzSchool(); //功能区域
         idSchool_f.value = '0';
       }
 

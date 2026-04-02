@@ -53,9 +53,10 @@ import {
   QxUserRoleRelationEx_AddRecord,
   QxUserRoleRelationEx_DelRecord,
 } from '@/ts/L3ForWApiExShare/UserManage_GP/clsQxUserRoleRelationExWApi';
-import { XzClg_BindDdl_IdXzCollegeByUserTypeIdInDivCache } from '@/ts/L3ForWApi/UserManage_GP/clsXzClgWApi';
-import { XzGradeBase_BindDdl_IdGradeBaseByIsVisibleInDivCache } from '@/ts/L3ForWApi/UserManage_GP/clsXzGradeBaseWApi';
+
 import { enumUserType } from '@/ts/L0Entity/UserManage_GP/clsUserTypeEN';
+import { vQx_XzClg_BindDdl_Id_XzCollegeByUserTypeIdInDivCache } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_XzClgWApi';
+import { vQx_XzGradeBase_BindDdl_Id_GradeBaseByIsVisibleInDivCache } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_XzGradeBaseWApi';
 
 /** QxUsersCRUDEx 的摘要说明。其中Q代表查询,U代表修改
  * (AutoGCLib.Vue_ViewScriptCSEx_TS4TypeScript:GeneCode)
@@ -210,16 +211,14 @@ export default class QxUsersCRUDEx extends QxUsersCRUD implements IShowList {
     }
   }
   public async SetDdl_idXzCollegeInDiv() {
-    await XzClg_BindDdl_IdXzCollegeByUserTypeIdInDivCache(
+    await vQx_XzClg_BindDdl_Id_XzCollegeByUserTypeIdInDivCache(
       divVarSet.refDivQuery,
       'ddlIdXzCollege',
       enumUserType.UniversityUser_05,
-      '',
-      '',
     ); //
   }
   public async SetDdl_idGradeBaseInDiv() {
-    await XzGradeBase_BindDdl_IdGradeBaseByIsVisibleInDivCache(
+    await vQx_XzGradeBase_BindDdl_Id_GradeBaseByIsVisibleInDivCache(
       divVarSet.refDivQuery,
       'ddlIdGradeBase',
       true,

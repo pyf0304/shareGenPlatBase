@@ -3,7 +3,7 @@
  * 类名:clsvQx_XzClgWApi
  * 表名:vQx_XzClg(00140130)
  * 版本:2026.04.01.1(服务器:WIN-SRV103-116)
- * 日期:2026/04/02 00:13:11
+ * 日期:2026/04/02 10:54:12
  * 生成者:pyf
  * 生成服务器IP:
  工程名称:统一平台(0014)
@@ -31,8 +31,8 @@ import { IsNullOrEmpty,Format } from "@/ts/PubFun/clsString";
 import { enumComparisonOp } from "@/ts/PubFun/enumComparisonOp";
 import { CacheHelper } from "@/ts/PubFun/CacheHelper";
 import { ConditionCollection } from "@/ts/PubFun/ConditionCollection";
+import { BindDdl_ObjLstInDivObj_V,GetExceptionStr,myShowErrorMsg,ObjectAssign } from "@/ts/PubFun/clsCommFunc4Web";
 import { clsvQx_XzClgEN } from "@/ts/L0Entity/UserManage_GP/clsvQx_XzClgEN";
-import { GetExceptionStr, myShowErrorMsg, ObjectAssign } from "@/ts/PubFun/clsCommFunc4Web";
 import { clsSysPara4WebApi, GetWebApiUrl_GP } from "@/ts/PubConfig/clsSysPara4WebApi";
 import { stuTopPara } from "@/ts/PubFun/stuTopPara";
 import { stuRangePara } from "@/ts/PubFun/stuRangePara";
@@ -354,6 +354,12 @@ if (a.id_School == null) return -1;
 if (b.id_School == null) return 1;
 return a.id_School.localeCompare(b.id_School);
 }
+case clsvQx_XzClgEN.con_UserTypeId:
+return (a: clsvQx_XzClgEN, b: clsvQx_XzClgEN) => {
+if (a.userTypeId == null) return -1;
+if (b.userTypeId == null) return 1;
+return a.userTypeId.localeCompare(b.userTypeId);
+}
         default:
 strMsg = `字段名:[${strKey}]在表对象:[vQx_XzClg]中不存在!(in ${ vQx_XzClg_ConstructorName}.${ strThisFuncName})`;
        console.error(strMsg);
@@ -443,6 +449,12 @@ if (b.id_School == null) return -1;
 if (a.id_School == null) return 1;
 return b.id_School.localeCompare(a.id_School);
 }
+case clsvQx_XzClgEN.con_UserTypeId:
+return (a: clsvQx_XzClgEN, b: clsvQx_XzClgEN) => {
+if (b.userTypeId == null) return -1;
+if (a.userTypeId == null) return 1;
+return b.userTypeId.localeCompare(a.userTypeId);
+}
         default:
 strMsg = `字段名:[${strKey}]在表对象:[vQx_XzClg]中不存在!(in ${ vQx_XzClg_ConstructorName}.${ strThisFuncName})`;
        console.error(strMsg);
@@ -450,7 +462,52 @@ strMsg = `字段名:[${strKey}]在表对象:[vQx_XzClg]中不存在!(in ${ vQx_X
  }
  }
 }
-/*该表没有名称字段,不能生成此函数!*/
+
+/**
+ * 根据关键字获取相关对象的名称属性, 从缓存中获取.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetNameByKeyIdCache)
+ * @param strId_XzCollege:所给的关键字
+ * @returns 对象
+*/
+export  async function vQx_XzClg_GetNameById_XzCollegeCache(strId_XzCollege: string ) {
+
+if (IsNullOrEmpty(strId_XzCollege) == true)
+{
+  const strMsg = Format("参数:[strId_XzCollege]不能为空!(In clsvQx_XzClgWApi.GetNameById_XzCollegeCache)");
+console.error(strMsg);
+ throw (strMsg);
+}
+if (strId_XzCollege.length != 4)
+{
+const strMsg = Format("缓存分类变量:[strId_XzCollege]的长度:[{0}]不正确!(clsvQx_XzClgWApi.GetNameById_XzCollegeCache)", strId_XzCollege.length);
+console.error(strMsg);
+throw (strMsg);
+}
+const arrvQx_XzClgObjLstCache = await vQx_XzClg_GetObjLstCache();
+if (arrvQx_XzClgObjLstCache == null) return "";
+try
+{
+const arrvQx_XzClgSel = arrvQx_XzClgObjLstCache.filter(x => 
+ x.id_XzCollege == strId_XzCollege );
+let objvQx_XzClg: clsvQx_XzClgEN;
+if (arrvQx_XzClgSel.length > 0)
+{
+objvQx_XzClg = arrvQx_XzClgSel[0];
+return objvQx_XzClg.collegeName;
+}
+else
+{
+return "";
+}
+}
+catch (e)
+{
+const strMsg = Format("错误:[{0}]. \n根据关键字:[{1}]获取相应的对象名称属性不成功!", e, strId_XzCollege);
+console.error(strMsg);
+alert(strMsg);
+}
+return "";
+}
 
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
@@ -526,6 +583,10 @@ return obj.modifyDate === value;
 case clsvQx_XzClgEN.con_Id_School:
 return (obj: clsvQx_XzClgEN) => {
 return obj.id_School === value;
+}
+case clsvQx_XzClgEN.con_UserTypeId:
+return (obj: clsvQx_XzClgEN) => {
+return obj.userTypeId === value;
 }
         default:
 strMsg = `字段名:[${strKey}]在表对象:[vQx_XzClg]中不存在!(in ${ vQx_XzClg_ConstructorName}.${ strThisFuncName})`;
@@ -1984,8 +2045,126 @@ export  function vQx_XzClg_GetLastRefreshTime():string
 if (clsvQx_XzClgEN._RefreshTimeLst.length == 0) return "";
 return clsvQx_XzClgEN._RefreshTimeLst[clsvQx_XzClgEN._RefreshTimeLst.length - 1];
 }
-/* 该表的下拉框功能没有设置,不需要生成下拉框绑定函数。*/
-/* 该表的下拉框功能没有设置,不需要生成下拉框绑定函数。*/
+
+/**
+ * 绑定基于Web的下拉框,在某一层下的下拉框
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_TabFeature_DdlBindFunctionInDiv)-pyf
+ * @param objDDL:需要绑定当前表的下拉框
+
+ * @param strUserTypeId:
+*/
+export  async function vQx_XzClg_BindDdl_Id_XzCollegeByUserTypeIdInDivCache(objDiv: HTMLDivElement, strDdlName: string ,strUserTypeId: string)
+{
+
+if (IsNullOrEmpty(strUserTypeId) == true)
+{
+  const strMsg = Format("参数:[strUserTypeId]不能为空！(In clsvQx_XzClgWApi.BindDdl_Id_XzCollegeByUserTypeIdInDiv)");
+console.error(strMsg);
+ throw (strMsg);
+}
+if (strUserTypeId.length != 2)
+{
+const strMsg = Format("缓存分类变量:[strUserTypeId]的长度:[{0}]不正确！(clsvQx_XzClgWApi.BindDdl_Id_XzCollegeByUserTypeIdInDiv)", strUserTypeId.length);
+console.error(strMsg);
+throw (strMsg);
+}
+
+const objDdl = document.getElementById(strDdlName);
+if (objDdl == null)
+{
+const strMsg = Format("下拉框：{0} 不存在!(In BindDdl_Id_XzCollegeByUserTypeIdInDiv)", strDdlName);
+alert(strMsg);
+console.error(strMsg);
+throw (strMsg);
+}
+//为数据源于表的下拉框设置内容
+//console.log("开始：BindDdl_Id_XzCollegeByUserTypeIdInDivCache");
+let arrObjLstSel = await vQx_XzClg_GetObjLstCache();
+if (arrObjLstSel == null) return;
+arrObjLstSel = arrObjLstSel.filter(x=>x.userTypeId == strUserTypeId);
+BindDdl_ObjLstInDivObj_V(objDiv, strDdlName, arrObjLstSel, clsvQx_XzClgEN.con_Id_XzCollege, clsvQx_XzClgEN.con_CollegeName, "选vQx_XzClg...");
+}
+/**
+ * 绑定基于Web的下拉框,在某一层下的下拉框
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_TabFeature_DdlBindFunctionInDiv)-pyf
+ * @param objDDL:需要绑定当前表的下拉框
+
+*/
+export  async function vQx_XzClg_BindDdl_Id_XzCollegeInDivCache(objDiv: HTMLDivElement, strDdlName: string )
+{
+
+const objDdl = document.getElementById(strDdlName);
+if (objDdl == null)
+{
+const strMsg = Format("下拉框：{0} 不存在!(In BindDdl_Id_XzCollegeInDiv)", strDdlName);
+alert(strMsg);
+console.error(strMsg);
+throw (strMsg);
+}
+//为数据源于表的下拉框设置内容
+//console.log("开始：BindDdl_Id_XzCollegeInDivCache");
+const arrObjLstSel = await vQx_XzClg_GetObjLstCache();
+if (arrObjLstSel == null) return;
+BindDdl_ObjLstInDivObj_V(objDiv, strDdlName, arrObjLstSel, clsvQx_XzClgEN.con_Id_XzCollege, clsvQx_XzClgEN.con_CollegeName, "选vQx_XzClg...");
+}
+
+/**
+ * 绑定基于Web的下拉框,在某一层下的下拉框
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_TabFeature_GetDdlData)-pyf
+ * @param objDDL:需要绑定当前表的下拉框
+
+ * @param strUserTypeId:
+*/
+export  async function vQx_XzClg_GetArrvQx_XzClgByUserTypeIdCache(strUserTypeId: string)
+{
+
+if (IsNullOrEmpty(strUserTypeId) == true)
+{
+  const strMsg = Format("参数:[strUserTypeId]不能为空！(In clsvQx_XzClgWApi.BindDdl_Id_XzCollegeByUserTypeIdInDiv)");
+console.error(strMsg);
+ throw (strMsg);
+}
+if (strUserTypeId.length != 2)
+{
+const strMsg = Format("缓存分类变量:[strUserTypeId]的长度:[{0}]不正确！(clsvQx_XzClgWApi.BindDdl_Id_XzCollegeByUserTypeIdInDiv)", strUserTypeId.length);
+console.error(strMsg);
+throw (strMsg);
+}
+
+//为数据源于表的下拉框设置内容
+//console.log("开始：BindDdl_Id_XzCollegeByUserTypeIdInDivCache");
+const arrvQx_XzClg = new Array<clsvQx_XzClgEN>();
+let arrObjLstSel = await vQx_XzClg_GetObjLstCache();
+if (arrObjLstSel == null) return null;
+arrObjLstSel = arrObjLstSel.filter(x=>x.userTypeId == strUserTypeId);
+const obj0 = new clsvQx_XzClgEN();
+obj0.id_XzCollege = '0';
+obj0.collegeName = '选vQx_XzClg...';
+arrvQx_XzClg.push(obj0);
+arrObjLstSel.forEach(x => arrvQx_XzClg.push(x));
+return arrvQx_XzClg;
+}
+/**
+ * 绑定基于Web的下拉框,在某一层下的下拉框
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_TabFeature_GetDdlData)-pyf
+ * @param objDDL:需要绑定当前表的下拉框
+
+*/
+export  async function vQx_XzClg_GetArrvQx_XzClg()
+{
+
+//为数据源于表的下拉框设置内容
+//console.log("开始：BindDdl_Id_XzCollegeInDivCache");
+const arrvQx_XzClg = new Array<clsvQx_XzClgEN>();
+const arrObjLstSel = await vQx_XzClg_GetObjLstCache();
+if (arrObjLstSel == null) return null;
+const obj0 = new clsvQx_XzClgEN();
+obj0.id_XzCollege = '0';
+obj0.collegeName = '选vQx_XzClg...';
+arrvQx_XzClg.push(obj0);
+arrObjLstSel.forEach(x => arrvQx_XzClg.push(x));
+return arrvQx_XzClg;
+}
 
 /**
  * 把一个对象转化为一个JSON串
@@ -2173,6 +2352,11 @@ if (Object.prototype.hasOwnProperty.call(objvQx_XzClgCond.dicFldComparisonOp, cl
 {
 const strComparisonOpId_School:string = objvQx_XzClgCond.dicFldComparisonOp[clsvQx_XzClgEN.con_Id_School];
 strWhereCond += Format(" And {0} {2} '{1}'", clsvQx_XzClgEN.con_Id_School, objvQx_XzClgCond.id_School, strComparisonOpId_School);
+}
+if (Object.prototype.hasOwnProperty.call(objvQx_XzClgCond.dicFldComparisonOp, clsvQx_XzClgEN.con_UserTypeId) == true)
+{
+const strComparisonOpUserTypeId:string = objvQx_XzClgCond.dicFldComparisonOp[clsvQx_XzClgEN.con_UserTypeId];
+strWhereCond += Format(" And {0} {2} '{1}'", clsvQx_XzClgEN.con_UserTypeId, objvQx_XzClgCond.userTypeId, strComparisonOpUserTypeId);
 }
  return strWhereCond;
 }

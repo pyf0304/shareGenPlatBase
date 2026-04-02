@@ -1,5 +1,5 @@
 /**
- * 类名:LoginLog_EditEx(界面:LoginLogCRUD)
+ * 类名:QxLoginLog_EditEx(界面:LoginLogCRUD)
  * 表名:LoginLog(01120357)
  * 版本:2024.08.18.1(服务器:WIN-SRV103-116)
  * 日期:2024/08/22 09:20:59
@@ -15,22 +15,22 @@
 //import $ from "jquery";
 import { message } from '@/utils/myMessage';
 import { IsNullOrEmpty, Format } from '@/ts/PubFun/clsString';
-import { LoginLog_Edit } from '@/viewsBase/LogManage/LoginLog_Edit';
-/* LoginLog_EditEx 的摘要说明。其中Q代表查询,U代表修改
+import { QxLoginLog_Edit } from '@/viewsBase/LogManage/QxLoginLog_Edit';
+/* QxLoginLog_EditEx 的摘要说明。其中Q代表查询,U代表修改
   (AutoGCLib.Vue_ViewScript_EditCSEx_TS4TypeScript:GeneCode)
 */
-export default class LoginLog_EditEx extends LoginLog_Edit {
+export default class QxLoginLog_EditEx extends QxLoginLog_Edit {
   /**
   按钮单击,用于调用Js函数中btnClick
  (AutoGCLib.Vue_ViewScript_EditCSEx_TS4TypeScript:Gen_Vue_TS_btnEdit_Click)
  **/
   public static btnEdit_Click(strCommandName: string, strKeyId: string) {
     const strThisFuncName = this.btnEdit_Click.name;
-    const objPage: LoginLog_EditEx = <LoginLog_EditEx>(
-      LoginLog_Edit.GetPageEditObj('LoginLog_EditEx')
+    const objPage: QxLoginLog_EditEx = <QxLoginLog_EditEx>(
+      QxLoginLog_Edit.GetPageEditObj('QxLoginLog_EditEx')
     );
     if (objPage == null) {
-      const strMsg = `从预存编辑类获取关键字:[LoginLog_EditEx]的对象为空，请在调用编辑类(父类)的定义一下！`;
+      const strMsg = `从预存编辑类获取关键字:[QxLoginLog_EditEx]的对象为空，请在调用编辑类(父类)的定义一下！`;
       console.error(strMsg);
       message.warning(strMsg);
       return;
@@ -74,4 +74,3 @@ export default class LoginLog_EditEx extends LoginLog_Edit {
     }
   }
 }
-

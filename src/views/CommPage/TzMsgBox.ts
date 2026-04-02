@@ -12,13 +12,7 @@ CM工程:通用用户权限管理平台(变量首字母小写)-全部函数集
 * 框架-层名:WA_编辑区后台_TS(TS)(WA_ViewScript_EditCS_TS)
 * 编程语言:TypeScript
 **/
-import { clsXzMajorEN } from '@/ts/L0Entity/BaseInfo/clsXzMajorEN';
 
-import { enumPageDispMode } from '@/ts/L0Entity/PrjMenu/clsPageDispModeEN';
-import {
-  XzMajor_GetObjByIdXzMajorAsync,
-  XzMajor_IsExistAsync,
-} from '@/ts/L3ForWApi/BaseInfo/clsXzMajorWApi';
 import {
   GetButtonHtmlInDiv,
   GetCheckBoxValueInDiv,
@@ -31,6 +25,7 @@ import {
 } from '@/ts/PubFun/clsCommFunc4Ctrl';
 import { ObjectAssign } from '@/ts/PubFun/clsCommFunc4Web';
 import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
+import { enumPageDispMode } from '@/ts/PubFun/enumPageDispMode';
 import { IShowList } from '@/ts/PubFun/IShowList';
 import { Ref } from 'vue';
 
@@ -255,47 +250,6 @@ export abstract class TzMsgBox {
     //4、获取类对象的所有属性；
     //5、把该对象的所有属性显示在界面上,在这里显示在表控件中
     //2、检查该关键字的记录是否存在,如果不存在就返回不显示；
-    let objXzMajorEN = new clsXzMajorEN();
-    try {
-      const returnBool = await XzMajor_IsExistAsync(strGameLevelId);
-      if (returnBool == false) {
-        const strInfo = Format('关键字:[{0}] 的记录不存在!', strGameLevelId);
-
-        //显示信息框
-        alert(strInfo);
-      }
-    } catch (e) {
-      const strMsg = Format(
-        '检查相应关键字的记录存在不成功, {0}.(in {1}.{2})',
-        e,
-        this.constructor.name,
-        strThisFuncName,
-      );
-      console.error(strMsg);
-      alert(strMsg);
-    }
-
-    //3、用提供的关键字初始化一个类对象；
-    this.GetDataFromXzMajorClass(objXzMajorEN);
-  }
-
-  /** 函数功能:把类对象的属性内容显示到界面上
-   * 注意:如果有两个下拉框,并且是一级、二级连带关系的,请先为一级下拉框赋值,然后再为二级下拉框赋值
-   * 如果在设置数据库时,就应该一级字段在前,二级字段在后
-   * (AutoGCLib.WA_ViewScript_EditCS_TS4TypeScript:Gen_WApi_Ts_GetDataFromClass)
-   * @param pobjXzMajorEN">表实体类对象</param>
-   **/
-  public GetDataFromXzMajorClass(pobjXzMajorEN: clsXzMajorEN) {
-    const strThisFuncName = this.GetDataFromXzMajorClass.name;
-    this.majorID = pobjXzMajorEN.majorId; // 专业ID
-    this.majorName = pobjXzMajorEN.majorName; // 专业名称
-    this.isVisible = pobjXzMajorEN.isVisible; // 是否显示
-    this.majorEnglishName = pobjXzMajorEN.majorEnglishName; // 英文名
-    this.majorExplain = pobjXzMajorEN.majorExplain; // 专业说明
-    this.id_XzMajorShoolType = pobjXzMajorEN.id_XzMajorShoolType; // 专业类型
-    this.id_XzCollege = pobjXzMajorEN.id_XzCollege; // 学院
-    this.majorDirection = pobjXzMajorEN.majorDirection; // 专业方向
-    this.memo = pobjXzMajorEN.memo; // 备注
   }
 
   /** 根据关键字获取相应的记录的对象
@@ -306,19 +260,6 @@ export abstract class TzMsgBox {
     const strThisFuncName = this.ShowMsgBox.name;
     this.keyId = strGameLevelId;
     try {
-      const objXzMajorEN_Const = await XzMajor_GetObjByIdXzMajorAsync(strGameLevelId);
-      if (objXzMajorEN_Const == null) {
-        const strMsg = Format(
-          '根据关键字获取相应的记录的对象为空.(in {0}.{1})',
-          this.constructor.name,
-          strThisFuncName,
-        );
-        console.error(strMsg);
-        alert(strMsg);
-        return false;
-      }
-
-      await this.GetDataFromXzMajorClass(objXzMajorEN_Const);
       console.log('完成ShowMsgBox!');
       return true;
     } catch (e) {
@@ -339,14 +280,6 @@ export abstract class TzMsgBox {
    **/
   public async CloseBoxReturn(): Promise<boolean> {
     const strThisFuncName = this.CloseBoxReturn.name;
-    const objXzMajorEN = new clsXzMajorEN();
-    objXzMajorEN.id_XzMajor = this.keyId;
-
-    objXzMajorEN.sfUpdFldSetStr = objXzMajorEN.updFldString; //设置哪些字段被修改(脏字段)
-    if (objXzMajorEN.id_XzMajor == '' || objXzMajorEN.id_XzMajor == undefined) {
-      console.error('关键字不能为空!');
-      throw '关键字不能为空!';
-    }
 
     try {
       //const returnBool = await XzMajor_ShowMsgBoxAsync(objXzMajorEN);

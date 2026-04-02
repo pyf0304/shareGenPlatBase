@@ -42,7 +42,7 @@ import {
 } from '@/ts/L3ForWApiExShare/UserManage_GP/clsQxUsersExWApi';
 import { IsNullOrEmpty, Format } from '@/ts/PubFun/clsString';
 import { QxRoles_BindDdl_RoleIdByQxPrjIdInDivCache } from '@/ts/L3ForWApi/UserManage_GP/clsQxRolesWApi';
-import { XzSchool_BindDdl_IdSchoolInDivCache } from '@/ts/L3ForWApi/SystemSet/clsXzSchoolWApi';
+
 import {
   GetCheckedKeyIdsInDivObj,
   GetSelectValueInDivObj,
@@ -65,6 +65,7 @@ import { clsPager } from '@/ts/PubFun/clsPager';
 import { stuPagerPara } from '@/ts/PubFun/stuPagerPara';
 import { clsDataColumn } from '@/ts/PubFun/clsDataColumn';
 import { ListPara, clsOperateList, GetCurrPageIndex, GetSortBy } from '@/ts/PubFun/clsOperateList';
+import { vQx_XzSchool_BindDdl_Id_SchoolInDivCache } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_XzSchoolWApi';
 /** QxUsersCRUD 的摘要说明。其中Q代表查询,U代表修改
  * (AutoGCLib.Vue_ViewScriptCS_TS4TypeScript:GeneCode)
  **/
@@ -550,7 +551,7 @@ export abstract class QxUsersCRUD implements clsOperateList {
    **/
 
   public async SetDdl_IdSchoolInDivInFeature() {
-    await XzSchool_BindDdl_IdSchoolInDivCache(divVarSet.refDivFunction, 'ddlIdSchool'); //
+    await vQx_XzSchool_BindDdl_Id_SchoolInDivCache(divVarSet.refDivFunction, 'ddlIdSchool'); //
   }
 
   /** 设置字段值-RoleId

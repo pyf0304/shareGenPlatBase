@@ -166,7 +166,7 @@
     dataColumn,
     roleName_q,
     qxPrjId_q,
-  } from '@/views/UserManage_GP/QxRolesV2VueShare';
+  } from '@/viewsShare/UserManage_GP/QxRolesV2VueShare';
   import { clsQxRolesV2EN } from '@/ts/L0Entity/UserManage_GP/clsQxRolesV2EN';
   import QxRolesV2_EditEx from '@/views/UserManage_GP/QxRolesV2_EditEx';
   import { IsNullOrEmpty, Format } from '@/ts/PubFun/clsString';

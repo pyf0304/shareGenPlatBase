@@ -190,7 +190,7 @@
       <el-button
         id="btnSubmitLoginLog"
         type="primary"
-        @click="btnLoginLog_Edit_Click('Submit', '')"
+        @click="btnQxLoginLog_Edit_Click('Submit', '')"
         >{{ strSubmitButtonText }}</el-button
       >
     </template>
@@ -199,8 +199,8 @@
 <script lang="ts">
   import { defineComponent, reactive, ref } from 'vue';
   import { clsDateTime } from '@/ts/PubFun/clsDateTime';
-  import LoginLog_EditEx from '@/viewsShare/LogManage/LoginLog_EditEx';
-  import { clsLoginLogEN } from '@/ts/L0Entity/LogManage/clsLoginLogEN';
+  import QxLoginLog_EditEx from '@/viewsShare/LogManage/QxLoginLog_EditEx';
+  import { clsQxLoginLogEN } from '@/ts/L0Entity/LogManage/clsQxLoginLogEN';
   import { refDivEdit } from '@/viewsShare/LogManage/LoginLogVueShare';
   import { useUserStore } from '@/store/modulesShare/user';
   export default defineComponent({
@@ -229,7 +229,7 @@
        * @param pobjLoginLogEN">数据传输的目的类对象</param>
        **/
       async function GetEditDataLoginLogObj() {
-        const pobjLoginLogEN = new clsLoginLogEN();
+        const pobjLoginLogEN = new clsQxLoginLogEN();
         pobjLoginLogEN.SetLoginLogNumber(loginLogNumber.value); // LoginLogNumber
         pobjLoginLogEN.SetLoginIP(loginIP.value); // LoginIP
         pobjLoginLogEN.SetFailReason(failReason.value); // FailReason
@@ -248,7 +248,7 @@
        * (AutoGCLib.Vue_ViewScript_Edit_TS4Html:Gen_Vue_Ts_ShowDataFromObj)
        * @param pobjLoginLogEN">表实体类对象</param>
        **/
-      async function ShowDataFromLoginLogObj(pobjLoginLogEN: clsLoginLogEN) {
+      async function ShowDataFromLoginLogObj(pobjLoginLogEN: clsQxLoginLogEN) {
         loginLogNumber.value = pobjLoginLogEN.loginLogNumber; // LoginLogNumber
         loginIP.value = pobjLoginLogEN.loginIP; // LoginIP
         failReason.value = pobjLoginLogEN.failReason; // FailReason
@@ -312,8 +312,8 @@
        *按钮单击,用于调用Js函数中btnEdit_Click
        *(AutoGCLib.Vue_ViewScript_Edit_TS4Html:Gen_Vue_JS_btnEdit_Click)
        **/
-      btnLoginLog_Edit_Click(strCommandName: string, strKeyId: string) {
-        LoginLog_EditEx.btnEdit_Click(strCommandName, strKeyId);
+      btnQxLoginLog_Edit_Click(strCommandName: string, strKeyId: string) {
+        QxLoginLog_EditEx.btnEdit_Click(strCommandName, strKeyId);
       },
     },
   });
@@ -325,4 +325,4 @@
     align-items: center;
   }
 </style>
-@/viewsShare/LogManage/LoginLog_EditEx@/viewsShare/LogManage/LoginLogVueShare
+@/viewsShare/LogManage/QxLoginLog_EditEx@/viewsShare/LogManage/LoginLogVueShare

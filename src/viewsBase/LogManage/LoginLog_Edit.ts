@@ -1,5 +1,5 @@
 ﻿/**
- * 类名:LoginLog_Edit(界面:LoginLogCRUD,01120242)
+ * 类名:QxLoginLog_Edit(界面:LoginLogCRUD,01120242)
  * 表名:LoginLog(01120357)
  * 版本:2025.02.27.1(服务器:WIN-SRV103-116)
  * 日期:2025/02/27 15:31:21
@@ -14,31 +14,32 @@
  **/
 import $ from 'jquery';
 import {
-  LoginLog_CheckPropertyNew,
-  LoginLog_AddNewRecordAsync,
-  LoginLog_GetUniCondStr,
-  LoginLog_IsExistRecordAsync,
-  LoginLog_GetUniCondStr4Update,
-  LoginLog_AddNewRecordWithReturnKeyAsync,
-  LoginLog_IsExistAsync,
-  LoginLog_GetObjByLoginLogIdAsync,
-  LoginLog_CheckProperty4Update,
-  LoginLog_UpdateRecordAsync,
-  LoginLog_EditRecordExAsync,
-} from '@/ts/L3ForWApi/LogManage/clsLoginLogWApi';
-import { clsLoginLogEN } from '@/ts/L0Entity/LogManage/clsLoginLogEN';
+  QxLoginLog_CheckPropertyNew,
+  QxLoginLog_AddNewRecordAsync,
+  QxLoginLog_GetUniCondStr,
+  QxLoginLog_IsExistRecordAsync,
+  QxLoginLog_GetUniCondStr4Update,
+  QxLoginLog_AddNewRecordWithReturnKeyAsync,
+  QxLoginLog_IsExistAsync,
+  QxLoginLog_GetObjByLoginLogIdAsync,
+  QxLoginLog_CheckProperty4Update,
+  QxLoginLog_UpdateRecordAsync,
+  QxLoginLog_EditRecordExAsync,
+} from '@/ts/L3ForWApi/LogManage/clsQxLoginLogWApi';
+
 import { IsNullOrEmpty, Format } from '@/ts/PubFun/clsString';
 import {
-  LoginLog_DeleteKeyIdCache,
+  QxLoginLog_DeleteKeyIdCache,
   divVarSet,
-  refLoginLog_Edit,
+  refQxLoginLog_Edit,
 } from '@/viewsShare/LogManage/LoginLogVueShare';
 import { IShowList } from '@/ts/PubFun/IShowList';
 import { enumPageDispMode } from '@/ts/PubFun/enumPageDispMode';
-/** LoginLog_Edit 的摘要说明。其中Q代表查询,U代表修改
+import { clsQxLoginLogEN } from '@/ts/L0Entity/LogManage/clsQxLoginLogEN';
+/** QxLoginLog_Edit 的摘要说明。其中Q代表查询,U代表修改
  * (AutoGCLib.Vue_ViewScript_EditCS_TS4TypeScript:GeneCode)
  **/
-export abstract class LoginLog_Edit {
+export abstract class QxLoginLog_Edit {
   protected _className = 'Unknown'; // 基类中的实际字段
   // 定义虚拟属性
   get className(): string {
@@ -50,9 +51,9 @@ export abstract class LoginLog_Edit {
   public isShowMsg = true; //编辑记录时是否显示提示信息
   public tag = ''; //编辑对象的标志，用于存放或者标志一些信息
   public static strPageDispModeId = '01'; //PopupBox(弹出框)
-  public static objPageEdit: LoginLog_Edit;
-  public static objPageEdit2: LoginLog_Edit;
-  public static objPageEdit3: LoginLog_Edit;
+  public static objPageEdit: QxLoginLog_Edit;
+  public static objPageEdit2: QxLoginLog_Edit;
+  public static objPageEdit3: QxLoginLog_Edit;
   public iShowList: IShowList | null;
   public bolIsLoadEditRegion = false; //记录是否导入编辑区的变量
   public divName4Edit = 'divEditLayout'; //编辑区的Id
@@ -71,45 +72,45 @@ export abstract class LoginLog_Edit {
   constructor(strClassName: string, objShowList: IShowList | null) {
     this._className = strClassName;
     this.iShowList = objShowList;
-    if (LoginLog_Edit.SetPageEdit(this, 1) == true) return;
-    if (LoginLog_Edit.SetPageEdit(this, 2) == true) return;
-    if (LoginLog_Edit.SetPageEdit(this, 3) == true) return;
+    if (QxLoginLog_Edit.SetPageEdit(this, 1) == true) return;
+    if (QxLoginLog_Edit.SetPageEdit(this, 2) == true) return;
+    if (QxLoginLog_Edit.SetPageEdit(this, 3) == true) return;
   }
   public static SetPageEdit(objDataLst: any, intIndex: number): boolean {
     const strNewClassName = objDataLst.className;
     switch (intIndex) {
       case 1:
-        if (LoginLog_Edit.objPageEdit == null) {
-          LoginLog_Edit.objPageEdit = objDataLst;
+        if (QxLoginLog_Edit.objPageEdit == null) {
+          QxLoginLog_Edit.objPageEdit = objDataLst;
           return true;
         } else {
-          const strClassNameOld = LoginLog_Edit.objPageEdit.className;
+          const strClassNameOld = QxLoginLog_Edit.objPageEdit.className;
           if (strClassNameOld == strNewClassName) {
-            LoginLog_Edit.objPageEdit = objDataLst;
+            QxLoginLog_Edit.objPageEdit = objDataLst;
             return true;
           } else return false;
         }
         break;
       case 2:
-        if (LoginLog_Edit.objPageEdit2 == null) {
-          LoginLog_Edit.objPageEdit2 = objDataLst;
+        if (QxLoginLog_Edit.objPageEdit2 == null) {
+          QxLoginLog_Edit.objPageEdit2 = objDataLst;
           return true;
         } else {
-          const strClassNameOld = LoginLog_Edit.objPageEdit2.className;
+          const strClassNameOld = QxLoginLog_Edit.objPageEdit2.className;
           if (strClassNameOld == strNewClassName) {
-            LoginLog_Edit.objPageEdit2 = objDataLst;
+            QxLoginLog_Edit.objPageEdit2 = objDataLst;
             return true;
           } else return false;
         }
         break;
       case 3:
-        if (LoginLog_Edit.objPageEdit3 == null) {
-          LoginLog_Edit.objPageEdit3 = objDataLst;
+        if (QxLoginLog_Edit.objPageEdit3 == null) {
+          QxLoginLog_Edit.objPageEdit3 = objDataLst;
           return true;
         } else {
-          const strClassNameOld = LoginLog_Edit.objPageEdit3.className;
+          const strClassNameOld = QxLoginLog_Edit.objPageEdit3.className;
           if (strClassNameOld == strNewClassName) {
-            LoginLog_Edit.objPageEdit3 = objDataLst;
+            QxLoginLog_Edit.objPageEdit3 = objDataLst;
             return true;
           } else return false;
         }
@@ -120,17 +121,17 @@ export abstract class LoginLog_Edit {
     }
   }
   public static GetPageEditObj(strClassName: string): any {
-    if (LoginLog_Edit.objPageEdit != null) {
-      const strClassNameOld = LoginLog_Edit.objPageEdit.className;
-      if (strClassNameOld == strClassName) return LoginLog_Edit.objPageEdit;
+    if (QxLoginLog_Edit.objPageEdit != null) {
+      const strClassNameOld = QxLoginLog_Edit.objPageEdit.className;
+      if (strClassNameOld == strClassName) return QxLoginLog_Edit.objPageEdit;
     }
-    if (LoginLog_Edit.objPageEdit2 != null) {
-      const strClassNameOld = LoginLog_Edit.objPageEdit2.className;
-      if (strClassNameOld == strClassName) return LoginLog_Edit.objPageEdit2;
+    if (QxLoginLog_Edit.objPageEdit2 != null) {
+      const strClassNameOld = QxLoginLog_Edit.objPageEdit2.className;
+      if (strClassNameOld == strClassName) return QxLoginLog_Edit.objPageEdit2;
     }
-    if (LoginLog_Edit.objPageEdit3 != null) {
-      const strClassNameOld = LoginLog_Edit.objPageEdit3.className;
-      if (strClassNameOld == strClassName) return LoginLog_Edit.objPageEdit3;
+    if (QxLoginLog_Edit.objPageEdit3 != null) {
+      const strClassNameOld = QxLoginLog_Edit.objPageEdit3.className;
+      if (strClassNameOld == strClassName) return QxLoginLog_Edit.objPageEdit3;
     }
     return null;
   }
@@ -140,8 +141,8 @@ export abstract class LoginLog_Edit {
    * (AutoGCLib.Vue_ViewScript_EditCS_TS4TypeScript:Gen_Vue_TS_HideDialog)
    **/
   public HideDialog_LoginLog() {
-    if (LoginLog_Edit.strPageDispModeId == enumPageDispMode.PopupBox_01) {
-      refLoginLog_Edit.value.hideDialog();
+    if (QxLoginLog_Edit.strPageDispModeId == enumPageDispMode.PopupBox_01) {
+      refQxLoginLog_Edit.value.hideDialog();
     }
   }
 
@@ -170,8 +171,8 @@ export abstract class LoginLog_Edit {
    **/
   public async ShowDialog_LoginLog(strOp: string): Promise<boolean> {
     const strThisFuncName = this.ShowDialog_LoginLog.name;
-    if (LoginLog_Edit.strPageDispModeId == enumPageDispMode.PopupBox_01) {
-      if (refLoginLog_Edit.value == null) {
+    if (QxLoginLog_Edit.strPageDispModeId == enumPageDispMode.PopupBox_01) {
+      if (refQxLoginLog_Edit.value == null) {
         const strMsg = Format(
           '当前编辑区的EditObj为空，请检查！(in {0}.{1})',
           this.className,
@@ -181,7 +182,7 @@ export abstract class LoginLog_Edit {
         alert(strMsg);
         return false;
       }
-      await refLoginLog_Edit.value.showDialog(this);
+      await refQxLoginLog_Edit.value.showDialog(this);
     }
     if (strOp === 'Add' || strOp === 'AddWithMaxId') {
       this.btnSubmitLoginLog = '确认添加';
@@ -202,7 +203,7 @@ export abstract class LoginLog_Edit {
       this.opType = 'Add';
       const bolIsSuccess = await this.ShowDialog_LoginLog(this.opType);
       if (bolIsSuccess == false) return;
-      if (['02', '03', '06'].indexOf(clsLoginLogEN._PrimaryTypeId) > -1) {
+      if (['02', '03', '06'].indexOf(clsQxLoginLogEN._PrimaryTypeId) > -1) {
         await this.AddNewRecordWithMaxId();
       } else {
         await this.AddNewRecord();
@@ -302,21 +303,21 @@ export abstract class LoginLog_Edit {
         case '确认添加':
           //这是一个单表的插入的代码,由于逻辑层太简单,
           //就把逻辑层合并到控制层,
-          if (['02', '03', '06'].indexOf(clsLoginLogEN._PrimaryTypeId) > -1) {
+          if (['02', '03', '06'].indexOf(clsQxLoginLogEN._PrimaryTypeId) > -1) {
             const returnKeyId = await this.AddNewRecordWithReturnKeySave();
             if (returnKeyId != 0) {
-              refLoginLog_Edit.value.hideDialog();
+              refQxLoginLog_Edit.value.hideDialog();
               if (this.iShowList != null)
-                this.iShowList.BindGvCache(clsLoginLogEN._CurrTabName, '');
+                this.iShowList.BindGvCache(clsQxLoginLogEN._CurrTabName, '');
             }
           } else {
             returnBool = await this.AddNewRecordSave();
             if (returnBool == true) {
-              if (LoginLog_Edit.strPageDispModeId == enumPageDispMode.PopupBox_01) {
-                refLoginLog_Edit.value.hideDialog();
+              if (QxLoginLog_Edit.strPageDispModeId == enumPageDispMode.PopupBox_01) {
+                refQxLoginLog_Edit.value.hideDialog();
               }
               if (this.iShowList != null)
-                this.iShowList.BindGv(clsLoginLogEN._CurrTabName, this.keyId.toString());
+                this.iShowList.BindGv(clsQxLoginLogEN._CurrTabName, this.keyId.toString());
             }
           }
           break;
@@ -324,16 +325,16 @@ export abstract class LoginLog_Edit {
           //这是一个单表的修改的代码,由于逻辑层太简单,
           returnBool = await this.UpdateRecordSave();
           strInfo = returnBool ? '修改成功!' : '修改不成功!';
-          strInfo += '(In LoginLog_Edit.btnSubmit_Click)';
+          strInfo += '(In QxLoginLog_Edit.btnSubmit_Click)';
           //显示信息框
           //console.log(strInfo);
           alert(strInfo);
           if (returnBool == true) {
-            if (LoginLog_Edit.strPageDispModeId == enumPageDispMode.PopupBox_01) {
-              refLoginLog_Edit.value.hideDialog();
+            if (QxLoginLog_Edit.strPageDispModeId == enumPageDispMode.PopupBox_01) {
+              refQxLoginLog_Edit.value.hideDialog();
             }
             if (this.iShowList != null)
-              this.iShowList.BindGv(clsLoginLogEN._CurrTabName, this.keyId.toString());
+              this.iShowList.BindGv(clsQxLoginLogEN._CurrTabName, this.keyId.toString());
           }
           break;
         default:
@@ -364,7 +365,7 @@ export abstract class LoginLog_Edit {
   public async AddNewRecord() {
     const strThisFuncName = this.AddNewRecord.name;
     console.log('strThisFuncName1', strThisFuncName);
-    refLoginLog_Edit.value.Clear();
+    refQxLoginLog_Edit.value.Clear();
     //wucLoginLogB1.loginLogId = LoginLogGetMaxStrId_S();
   }
 
@@ -372,9 +373,9 @@ export abstract class LoginLog_Edit {
    * (AutoGCLib.Vue_ViewScript_EditCS_TS4TypeScript:Gen_Vue_Ts_AddNewRecordWithMaxId)
    **/
   public async AddNewRecordWithMaxId() {
-    refLoginLog_Edit.value.Clear();
+    refQxLoginLog_Edit.value.Clear();
 
-    //this.loginLogId = await LoginLog_GetMaxStrIdAsync();
+    //this.loginLogId = await QxLoginLog_GetMaxStrIdAsync();
   }
 
   /** 添加新记录,保存函数
@@ -384,7 +385,7 @@ export abstract class LoginLog_Edit {
     const strThisFuncName = this.AddNewRecordSave.name;
     let objLoginLogEN;
     try {
-      objLoginLogEN = await refLoginLog_Edit.value.GetEditDataLoginLogObj();
+      objLoginLogEN = await refQxLoginLog_Edit.value.GetEditDataLoginLogObj();
     } catch (e) {
       const strMsg = Format(
         '从界面获取数据不成功,{0}.(in {1}.{2})',
@@ -397,7 +398,7 @@ export abstract class LoginLog_Edit {
       return false; //一定要有一个返回值,否则会出错!
     }
     try {
-      LoginLog_CheckPropertyNew(objLoginLogEN);
+      QxLoginLog_CheckPropertyNew(objLoginLogEN);
     } catch (e) {
       const strMsg = Format(
         '检查数据不成功,{0}.(in {1}.{2})',
@@ -416,9 +417,9 @@ export abstract class LoginLog_Edit {
         return false;
       }
       let returnBool = false;
-      returnBool = await LoginLog_AddNewRecordAsync(objLoginLogEN);
+      returnBool = await QxLoginLog_AddNewRecordAsync(objLoginLogEN);
       if (returnBool == true) {
-        //LoginLog_ReFreshCache();
+        //QxLoginLog_ReFreshCache();
         const strInfo = `添加[登录日志(LoginLog)]记录成功!`;
         //显示信息框
         if (this.isShowMsg == true) alert(strInfo);
@@ -444,9 +445,9 @@ export abstract class LoginLog_Edit {
   /** 为添加记录检查唯一性条件
    * (AutoGCLib.WA_ViewScript_EditCS_TS4TypeScript:Gen_WApi_Ts_CheckUniCondition4Add)
    **/
-  public async CheckUniCond4Add(objLoginLogEN: clsLoginLogEN): Promise<boolean> {
-    const strUniquenessCondition = LoginLog_GetUniCondStr(objLoginLogEN);
-    const bolIsExistCondition = await LoginLog_IsExistRecordAsync(strUniquenessCondition);
+  public async CheckUniCond4Add(objLoginLogEN: clsQxLoginLogEN): Promise<boolean> {
+    const strUniquenessCondition = QxLoginLog_GetUniCondStr(objLoginLogEN);
+    const bolIsExistCondition = await QxLoginLog_IsExistRecordAsync(strUniquenessCondition);
     if (bolIsExistCondition == true) {
       const strMsg = Format(
         '不能满足唯一性条件。满足条件：{0}的记录已经存在!',
@@ -462,9 +463,9 @@ export abstract class LoginLog_Edit {
   /** 为修改记录检查唯一性条件
    * (AutoGCLib.WA_ViewScript_EditCS_TS4TypeScript:Gen_WApi_Ts_CheckUniCondition4Update)
    **/
-  public async CheckUniCond4Update(objLoginLogEN: clsLoginLogEN): Promise<boolean> {
-    const strUniquenessCondition = LoginLog_GetUniCondStr4Update(objLoginLogEN);
-    const bolIsExistCondition = await LoginLog_IsExistRecordAsync(strUniquenessCondition);
+  public async CheckUniCond4Update(objLoginLogEN: clsQxLoginLogEN): Promise<boolean> {
+    const strUniquenessCondition = QxLoginLog_GetUniCondStr4Update(objLoginLogEN);
+    const bolIsExistCondition = await QxLoginLog_IsExistRecordAsync(strUniquenessCondition);
     if (bolIsExistCondition == true) {
       const strMsg = Format(
         '不能满足唯一性条件。满足条件：{0}的记录已经存在!',
@@ -484,7 +485,7 @@ export abstract class LoginLog_Edit {
     const strThisFuncName = this.AddNewRecordWithReturnKeySave.name;
     let objLoginLogEN;
     try {
-      objLoginLogEN = await refLoginLog_Edit.value.GetEditDataLoginLogObj();
+      objLoginLogEN = await refQxLoginLog_Edit.value.GetEditDataLoginLogObj();
     } catch (e) {
       const strMsg = Format(
         '从界面获取数据不成功,{0}.(in {1}.{2})',
@@ -497,7 +498,7 @@ export abstract class LoginLog_Edit {
       throw strMsg; //一定要有一个返回值,否则会出错!
     }
     try {
-      LoginLog_CheckPropertyNew(objLoginLogEN);
+      QxLoginLog_CheckPropertyNew(objLoginLogEN);
     } catch (e) {
       const strMsg = Format(
         '检查数据不成功,{0}.(in {1}.{2})',
@@ -515,11 +516,11 @@ export abstract class LoginLog_Edit {
       if (bolIsExistCond == false) {
         return 0;
       }
-      const responseKeyId = await LoginLog_AddNewRecordWithReturnKeyAsync(objLoginLogEN);
+      const responseKeyId = await QxLoginLog_AddNewRecordWithReturnKeyAsync(objLoginLogEN);
       const returnKeyId: string = responseKeyId;
       if (IsNullOrEmpty(returnKeyId) == false) {
         objLoginLogEN.loginLogId = Number(returnKeyId);
-        //LoginLog_ReFreshCache();
+        //QxLoginLog_ReFreshCache();
         const strInfo = `添加[登录日志(LoginLog)]记录成功!`;
         //显示信息框
         if (this.isShowMsg == true) alert(strInfo);
@@ -557,9 +558,9 @@ export abstract class LoginLog_Edit {
     //4、获取类对象的所有属性；
     //5、把该对象的所有属性显示在界面上,在这里显示在表控件中
     //2、检查该关键字的记录是否存在,如果不存在就返回不显示；
-    let objLoginLogEN = new clsLoginLogEN();
+    let objLoginLogEN = new clsQxLoginLogEN();
     try {
-      const returnBool = await LoginLog_IsExistAsync(lngLoginLogId);
+      const returnBool = await QxLoginLog_IsExistAsync(lngLoginLogId);
       if (returnBool == false) {
         const strInfo = Format('关键字:[{0}] 的记录不存在!', lngLoginLogId);
         //显示信息框
@@ -576,7 +577,7 @@ export abstract class LoginLog_Edit {
       alert(strMsg);
     }
     try {
-      const objLoginLogENConst = await LoginLog_GetObjByLoginLogIdAsync(lngLoginLogId);
+      const objLoginLogENConst = await QxLoginLog_GetObjByLoginLogIdAsync(lngLoginLogId);
       if (objLoginLogENConst == null) {
         const strMsg = Format(
           '根据关键字获取相应的记录的对象为空.(in {0}.{1})',
@@ -599,7 +600,7 @@ export abstract class LoginLog_Edit {
       alert(strMsg);
     }
     //3、用提供的关键字初始化一个类对象；
-    refLoginLog_Edit.value.ShowDataFromLoginLogObj(objLoginLogEN);
+    refQxLoginLog_Edit.value.ShowDataFromLoginLogObj(objLoginLogEN);
   }
 
   /** 根据关键字获取相应的记录的对象
@@ -610,7 +611,7 @@ export abstract class LoginLog_Edit {
     const strThisFuncName = this.UpdateRecord.name;
     this.keyId = lngLoginLogId;
     try {
-      const objLoginLogEN = await LoginLog_GetObjByLoginLogIdAsync(lngLoginLogId);
+      const objLoginLogEN = await QxLoginLog_GetObjByLoginLogIdAsync(lngLoginLogId);
       if (objLoginLogEN == null) {
         const strMsg = Format(
           '根据关键字获取相应的记录的对象为空.(in {0}.{1})',
@@ -621,7 +622,7 @@ export abstract class LoginLog_Edit {
         alert(strMsg);
         return false;
       }
-      await refLoginLog_Edit.value.ShowDataFromLoginLogObj(objLoginLogEN);
+      await refQxLoginLog_Edit.value.ShowDataFromLoginLogObj(objLoginLogEN);
       console.log('完成UpdateRecord!');
       return true;
     } catch (e) {
@@ -642,7 +643,7 @@ export abstract class LoginLog_Edit {
    **/
   public async UpdateRecordSave(): Promise<boolean> {
     const strThisFuncName = this.UpdateRecordSave.name;
-    const objLoginLogEN = await refLoginLog_Edit.value.GetEditDataLoginLogObj();
+    const objLoginLogEN = await refQxLoginLog_Edit.value.GetEditDataLoginLogObj();
     objLoginLogEN.SetLoginLogId(Number(this.keyId));
     objLoginLogEN.sfUpdFldSetStr = objLoginLogEN.updFldString; //设置哪些字段被修改(脏字段)
     if (objLoginLogEN.loginLogId == 0 || objLoginLogEN.loginLogId == undefined) {
@@ -650,7 +651,7 @@ export abstract class LoginLog_Edit {
       throw '关键字不能为空!';
     }
     try {
-      LoginLog_CheckProperty4Update(objLoginLogEN);
+      QxLoginLog_CheckProperty4Update(objLoginLogEN);
     } catch (e) {
       const strMsg = Format(
         '检查数据不成功,{0}.(in {1}.{2})',
@@ -668,10 +669,10 @@ export abstract class LoginLog_Edit {
       if (bolIsExistCond == false) {
         return false;
       }
-      const returnBool = await LoginLog_UpdateRecordAsync(objLoginLogEN);
+      const returnBool = await QxLoginLog_UpdateRecordAsync(objLoginLogEN);
       if (returnBool == true) {
-        //LoginLog_ReFreshCache();
-        //LoginLog_DeleteKeyIdCache(this.keyId);
+        //QxLoginLog_ReFreshCache();
+        //QxLoginLog_DeleteKeyIdCache(this.keyId);
       }
       return returnBool;
     } catch (e) {
@@ -692,7 +693,7 @@ export abstract class LoginLog_Edit {
    **/
   public async EditRecordExSave(): Promise<boolean> {
     const strThisFuncName = this.EditRecordExSave.name;
-    const objLoginLogEN = await refLoginLog_Edit.value.GetEditDataLoginLogObj();
+    const objLoginLogEN = await refQxLoginLog_Edit.value.GetEditDataLoginLogObj();
     objLoginLogEN.SetLoginLogId(Number(this.keyId));
     objLoginLogEN.sfUpdFldSetStr = objLoginLogEN.updFldString; //设置哪些字段被修改(脏字段)
     if (objLoginLogEN.loginLogId == 0 || objLoginLogEN.loginLogId == undefined) {
@@ -700,7 +701,7 @@ export abstract class LoginLog_Edit {
       throw '关键字不能为空!';
     }
     try {
-      LoginLog_CheckProperty4Update(objLoginLogEN);
+      QxLoginLog_CheckProperty4Update(objLoginLogEN);
     } catch (e) {
       const strMsg = Format(
         '检查数据不成功,{0}.(in {1}.{2})',
@@ -718,9 +719,9 @@ export abstract class LoginLog_Edit {
       if (bolIsExistCond == false) {
         return false;
       }
-      const returnBool = await LoginLog_EditRecordExAsync(objLoginLogEN);
+      const returnBool = await QxLoginLog_EditRecordExAsync(objLoginLogEN);
       if (returnBool == true) {
-        //LoginLog_ReFreshCache();
+        //QxLoginLog_ReFreshCache();
       }
       return returnBool;
     } catch (e) {
@@ -740,19 +741,19 @@ export abstract class LoginLog_Edit {
    * 设置取消按钮的标题(Used In AddNewRecord())
    **/
   public set btnCancelLoginLog(value: string) {
-    refLoginLog_Edit.value.strCancelButtonText = value;
+    refQxLoginLog_Edit.value.strCancelButtonText = value;
   }
   /**
    * 获取按钮的标题
    **/
   public get btnSubmitLoginLog(): string {
-    const strValue = refLoginLog_Edit.value.strSubmitButtonText;
+    const strValue = refQxLoginLog_Edit.value.strSubmitButtonText;
     return strValue;
   }
   /**
    * 设置确定按钮的标题(Used In AddNewRecord())
    **/
   public set btnSubmitLoginLog(value: string) {
-    refLoginLog_Edit.value.strSubmitButtonText = value;
+    refQxLoginLog_Edit.value.strSubmitButtonText = value;
   }
 }

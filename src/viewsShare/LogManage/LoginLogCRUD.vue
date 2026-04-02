@@ -218,21 +218,21 @@
     </div>
     <!--列表层-->
     <div id="divList" ref="refDivList" class="div_List">
-      <LoginLog_ListCom
+      <QxLoginLog_ListCom
         :items="dataListLoginLog"
         :show-error-message="showErrorMessage"
         :empty-rec-num-info="emptyRecNumInfo"
         @on-edit-tab-relainfo="EditTabRelaInfo"
         @on-sort-column="SortColumn"
       >
-      </LoginLog_ListCom>
+      </QxLoginLog_ListCom>
       <div id="divPager" class="pager"> </div>
       <input id="hidSortLoginLogBy" type="hidden" />
     </div>
     <!--编辑层-->
-    <LoginLog_EditCom ref="refLoginLog_Edit"></LoginLog_EditCom>
+    <QxLoginLog_EditCom ref="refQxLoginLog_Edit"></QxLoginLog_EditCom>
     <!--详细信息层-->
-    <LoginLog_DetailCom ref="refLoginLog_Detail"></LoginLog_DetailCom>
+    <QxLoginLog_DetailCom ref="refQxLoginLog_Detail"></QxLoginLog_DetailCom>
   </div>
 </template>
 <script lang="ts">
@@ -248,8 +248,8 @@
     refDivQuery,
     refDivFunction,
     refDivList,
-    refLoginLog_Edit,
-    refLoginLog_Detail,
+    refQxLoginLog_Edit,
+    refQxLoginLog_Detail,
     showErrorMessage,
     dataListLoginLog,
     emptyRecNumInfo,
@@ -263,16 +263,16 @@
     outTime_q,
   } from '@/viewsShare/LogManage/LoginLogVueShare';
   import LoginLogCRUDEx from '@/viewsShare/LogManage/LoginLogCRUDEx';
-  import LoginLog_EditCom from '@/viewsShare/LogManage/LoginLog_Edit.vue';
-  import LoginLog_DetailCom from '@/viewsShare/LogManage/LoginLog_Detail.vue';
-  import LoginLog_ListCom from '@/viewsShare/LogManage/LoginLog_List.vue';
+  import QxLoginLog_EditCom from '@/viewsShare/LogManage/QxLoginLog_Edit.vue';
+  import QxLoginLog_DetailCom from '@/viewsShare/LogManage/QxLoginLog_Detail.vue';
+  import QxLoginLog_ListCom from '@/viewsShare/LogManage/QxLoginLog_List.vue';
   export default defineComponent({
     name: 'LoginLogCRUD',
     components: {
       // 组件注册
-      LoginLog_EditCom,
-      LoginLog_DetailCom,
-      LoginLog_ListCom,
+      QxLoginLog_EditCom,
+      QxLoginLog_DetailCom,
+      QxLoginLog_ListCom,
     },
 
     setup() {
@@ -331,8 +331,8 @@
         refDivFunction,
         refDivList,
 
-        refLoginLog_Edit,
-        refLoginLog_Detail,
+        refQxLoginLog_Edit,
+        refQxLoginLog_Detail,
         loginLogNumber_q,
         loginIP_q,
         failReason_q,

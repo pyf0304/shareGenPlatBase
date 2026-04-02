@@ -141,7 +141,7 @@
   import { clsQxRolesV2EN } from '@/ts/L0Entity/UserManage_GP/clsQxRolesV2EN';
   import { clsQxProjectsEN } from '@/ts/L0Entity/PrjManage_GP/clsQxProjectsEN';
   import { QxProjects_GetArrQxProjects } from '@/ts/L3ForWApi/PrjManage_GP/clsQxProjectsWApi';
-  import { refDivEdit } from '@/views/UserManage_GP/QxRolesV2VueShare';
+  import { refDivEdit } from '@/viewsShare/UserManage_GP/QxRolesV2VueShare';
   import { useUserStore } from '@/store/modulesShare/user';
   import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
   import { QxRolesV2_Edit } from '@/viewsBase/UserManage_GP/QxRolesV2_Edit';

@@ -1,6 +1,5 @@
 ﻿import { useUserStore } from '@/store/modulesShare/user';
 
-import { usersEx_ConstructorName } from '@/ts/L3ForWApiExShare/UserManage/clsUsersExWApi';
 import { GetInputValueInDivObj } from '@/ts/PubFun/clsCommFunc4Ctrl';
 import { clsPubLocalStorage } from '@/ts/PubFun/clsPubLocalStorage';
 import { clsPubSessionStorage } from '@/ts/PubFun/clsPubSessionStorage';
@@ -48,9 +47,6 @@ export class IndexIframe {
       const userStore = useUserStore();
       if (userStore.userId != '') {
         $('#userName').append(userStore.getUserName + '(' + userStore.getRoleName + ')');
-
-        //$("#hidUserId").val(objvUserRoleRelation.userId);
-        $('#spanMajorName').html(userStore.getMajorName + '专业');
 
         if (GetInputValueInDivObj(this.thisDivLayout, 'hidPage') != '') {
           const strPage = GetInputValueInDivObj(this.thisDivLayout, 'hidPage');

@@ -19,17 +19,17 @@ import {
   viewVarSet,
   dataColumn,
   BindTabByList,
-  refLoginLog_List,
+  refQxLoginLog_List,
 } from '@/viewsShare/LogManage/LoginLogVueShare';
 import {
-  LoginLog_GetRecCountByCondAsync,
-  LoginLog_GetObjLstAsync,
-  LoginLog_DelRecordAsync,
-  LoginLog_GetObjByLoginLogIdAsync,
-  LoginLog_GetObjLstByLoginLogIdLstAsync,
-  LoginLog_AddNewRecordAsync,
-  LoginLog_DelLoginLogsAsync,
-} from '@/ts/L3ForWApi/LogManage/clsLoginLogWApi';
+  QxLoginLog_GetRecCountByCondAsync,
+  QxLoginLog_GetObjLstAsync,
+  QxLoginLog_DelRecordAsync,
+  QxLoginLog_GetObjByLoginLogIdAsync,
+  QxLoginLog_GetObjLstByLoginLogIdLstAsync,
+  QxLoginLog_AddNewRecordAsync,
+  QxLoginLog_DelLoginLogsAsync,
+} from '@/ts/L3ForWApi/LogManage/clsQxLoginLogWApi';
 import {
   GetCheckedKeyIdsInDivObj,
   GetDivObjInDivObj,
@@ -49,7 +49,7 @@ import {
   GetCurrPageIndex,
   GetSortBy,
 } from '@/ts/PubFun/clsOperateList';
-import { clsLoginLogEN } from '@/ts/L0Entity/LogManage/clsLoginLogEN';
+import { clsQxLoginLogEN } from '@/ts/L0Entity/LogManage/clsQxLoginLogEN';
 import {
   BindTab,
   arrSelectedKeys,
@@ -102,7 +102,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
    * 获取当前界面的主表名
    **/
   public get thisTabName(): string {
-    return clsLoginLogEN._CurrTabName;
+    return clsQxLoginLogEN._CurrTabName;
   }
   /**
    * 每页记录数,在扩展类可以修改
@@ -133,7 +133,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
       //初始化界面控件值，放在绑定下拉框之后
       await this.InitCtlVar();
       if (viewVarSet.sortLoginLogBy == '')
-        viewVarSet.sortLoginLogBy = `${clsLoginLogEN.con_LoginLogId} Asc`;
+        viewVarSet.sortLoginLogBy = `${clsQxLoginLogEN.con_LoginLogId} Asc`;
       //2、显示无条件的表内容在GridView中
       await this.BindGv_LoginLog(divVarSet.refDivList);
     } catch (e) {
@@ -156,7 +156,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
       //初始化界面控件值，放在绑定下拉框之后
       await this.InitCtlVar();
       if (viewVarSet.sortLoginLogBy == '')
-        viewVarSet.sortLoginLogBy = `${clsLoginLogEN.con_LoginLogId} Asc`;
+        viewVarSet.sortLoginLogBy = `${clsQxLoginLogEN.con_LoginLogId} Asc`;
       //2、显示无条件的表内容在GridView中
       await this.BindGv_LoginLog(divVarSet.refDivList);
     } catch (e) {
@@ -178,7 +178,10 @@ export abstract class LoginLogCRUD implements clsOperateList {
   /** 合并数据
    * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_CombineData)
    **/
-  public CombineData(arrLoginLogObjLst: Array<clsLoginLogEN>, arrDataColumn: Array<clsDataColumn>) {
+  public CombineData(
+    arrLoginLogObjLst: Array<clsQxLoginLogEN>,
+    arrDataColumn: Array<clsDataColumn>,
+  ) {
     const intRowNum = arrLoginLogObjLst.length;
     const intColNum = arrDataColumn.length;
     const arrData: Array<Array<any>> = new Array<Array<any>>();
@@ -189,14 +192,14 @@ export abstract class LoginLogCRUD implements clsOperateList {
     arrData.push(arrHead);
     for (let i = 0; i < intRowNum; i++) {
       const arrRow: Array<any> = new Array<any>();
-      const objEN: clsLoginLogEN = arrLoginLogObjLst[i];
+      const objEN: clsQxLoginLogEN = arrLoginLogObjLst[i];
       for (let j = 0; j < intColNum; j++) {
         arrRow.push(objEN.GetFldValue(arrDataColumn[j].fldName)); //i + "" + j;
       }
       arrData.push(arrRow);
     }
     //console.log("arrData", arrData);
-    const strFileName = Format('登录日志({0})导出.xlsx', clsLoginLogEN._CurrTabName);
+    const strFileName = Format('登录日志({0})导出.xlsx', clsQxLoginLogEN._CurrTabName);
     exportSpecialExcel_pyf(arrData, strFileName);
   }
 
@@ -215,9 +218,9 @@ export abstract class LoginLogCRUD implements clsOperateList {
     }
 
     const strWhereCond = await CombineLoginLogCondition();
-    let arrLoginLogObjLst: Array<clsLoginLogEN> = [];
+    let arrLoginLogObjLst: Array<clsQxLoginLogEN> = [];
     try {
-      this.recCount = await LoginLog_GetRecCountByCondAsync(strWhereCond);
+      this.recCount = await QxLoginLog_GetRecCountByCondAsync(strWhereCond);
       if (this.recCount == 0) {
         const lblMsg: HTMLSpanElement = <HTMLSpanElement>document.createElement('span');
         lblMsg.innerHTML = Format('根据条件:[{0}]获取的对象列表数为0!', strWhereCond);
@@ -228,7 +231,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
         return;
       }
 
-      arrLoginLogObjLst = await LoginLog_GetObjLstAsync(strWhereCond);
+      arrLoginLogObjLst = await QxLoginLog_GetObjLstAsync(strWhereCond);
     } catch (e) {
       const strMsg = `绑定GridView不成功,${e}.(in ${this.constructor.name}.${strThisFuncName}`;
       console.error(strMsg);
@@ -452,9 +455,9 @@ export abstract class LoginLogCRUD implements clsOperateList {
   public async DelRecord(lngLoginLogId: number) {
     const strThisFuncName = this.DelRecord.name;
     try {
-      const returnInt = await LoginLog_DelRecordAsync(lngLoginLogId);
+      const returnInt = await QxLoginLog_DelRecordAsync(lngLoginLogId);
       if (returnInt > 0) {
-        //LoginLog_ReFreshCache();
+        //QxLoginLog_ReFreshCache();
         const strInfo = `删除${this.thisTabName}记录成功,共删除${returnInt}条记录!`;
         //显示信息框
         alert(strInfo);
@@ -479,7 +482,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
   public async SelectRecord(lngLoginLogId: number) {
     const strThisFuncName = this.SelectRecord.name;
     try {
-      const objLoginLogEN = await LoginLog_GetObjByLoginLogIdAsync(lngLoginLogId);
+      const objLoginLogEN = await QxLoginLog_GetObjByLoginLogIdAsync(lngLoginLogId);
       console.log('完成SelectRecord!', objLoginLogEN);
       Redirect('/Index/Main_LoginLog');
     } catch (e) {
@@ -550,8 +553,8 @@ export abstract class LoginLogCRUD implements clsOperateList {
         },
       },
       {
-        fldName: clsLoginLogEN.con_LoginLogId,
-        sortBy: clsLoginLogEN.con_LoginLogId,
+        fldName: clsQxLoginLogEN.con_LoginLogId,
+        sortBy: clsQxLoginLogEN.con_LoginLogId,
         sortFun: SortFun,
         getDataSource: '',
         colHeader: 'LoginLogId',
@@ -565,8 +568,8 @@ export abstract class LoginLogCRUD implements clsOperateList {
         },
       },
       {
-        fldName: clsLoginLogEN.con_LoginLogNumber,
-        sortBy: clsLoginLogEN.con_LoginLogNumber,
+        fldName: clsQxLoginLogEN.con_LoginLogNumber,
+        sortBy: clsQxLoginLogEN.con_LoginLogNumber,
         sortFun: SortFun,
         getDataSource: '',
         colHeader: 'LoginLogNumber',
@@ -580,8 +583,8 @@ export abstract class LoginLogCRUD implements clsOperateList {
         },
       },
       {
-        fldName: clsLoginLogEN.con_LoginIP,
-        sortBy: clsLoginLogEN.con_LoginIP,
+        fldName: clsQxLoginLogEN.con_LoginIP,
+        sortBy: clsQxLoginLogEN.con_LoginIP,
         sortFun: SortFun,
         getDataSource: '',
         colHeader: 'LoginIP',
@@ -595,8 +598,8 @@ export abstract class LoginLogCRUD implements clsOperateList {
         },
       },
       {
-        fldName: clsLoginLogEN.con_FailReason,
-        sortBy: clsLoginLogEN.con_FailReason,
+        fldName: clsQxLoginLogEN.con_FailReason,
+        sortBy: clsQxLoginLogEN.con_FailReason,
         sortFun: SortFun,
         getDataSource: '',
         colHeader: 'FailReason',
@@ -610,8 +613,8 @@ export abstract class LoginLogCRUD implements clsOperateList {
         },
       },
       {
-        fldName: clsLoginLogEN.con_LoginResult,
-        sortBy: clsLoginLogEN.con_LoginResult,
+        fldName: clsQxLoginLogEN.con_LoginResult,
+        sortBy: clsQxLoginLogEN.con_LoginResult,
         sortFun: SortFun,
         getDataSource: '',
         colHeader: 'LoginResult',
@@ -625,8 +628,8 @@ export abstract class LoginLogCRUD implements clsOperateList {
         },
       },
       {
-        fldName: clsLoginLogEN.con_LoginTime,
-        sortBy: clsLoginLogEN.con_LoginTime,
+        fldName: clsQxLoginLogEN.con_LoginTime,
+        sortBy: clsQxLoginLogEN.con_LoginTime,
         sortFun: SortFun,
         getDataSource: '',
         colHeader: 'LoginTime',
@@ -640,8 +643,8 @@ export abstract class LoginLogCRUD implements clsOperateList {
         },
       },
       {
-        fldName: clsLoginLogEN.con_OnlineTime,
-        sortBy: clsLoginLogEN.con_OnlineTime,
+        fldName: clsQxLoginLogEN.con_OnlineTime,
+        sortBy: clsQxLoginLogEN.con_OnlineTime,
         sortFun: SortFun,
         getDataSource: '',
         colHeader: 'OnlineTime',
@@ -655,8 +658,8 @@ export abstract class LoginLogCRUD implements clsOperateList {
         },
       },
       {
-        fldName: clsLoginLogEN.con_OutTime,
-        sortBy: clsLoginLogEN.con_OutTime,
+        fldName: clsQxLoginLogEN.con_OutTime,
+        sortBy: clsQxLoginLogEN.con_OutTime,
         sortFun: SortFun,
         getDataSource: '',
         colHeader: 'OutTime',
@@ -670,8 +673,8 @@ export abstract class LoginLogCRUD implements clsOperateList {
         },
       },
       {
-        fldName: clsLoginLogEN.con_Memo,
-        sortBy: clsLoginLogEN.con_Memo,
+        fldName: clsQxLoginLogEN.con_Memo,
+        sortBy: clsQxLoginLogEN.con_Memo,
         sortFun: SortFun,
         getDataSource: '',
         colHeader: '备注',
@@ -685,7 +688,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
         },
       },
     ];
-    if (refLoginLog_List.value != null) {
+    if (refQxLoginLog_List.value != null) {
       dataColumn.value = arrDataColumn;
       await BindTabByList(arrLoginLogExObjLst, this.dispAllErrMsg_q);
     } else {
@@ -698,7 +701,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
         divDataLst,
         arrLoginLogExObjLst,
         arrDataColumn,
-        clsLoginLogEN.con_LoginLogId,
+        clsQxLoginLogEN.con_LoginLogId,
         this,
       );
     }
@@ -724,7 +727,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
     arrLoginLogExObjLst: Array<clsLoginLogENEx>,
     arrDataColumn: Array<clsDataColumn>,
   ) {
-    const arrFldName = clsLoginLogEN._AttributeName;
+    const arrFldName = clsQxLoginLogEN._AttributeName;
     for (const objDataColumn of arrDataColumn) {
       if (IsNullOrEmpty(objDataColumn.fldName) == true) continue;
       if (arrFldName.indexOf(objDataColumn.fldName) > -1) continue;
@@ -786,7 +789,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
     let intCurrPageIndex = GetCurrPageIndex(this.objPager.currPageIndex); //获取当前页
     let arrLoginLogExObjLst: Array<clsLoginLogENEx> = [];
     try {
-      this.recCount = await LoginLog_GetRecCountByCondAsync(strWhereCond);
+      this.recCount = await QxLoginLog_GetRecCountByCondAsync(strWhereCond);
       if (this.recCount == 0) {
         const lblMsg: HTMLSpanElement = <HTMLSpanElement>document.createElement('span');
         lblMsg.innerHTML = Format('根据条件:[{0}]获取的对象列表数为0!', strWhereCond);
@@ -872,7 +875,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
    * @param b:比较的第1个对象
    * @returns 返回两个对象比较的结果
    **/
-  public SortFunExportExcel(a: clsLoginLogEN, b: clsLoginLogEN): number {
+  public SortFunExportExcel(a: clsQxLoginLogEN, b: clsQxLoginLogEN): number {
     if (a.failReason == b.failReason) return a.failReason.localeCompare(b.failReason);
     else return a.memo.localeCompare(b.memo);
   }
@@ -920,16 +923,16 @@ export abstract class LoginLogCRUD implements clsOperateList {
   public async CopyRecord(arrLoginLogId: Array<string>) {
     const strThisFuncName = this.CopyRecord.name;
     try {
-      const arrLoginLogObjLst = await LoginLog_GetObjLstByLoginLogIdLstAsync(arrLoginLogId);
+      const arrLoginLogObjLst = await QxLoginLog_GetObjLstByLoginLogIdLstAsync(arrLoginLogId);
       //console.log('responseText=');
       //console.log(responseText);
       let intCount = 0;
       for (const objInFor of arrLoginLogObjLst) {
-        const returnBool = await LoginLog_AddNewRecordAsync(objInFor);
+        const returnBool = await QxLoginLog_AddNewRecordAsync(objInFor);
         //console.log('returnBool=');
         //console.log(returnBool);
         if (returnBool == true) {
-          //LoginLog_ReFreshCache();
+          //QxLoginLog_ReFreshCache();
           intCount++;
         } else {
           const strInfo = Format('克隆记录不成功!');
@@ -954,9 +957,9 @@ export abstract class LoginLogCRUD implements clsOperateList {
   public async DelMultiRecord(arrLoginLogId: Array<string>) {
     const strThisFuncName = this.DelMultiRecord.name;
     try {
-      const returnInt = await LoginLog_DelLoginLogsAsync(arrLoginLogId);
+      const returnInt = await QxLoginLog_DelLoginLogsAsync(arrLoginLogId);
       if (returnInt > 0) {
-        //LoginLog_ReFreshCache();
+        //QxLoginLog_ReFreshCache();
         const strInfo = `删除${this.thisTabName}记录成功,共删除${returnInt}条记录!`;
         //显示信息框
         alert(strInfo);
@@ -978,7 +981,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
    * @param divContainer:显示容器
    * @param objLoginLog:需要显示的对象
    **/
-  public ShowLoginLogObj(divContainer: HTMLDivElement, objLoginLog: clsLoginLogEN) {
+  public ShowLoginLogObj(divContainer: HTMLDivElement, objLoginLog: clsQxLoginLogEN) {
     if (divContainer == null) {
       alert(Format('所给div为空，divContainer为null!', divContainer));
       return;

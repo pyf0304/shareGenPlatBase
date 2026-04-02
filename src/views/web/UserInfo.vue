@@ -349,7 +349,7 @@
       <el-button
         id="btnSubmitLoginLog"
         type="primary"
-        @click="btnLoginLog_Edit_Click('Submit', '')"
+        @click="btnQxLoginLog_Edit_Click('Submit', '')"
         >{{ strSubmitButtonText }}</el-button
       >
     </template>
@@ -365,7 +365,7 @@
   import { defineComponent, ref } from 'vue';
   import { Format } from '@/ts/PubFun/clsString';
   import LoginLogCRUDEx from '@/viewsShare/LogManage/LoginLogCRUDEx';
-  import LoginLog_EditEx from '@/viewsShare/LogManage/LoginLog_EditEx';
+  import QxLoginLog_EditEx from '@/viewsShare/LogManage/QxLoginLog_EditEx';
   import { UserInfo } from '@/views/web/UserInfo';
   import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
   import { File_IsHasImgFile, File_UploadImgFile } from '@/ts/FunClass/clsPubFun4Web';
@@ -570,14 +570,14 @@
         //    alert("this.$refs.mychild.parentHandleclick");
         //    this.$refs.mychild.parentHandleclick("嘿嘿嘿");
         //}
-        //LoginLog_Edit.btnClick(strCommandName, strKeyId);
+        //QxLoginLog_Edit.btnClick(strCommandName, strKeyId);
       },
 
       /**
        *按钮单击,用于调用Js函数中btnEdit_Click
        **/
-      btnLoginLog_Edit_Click(strCommandName: string, strKeyId: string) {
-        LoginLog_EditEx.btnEdit_Click(strCommandName, strKeyId);
+      btnQxLoginLog_Edit_Click(strCommandName: string, strKeyId: string) {
+        QxLoginLog_EditEx.btnEdit_Click(strCommandName, strKeyId);
       },
 
       /**
@@ -585,7 +585,7 @@
        **/
       Submit_LoginLog(strOp: string) {
         alert(`提交${strOp}`);
-        const objPage = new LoginLog_EditEx('', new LoginLogCRUDEx());
+        const objPage = new QxLoginLog_EditEx('', new LoginLogCRUDEx());
         objPage.btnSubmit_Click();
       },
     },
@@ -617,4 +617,4 @@
     
     
      -->
-@/viewsShare/LogManage/LoginLog_EditEx@/viewsShare/LogManage/LoginLogCRUDEx
+@/viewsShare/LogManage/QxLoginLog_EditEx@/viewsShare/LogManage/LoginLogCRUDEx

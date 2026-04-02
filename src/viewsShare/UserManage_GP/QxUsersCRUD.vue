@@ -288,9 +288,11 @@
   import { message } from '@/utils/myMessage';
   import { clsQxRolesEN } from '@/ts/L0Entity/UserManage_GP/clsQxRolesEN';
   import { QxRolesEx_GetArrQxRolesByQxPrjIdEx } from '@/ts/L3ForWApiExShare/UserManage_GP/clsQxRolesExWApi';
+  import { vQx_XzSchool_GetArrvQx_XzSchool } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_XzSchoolWApi';
   import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
   import { clsXzSchoolEN } from '@/ts/L0Entity/SystemSet/clsXzSchoolEN';
-  import { XzSchool_GetArrXzSchool } from '@/ts/L3ForWApi/SystemSet/clsXzSchoolWApi';
+  import { clsvQx_XzSchoolEN } from '@/ts/L0Entity/UserManage_GP/clsvQx_XzSchoolEN';
+
   export default defineComponent({
     name: 'QxUsersCRUD',
     components: {
@@ -316,7 +318,7 @@
       const arrQxDepartmentInfo = ref<clsQxDepartmentInfoEN[] | null>([]);
 
       const arrQxRoles = ref<clsQxRolesEN[] | null>([]);
-      const arrXzSchool = ref<clsXzSchoolEN[] | null>([]);
+      const arrXzSchool = ref<clsvQx_XzSchoolEN[] | null>([]);
 
       /** 根据条件获取相应的对象列表
        * (AutoGCLib.Vue_ViewScript_TS4Html:Gen_Vue_setup_ts_btnQuery_Click)
@@ -527,7 +529,7 @@
         arrQxDepartmentInfo.value = await QxDepartmentInfo_GetArrQxDepartmentInfo(); //查询区域
         departmentId_q.value = '0';
 
-        arrXzSchool.value = await XzSchool_GetArrXzSchool(); //查询区域
+        arrXzSchool.value = await vQx_XzSchool_GetArrvQx_XzSchool(); //查询区域
         idSchool_q.value = '0';
       }
 
@@ -538,7 +540,7 @@
         arrQxRoles.value = await QxRolesEx_GetArrQxRolesByQxPrjIdEx(QxPrjId_Local.value); //功能区域
         roleId_f.value = '0';
 
-        arrXzSchool.value = await XzSchool_GetArrXzSchool(); //功能区域
+        arrXzSchool.value = await vQx_XzSchool_GetArrvQx_XzSchool(); //功能区域
         idSchool_f.value = '0';
       }
       const strTitle = ref('用户维护');

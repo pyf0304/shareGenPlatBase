@@ -102,14 +102,12 @@
   import { clsPubLocalStorage } from '@/ts/PubFun/clsPubLocalStorage';
 
   import { refLogin_Edit } from '@/viewsShare/web/LoginVueShare';
-  import { refwfmRegisterStu } from '@/viewsShare/web/wfmRegisterStuVueShare';
+
   import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
-  import {
-    XzSchool_GetObjByIdSchoolAsync,
-    XzSchool_GetObjByIdSchoolCache,
-  } from '@/ts/L3ForWApi/SystemSet/clsXzSchoolWApi';
+
   import { IsNullOrEmpty } from '@/ts/PubFun/clsString';
   import { userLoginInfo, isShowDdlRoles } from '@/views/Shared/PageHead_GameVueShare';
+  import { vQx_XzSchool_GetObjById_SchoolCache } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_XzSchoolWApi';
 
   export default defineComponent({
     name: 'PageHead_Game',
@@ -167,8 +165,8 @@
       const refDropButtonRoles = ref();
       const refDropButtonEduClss = ref();
       const showSchoolName = async () => {
-        if (userStore.getIdSchool != '') {
-          const objXzSchool = await XzSchool_GetObjByIdSchoolCache(userStore.getIdSchool);
+        if (userStore.getId_School != '') {
+          const objXzSchool = await vQx_XzSchool_GetObjById_SchoolCache(userStore.getId_School);
           if (objXzSchool != null) {
             schoolSimName.value = objXzSchool.schoolNameA;
             if (IsNullOrEmpty(schoolSimName.value)) {
@@ -423,7 +421,6 @@
       }
       return {
         refLogin_Edit,
-        refwfmRegisterStu,
         refDivLayout_Head,
         btn_Click,
         getUser,

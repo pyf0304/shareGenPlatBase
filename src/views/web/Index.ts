@@ -9,7 +9,7 @@ import { clsPubLocalStorage } from '@/ts/PubFun/clsPubLocalStorage';
 import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
 import { message } from '@/utils/myMessage';
 import { Login } from '@/viewsShare/web/Login';
-import { wfmRegisterStu } from '@/viewsShare/web/wfmRegisterStu';
+
 import { Ref } from 'vue';
 import router from '@/router';
 import { refLogin_Edit } from '@/viewsShare/web/LoginVueShare';
@@ -71,10 +71,10 @@ export class Index implements IShowList {
     let objPageEdit_Register;
     console.log(objPageEdit);
     switch (strCommandName) {
-      case 'Register':
-        objPageEdit_Register = new wfmRegisterStu('wfmRegisterStu', objPage);
-        objPageEdit_Register.PageLoad();
-        break;
+      // case 'Register':
+      //   objPageEdit_Register = new wfmRegisterStu('wfmRegisterStu', objPage);
+      //   objPageEdit_Register.PageLoad();
+      //   break;
       case 'liPaper':
         // objPage.liPaper_Click();
         break;
