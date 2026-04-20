@@ -1,13 +1,13 @@
 ﻿
  /**
- * 类名:CacheUseState_Edit(界面:CacheUseStateCRUD,01120263)
- * 表名:CacheUseState(01120689)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/11 00:34:12
+ * 类名:CacheUseState_Edit(界面:CacheUseStateCRUD,00140047)
+ * 表名:CacheUseState(00140136)
+ * 版本:2026.04.18.2(服务器:WIN-SRV103-116)
+ * 日期:2026/04/18 23:26:17
  * 生成者:
- 工程名称:问卷调查(0112)
- CM工程:学生学习基本信息共享(000064, 变量首字母小写)-全部函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ 工程名称:统一平台(0014)
+ CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  * 模块中文名:系统设置(SystemSet)
  * 框架-层名:Vue_编辑区后台_TS(TS)(Vue_ViewScript_EditCS_TS,0257)
@@ -15,7 +15,7 @@
  **/
 import $ from "jquery";
 import { CacheUseState_CheckPropertyNew,CacheUseState_AddNewRecordAsync,CacheUseState_ReFreshCache,CacheUseState_GetUniCondStr,CacheUseState_IsExistRecordAsync,CacheUseState_GetUniCondStr4Update,CacheUseState_AddNewRecordWithReturnKeyAsync,CacheUseState_IsExistAsync,CacheUseState_GetObjBymIdAsync,CacheUseState_CheckProperty4Update,CacheUseState_UpdateRecordAsync,CacheUseState_EditRecordExAsync } from "@/ts/L3ForWApi/SystemSet/clsCacheUseStateWApi";
-import { UserId_Local,CacheUseState_DeleteKeyIdCache,divVarSet,refCacheUseState_Edit } from "@/views/SystemSet/CacheUseStateVueShare";
+import { UserId_Local,CacheUseState_DeleteKeyIdCache,divVarSet,refCacheUseState_Edit } from "@/viewsShare/SystemSet/CacheUseStateVueShare";
 import { clsCacheUseStateEN } from "@/ts/L0Entity/SystemSet/clsCacheUseStateEN";
 import { IsNullOrEmpty,Format } from "@/ts/PubFun/clsString";
 import { IShowList } from "@/ts/PubFun/IShowList";
@@ -195,7 +195,7 @@ try
 this.opType = "Add";
 const bolIsSuccess = await this.ShowDialog_CacheUseState(this.opType);
 if (bolIsSuccess == false) return;
-if (['02', '03', '06'].indexOf(clsCacheUseStateEN.PrimaryTypeId) > -1)
+if (['02', '03', '06'].indexOf(clsCacheUseStateEN._PrimaryTypeId) > -1)
 {
 await this.AddNewRecordWithMaxId();
 }
@@ -294,7 +294,7 @@ break;
 case "确认添加":
 //这是一个单表的插入的代码,由于逻辑层太简单,
 //就把逻辑层合并到控制层,
-if (['02', '03', '06'].indexOf(clsCacheUseStateEN.PrimaryTypeId) > -1)
+if (['02', '03', '06'].indexOf(clsCacheUseStateEN._PrimaryTypeId) > -1)
 {
 const returnKeyId = await this.AddNewRecordWithReturnKeySave();
 if (returnKeyId != 0)

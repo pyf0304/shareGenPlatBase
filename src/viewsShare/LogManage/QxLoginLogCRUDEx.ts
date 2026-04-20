@@ -1,25 +1,25 @@
 /**
- * 类名:LoginLogCRUDEx(界面:LoginLogCRUD,01120242)
- * 表名:LoginLog(01120357)
- * 版本:2024.12.07.1(服务器:WIN-SRV103-116)
- * 日期:2024/12/12 13:34:58
+ * 类名:QxLoginLogCRUDEx(界面:QxLoginLogCRUD,00140048)
+ * 表名:QxLoginLog(00140137)
+ * 版本:2026.04.18.2(服务器:WIN-SRV103-116)
+ * 日期:2026/04/18 19:54:06
  * 生成者:
- 工程名称:问卷调查(0112)
- CM工程:通用用户权限管理平台(000041, 变量首字母小写)-全部函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ 工程名称:统一平台(0014)
+ CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  * 模块中文名:日志管理(LogManage)
  * 框架-层名:Vue_界面后台Ex_TS(TS)(Vue_ViewScriptCSEx_TS,0255)
  * 编程语言:TypeScript
  **/
 //import * as QQ from "q";
-import { LoginLogCRUD } from '@/viewsBase/LogManage/LoginLogCRUD';
+import { QxLoginLogCRUD } from '@/viewsBase/LogManage/QxLoginLogCRUD';
 import {
   viewVarSet,
   divVarSet,
   refQxLoginLog_Edit,
   refQxLoginLog_Detail,
-} from '@/viewsShare/LogManage/LoginLogVueShare';
+} from '@/viewsShare/LogManage/QxLoginLogVueShare';
 import { Format } from '@/ts/PubFun/clsString';
 import QxLoginLog_EditEx from '@/viewsShare/LogManage/QxLoginLog_EditEx';
 import {
@@ -28,40 +28,39 @@ import {
 } from '@/ts/PubFun/clsCommFunc4Ctrl.js';
 import { AccessBindGvDefault } from '@/ts/PubFun/clsErrMsgBLEx';
 import { IShowList } from '@/ts/PubFun/IShowList';
-/** LoginLogCRUDEx 的摘要说明。其中Q代表查询,U代表修改
+/** QxLoginLogCRUDEx 的摘要说明。其中Q代表查询,U代表修改
  * (AutoGCLib.Vue_ViewScriptCSEx_TS4TypeScript:GeneCode)
  **/
-export default class LoginLogCRUDEx extends LoginLogCRUD implements IShowList {
-  //public static mstrSortLoginLogBy = "LoginLogId";
+export default class QxLoginLogCRUDEx extends QxLoginLogCRUD implements IShowList {
   /**
    * 每页记录数,在扩展类可以修改
    **/
   public get pageSize(): number {
-    return 10;
+    return this._pageSize ?? 10;
   }
 
   /**
    * 函数功能:初始设置，用来初始化一些变量值
    **/
   public async InitVarSet(): Promise<void> {
-    console.log('InitVarSet in LoginLogCRUDEx');
+    console.log('InitVarSet in QxLoginLogCRUDEx');
   }
   /**
    * 函数功能:初始化界面控件值，放在绑定下拉框之后
    **/
   public async InitCtlVar(): Promise<void> {
-    console.log('InitCtlVar in LoginLogCRUDEx');
+    console.log('InitCtlVar in QxLoginLogCRUDEx');
   }
   BindGv(strType: string, strPara: string) {
     console.log(strType + strPara);
-    this.BindGv_LoginLog(divVarSet.refDivList);
+    this.BindGv_QxLoginLog(divVarSet.refDivList);
   }
   BindGvCache(strType: string, strPara: string) {
     console.log('strPara', strPara);
     switch (strType) {
-      case 'LoginLog':
-        alert('该类没有绑定该函数：[this.BindGv_LoginLog]!');
-        //this.BindGv_LoginLog(divVarSet.refDivList);
+      case 'QxLoginLog':
+        alert('该类没有绑定该函数：[this.BindGv_QxLoginLog]!');
+        //this.BindGv_QxLoginLog(divVarSet.refDivList);
         break;
       default:
         AccessBindGvDefault(strType);
@@ -74,13 +73,13 @@ export default class LoginLogCRUDEx extends LoginLogCRUD implements IShowList {
    * (AutoGCLib.Vue_ViewScriptCSEx_TS4TypeScript:Gen_Vue_TS_btn_Click)
    **/
   public static btn_Click(strCommandName: string, strKeyId: string) {
-    let objPage: LoginLogCRUDEx;
+    let objPage: QxLoginLogCRUDEx;
     let objPageEdit;
-    if (LoginLogCRUD.objPageCRUD == null) {
-      LoginLogCRUD.objPageCRUD = new LoginLogCRUDEx();
-      objPage = <LoginLogCRUDEx>LoginLogCRUDEx.objPageCRUD;
+    if (QxLoginLogCRUD.objPageCRUD == null) {
+      QxLoginLogCRUD.objPageCRUD = new QxLoginLogCRUDEx();
+      objPage = <QxLoginLogCRUDEx>QxLoginLogCRUDEx.objPageCRUD;
     } else {
-      objPage = <LoginLogCRUDEx>LoginLogCRUDEx.objPageCRUD;
+      objPage = <QxLoginLogCRUDEx>QxLoginLogCRUDEx.objPageCRUD;
     }
     let strMsg = '';
     const arrKeyIds = GetCheckedKeyIdsInDivObj(divVarSet.refDivList);
@@ -103,6 +102,7 @@ export default class LoginLogCRUDEx extends LoginLogCRUD implements IShowList {
       case 'Update': //修改记录
         objPageEdit = new QxLoginLog_EditEx('QxLoginLog_EditEx', objPage); //初始化编辑类,设置当前类为编辑类的父类，编辑返回的类
         console.log(objPageEdit);
+
         strKeyId = GetFirstCheckedKeyIdInDivObj(divVarSet.refDivList);
         if (strKeyId == 'undefined') {
           strMsg = `在修改记录时，获取记录关键字为:${strKeyId},不成功!`;
@@ -110,6 +110,7 @@ export default class LoginLogCRUDEx extends LoginLogCRUD implements IShowList {
           alert(strMsg);
           return;
         }
+        const lngLoginLogId = strKeyId;
         refQxLoginLog_Edit.value.btnQxLoginLog_Edit_Click(strCommandName, strKeyId);
         break;
       case 'ExportExcel': //导出Excel
@@ -125,7 +126,7 @@ export default class LoginLogCRUDEx extends LoginLogCRUD implements IShowList {
         objPage.btnDelRecord_Click();
         break;
       default:
-        strMsg = `命令:${strCommandName}在函数(LoginLogCRUDEx.btnClick)中没有被处理!`;
+        strMsg = `命令:${strCommandName}在函数(QxLoginLogCRUDEx.btnClick)中没有被处理!`;
         console.error(strMsg);
         alert(strMsg);
         break;
@@ -134,9 +135,9 @@ export default class LoginLogCRUDEx extends LoginLogCRUD implements IShowList {
   public async SortColumn(sortColumnKey: string, sortDirection: string) {
     switch (sortColumnKey) {
       default:
-        viewVarSet.sortLoginLogBy = Format('{0} {1}', sortColumnKey, sortDirection);
+        viewVarSet.sortQxLoginLogBy = Format('{0} {1}', sortColumnKey, sortDirection);
         break;
     }
-    await this.BindGv_LoginLog(this.thisDivList);
+    await this.BindGv_QxLoginLog(this.listPara.listDiv);
   }
 }

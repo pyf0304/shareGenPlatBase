@@ -34,7 +34,7 @@ import { stuPagerPara } from '@/ts/PubFun/stuPagerPara';
 import { IsNullOrEmpty, Format } from '@/ts/PubFun/clsString';
 import { clsQxLoginLogEN } from '@/ts/L0Entity/LogManage/clsQxLoginLogEN';
 
-import { clsLoginLogENEx } from '@/ts/L0Entity/LogManage/clsLoginLogENEx';
+import { clsQxLoginLogENEx } from '@/ts/L0Entity/LogManage/clsQxLoginLogENEx';
 
 import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
 export const loginLogEx_Controller = 'LoginLogExApi';
@@ -74,9 +74,9 @@ export function LoginLogEx_GetWebApiUrl(strController: string, strAction: string
  * @param objLoginLogENS:源对象
  * @returns 目标对象=>clsQxLoginLogEN:objLoginLogENT
  **/
-export function LoginLogEx_CopyToEx(objLoginLogENS: clsQxLoginLogEN): clsLoginLogENEx {
+export function LoginLogEx_CopyToEx(objLoginLogENS: clsQxLoginLogEN): clsQxLoginLogENEx {
   const strThisFuncName = LoginLogEx_CopyToEx.name;
-  const objLoginLogENT = new clsLoginLogENEx();
+  const objLoginLogENT = new clsQxLoginLogENEx();
   try {
     ObjectAssign(objLoginLogENT, objLoginLogENS);
     return objLoginLogENT;
@@ -101,7 +101,7 @@ export function LoginLogEx_CopyToEx(objLoginLogENS: clsQxLoginLogEN): clsLoginLo
  */
 export async function LoginLogEx_GetObjExLstByPagerAsync(
   objPagerPara: stuPagerPara,
-): Promise<Array<clsLoginLogENEx>> {
+): Promise<Array<clsQxLoginLogENEx>> {
   const strThisFuncName = 'GetObjExLstByPagerAsync';
   const arrLoginLogObjLst = await QxLoginLog_GetObjLstAsync(objPagerPara.whereCond);
   const arrLoginLogExObjLst = arrLoginLogObjLst.map(LoginLogEx_CopyToEx);
@@ -112,7 +112,7 @@ export async function LoginLogEx_GetObjExLstByPagerAsync(
     }
   }
   if (arrLoginLogExObjLst.length == 0) return arrLoginLogExObjLst;
-  let arrQxLoginLog_Sel: Array<clsLoginLogENEx> = arrLoginLogExObjLst;
+  let arrQxLoginLog_Sel: Array<clsQxLoginLogENEx> = arrLoginLogExObjLst;
   try {
     let intStart: number = objPagerPara.pageSize * (objPagerPara.pageIndex - 1);
     if (intStart <= 0) intStart = 0;
@@ -140,7 +140,7 @@ export async function LoginLogEx_GetObjExLstByPagerAsync(
     console.error(strMsg);
     throw new Error(strMsg);
   }
-  return new Array<clsLoginLogENEx>();
+  return new Array<clsQxLoginLogENEx>();
 }
 
 /**
@@ -176,7 +176,7 @@ export function LoginLogEx_SortFunByKey(strKey: string, AscOrDesc: string) {
  * @param  obj{0}Ex:需要转换的对象
  * @returns 针对扩展字段名对转换对象进行函数映射
  */
-export function LoginLogEx_FuncMapByFldName(strFldName: string, objLoginLogEx: clsLoginLogENEx) {
+export function LoginLogEx_FuncMapByFldName(strFldName: string, objLoginLogEx: clsQxLoginLogENEx) {
   const strThisFuncName = LoginLogEx_FuncMapByFldName.name;
   console.log(objLoginLogEx);
   let strMsg = '';

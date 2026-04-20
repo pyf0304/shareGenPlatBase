@@ -37,8 +37,8 @@ import {
   QxRoles_GetObjLstCache,
   QxRoles_SortFunByKey,
 } from '@/ts/L3ForWApi/UserManage_GP/clsQxRolesWApi';
-import { UserType_func } from '@/ts/L3ForWApi/UserManage_GP/clsUserTypeWApi';
-import { clsUserTypeEN } from '@/ts/L0Entity/UserManage_GP/clsUserTypeEN';
+import { UserType_func } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_UserTypeWApi';
+import { clsvQx_UserTypeEN } from '@/ts/L0Entity/UserManage_GP/clsvQx_UserTypeEN';
 import { RoleType_func } from '@/ts/L3ForWApi/UserManage_GP/clsRoleTypeWApi';
 import { clsRoleTypeEN } from '@/ts/L0Entity/UserManage_GP/clsRoleTypeEN';
 
@@ -227,8 +227,8 @@ export async function QxRolesEx_FuncMapUserTypeName(objQxRoles: clsQxRolesENEx) 
     if (IsNullOrEmpty(objQxRoles.userTypeName) == true) {
       const UserTypeUserTypeId = objQxRoles.userTypeId;
       const UserTypeUserTypeName = await UserType_func(
-        clsUserTypeEN.con_UserTypeId,
-        clsUserTypeEN.con_UserTypeName,
+        clsvQx_UserTypeEN.con_UserTypeId,
+        clsvQx_UserTypeEN.con_UserTypeName,
         UserTypeUserTypeId,
       );
       objQxRoles.userTypeName = UserTypeUserTypeName;
@@ -255,8 +255,8 @@ export async function QxRolesEx_FuncMapUserTypeNameSim(objQxRoles: clsQxRolesENE
     if (IsNullOrEmpty(objQxRoles.userTypeNameSim) == true) {
       const UserTypeUserTypeId = objQxRoles.userTypeId;
       const UserTypeUserTypeNameSim = await UserType_func(
-        clsUserTypeEN.con_UserTypeId,
-        clsUserTypeEN.con_UserTypeNameSim,
+        clsvQx_UserTypeEN.con_UserTypeId,
+        clsvQx_UserTypeEN.con_UserTypeNameSim,
         UserTypeUserTypeId,
       );
       objQxRoles.userTypeNameSim = UserTypeUserTypeNameSim;

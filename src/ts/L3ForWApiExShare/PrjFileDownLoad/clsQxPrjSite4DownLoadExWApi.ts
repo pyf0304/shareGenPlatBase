@@ -25,10 +25,7 @@
  **/
 import { ObjectAssign } from '@/ts/PubFun/clsCommFunc4Web';
 import { clsQxPrjSite4DownLoadENEx } from '@/ts/L0Entity/PrjFileDownLoad/clsQxPrjSite4DownLoadENEx';
-import {
-  QxPrjSite4DownLoad_GetObjLstByPagerAsync,
-  QxPrjSite4DownLoad_SortFunByKey,
-} from '@/ts/L3ForWApi/PrjFileDownLoad/clsQxPrjSite4DownLoadWApi';
+import { QxPrjSite4DownLoad_SortFunByKey } from '@/ts/L3ForWApi/PrjFileDownLoad/clsQxPrjSite4DownLoadWApi';
 import { clsQxPrjSite4DownLoadEN } from '@/ts/L0Entity/PrjFileDownLoad/clsQxPrjSite4DownLoadEN';
 import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
 import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
@@ -94,50 +91,6 @@ export function QxPrjSite4DownLoadEx_CopyToEx(
   }
 }
 //该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerCache)
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function QxPrjSite4DownLoadEx_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsQxPrjSite4DownLoadENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrQxPrjSite4DownLoadObjLst = await QxPrjSite4DownLoad_GetObjLstByPagerAsync(objPagerPara);
-  const arrQxPrjSite4DownLoadExObjLst = arrQxPrjSite4DownLoadObjLst.map(
-    QxPrjSite4DownLoadEx_CopyToEx,
-  );
-  if (arrQxPrjSite4DownLoadExObjLst.length == 0) return arrQxPrjSite4DownLoadExObjLst;
-  let arrQxPrjSite4DownLoadSel: Array<clsQxPrjSite4DownLoadENEx> = arrQxPrjSite4DownLoadExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrQxPrjSite4DownLoadSel = arrQxPrjSite4DownLoadSel.sort(
-        QxPrjSite4DownLoadEx_SortFunByKey(strSortFld, strSortType),
-      );
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrQxPrjSite4DownLoadSel = arrQxPrjSite4DownLoadSel.sort(objPagerPara.sortFun);
-    }
-    return arrQxPrjSite4DownLoadSel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      qxPrjSite4DownLoadEx_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsQxPrjSite4DownLoadENEx>();
-}
 
 /**
  * 排序函数。根据关键字字段的值进行比较

@@ -54,7 +54,7 @@ import {
   QxUserRoleRelationEx_DelRecord,
 } from '@/ts/L3ForWApiExShare/UserManage_GP/clsQxUserRoleRelationExWApi';
 
-import { enumUserType } from '@/ts/L0Entity/UserManage_GP/clsUserTypeEN';
+import { enumUserType } from '@/ts/L0Entity/UserManage_GP/clsvQx_UserTypeEN';
 import { vQx_XzClg_BindDdl_Id_XzCollegeByUserTypeIdInDivCache } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_XzClgWApi';
 import { vQx_XzGradeBase_BindDdl_Id_GradeBaseByIsVisibleInDivCache } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_XzGradeBaseWApi';
 

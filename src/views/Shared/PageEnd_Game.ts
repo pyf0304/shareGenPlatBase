@@ -35,8 +35,6 @@ export class PageEnd_Game {
           `${userStore.getUserName}(${userStore.getRoleName})`,
         );
 
-        $('#spanMajorName').html(`${userStore.getMajorName}专业`);
-
         // 判断角色
         // 管理员
         const isShowEduCls = PageEnd_Game.GetPropValue('isShowEduCls');

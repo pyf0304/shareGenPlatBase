@@ -26,7 +26,6 @@
 import { ObjectAssign, GetSortExpressInfo } from '@/ts/PubFun/clsCommFunc4Web';
 import {
   CommonDataNode_GetObjLstCache,
-  CommonDataNode_GetObjLstByPagerAsync,
   CommonDataNode_SortFunByKey,
 } from '@/ts/L3ForWApi/AIModule/clsCommonDataNodeWApi';
 import { stuPagerPara } from '@/ts/PubFun/stuPagerPara';
@@ -91,48 +90,6 @@ export function CommonDataNodeEx_CopyToEx(
     alert(strMsg);
     return objCommonDataNodeENT;
   }
-}
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function CommonDataNodeEx_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsCommonDataNodeENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrCommonDataNodeObjLst = await CommonDataNode_GetObjLstByPagerAsync(objPagerPara);
-  const arrCommonDataNodeExObjLst = arrCommonDataNodeObjLst.map(CommonDataNodeEx_CopyToEx);
-  if (arrCommonDataNodeExObjLst.length == 0) return arrCommonDataNodeExObjLst;
-  let arrCommonDataNodeSel: Array<clsCommonDataNodeENEx> = arrCommonDataNodeExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrCommonDataNodeSel = arrCommonDataNodeSel.sort(
-        CommonDataNodeEx_SortFunByKey(strSortFld, strSortType),
-      );
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrCommonDataNodeSel = arrCommonDataNodeSel.sort(objPagerPara.sortFun);
-    }
-    return arrCommonDataNodeSel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      commonDataNodeEx_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsCommonDataNodeENEx>();
 }
 
 /**

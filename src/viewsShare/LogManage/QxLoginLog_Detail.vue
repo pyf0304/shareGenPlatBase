@@ -1,6 +1,6 @@
 ﻿<template>
-  <el-dialog v-model="dialogVisible" :width="dialogWidth" :show-close="false">
-    <!--使用头部插槽来自定义对话框的标题-->
+  <el-dialog v-model:visible="dialogVisible" :width="dialogWidth" :show-close="false">
+    <!-- 使用头部插槽来自定义对话框的标题 -->
     <template #header>
       <div class="custom-header">
         <h3>{{ strTitle }}</h3>
@@ -34,6 +34,7 @@
                 class="text-primary"
                 style="width: 150px"
               >
+                {{ loginLogNumber }}
               </label>
             </td>
             <td class="text-right">
@@ -48,6 +49,7 @@
                 class="text-primary"
                 style="width: 150px"
               >
+                {{ loginIP }}
               </label>
             </td>
           </tr>
@@ -64,6 +66,7 @@
                 class="text-primary"
                 style="width: 150px"
               >
+                {{ failReason }}
               </label>
             </td>
             <td class="text-right">
@@ -81,6 +84,7 @@
                 class="text-primary"
                 style="width: 150px"
               >
+                {{ loginResult }}
               </label>
             </td>
           </tr>
@@ -97,6 +101,7 @@
                 class="text-primary"
                 style="width: 150px"
               >
+                {{ loginTime }}
               </label>
             </td>
             <td class="text-right">
@@ -114,6 +119,7 @@
                 class="text-primary"
                 style="width: 150px"
               >
+                {{ loginUserId }}
               </label>
             </td>
           </tr>
@@ -130,6 +136,7 @@
                 class="text-primary"
                 style="width: 150px"
               >
+                {{ onlineTime }}
               </label>
             </td>
             <td class="text-right">
@@ -144,6 +151,7 @@
                 class="text-primary"
                 style="width: 150px"
               >
+                {{ outTime }}
               </label>
             </td>
           </tr>
@@ -153,58 +161,72 @@
             </td>
             <td class="text-left">
               <label id="lblMemo_d" name="lblMemo_d" class="text-primary" style="width: 150px">
+                {{ memo }}
               </label>
             </td>
-          </tr> </tbody
-      ></table>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
     <template #footer>
-      <el-button id="btnCancelLoginLog" @click="dialogVisible = false">{{
+      <el-button id="btnCancelQxLoginLog" @click="dialogVisible = false">{{
         strCancelButtonText
       }}</el-button>
     </template>
   </el-dialog>
 </template>
+
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { Format } from '@/ts/PubFun/clsString';
-  import QxLoginLog_DetailEx from '@/viewsShare/LogManage/QxLoginLog_DetailEx';
+  import QxLoginLog_DetailEx from '@/views/LogManage/QxLoginLog_DetailEx';
+  import { clsQxLoginLogENEx } from '@/ts/L0Entity/LogManage/clsQxLoginLogENEx';
   export default defineComponent({
-    name: 'LoginLogDetail',
+    name: 'QxLoginLogDetail',
+
     components: {
       // 组件注册
     },
+
     setup() {
       const strTitle = ref('登录日志详细信息');
       const refDivDetail = ref();
       const strCancelButtonText = ref('取消');
-      const SetButtonText = (strButtonId: string, strNewValue: string) => {
-        let strMsg;
-        switch (strButtonId) {
-          case 'btnCancelLoginLog':
-            strCancelButtonText.value = strNewValue;
-            break;
-          default:
-            strMsg = `按钮Id:${strButtonId} 在函数中没有被处理!`;
-            console.error(strMsg);
-            alert(strMsg);
-            break;
-        }
-      };
-      const GetButtonText = (strButtonId: string) => {
-        let strMsg;
-        switch (strButtonId) {
-          case 'btnCancelLoginLog':
-            return strCancelButtonText.value;
-          default:
-            strMsg = `按钮Id:${strButtonId} 在函数中没有被处理!`;
-            console.error(strMsg);
-            alert(strMsg);
-            break;
-        }
-      };
       const dialogVisible = ref(false);
       const dialogWidth = ref('800px'); // 设置对话框的宽度
+      const loginLogNumber = ref('');
+      const loginIP = ref('');
+      const failReason = ref('');
+      const loginResult = ref('');
+      const loginTime = ref('');
+      const loginUserId = ref('');
+      const onlineTime = ref('');
+      const outTime = ref('');
+      const memo = ref('');
+
+      /** 函数功能:把类对象的属性内容显示到界面上
+       * 注意:如果有两个下拉框,并且是一级、二级连带关系的,请先为一级下拉框赋值,然后再为二级下拉框赋值
+       * 如果在设置数据库时,就应该一级字段在前,二级字段在后
+       * (AutoGCLib.Vue_ViewScript_Detail_TS4Html:Gen_Detail_setup_ShowDataFromObj)
+       * @param pobjQxLoginLogEN">表实体类对象</param>
+       **/
+      async function ShowDataFromQxLoginLogObj(pobjQxLoginLogENEx: clsQxLoginLogENEx) {
+        loginLogNumber.value = pobjQxLoginLogENEx.loginLogNumber; // LoginLogNumber
+        loginIP.value = pobjQxLoginLogENEx.loginIP; // LoginIP
+        failReason.value = pobjQxLoginLogENEx.failReason; // FailReason
+        loginResult.value = pobjQxLoginLogENEx.loginResult; // LoginResult
+        loginTime.value = pobjQxLoginLogENEx.loginTime; // LoginTime
+        loginUserId.value = pobjQxLoginLogENEx.loginUserId; // LoginUserId
+        onlineTime.value = pobjQxLoginLogENEx.onlineTime; // OnlineTime
+        outTime.value = pobjQxLoginLogENEx.outTime; // OutTime
+        memo.value = pobjQxLoginLogENEx.memo; // 备注
+      }
+
+      /**
+       * 显示对话框
+       * (AutoGCLib.Vue_ViewScript_Detail_TS4Html:Gen_Detail_Setup_ShowDialog)
+       **/
       const showDialog = () => {
         return new Promise((resolve) => {
           // 执行打开对话框的操作
@@ -215,9 +237,15 @@
           }, 1000);
         });
       };
+
+      /**
+       * 隐藏对话框
+       * (AutoGCLib.Vue_ViewScript_Detail_TS4Html:Gen_Detail_Setup_HideDialog)
+       **/
       const hideDialog = () => {
         dialogVisible.value = false;
       };
+
       return {
         strTitle,
         refDivDetail,
@@ -228,6 +256,16 @@
         strCancelButtonText,
         SetButtonText,
         GetButtonText,
+        ShowDataFromQxLoginLogObj,
+        loginLogNumber,
+        loginIP,
+        failReason,
+        loginResult,
+        loginTime,
+        loginUserId,
+        onlineTime,
+        outTime,
+        memo,
       };
     },
     watch: {
@@ -236,6 +274,7 @@
     mounted() {
       // el 被新创建的 vm.$el 替换,并挂载到实例上去之后调用该钩子。
     },
+
     methods: {
       // 方法定义
       btnClick(strCommandName: string, strKeyId: string) {
@@ -247,11 +286,12 @@
        *(AutoGCLib.Vue_ViewScript_Detail_TS4Html:Gen_Vue_JS_btnDetail_Click)
        **/
       btnQxLoginLog_Detail_Click(strCommandName: string, strKeyId: string) {
-        QxLoginLog_DetailEx.btnDetail_Click(strCommandName, strKeyId, this.refDivDetail);
+        QxLoginLog_DetailEx.btnDetail_Click(strCommandName, strKeyId);
       },
     },
   });
 </script>
+
 <style scoped>
   .custom-header {
     display: flex;
@@ -259,4 +299,3 @@
     align-items: center;
   }
 </style>
-@/viewsShare/LogManage/QxLoginLog_DetailEx

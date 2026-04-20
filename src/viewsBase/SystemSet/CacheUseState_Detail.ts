@@ -1,26 +1,30 @@
 ﻿/**
- * 类名:QxUsersV2_Detail(界面:QxUsersV2CRUD,00140038)
- * 表名:QxUsersV2(00140110)
- * 版本:2025.06.10.1(服务器:WIN-SRV103-116)
- * 日期:2025/06/13 16:04:02
+ * 类名:CacheUseState_Detail(界面:CacheUseStateCRUD,00140047)
+ * 表名:CacheUseState(00140136)
+ * 版本:2026.04.18.2(服务器:WIN-SRV103-116)
+ * 日期:2026/04/18 23:26:36
  * 生成者:
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
- * 模块中文名:用户管理(UserManage_GP)
+ * 模块中文名:系统设置(SystemSet)
  * 框架-层名:Vue_详细信息后台_TS(TS)(Vue_ViewScript_DetailCS_TS,0260)
  * 编程语言:TypeScript
  **/
-import { QxUsersV2_GetObjByidAsync } from '@/ts/L3ForWApi/UserManage_GP/clsQxUsersV2WApi';
+import { CacheUseState_GetObjBymIdAsync } from '@/ts/L3ForWApi/SystemSet/clsCacheUseStateWApi';
+import { ObjectAssign } from '@/ts/PubFun/clsCommFunc4Web';
+import { CacheUseStateEx_FuncMapByFldName } from '@/ts/L3ForWApiEx/SystemSet/clsCacheUseStateExWApi';
 import { IsNullOrEmpty, Format } from '@/ts/PubFun/clsString';
-import { divVarSet, refQxUsersV2_Detail } from '@/viewsShare/UserManage_GP/QxUsersV2VueShare';
+import { clsCacheUseStateEN } from '@/ts/L0Entity/SystemSet/clsCacheUseStateEN';
+import { divVarSet, refCacheUseState_Detail } from '@/viewsShare/SystemSet/CacheUseStateVueShare';
+import { clsCacheUseStateENEx } from '@/ts/L0Entity/SystemSet/clsCacheUseStateENEx';
 import { IShowList } from '@/ts/PubFun/IShowList';
 import { enumPageDispMode } from '@/ts/PubFun/enumPageDispMode';
-/* QxUsersV2_Detail 的摘要说明。其中Q代表查询,U代表修改
+/* CacheUseState_Detail 的摘要说明。其中Q代表查询,U代表修改
   (AutoGCLib.Vue_ViewScript_DetailCS_TS4TypeScript:GeneCode)
 */
-export abstract class QxUsersV2_Detail {
+export abstract class CacheUseState_Detail {
   public static times4TestShowDialog = 0;
   public opType = '';
   public keyId = '';
@@ -49,9 +53,9 @@ export abstract class QxUsersV2_Detail {
    * 隐藏对话框
    * (AutoGCLib.Vue_ViewScript_DetailCS_TS4TypeScript:Gen_Vue_TS_HideDialog)
    **/
-  public HideDialog_QxUsersV2() {
-    if (QxUsersV2_Detail.strPageDispModeId == enumPageDispMode.PopupBox_01) {
-      refQxUsersV2_Detail.value.hideDialog();
+  public HideDialog_CacheUseState() {
+    if (CacheUseState_Detail.strPageDispModeId == enumPageDispMode.PopupBox_01) {
+      refCacheUseState_Detail.value.hideDialog();
     }
   }
 
@@ -59,10 +63,10 @@ export abstract class QxUsersV2_Detail {
    * 显示对话框
    * (AutoGCLib.Vue_ViewScript_DetailCS_TS4TypeScript:Gen_Vue_TS_ShowDialog)
    **/
-  public async ShowDialog_QxUsersV2(strOp: string): Promise<boolean> {
-    const strThisFuncName = this.ShowDialog_QxUsersV2.name;
-    if (QxUsersV2_Detail.strPageDispModeId == enumPageDispMode.PopupBox_01) {
-      if (refQxUsersV2_Detail.value == null) {
+  public async ShowDialog_CacheUseState(strOp: string): Promise<boolean> {
+    const strThisFuncName = this.ShowDialog_CacheUseState.name;
+    if (CacheUseState_Detail.strPageDispModeId == enumPageDispMode.PopupBox_01) {
+      if (refCacheUseState_Detail.value == null) {
         const strMsg = Format(
           '当前详细信息区的DetailObj为空，请检查！(in {0}.{1})',
           this.constructor.name,
@@ -72,14 +76,14 @@ export abstract class QxUsersV2_Detail {
         alert(strMsg);
         return false;
       }
-      await refQxUsersV2_Detail.value.showDialog();
+      await refCacheUseState_Detail.value.showDialog();
     }
-    divVarSet.refDivDetail = refQxUsersV2_Detail.value.$refs.refDivDetail;
+    divVarSet.refDivDetail = refCacheUseState_Detail.value.$refs.refDivDetail;
     if (divVarSet.refDivDetail == null) {
-      if (QxUsersV2_Detail.times4TestShowDialog < 2) {
-        QxUsersV2_Detail.times4TestShowDialog++;
+      if (CacheUseState_Detail.times4TestShowDialog < 2) {
+        CacheUseState_Detail.times4TestShowDialog++;
         setTimeout(() => {
-          this.ShowDialog_QxUsersV2(strOp);
+          this.ShowDialog_CacheUseState(strOp);
         }, 100);
       } else {
         const strMsg = Format(
@@ -93,10 +97,10 @@ export abstract class QxUsersV2_Detail {
       }
       return false;
     } else {
-      QxUsersV2_Detail.times4TestShowDialog = 0;
+      CacheUseState_Detail.times4TestShowDialog = 0;
     }
     if (strOp === 'Detail') {
-      this.btnCancelQxUsersV2 = '关闭';
+      this.btnCancelCacheUseState = '关闭';
     }
     return true;
   }
@@ -108,7 +112,7 @@ export abstract class QxUsersV2_Detail {
   public async btnDetailRecordInTab_Click(strKeyId: string) {
     const strThisFuncName = this.btnDetailRecordInTab_Click.name;
     this.opType = 'Detail';
-    const bolIsSuccess = await this.ShowDialog_QxUsersV2('Detail');
+    const bolIsSuccess = await this.ShowDialog_CacheUseState('Detail');
     if (bolIsSuccess == false) return;
     try {
       if (strKeyId == '') {
@@ -116,7 +120,7 @@ export abstract class QxUsersV2_Detail {
         return '';
       }
       const lngKeyId = Number(strKeyId);
-      this.DetailRecord(lngKeyId);
+      this.DetailRecord4Func(lngKeyId);
     } catch (e) {
       const strMsg = Format(
         '详细信息记录不成功. {0}.(in {1}.{2})',
@@ -131,48 +135,42 @@ export abstract class QxUsersV2_Detail {
 
   /* 
  根据关键字详细信息记录
-  (AutoGCLib.WA_ViewScript_DetailCS_TS4TypeScript:Gen_WApi_Ts_DetailRecord)
+  (AutoGCLib.WA_ViewScript_DetailCS_TS4TypeScript:Gen_WApi_Ts_DetailRecord4Func)
   <param name = "sender">参数列表</param>
 */
-  public async DetailRecord(intid: number): Promise<boolean> {
-    const strThisFuncName = this.DetailRecord.name;
-    this.btnCancelQxUsersV2 = '关闭';
+  public async DetailRecord4Func(lngmId: number) {
+    const strThisFuncName = this.DetailRecord4Func.name;
+    this.btnCancelCacheUseState = '关闭';
     try {
-      const objQxUsersV2EN = await QxUsersV2_GetObjByidAsync(intid);
-      if (objQxUsersV2EN == null) {
+      const objCacheUseStateEN = await CacheUseState_GetObjBymIdAsync(lngmId);
+      const objCacheUseStateENEx = new clsCacheUseStateENEx();
+      ObjectAssign(objCacheUseStateENEx, objCacheUseStateEN);
+      await CacheUseStateEx_FuncMapByFldName(
+        clsCacheUseStateENEx.con_CacheModeName,
+        objCacheUseStateENEx,
+      );
+      if (refCacheUseState_Detail.value == null) {
         const strMsg = Format(
-          '根据关键字获取相应的记录的对象为空.(in {0}.{1})',
+          '当前详细信息区的DetailObj为空，请检查！(in {0}.{1}).\nrefCacheUseState_Detail imported from: @/views/SystemSet/CacheUseStateVueShare',
           this.constructor.name,
           strThisFuncName,
         );
         console.error(strMsg);
         alert(strMsg);
-        return false;
+        return;
       }
-      if (refQxUsersV2_Detail.value == null) {
-        const strMsg = Format(
-          '当前详细信息区的DetailObj为空，请检查！(in {0}.{1}).\nrefQxUsersV2_Detail imported from: @/views/UserManage_GP/QxUsersV2VueShare',
-          this.constructor.name,
-          strThisFuncName,
-        );
-        console.error(strMsg);
-        alert(strMsg);
-        return false;
-      }
-      await refQxUsersV2_Detail.value.ShowDataFromQxUsersV2Obj(objQxUsersV2EN);
-      console.log('完成DetailRecord!');
+      await refCacheUseState_Detail.value.ShowDataFromCacheUseStateObj(objCacheUseStateENEx);
+      console.log('完成DetailRecord4Func!');
     } catch (e) {
       const strMsg = Format(
-        '显示详细信息不成功,{0}.(in {1}.{2})',
+        '显示详细信息4Func不成功,{0}.(in {1}.{2})',
         e,
         this.constructor.name,
         strThisFuncName,
       );
       console.error(strMsg);
       alert(strMsg);
-      return false;
     }
-    return true;
   }
 
   /* 修改记录
@@ -180,7 +178,7 @@ export abstract class QxUsersV2_Detail {
 */
   public async btnDetailRecord_Click(strKeyId: string) {
     this.opType = 'Detail';
-    const bolIsSuccess = await this.ShowDialog_QxUsersV2('Detail');
+    const bolIsSuccess = await this.ShowDialog_CacheUseState('Detail');
     if (bolIsSuccess == false) return;
     if (IsNullOrEmpty(strKeyId) == true) {
       const strMsg = '需要显示详细信息记录的关键字为空,请检查!';
@@ -191,12 +189,37 @@ export abstract class QxUsersV2_Detail {
     //const conBindDdl = await this.BindDdl4DetailRegion();
     this.bolIsLoadDetailRegion = true; //
     const lngKeyId = Number(strKeyId);
-    this.DetailRecord(lngKeyId);
+    this.DetailRecord4Func(lngKeyId);
+  }
+
+  /// <summary>
+  /// 把同一个类的对象,复制到另一个对象
+  /// (AutoGCLib.WA_ViewScript_DetailCS_TS4TypeScript:Gen_WApi_Ts_CopyToEx)
+  /// </summary>
+  /// <param name = "objCacheUseStateENS">源对象</param>
+  /// <returns>目标对象=>clsCacheUseStateEN:objCacheUseStateENT</returns>
+  public CopyToEx(objCacheUseStateENS: clsCacheUseStateEN): clsCacheUseStateENEx {
+    const strThisFuncName = this.CopyToEx.name;
+    const objCacheUseStateENT = new clsCacheUseStateENEx();
+    try {
+      ObjectAssign(objCacheUseStateENT, objCacheUseStateENS);
+      return objCacheUseStateENT;
+    } catch (e) {
+      const strMsg = Format(
+        '(errid:WiTsCs0027)Copy表对象数据出错,{0}.(in {1}.{2})',
+        e,
+        this.constructor.name,
+        strThisFuncName,
+      );
+      console.error(strMsg);
+      alert(strMsg);
+      return objCacheUseStateENT;
+    }
   }
   /**
    * 设置取消按钮的标题(Used In DetailRecord())
    **/
-  public set btnCancelQxUsersV2(value: string) {
-    refQxUsersV2_Detail.value.strCancelButtonText = value;
+  public set btnCancelCacheUseState(value: string) {
+    refCacheUseState_Detail.value.strCancelButtonText = value;
   }
 }

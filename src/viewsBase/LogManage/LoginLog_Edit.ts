@@ -32,7 +32,7 @@ import {
   QxLoginLog_DeleteKeyIdCache,
   divVarSet,
   refQxLoginLog_Edit,
-} from '@/viewsShare/LogManage/LoginLogVueShare';
+} from '@/viewsShare/LogManage/QxLoginLogVueShare';
 import { IShowList } from '@/ts/PubFun/IShowList';
 import { enumPageDispMode } from '@/ts/PubFun/enumPageDispMode';
 import { clsQxLoginLogEN } from '@/ts/L0Entity/LogManage/clsQxLoginLogEN';

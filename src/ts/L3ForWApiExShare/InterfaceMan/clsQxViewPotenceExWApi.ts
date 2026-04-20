@@ -25,10 +25,7 @@
  **/
 import { ObjectAssign } from '@/ts/PubFun/clsCommFunc4Web';
 import { clsQxViewPotenceENEx } from '@/ts/L0Entity/InterfaceMan/clsQxViewPotenceENEx';
-import {
-  QxViewPotence_GetObjLstByPagerAsync,
-  QxViewPotence_SortFunByKey,
-} from '@/ts/L3ForWApi/InterfaceMan/clsQxViewPotenceWApi';
+import { QxViewPotence_SortFunByKey } from '@/ts/L3ForWApi/InterfaceMan/clsQxViewPotenceWApi';
 import { clsQxViewPotenceEN } from '@/ts/L0Entity/InterfaceMan/clsQxViewPotenceEN';
 import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
 import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
@@ -91,48 +88,6 @@ export function QxViewPotenceEx_CopyToEx(
   }
 }
 //该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerCache)
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function QxViewPotenceEx_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsQxViewPotenceENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrQxViewPotenceObjLst = await QxViewPotence_GetObjLstByPagerAsync(objPagerPara);
-  const arrQxViewPotenceExObjLst = arrQxViewPotenceObjLst.map(QxViewPotenceEx_CopyToEx);
-  if (arrQxViewPotenceExObjLst.length == 0) return arrQxViewPotenceExObjLst;
-  let arrQxViewPotenceSel: Array<clsQxViewPotenceENEx> = arrQxViewPotenceExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrQxViewPotenceSel = arrQxViewPotenceSel.sort(
-        QxViewPotenceEx_SortFunByKey(strSortFld, strSortType),
-      );
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrQxViewPotenceSel = arrQxViewPotenceSel.sort(objPagerPara.sortFun);
-    }
-    return arrQxViewPotenceSel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      qxViewPotenceEx_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsQxViewPotenceENEx>();
-}
 
 /**
  * 排序函数。根据关键字字段的值进行比较

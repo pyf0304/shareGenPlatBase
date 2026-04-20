@@ -29,6 +29,7 @@ import { clsQxLoginLogEN } from '@/ts/L0Entity/LogManage/clsQxLoginLogEN';
 import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
 import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
 import { stuPagerPara } from '@/ts/PubFun/stuPagerPara';
+import { ObjectAssign } from '@/ts/PubFun/clsCommFunc4Web';
 
 export const qxLoginLogEx_Controller = 'QxLoginLogExApi';
 export const qxLoginLogEx_ConstructorName = 'qxLoginLogEx';

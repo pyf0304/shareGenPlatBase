@@ -191,9 +191,9 @@
   import { clsDateTime } from '@/ts/PubFun/clsDateTime';
   import QxRoles_EditEx from '@/viewsShare/UserManage_GP/QxRoles_EditEx';
   import { clsQxRolesEN } from '@/ts/L0Entity/UserManage_GP/clsQxRolesEN';
-  import { clsUserTypeEN } from '@/ts/L0Entity/UserManage_GP/clsUserTypeEN';
+  import { clsvQx_UserTypeEN } from '@/ts/L0Entity/UserManage_GP/clsvQx_UserTypeEN';
   import { clsQxProjectsEN } from '@/ts/L0Entity/PrjManage_GP/clsQxProjectsEN';
-  import { UserType_GetArrUserType } from '@/ts/L3ForWApi/UserManage_GP/clsUserTypeWApi';
+  import { UserType_GetArrUserType } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_UserTypeWApi';
   import { RoleType_GetArrRoleType } from '@/ts/L3ForWApi/UserManage_GP/clsRoleTypeWApi';
 
   import { QxProjects_GetArrQxProjects } from '@/ts/L3ForWApi/PrjManage_GP/clsQxProjectsWApi';
@@ -222,7 +222,7 @@
       const updDate = ref('');
       const updUserId = ref('');
 
-      const arrUserType = ref<clsUserTypeEN[] | null>([]);
+      const arrUserType = ref<clsvQx_UserTypeEN[] | null>([]);
       const arrRoleType = ref<clsRoleTypeEN[] | null>([]);
       const arrQxProjects = ref<clsQxProjectsEN[] | null>([]);
 

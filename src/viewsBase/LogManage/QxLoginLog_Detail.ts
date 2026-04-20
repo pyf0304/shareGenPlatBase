@@ -1,9 +1,9 @@
 ﻿
  /**
- * 类名:LoginLog_Detail(界面:LoginLogCRUD,00140048)
- * 表名:LoginLog(00140139)
+ * 类名:QxLoginLog_Detail(界面:QxLoginLogCRUD,00140048)
+ * 表名:QxLoginLog(00140137)
  * 版本:2026.04.18.2(服务器:WIN-SRV103-116)
- * 日期:2026/04/18 19:50:04
+ * 日期:2026/04/18 19:50:56
  * 生成者:
  工程名称:统一平台(0014)
  CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
@@ -13,15 +13,15 @@
  * 框架-层名:Vue_详细信息后台_TS(TS)(Vue_ViewScript_DetailCS_TS,0260)
  * 编程语言:TypeScript
  **/
-import { LoginLog_GetObjByLoginLogIdAsync } from "@/ts/L3ForWApi/LogManage/clsLoginLogWApi";
+import { QxLoginLog_GetObjByLoginLogIdAsync } from "@/ts/L3ForWApi/LogManage/clsQxLoginLogWApi";
 import { IsNullOrEmpty,Format } from "@/ts/PubFun/clsString";
-import { divVarSet,refLoginLog_Detail } from "@/views/LogManage/LoginLogVueShare";
+import { divVarSet,refQxLoginLog_Detail } from "@/views/LogManage/QxLoginLogVueShare";
 import { IShowList } from "@/ts/PubFun/IShowList";
 import { enumPageDispMode } from "@/ts/PubFun/enumPageDispMode";
- /* LoginLog_Detail 的摘要说明。其中Q代表查询,U代表修改
+ /* QxLoginLog_Detail 的摘要说明。其中Q代表查询,U代表修改
   (AutoGCLib.Vue_ViewScript_DetailCS_TS4TypeScript:GeneCode)
 */
-export abstract class  LoginLog_Detail 
+export abstract class  QxLoginLog_Detail 
 {
 public static times4TestShowDialog = 0;
 public opType = "";
@@ -52,10 +52,10 @@ this.iShowList = objShowList;
  * 隐藏对话框
  * (AutoGCLib.Vue_ViewScript_DetailCS_TS4TypeScript:Gen_Vue_TS_HideDialog)
  **/
-public HideDialog_LoginLog() {
-if (LoginLog_Detail.strPageDispModeId == enumPageDispMode.PopupBox_01)
+public HideDialog_QxLoginLog() {
+if (QxLoginLog_Detail.strPageDispModeId == enumPageDispMode.PopupBox_01)
 {
- refLoginLog_Detail.value.hideDialog();
+ refQxLoginLog_Detail.value.hideDialog();
 }
 }
 
@@ -63,11 +63,11 @@ if (LoginLog_Detail.strPageDispModeId == enumPageDispMode.PopupBox_01)
  * 显示对话框
  * (AutoGCLib.Vue_ViewScript_DetailCS_TS4TypeScript:Gen_Vue_TS_ShowDialog)
  **/
-public async ShowDialog_LoginLog(strOp:string): Promise<boolean> {
-const strThisFuncName = this.ShowDialog_LoginLog.name;
-if (LoginLog_Detail.strPageDispModeId == enumPageDispMode.PopupBox_01)
+public async ShowDialog_QxLoginLog(strOp:string): Promise<boolean> {
+const strThisFuncName = this.ShowDialog_QxLoginLog.name;
+if (QxLoginLog_Detail.strPageDispModeId == enumPageDispMode.PopupBox_01)
 {
-if (refLoginLog_Detail.value == null)
+if (refQxLoginLog_Detail.value == null)
 {
 const strMsg = Format(
 '当前详细信息区的DetailObj为空，请检查！(in {0}.{1})',
@@ -78,16 +78,16 @@ console.error(strMsg);
 alert(strMsg);
 return false;
 }
-await refLoginLog_Detail.value.showDialog();
+await refQxLoginLog_Detail.value.showDialog();
 }
-divVarSet.refDivDetail = refLoginLog_Detail.value.$refs.refDivDetail;
+divVarSet.refDivDetail = refQxLoginLog_Detail.value.$refs.refDivDetail;
 if (divVarSet.refDivDetail == null)
 {
-if (LoginLog_Detail.times4TestShowDialog < 2)
+if (QxLoginLog_Detail.times4TestShowDialog < 2)
 {
-LoginLog_Detail.times4TestShowDialog++;
+QxLoginLog_Detail.times4TestShowDialog++;
 setTimeout(() => {
-this.ShowDialog_LoginLog(strOp);
+this.ShowDialog_QxLoginLog(strOp);
 }, 100);
 }
 else
@@ -99,10 +99,10 @@ return false;
 }
 return false;
 } else {
-LoginLog_Detail.times4TestShowDialog = 0;
+QxLoginLog_Detail.times4TestShowDialog = 0;
 }
        if (strOp === "Detail" ) {
-this.btnCancelLoginLog = "关闭";
+this.btnCancelQxLoginLog = "关闭";
         }
 return true;
 }
@@ -114,7 +114,7 @@ return true;
 public async btnDetailRecordInTab_Click(strKeyId:string) {
 const strThisFuncName = this.btnDetailRecordInTab_Click.name;
 this.opType = "Detail";
-const bolIsSuccess = await this.ShowDialog_LoginLog('Detail');
+const bolIsSuccess = await this.ShowDialog_QxLoginLog('Detail');
 if (bolIsSuccess == false) return;
 try
 {
@@ -142,20 +142,20 @@ alert(strMsg);
 public async DetailRecord(lngLoginLogId: number):Promise<boolean> 
 {
 const strThisFuncName = this.DetailRecord.name;
-this.btnCancelLoginLog = "关闭";
+this.btnCancelQxLoginLog = "关闭";
 try
 {
-const objLoginLogEN = await LoginLog_GetObjByLoginLogIdAsync(lngLoginLogId);
-       if (objLoginLogEN == null)
+const objQxLoginLogEN = await QxLoginLog_GetObjByLoginLogIdAsync(lngLoginLogId);
+       if (objQxLoginLogEN == null)
         {
             const strMsg = Format("根据关键字获取相应的记录的对象为空.(in {0}.{1})", this.constructor.name, strThisFuncName);
 console.error(strMsg);
             alert(strMsg);
             return false;
         }
-if (refLoginLog_Detail.value == null)
+if (refQxLoginLog_Detail.value == null)
 {
-const strMsg = Format('当前详细信息区的DetailObj为空，请检查！(in {0}.{1}).\nrefLoginLog_Detail imported from: @/views/LogManage/LoginLogVueShare',
+const strMsg = Format('当前详细信息区的DetailObj为空，请检查！(in {0}.{1}).\nrefQxLoginLog_Detail imported from: @/views/LogManage/QxLoginLogVueShare',
 this.constructor.name,
 strThisFuncName,
 );
@@ -163,7 +163,7 @@ console.error(strMsg);
 alert(strMsg);
 return false;
 }
-await refLoginLog_Detail.value.ShowDataFromLoginLogObj(objLoginLogEN);
+await refQxLoginLog_Detail.value.ShowDataFromQxLoginLogObj(objQxLoginLogEN);
 console.log("完成DetailRecord!");
 }
 catch(e)
@@ -181,7 +181,7 @@ alert(strMsg);
 */
 public async btnDetailRecord_Click(strKeyId: string) {
 this.opType = "Detail";
-const bolIsSuccess = await this.ShowDialog_LoginLog('Detail');
+const bolIsSuccess = await this.ShowDialog_QxLoginLog('Detail');
 if (bolIsSuccess == false) return;
 if (IsNullOrEmpty(strKeyId) == true)
 {
@@ -198,7 +198,7 @@ this.DetailRecord(lngKeyId);
  /**
  * 设置取消按钮的标题(Used In DetailRecord())
  **/
-public  set btnCancelLoginLog(value: string) {
-refLoginLog_Detail.value.strCancelButtonText = value;
+public  set btnCancelQxLoginLog(value: string) {
+refQxLoginLog_Detail.value.strCancelButtonText = value;
 }
 }

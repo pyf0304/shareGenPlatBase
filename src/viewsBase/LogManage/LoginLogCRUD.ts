@@ -20,7 +20,7 @@ import {
   dataColumn,
   BindTabByList,
   refQxLoginLog_List,
-} from '@/viewsShare/LogManage/LoginLogVueShare';
+} from '@/viewsShare/LogManage/QxLoginLogVueShare';
 import {
   QxLoginLog_GetRecCountByCondAsync,
   QxLoginLog_GetObjLstAsync,
@@ -36,7 +36,7 @@ import {
   SetLabelHtmlByIdInDivObj,
   GetLabelHtmlInDivObj,
 } from '@/ts/PubFun/clsCommFunc4Ctrl';
-import { clsLoginLogENEx } from '@/ts/L0Entity/LogManage/clsLoginLogENEx';
+import { clsQxLoginLogENEx } from '@/ts/L0Entity/LogManage/clsQxLoginLogENEx';
 import { IsNullOrEmpty, Format } from '@/ts/PubFun/clsString';
 import {
   LoginLogEx_FuncMapByFldName,
@@ -530,7 +530,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
    **/
   public async BindTab_LoginLog(
     divContainer: HTMLDivElement,
-    arrLoginLogExObjLst: Array<clsLoginLogENEx>,
+    arrLoginLogExObjLst: Array<clsQxLoginLogENEx>,
   ) {
     if (divContainer == null) {
       alert(Format('{0}不存在!', divContainer));
@@ -724,7 +724,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
    * @param arrDataColumn:用于绑定表的数据列信息
    **/
   public async ExtendFldFuncMap(
-    arrLoginLogExObjLst: Array<clsLoginLogENEx>,
+    arrLoginLogExObjLst: Array<clsQxLoginLogENEx>,
     arrDataColumn: Array<clsDataColumn>,
   ) {
     const arrFldName = clsQxLoginLogEN._AttributeName;
@@ -787,7 +787,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
 
     const strWhereCond = await CombineLoginLogCondition();
     let intCurrPageIndex = GetCurrPageIndex(this.objPager.currPageIndex); //获取当前页
-    let arrLoginLogExObjLst: Array<clsLoginLogENEx> = [];
+    let arrLoginLogExObjLst: Array<clsQxLoginLogENEx> = [];
     try {
       this.recCount = await QxLoginLog_GetRecCountByCondAsync(strWhereCond);
       if (this.recCount == 0) {
@@ -906,7 +906,7 @@ export abstract class LoginLogCRUD implements clsOperateList {
     );
     // 将 sortBy 按空格分成两部分
     const [sortColumnKey, sortDirection] = sortBy.split(' ');
-    if (clsLoginLogENEx.hasProperty(sortColumnKey)) {
+    if (clsQxLoginLogENEx.hasProperty(sortColumnKey)) {
       // 调用 SortColumn 函数
       this.SortColumn(sortColumnKey, sortDirection);
       return;

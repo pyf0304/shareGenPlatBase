@@ -42,7 +42,7 @@ import {
 } from '@/ts/L3ForWApi/UserManage_GP/clsQxRolesWApi';
 import { QxRolesEx_CopyToEx } from '@/ts/L3ForWApiExShare/UserManage_GP/clsQxRolesExWApi';
 import { RoleType_BindDdl_RoleTypeIdInDivCache } from '@/ts/L3ForWApi/UserManage_GP/clsRoleTypeWApi';
-import { UserType_BindDdl_UserTypeIdInDivCache } from '@/ts/L3ForWApi/UserManage_GP/clsUserTypeWApi';
+import { UserType_BindDdl_UserTypeIdInDivCache } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_UserTypeWApi';
 import {
   GetCheckedKeyIdsInDivObj,
   GetSelectValueInDivObj,

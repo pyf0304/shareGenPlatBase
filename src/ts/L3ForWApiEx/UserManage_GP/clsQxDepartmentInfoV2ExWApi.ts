@@ -26,7 +26,6 @@
 import { ObjectAssign, GetSortExpressInfo, GetObjKeys } from '@/ts/PubFun/clsCommFunc4Web';
 import {
   QxDepartmentInfoV2_GetObjLstCache,
-  QxDepartmentInfoV2_GetObjLstByPagerAsync,
   QxDepartmentInfoV2_SortFunByKey,
 } from '@/ts/L3ForWApi/UserManage_GP/clsQxDepartmentInfoV2WApi';
 import { stuPagerPara } from '@/ts/PubFun/stuPagerPara';
@@ -94,50 +93,6 @@ export function QxDepartmentInfoV2Ex_CopyToEx(
     alert(strMsg);
     return objQxDepartmentInfoV2ENT;
   }
-}
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function QxDepartmentInfoV2Ex_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsQxDepartmentInfoV2ENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrQxDepartmentInfoV2ObjLst = await QxDepartmentInfoV2_GetObjLstByPagerAsync(objPagerPara);
-  const arrQxDepartmentInfoV2ExObjLst = arrQxDepartmentInfoV2ObjLst.map(
-    QxDepartmentInfoV2Ex_CopyToEx,
-  );
-  if (arrQxDepartmentInfoV2ExObjLst.length == 0) return arrQxDepartmentInfoV2ExObjLst;
-  let arrQxDepartmentInfoV2Sel: Array<clsQxDepartmentInfoV2ENEx> = arrQxDepartmentInfoV2ExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrQxDepartmentInfoV2Sel = arrQxDepartmentInfoV2Sel.sort(
-        QxDepartmentInfoV2Ex_SortFunByKey(strSortFld, strSortType),
-      );
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrQxDepartmentInfoV2Sel = arrQxDepartmentInfoV2Sel.sort(objPagerPara.sortFun);
-    }
-    return arrQxDepartmentInfoV2Sel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      qxDepartmentInfoV2Ex_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsQxDepartmentInfoV2ENEx>();
 }
 
 /**

@@ -1,5 +1,5 @@
 /**
- * 类名:clsUserTypeExWApi
+ * 类名:clsvQx_UserTypeExWApi
  * 表名:UserType(01120309)
  * 版本:2024.11.28.1(服务器:WIN-SRV103-116)
  * 日期:2024/11/28 11:22:32
@@ -24,16 +24,13 @@
  * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import { ObjectAssign, GetSortExpressInfo, GetObjKeys } from '@/ts/PubFun/clsCommFunc4Web';
-import {
-  UserType_GetObjLstCache,
-  UserType_GetObjLstByPagerAsync,
-  UserType_SortFunByKey,
-} from '@/ts/L3ForWApi/UserManage_GP/clsUserTypeWApi';
+
 import { stuPagerPara } from '@/ts/PubFun/stuPagerPara';
 import { IsNullOrEmpty, Format } from '@/ts/PubFun/clsString';
-import { clsUserTypeEN } from '@/ts/L0Entity/UserManage_GP/clsUserTypeEN';
-import { clsUserTypeENEx } from '@/ts/L0Entity/UserManage_GP/clsUserTypeENEx';
+import { clsvQx_UserTypeEN } from '@/ts/L0Entity/SysPara/clsvQx_UserTypeEN';
+import { clsvQx_UserTypeENEx } from '@/ts/L0Entity/SysPara/clsvQx_UserTypeENEx';
 import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
+import { vQx_UserType_SortFunByKey } from '@/ts/L3ForWApi/SysPara/clsvQx_UserTypeWApi';
 
 export const userTypeExController = 'UserTypeExApi';
 export const userTypeEx_ConstructorName = 'userTypeEx';
@@ -69,11 +66,11 @@ export function UserTypeEx_GetWebApiUrl(strController: string, strAction: string
  * 把同一个类的对象,复制到另一个对象
  * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_CopyToEx)
  * @param objUserTypeENS:源对象
- * @returns 目标对象=>clsUserTypeEN:objUserTypeENT
+ * @returns 目标对象=>clsvQx_UserTypeEN:objUserTypeENT
  **/
-export function UserTypeEx_CopyToEx(objUserTypeENS: clsUserTypeEN): clsUserTypeENEx {
+export function UserTypeEx_CopyToEx(objUserTypeENS: clsvQx_UserTypeEN): clsvQx_UserTypeENEx {
   const strThisFuncName = UserTypeEx_CopyToEx.name;
-  const objUserTypeENT = new clsUserTypeENEx();
+  const objUserTypeENT = new clsvQx_UserTypeENEx();
   try {
     ObjectAssign(objUserTypeENT, objUserTypeENS);
     return objUserTypeENT;
@@ -91,46 +88,6 @@ export function UserTypeEx_CopyToEx(objUserTypeENS: clsUserTypeEN): clsUserTypeE
 }
 
 /**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function UserTypeEx_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsUserTypeENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrUserTypeObjLst = await UserType_GetObjLstByPagerAsync(objPagerPara);
-  const arrUserTypeExObjLst = arrUserTypeObjLst.map(UserTypeEx_CopyToEx);
-  if (arrUserTypeExObjLst.length == 0) return arrUserTypeExObjLst;
-  let arrUserTypeSel: Array<clsUserTypeENEx> = arrUserTypeExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrUserTypeSel = arrUserTypeSel.sort(UserTypeEx_SortFunByKey(strSortFld, strSortType));
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrUserTypeSel = arrUserTypeSel.sort(objPagerPara.sortFun);
-    }
-    return arrUserTypeSel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      userTypeEx_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsUserTypeENEx>();
-}
-
-/**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
  * 日期:2024-11-28
@@ -143,12 +100,12 @@ export function UserTypeEx_SortFunByKey(strKey: string, AscOrDesc: string) {
   if (AscOrDesc == 'Asc' || AscOrDesc == '') {
     switch (strKey) {
       default:
-        return UserType_SortFunByKey(strKey, AscOrDesc);
+        return vQx_UserType_SortFunByKey(strKey, AscOrDesc);
     }
   } else {
     switch (strKey) {
       default:
-        return UserType_SortFunByKey(strKey, AscOrDesc);
+        return vQx_UserType_SortFunByKey(strKey, AscOrDesc);
     }
   }
 }
@@ -162,12 +119,15 @@ export function UserTypeEx_SortFunByKey(strKey: string, AscOrDesc: string) {
  * @param  obj{0}Ex:需要转换的对象
  * @returns 针对扩展字段名对转换对象进行函数映射
  */
-export function UserTypeEx_FuncMapByFldName(strFldName: string, objUserTypeEx: clsUserTypeENEx) {
+export function UserTypeEx_FuncMapByFldName(
+  strFldName: string,
+  objUserTypeEx: clsvQx_UserTypeENEx,
+) {
   const strThisFuncName = UserTypeEx_FuncMapByFldName.name;
   console.log(objUserTypeEx);
   let strMsg = '';
   //如果是本表中字段,不需要映射
-  const arrFldName = clsUserTypeEN._AttributeName;
+  const arrFldName = clsvQx_UserTypeEN._AttributeName;
   if (arrFldName.indexOf(strFldName) > -1) return;
   //针对扩展字段进行映射
   switch (strFldName) {

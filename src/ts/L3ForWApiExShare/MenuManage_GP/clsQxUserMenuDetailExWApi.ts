@@ -25,10 +25,7 @@
  **/
 import { ObjectAssign } from '@/ts/PubFun/clsCommFunc4Web';
 import { clsQxUserMenuDetailENEx } from '@/ts/L0Entity/MenuManage_GP/clsQxUserMenuDetailENEx';
-import {
-  QxUserMenuDetail_GetObjLstByPagerAsync,
-  QxUserMenuDetail_SortFunByKey,
-} from '@/ts/L3ForWApi/MenuManage_GP/clsQxUserMenuDetailWApi';
+import { QxUserMenuDetail_SortFunByKey } from '@/ts/L3ForWApi/MenuManage_GP/clsQxUserMenuDetailWApi';
 import { clsQxUserMenuDetailEN } from '@/ts/L0Entity/MenuManage_GP/clsQxUserMenuDetailEN';
 import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
 import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
@@ -91,48 +88,6 @@ export function QxUserMenuDetailEx_CopyToEx(
   }
 }
 //该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerCache)
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function QxUserMenuDetailEx_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsQxUserMenuDetailENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrQxUserMenuDetailObjLst = await QxUserMenuDetail_GetObjLstByPagerAsync(objPagerPara);
-  const arrQxUserMenuDetailExObjLst = arrQxUserMenuDetailObjLst.map(QxUserMenuDetailEx_CopyToEx);
-  if (arrQxUserMenuDetailExObjLst.length == 0) return arrQxUserMenuDetailExObjLst;
-  let arrQxUserMenuDetailSel: Array<clsQxUserMenuDetailENEx> = arrQxUserMenuDetailExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrQxUserMenuDetailSel = arrQxUserMenuDetailSel.sort(
-        QxUserMenuDetailEx_SortFunByKey(strSortFld, strSortType),
-      );
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrQxUserMenuDetailSel = arrQxUserMenuDetailSel.sort(objPagerPara.sortFun);
-    }
-    return arrQxUserMenuDetailSel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      qxUserMenuDetailEx_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsQxUserMenuDetailENEx>();
-}
 
 /**
  * 排序函数。根据关键字字段的值进行比较

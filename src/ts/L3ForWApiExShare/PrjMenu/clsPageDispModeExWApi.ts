@@ -28,8 +28,8 @@
  */
 
 //import * as QQ from "q";
-import { clsPageDispModeEN } from '@/ts/L0Entity/PrjMenu/clsPageDispModeEN';
-import { clsPageDispModeENEx } from '@/ts/L0Entity/PrjMenu/clsPageDispModeENEx';
+import { clsPageDispModeEN } from '@/ts/L0Entity/MenuManage_GP/clsPageDispModeEN';
+import { clsPageDispModeENEx } from '@/ts/L0Entity/MenuManage_GP/clsPageDispModeENEx';
 import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
 
 import { Format } from '@/ts/PubFun/clsString';
@@ -44,7 +44,6 @@ export class clsPageDispModeExWApi {
   /// </summary>
   constructor() {}
 
-
   /// <summary>
   /// 把同一个类的对象,复制到另一个对象
   /// (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_CopyToEx)
@@ -56,7 +55,7 @@ export class clsPageDispModeExWApi {
     try {
       PageDispMode_CopyObjTo(objPageDispModeENS, objPageDispModeENT);
       return objPageDispModeENT;
-    } catch (e:any) {
+    } catch (e: any) {
       const strMsg: string = Format('(errid:Watl000066)Copy表对象数据出错,${e}.');
       console.error(strMsg);
       alert(strMsg);

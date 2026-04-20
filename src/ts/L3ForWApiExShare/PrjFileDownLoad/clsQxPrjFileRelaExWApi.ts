@@ -25,10 +25,7 @@
  **/
 import { ObjectAssign } from '@/ts/PubFun/clsCommFunc4Web';
 import { clsQxPrjFileRelaENEx } from '@/ts/L0Entity/PrjFileDownLoad/clsQxPrjFileRelaENEx';
-import {
-  QxPrjFileRela_GetObjLstByPagerAsync,
-  QxPrjFileRela_SortFunByKey,
-} from '@/ts/L3ForWApi/PrjFileDownLoad/clsQxPrjFileRelaWApi';
+import { QxPrjFileRela_SortFunByKey } from '@/ts/L3ForWApi/PrjFileDownLoad/clsQxPrjFileRelaWApi';
 import { clsQxPrjFileRelaEN } from '@/ts/L0Entity/PrjFileDownLoad/clsQxPrjFileRelaEN';
 import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
 import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
@@ -91,48 +88,6 @@ export function QxPrjFileRelaEx_CopyToEx(
   }
 }
 //该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerCache)
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function QxPrjFileRelaEx_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsQxPrjFileRelaENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrQxPrjFileRelaObjLst = await QxPrjFileRela_GetObjLstByPagerAsync(objPagerPara);
-  const arrQxPrjFileRelaExObjLst = arrQxPrjFileRelaObjLst.map(QxPrjFileRelaEx_CopyToEx);
-  if (arrQxPrjFileRelaExObjLst.length == 0) return arrQxPrjFileRelaExObjLst;
-  let arrQxPrjFileRelaSel: Array<clsQxPrjFileRelaENEx> = arrQxPrjFileRelaExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrQxPrjFileRelaSel = arrQxPrjFileRelaSel.sort(
-        QxPrjFileRelaEx_SortFunByKey(strSortFld, strSortType),
-      );
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrQxPrjFileRelaSel = arrQxPrjFileRelaSel.sort(objPagerPara.sortFun);
-    }
-    return arrQxPrjFileRelaSel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      qxPrjFileRelaEx_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsQxPrjFileRelaENEx>();
-}
 
 /**
  * 排序函数。根据关键字字段的值进行比较

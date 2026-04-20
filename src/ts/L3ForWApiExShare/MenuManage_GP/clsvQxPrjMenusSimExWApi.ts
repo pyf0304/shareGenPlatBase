@@ -26,7 +26,6 @@
 import { ObjectAssign, GetSortExpressInfo, GetObjKeys } from '@/ts/PubFun/clsCommFunc4Web';
 import {
   vQxPrjMenusSim_GetObjLstCache,
-  vQxPrjMenusSim_GetObjLstByPagerAsync,
   vQxPrjMenusSim_SortFunByKey,
 } from '@/ts/L3ForWApi/MenuManage_GP/clsvQxPrjMenusSimWApi';
 import { stuPagerPara } from '@/ts/PubFun/stuPagerPara';
@@ -90,48 +89,6 @@ export function vQxPrjMenusSimEx_CopyToEx(
     alert(strMsg);
     return objvQxPrjMenusSimENT;
   }
-}
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function vQxPrjMenusSimEx_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsvQxPrjMenusSimENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrvQxPrjMenusSimObjLst = await vQxPrjMenusSim_GetObjLstByPagerAsync(objPagerPara);
-  const arrvQxPrjMenusSimExObjLst = arrvQxPrjMenusSimObjLst.map(vQxPrjMenusSimEx_CopyToEx);
-  if (arrvQxPrjMenusSimExObjLst.length == 0) return arrvQxPrjMenusSimExObjLst;
-  let arrvQxPrjMenusSimSel: Array<clsvQxPrjMenusSimENEx> = arrvQxPrjMenusSimExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.sort(
-        vQxPrjMenusSimEx_SortFunByKey(strSortFld, strSortType),
-      );
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrvQxPrjMenusSimSel = arrvQxPrjMenusSimSel.sort(objPagerPara.sortFun);
-    }
-    return arrvQxPrjMenusSimSel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      vQxPrjMenusSimEx_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsvQxPrjMenusSimENEx>();
 }
 
 /**

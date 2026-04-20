@@ -15,7 +15,7 @@
 //import * as $ from "jquery";
 //import * as QQ from "q";
 import { QxLoginLog_Detail } from '@/viewsBase/LogManage/QxLoginLog_Detail';
-import LoginLogCRUDEx from '@/viewsShare/LogManage/LoginLogCRUDEx';
+import LoginLogCRUDEx from '@/viewsShare/LogManage/QxLoginLogCRUDEx';
 /* QxLoginLog_DetailEx 的摘要说明。其中Q代表查询,U代表修改
   (AutoGCLib.Vue_ViewScript_DetailCSEx_TS4TypeScript:GeneCode)
 */

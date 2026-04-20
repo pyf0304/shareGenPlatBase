@@ -25,10 +25,7 @@
  **/
 import { ObjectAssign } from '@/ts/PubFun/clsCommFunc4Web';
 import { clsQxPrjUserRelation4SynchENEx } from '@/ts/L0Entity/DataSynch/clsQxPrjUserRelation4SynchENEx';
-import {
-  QxPrjUserRelation4Synch_GetObjLstByPagerAsync,
-  QxPrjUserRelation4Synch_SortFunByKey,
-} from '@/ts/L3ForWApi/DataSynch/clsQxPrjUserRelation4SynchWApi';
+import { QxPrjUserRelation4Synch_SortFunByKey } from '@/ts/L3ForWApi/DataSynch/clsQxPrjUserRelation4SynchWApi';
 import { clsQxPrjUserRelation4SynchEN } from '@/ts/L0Entity/DataSynch/clsQxPrjUserRelation4SynchEN';
 import { Format, IsNullOrEmpty } from '@/ts/PubFun/clsString';
 import { clsSysPara4WebApi } from '@/ts/PubConfig/clsSysPara4WebApi';
@@ -94,52 +91,6 @@ export function QxPrjUserRelation4SynchEx_CopyToEx(
   }
 }
 //该表没有使用Cache,不需要生成[GetObjExLstByPagerCache]函数;(in AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerCache)
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function QxPrjUserRelation4SynchEx_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsQxPrjUserRelation4SynchENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrQxPrjUserRelation4SynchObjLst =
-    await QxPrjUserRelation4Synch_GetObjLstByPagerAsync(objPagerPara);
-  const arrQxPrjUserRelation4SynchExObjLst = arrQxPrjUserRelation4SynchObjLst.map(
-    QxPrjUserRelation4SynchEx_CopyToEx,
-  );
-  if (arrQxPrjUserRelation4SynchExObjLst.length == 0) return arrQxPrjUserRelation4SynchExObjLst;
-  let arrQxPrjUserRelation4SynchSel: Array<clsQxPrjUserRelation4SynchENEx> =
-    arrQxPrjUserRelation4SynchExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrQxPrjUserRelation4SynchSel = arrQxPrjUserRelation4SynchSel.sort(
-        QxPrjUserRelation4SynchEx_SortFunByKey(strSortFld, strSortType),
-      );
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrQxPrjUserRelation4SynchSel = arrQxPrjUserRelation4SynchSel.sort(objPagerPara.sortFun);
-    }
-    return arrQxPrjUserRelation4SynchSel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      qxPrjUserRelation4SynchEx_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsQxPrjUserRelation4SynchENEx>();
-}
 
 /**
  * 排序函数。根据关键字字段的值进行比较

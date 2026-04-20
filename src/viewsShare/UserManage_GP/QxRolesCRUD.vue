@@ -290,9 +290,9 @@
   import { clsQxProjectsEN } from '@/ts/L0Entity/PrjManage_GP/clsQxProjectsEN';
   import { BindDdl_TrueAndFalseInDivObj } from '@/ts/PubFun/clsCommFunc4Web';
   import { QxProjects_GetArrQxProjects } from '@/ts/L3ForWApi/PrjManage_GP/clsQxProjectsWApi';
-  import { clsUserTypeEN } from '@/ts/L0Entity/UserManage_GP/clsUserTypeEN';
+  import { clsvQx_UserTypeEN } from '@/ts/L0Entity/UserManage_GP/clsvQx_UserTypeEN';
   import { clsRoleTypeEN } from '@/ts/L0Entity/UserManage_GP/clsRoleTypeEN';
-  import { UserType_GetArrUserType } from '@/ts/L3ForWApi/UserManage_GP/clsUserTypeWApi';
+  import { UserType_GetArrUserType } from '@/ts/L3ForWApi/UserManage_GP/clsvQx_UserTypeWApi';
   import { RoleType_GetArrRoleType } from '@/ts/L3ForWApi/UserManage_GP/clsRoleTypeWApi';
 
   export default defineComponent({
@@ -314,7 +314,7 @@
 
       const arrQxProjects = ref<clsQxProjectsEN[] | null>([]);
 
-      const arrUserType = ref<clsUserTypeEN[] | null>([]);
+      const arrUserType = ref<clsvQx_UserTypeEN[] | null>([]);
       const arrRoleType = ref<clsRoleTypeEN[] | null>([]);
 
       /** 根据条件获取相应的对象列表

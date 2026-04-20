@@ -1,14 +1,14 @@
 /**
  * 类名:clsCacheUseStateWApi
- * 表名:CacheUseState(01120689)
- * 版本:2025.02.27.1(服务器:WIN-SRV103-116)
- * 日期:2025/02/27 15:25:06
+ * 表名:CacheUseState(00140136)
+ * 版本:2026.04.18.2(服务器:PYF-AI)
+ * 日期:2026/04/18 20:37:13
  * 生成者:pyf
  * 生成服务器IP:
- 工程名称:问卷调查(0112)
+ 工程名称:统一平台(0014)
  应用类型:Vue应用InCore-TS(30)
- CM工程:通用用户权限管理平台(000041, 变量首字母小写)-全部函数集
- * 相关数据库:103.116.76.183,8433EduHigh_Jsie
+ CM工程:统一平台前端(000057, 变量首字母小写)-WebApi函数集
+ * 相关数据库:109.244.40.104,8433EduHigh_Jsie
  * PrjDataBaseId:0170
  模块中文名:系统设置(SystemSet)
  * 框架-层名:WA_访问层(TS)(WA_Access,0155)
@@ -20,28 +20,36 @@
 /**
  * 缓存使用状态(CacheUseState)
  * (AutoGCLib.WA_Access4TypeScript:GeneCode)
- * Created by pyf on 2025年02月27日.
+ * Created by pyf on 2026年04月18日.
  * 注意:该类必须与调用界面处于同一个包,否则调用不成功!
  **/
 import axios from 'axios';
 import { ACCESS_TOKEN_KEY } from '@/enums/cacheEnum';
 import { Storage } from '@/utils/Storage';
-import { IsNullOrEmpty, GetStrLen, tzDataType, Format } from '@/ts/PubFun/clsString';
+import { IsNullOrEmpty, Format, GetStrLen, tzDataType } from '@/ts/PubFun/clsString';
 import { enumComparisonOp } from '@/ts/PubFun/enumComparisonOp';
-import { CacheHelper } from '@/ts/PubFun/CacheHelper';
 import {
-  GetObjKeys,
-  BindDdl_ObjLstInDivObj,
+  CacheHelper,
+  LocalStorage_GetKeyByPrefix,
+  SessionStorage_GetKeyByPrefix,
+} from '@/ts/PubFun/CacheHelper';
+import { ConditionCollection } from '@/ts/PubFun/ConditionCollection';
+import { stuPagerPara } from '@/ts/PubFun/stuPagerPara';
+import {
+  GetSortExpressInfo,
+  ObjectAssign,
   GetExceptionStr,
   myShowErrorMsg,
-  ObjectAssign,
 } from '@/ts/PubFun/clsCommFunc4Web';
+import { cacheUseStateCache, isFuncMapCache } from '@/viewsShare/SystemSet/CacheUseStateVueShare';
+import { clsCacheUseStateENEx } from '@/ts/L0Entity/SystemSet/clsCacheUseStateENEx';
 import { clsCacheUseStateEN } from '@/ts/L0Entity/SystemSet/clsCacheUseStateEN';
+import { CacheMode_func } from '@/ts/L3ForWApi/SystemSet/clsCacheModeWApi';
+import { clsCacheModeEN } from '@/ts/L0Entity/SystemSet/clsCacheModeEN';
 import { AddRecordResult } from '@/ts/PubFun/AddRecordResult';
-import { clsSysPara4WebApi, GetWebApiUrl } from '@/ts/PubConfig/clsSysPara4WebApi';
+import { clsSysPara4WebApi, GetWebApiUrl_GP } from '@/ts/PubConfig/clsSysPara4WebApi';
 import { stuTopPara } from '@/ts/PubFun/stuTopPara';
 import { stuRangePara } from '@/ts/PubFun/stuRangePara';
-import { stuPagerPara } from '@/ts/PubFun/stuPagerPara';
 import { clsDateTime } from '@/ts/PubFun/clsDateTime';
 
 export const cacheUseState_Controller = 'CacheUseStateApi';
@@ -64,7 +72,7 @@ export async function CacheUseState_GetObjBymIdAsync(
     throw strMsg;
   }
   const strAction = 'GetObjBymId';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -233,9 +241,9 @@ export async function CacheUseState_UpdateObjInLstCache(
     const arrCacheUseStateObjLstCache = await CacheUseState_GetObjLstCache(strUserId);
     const obj = arrCacheUseStateObjLstCache.find(
       (x) =>
-        x.userId == objCacheUseState.userId &&
         x.cacheModeId == objCacheUseState.cacheModeId &&
-        x.cacheKey == objCacheUseState.cacheKey,
+        x.cacheKey == objCacheUseState.cacheKey &&
+        x.userId == objCacheUseState.userId,
     );
     if (obj != null) {
       objCacheUseState.mId = obj.mId;
@@ -258,7 +266,7 @@ export async function CacheUseState_UpdateObjInLstCache(
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-02-27
+ * 日期:2026-04-18
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -270,7 +278,7 @@ export function CacheUseState_SortFunDefa(a: clsCacheUseStateEN, b: clsCacheUseS
 /**
  * 排序函数。根据表对象中随机两个字段的值进行比较
  * 作者:pyf
- * 日期:2025-02-27
+ * 日期:2026-04-18
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
  * @param  a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -287,7 +295,7 @@ export function CacheUseState_SortFunDefa2Fld(
 /**
  * 排序函数。根据关键字字段的值进行比较
  * 作者:pyf
- * 日期:2025-02-27
+ * 日期:2026-04-18
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
  * @param a:比较的第1个对象
  * @param  b:比较的第1个对象
@@ -411,7 +419,7 @@ export async function CacheUseState_GetNameBymIdCache(lngmId: number, strUserId:
 /**
  * 过滤函数。根据关键字字段的值与给定值进行比较,返回是否相等
  * 作者:pyf
- * 日期:2025-02-27
+ * 日期:2026-04-18
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
  * @param strKey:比较的关键字段名称
  * @param value:给定值
@@ -459,7 +467,7 @@ export async function CacheUseState_FilterFunByKey(strKey: string, value: any) {
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2025-02-27
+ * 日期:2026-04-18
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_func)
  * @param strInFldName:输入字段名
  * @param strOutFldName:输出字段名
@@ -508,7 +516,7 @@ export async function CacheUseState_func(
 /**
  * 映射函数。根据表映射把输入字段值,映射成输出字段值
  * 作者:pyf
- * 日期:2025-02-27
+ * 日期:2026-04-18
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_funcKey)
  * @param strInFldName:输入字段名
  * @param strInValue:输入字段值
@@ -624,7 +632,7 @@ export async function CacheUseState_GetFldValueAsync(
 ): Promise<Array<string>> {
   const strThisFuncName = 'GetFldValueAsync';
   const strAction = 'GetFldValue';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -685,7 +693,7 @@ export async function CacheUseState_GetFldValueAsync(
 export async function CacheUseState_GetFirstIDAsync(strWhereCond: string): Promise<string> {
   const strThisFuncName = 'GetFirstIDAsync';
   const strAction = 'GetFirstID';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -744,7 +752,7 @@ export async function CacheUseState_GetFirstIDAsync(strWhereCond: string): Promi
 export async function CacheUseState_GetFirstID(strWhereCond: string) {
   const strThisFuncName = 'GetFirstID';
   const strAction = 'GetFirstID';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -805,7 +813,7 @@ export async function CacheUseState_GetFirstObjAsync(
 ): Promise<clsCacheUseStateEN | null> {
   const strThisFuncName = 'GetFirstObjAsync';
   const strAction = 'GetFirstObj';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -870,14 +878,14 @@ export async function CacheUseState_GetObjLstClientCache(strUserId: string) {
   const strThisFuncName = 'GetObjLstClientCache';
   //初始化列表缓存
   let strWhereCond = '1=1';
-  if (IsNullOrEmpty(clsCacheUseStateEN.WhereFormat) == false) {
-    strWhereCond = Format(clsCacheUseStateEN.WhereFormat, strUserId);
+  if (IsNullOrEmpty(clsCacheUseStateEN._WhereFormat) == false) {
+    strWhereCond = Format(clsCacheUseStateEN._WhereFormat, strUserId);
   } else {
     strWhereCond = Format("UserId='{0}'", strUserId);
   }
   const strKey = Format('{0}_{1}', clsCacheUseStateEN._CurrTabName, strUserId);
-  if (IsNullOrEmpty(clsCacheUseStateEN.CacheAddiCondition) == false) {
-    strWhereCond += Format(' and {0}', clsCacheUseStateEN.CacheAddiCondition);
+  if (IsNullOrEmpty(clsCacheUseStateEN._CacheAddiCondition) == false) {
+    strWhereCond += Format(' and {0}', clsCacheUseStateEN._CacheAddiCondition);
   }
   if (strKey == '') {
     console.error('关键字为空!不正确');
@@ -922,14 +930,14 @@ export async function CacheUseState_GetObjLstlocalStorage(strUserId: string) {
   const strThisFuncName = 'GetObjLstlocalStorage';
   //初始化列表缓存
   let strWhereCond = '1=1';
-  if (IsNullOrEmpty(clsCacheUseStateEN.WhereFormat) == false) {
-    strWhereCond = Format(clsCacheUseStateEN.WhereFormat, strUserId);
+  if (IsNullOrEmpty(clsCacheUseStateEN._WhereFormat) == false) {
+    strWhereCond = Format(clsCacheUseStateEN._WhereFormat, strUserId);
   } else {
     strWhereCond = Format("{0}='{1}'", clsCacheUseStateEN.con_UserId, strUserId);
   }
   const strKey = Format('{0}_{1}', clsCacheUseStateEN._CurrTabName, strUserId);
-  if (IsNullOrEmpty(clsCacheUseStateEN.CacheAddiCondition) == false) {
-    strWhereCond += Format(' and {0}', clsCacheUseStateEN.CacheAddiCondition);
+  if (IsNullOrEmpty(clsCacheUseStateEN._CacheAddiCondition) == false) {
+    strWhereCond += Format(' and {0}', clsCacheUseStateEN._CacheAddiCondition);
   }
   if (strKey == '') {
     console.error('关键字为空!不正确');
@@ -946,6 +954,9 @@ export async function CacheUseState_GetObjLstlocalStorage(strUserId: string) {
   }
   try {
     const arrCacheUseStateExObjLst = await CacheUseState_GetObjLstAsync(strWhereCond);
+    const strPrefix = Format('{0}_', clsCacheUseStateEN._CurrTabName);
+    const arrCacheKeyLst = LocalStorage_GetKeyByPrefix(strPrefix);
+    arrCacheKeyLst.forEach((x) => localStorage.removeItem(x));
     localStorage.setItem(strKey, JSON.stringify(arrCacheUseStateExObjLst));
     const strInfo = Format(
       '[localStorage]Key:[{0}]的缓存已经建立,对象列表数：{1}!',
@@ -997,7 +1008,7 @@ export async function CacheUseState_GetObjLstAsync(
 ): Promise<Array<clsCacheUseStateEN>> {
   const strThisFuncName = 'GetObjLstAsync';
   const strAction = 'GetObjLst';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -1068,14 +1079,14 @@ export async function CacheUseState_GetObjLstsessionStorage(strUserId: string) {
   const strThisFuncName = 'GetObjLstsessionStorage';
   //初始化列表缓存
   let strWhereCond = '1=1';
-  if (IsNullOrEmpty(clsCacheUseStateEN.WhereFormat) == false) {
-    strWhereCond = Format(clsCacheUseStateEN.WhereFormat, strUserId);
+  if (IsNullOrEmpty(clsCacheUseStateEN._WhereFormat) == false) {
+    strWhereCond = Format(clsCacheUseStateEN._WhereFormat, strUserId);
   } else {
     strWhereCond = Format("{0}='{1}'", clsCacheUseStateEN.con_UserId, strUserId);
   }
   const strKey = Format('{0}_{1}', clsCacheUseStateEN._CurrTabName, strUserId);
-  if (IsNullOrEmpty(clsCacheUseStateEN.CacheAddiCondition) == false) {
-    strWhereCond += Format(' and {0}', clsCacheUseStateEN.CacheAddiCondition);
+  if (IsNullOrEmpty(clsCacheUseStateEN._CacheAddiCondition) == false) {
+    strWhereCond += Format(' and {0}', clsCacheUseStateEN._CacheAddiCondition);
   }
   if (strKey == '') {
     console.error('关键字为空!不正确');
@@ -1092,6 +1103,9 @@ export async function CacheUseState_GetObjLstsessionStorage(strUserId: string) {
   }
   try {
     const arrCacheUseStateExObjLst = await CacheUseState_GetObjLstAsync(strWhereCond);
+    const strPrefix = Format('{0}_', clsCacheUseStateEN._CurrTabName);
+    const arrCacheKeyLst = SessionStorage_GetKeyByPrefix(strPrefix);
+    arrCacheKeyLst.forEach((x) => sessionStorage.removeItem(x));
     sessionStorage.setItem(strKey, JSON.stringify(arrCacheUseStateExObjLst));
     const strInfo = Format(
       '[sessionStorage]Key:[{0}]的缓存已经建立,对象列表数：{1}!',
@@ -1150,7 +1164,7 @@ export async function CacheUseState_GetObjLstCache(
     throw strMsg;
   }
   let arrCacheUseStateObjLstCache;
-  switch (clsCacheUseStateEN.CacheModeId) {
+  switch (clsCacheUseStateEN._CacheModeId) {
     case '04': //sessionStorage
       arrCacheUseStateObjLstCache = await CacheUseState_GetObjLstsessionStorage(strUserId);
       break;
@@ -1175,7 +1189,7 @@ export async function CacheUseState_GetObjLstCache(
 export async function CacheUseState_GetObjLstPureCache(strUserId: string) {
   //const strThisFuncName = "GetObjLstPureCache";
   let arrCacheUseStateObjLstCache;
-  switch (clsCacheUseStateEN.CacheModeId) {
+  switch (clsCacheUseStateEN._CacheModeId) {
     case '04': //sessionStorage
       arrCacheUseStateObjLstCache = await CacheUseState_GetObjLstsessionStoragePureCache(strUserId);
       break;
@@ -1199,30 +1213,21 @@ export async function CacheUseState_GetObjLstPureCache(strUserId: string) {
  * @returns 对象列表子集
  */
 export async function CacheUseState_GetSubObjLstCache(
-  objCacheUseStateCond: clsCacheUseStateEN,
+  objCacheUseStateCond: ConditionCollection,
   strUserId: string,
 ) {
   const strThisFuncName = 'GetSubObjLstCache';
   const arrCacheUseStateObjLstCache = await CacheUseState_GetObjLstCache(strUserId);
   let arrCacheUseStateSel = arrCacheUseStateObjLstCache;
-  if (
-    objCacheUseStateCond.sfFldComparisonOp == null ||
-    objCacheUseStateCond.sfFldComparisonOp == ''
-  )
-    return arrCacheUseStateSel;
-  const dicFldComparisonOp: { [index: string]: string } = JSON.parse(
-    objCacheUseStateCond.sfFldComparisonOp,
-  );
-  //console.log("clsCacheUseStateWApi->GetSubObjLstCache->dicFldComparisonOp:");
-  //console.log(dicFldComparisonOp);
+  if (objCacheUseStateCond.GetConditions().length == 0) return arrCacheUseStateSel;
   try {
-    const sstrKeys = GetObjKeys(objCacheUseStateCond);
     //console.log(sstrKeys);
-    for (const strKey of sstrKeys) {
-      if (Object.prototype.hasOwnProperty.call(dicFldComparisonOp, strKey) == false) continue;
+    for (const objCondition of objCacheUseStateCond.GetConditions()) {
+      if (objCondition == null) continue;
+      const strKey = objCondition.fldName;
+      const strComparisonOp = objCondition.comparison;
+      const strValue = objCondition.fldValue;
       arrCacheUseStateSel = arrCacheUseStateSel.filter((x) => x.GetFldValue(strKey) != null);
-      const strComparisonOp = dicFldComparisonOp[strKey];
-      const strValue = objCacheUseStateCond.GetFldValue(strKey);
       const strType = typeof strValue;
       switch (strType) {
         case 'string':
@@ -1318,7 +1323,7 @@ export async function CacheUseState_GetObjLstBymIdLstAsync(
 ): Promise<Array<clsCacheUseStateEN>> {
   const strThisFuncName = 'GetObjLstBymIdLstAsync';
   const strAction = 'GetObjLstBymIdLst';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -1418,7 +1423,7 @@ export async function CacheUseState_GetTopObjLstAsync(
 ): Promise<Array<clsCacheUseStateEN>> {
   const strThisFuncName = 'GetTopObjLstAsync';
   const strAction = 'GetTopObjLst';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -1488,7 +1493,7 @@ export async function CacheUseState_GetObjLstByRangeAsync(
 ): Promise<Array<clsCacheUseStateEN>> {
   const strThisFuncName = 'GetObjLstByRangeAsync';
   const strAction = 'GetObjLstByRange';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -1562,23 +1567,22 @@ export async function CacheUseState_GetObjLstByPagerCache(
   const arrCacheUseStateObjLstCache = await CacheUseState_GetObjLstCache(strUserId);
   if (arrCacheUseStateObjLstCache.length == 0) return arrCacheUseStateObjLstCache;
   let arrCacheUseStateSel = arrCacheUseStateObjLstCache;
-  const objCond = JSON.parse(objPagerPara.whereCond);
-  const objCacheUseStateCond = new clsCacheUseStateEN();
-  ObjectAssign(objCacheUseStateCond, objCond);
-  let dicFldComparisonOp: { [index: string]: string } = {};
-  if (objCond.sfFldComparisonOp != '') {
-    dicFldComparisonOp = JSON.parse(objCond.sfFldComparisonOp);
+  const objCacheUseStateCond = objPagerPara.conditionCollection;
+  if (objCacheUseStateCond == null) {
+    const strMsg = `根据分布条件从缓存中获取分页对象列表时，objPagerPara.conditionCollection为null,请检查！(in ${strThisFuncName})`;
+    alert(strMsg);
+    console.error(strMsg);
+    return new Array<clsCacheUseStateEN>();
   }
   //console.log("clsCacheUseStateWApi->GetObjLstByPagerCache->dicFldComparisonOp:");
   //console.log(dicFldComparisonOp);
   try {
-    const sstrKeys = GetObjKeys(objCond);
-    //console.log(sstrKeys);
-    for (const strKey of sstrKeys) {
-      if (Object.prototype.hasOwnProperty.call(dicFldComparisonOp, strKey) == false) continue;
+    for (const objCondition of objCacheUseStateCond.GetConditions()) {
+      if (objCondition == null) continue;
+      const strKey = objCondition.fldName;
+      const strComparisonOp = objCondition.comparison;
+      const strValue = objCondition.fldValue;
       arrCacheUseStateSel = arrCacheUseStateSel.filter((x) => x.GetFldValue(strKey) != null);
-      const strComparisonOp = dicFldComparisonOp[strKey];
-      const strValue = objCacheUseStateCond.GetFldValue(strKey);
       const strType = typeof strValue;
       switch (strType) {
         case 'string':
@@ -1697,7 +1701,7 @@ export async function CacheUseState_GetObjLstByPagerAsync(
   const strThisFuncName = 'GetObjLstByPagerAsync';
   if (objPagerPara.pageIndex == 0) return new Array<clsCacheUseStateEN>();
   const strAction = 'GetObjLstByPager';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -1765,7 +1769,7 @@ export async function CacheUseState_GetObjLstByPagerAsync(
 export async function CacheUseState_DelRecordAsync(lngmId: number): Promise<number> {
   const strThisFuncName = 'DelRecordAsync';
   const strAction = 'DelRecord';
-  let strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  let strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
   strUrl = Format('{0}?Id={1}', strUrl, lngmId);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
@@ -1822,7 +1826,7 @@ export async function CacheUseState_DelRecordAsync(lngmId: number): Promise<numb
 export async function CacheUseState_DelCacheUseStatesAsync(arrmId: Array<string>): Promise<number> {
   const strThisFuncName = 'DelCacheUseStatesAsync';
   const strAction = 'DelCacheUseStates';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -1870,6 +1874,292 @@ export async function CacheUseState_DelCacheUseStatesAsync(arrmId: Array<string>
 }
 
 /**
+ * 根据分页条件从缓存中获取分页对象列表,只获取一页.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjExLstByPagerCache)
+ * @param objPagerPara:分页参数结构
+ * @returns 对象列表
+ */
+export async function CacheUseState_GetObjExLstByPagerCache(
+  objPagerPara: stuPagerPara,
+  strUserId: string,
+): Promise<Array<clsCacheUseStateENEx>> {
+  const strThisFuncName = 'GetObjLstByPagerCache';
+  const objSortInfo = GetSortExpressInfo(objPagerPara);
+  const isFuncMapKey = `${objSortInfo.SortFld}`;
+  const arrCacheUseStateObjLst = await CacheUseState_GetObjLstCache(strUserId);
+  //从缓存中获取对象，如果缓存中不存在就扩展复制
+  const arrNewObj = new Array<clsCacheUseStateENEx>();
+  const arrCacheUseStateExObjLst = arrCacheUseStateObjLst.map((obj) => {
+    const cacheKey = `${obj.mId}_${obj.userId}`;
+    if (cacheUseStateCache[cacheKey]) {
+      const oldObj = cacheUseStateCache[cacheKey];
+      return oldObj;
+    } else {
+      const newObj = CacheUseState_CopyToEx(obj);
+      arrNewObj.push(newObj);
+      cacheUseStateCache[cacheKey] = newObj;
+      return newObj;
+    }
+  });
+  for (const newObj of arrNewObj) {
+    for (const strFldName of Object.keys(isFuncMapCache)) {
+      await CacheUseState_FuncMapByFldName(strFldName, newObj);
+    }
+  }
+  //检查关于当前扩展排序字段是否获取得值，如果没有获取过，就获取，并存缓存
+  const bolIsFuncMap = isFuncMapCache[isFuncMapKey];
+  if (
+    IsNullOrEmpty(objSortInfo.SortFld) == false &&
+    clsCacheUseStateEN._AttributeName.indexOf(objSortInfo.SortFld) == -1 &&
+    (bolIsFuncMap == false || bolIsFuncMap == undefined)
+  ) {
+    for (const newObj of arrCacheUseStateExObjLst) {
+      await CacheUseState_FuncMapByFldName(objSortInfo.SortFld, newObj);
+      const cacheKey = `${newObj.mId}_${newObj.userId}`;
+      cacheUseStateCache[cacheKey] = newObj;
+    }
+    isFuncMapCache[isFuncMapKey] = true;
+  }
+  if (arrCacheUseStateExObjLst.length == 0) return arrCacheUseStateExObjLst;
+  let arrCacheUseStateSel: Array<clsCacheUseStateENEx> = arrCacheUseStateExObjLst;
+  const objCacheUseStateCond = objPagerPara.conditionCollection;
+  if (objCacheUseStateCond == null) {
+    const strMsg = `根据分布条件从缓存中获取分页对象列表时，objPagerPara.conditionCollection为null,请检查！(in ${strThisFuncName})`;
+    alert(strMsg);
+    console.error(strMsg);
+    return arrCacheUseStateExObjLst;
+  }
+  try {
+    for (const objCondition of objCacheUseStateCond.GetConditions()) {
+      if (objCondition == null) continue;
+      const strKey = objCondition.fldName;
+      const strComparisonOp = objCondition.comparison;
+      const strValue = objCondition.fldValue;
+      arrCacheUseStateSel = arrCacheUseStateSel.filter((x) => x.GetFldValue(strKey) != null);
+      const strType = typeof strValue;
+      switch (strType) {
+        case 'string':
+          if (strValue == null) continue;
+          if (strValue == '') continue;
+          if (strComparisonOp == '=') {
+            arrCacheUseStateSel = arrCacheUseStateSel.filter(
+              (x) => x.GetFldValue(strKey).toString() == strValue.toString(),
+            );
+          } else if (strComparisonOp == 'like') {
+            arrCacheUseStateSel = arrCacheUseStateSel.filter(
+              (x) => x.GetFldValue(strKey).toString().indexOf(strValue.toString()) != -1,
+            );
+          } else if (strComparisonOp == 'length greater') {
+            arrCacheUseStateSel = arrCacheUseStateSel.filter(
+              (x) => x.GetFldValue(strKey).toString().length > Number(strValue.toString()),
+            );
+          } else if (strComparisonOp == 'length not greater') {
+            arrCacheUseStateSel = arrCacheUseStateSel.filter(
+              (x) => x.GetFldValue(strKey).toString().length <= Number(strValue.toString()),
+            );
+          } else if (strComparisonOp == 'length not less') {
+            arrCacheUseStateSel = arrCacheUseStateSel.filter(
+              (x) => x.GetFldValue(strKey).toString().length >= Number(strValue.toString()),
+            );
+          } else if (strComparisonOp == 'length less') {
+            arrCacheUseStateSel = arrCacheUseStateSel.filter(
+              (x) => x.GetFldValue(strKey).toString().length < Number(strValue.toString()),
+            );
+          } else if (strComparisonOp == 'length equal') {
+            arrCacheUseStateSel = arrCacheUseStateSel.filter(
+              (x) => x.GetFldValue(strKey).toString().length == Number(strValue.toString()),
+            );
+          } else if (strComparisonOp == 'in') {
+            const arrValues = strValue.split(',');
+            arrCacheUseStateSel = arrCacheUseStateSel.filter(
+              (x) => arrValues.indexOf(x.GetFldValue(strKey).toString()) != -1,
+            );
+          }
+          break;
+        case 'boolean':
+          if (strValue == null) continue;
+          if (strComparisonOp == '=') {
+            arrCacheUseStateSel = arrCacheUseStateSel.filter(
+              (x) => x.GetFldValue(strKey) == strValue,
+            );
+          }
+          break;
+        case 'number':
+          if (Number(strValue) == 0) continue;
+          if (strComparisonOp == '=') {
+            arrCacheUseStateSel = arrCacheUseStateSel.filter(
+              (x) => x.GetFldValue(strKey) == strValue,
+            );
+          } else if (strComparisonOp == '>=') {
+            arrCacheUseStateSel = arrCacheUseStateSel.filter(
+              (x) => x.GetFldValue(strKey) >= strValue,
+            );
+          } else if (strComparisonOp == '<=') {
+            arrCacheUseStateSel = arrCacheUseStateSel.filter(
+              (x) => x.GetFldValue(strKey) <= strValue,
+            );
+          } else if (strComparisonOp == '>') {
+            arrCacheUseStateSel = arrCacheUseStateSel.filter(
+              (x) => x.GetFldValue(strKey) > strValue,
+            );
+          } else if (strComparisonOp == '<') {
+            arrCacheUseStateSel = arrCacheUseStateSel.filter(
+              (x) => x.GetFldValue(strKey) <= strValue,
+            );
+          }
+          break;
+      }
+    }
+    if (arrCacheUseStateSel.length == 0) return arrCacheUseStateSel;
+    let intStart: number = objPagerPara.pageSize * (objPagerPara.pageIndex - 1);
+    if (intStart <= 0) intStart = 0;
+    const intEnd = intStart + objPagerPara.pageSize;
+    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
+      arrCacheUseStateSel = arrCacheUseStateSel.sort(
+        CacheUseState_SortFunByExKey(objSortInfo.SortFld, objSortInfo.SortType),
+      );
+    } else {
+      //如果排序字段名[OrderBy]为空,就调用排序函数
+      arrCacheUseStateSel = arrCacheUseStateSel.sort(objPagerPara.sortFun);
+    }
+    arrCacheUseStateSel = arrCacheUseStateSel.slice(intStart, intEnd);
+    return arrCacheUseStateSel;
+  } catch (e) {
+    const strMsg = Format(
+      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
+      e,
+      objPagerPara.whereCond,
+      cacheUseState_ConstructorName,
+      strThisFuncName,
+    );
+    console.error(strMsg);
+    throw new Error(strMsg);
+  }
+  return new Array<clsCacheUseStateENEx>();
+}
+
+/**
+ * 把同一个类的对象,复制到另一个对象
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_CopyToEx)
+ * @param objCacheUseStateENS:源对象
+ * @returns 目标对象=>clsCacheUseStateEN:objCacheUseStateENT
+ **/
+export function CacheUseState_CopyToEx(
+  objCacheUseStateENS: clsCacheUseStateEN,
+): clsCacheUseStateENEx {
+  const strThisFuncName = CacheUseState_CopyToEx.name;
+  const objCacheUseStateENT = new clsCacheUseStateENEx();
+  try {
+    ObjectAssign(objCacheUseStateENT, objCacheUseStateENS);
+    return objCacheUseStateENT;
+  } catch (e) {
+    const strMsg = Format(
+      '(errid:Watl001294)Copy表对象数据出错,{0}.(in {1}.{2})',
+      e,
+      cacheUseState_ConstructorName,
+      strThisFuncName,
+    );
+    console.error(strMsg);
+    alert(strMsg);
+    return objCacheUseStateENT;
+  }
+}
+
+/**
+ * 根据扩展字段名去调用相应的映射函数
+ * 作者:pyf
+ * 日期:2026-04-18
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMapByFldName)
+ * @param strFldName:扩展字段名
+ * @param  obj{0}Ex:需要转换的对象
+ * @returns 针对扩展字段名对转换对象进行函数映射
+ */
+export function CacheUseState_FuncMapByFldName(
+  strFldName: string,
+  objCacheUseStateEx: clsCacheUseStateENEx,
+) {
+  const strThisFuncName = CacheUseState_FuncMapByFldName.name;
+  strFldName = strFldName.replace('|Ex', '');
+  let strMsg = '';
+  //如果是本表中字段,不需要映射
+  const arrFldName = clsCacheUseStateEN._AttributeName;
+  if (arrFldName.indexOf(strFldName) > -1) return;
+  //针对扩展字段进行映射
+  switch (strFldName) {
+    case clsCacheUseStateENEx.con_CacheModeName:
+      return CacheUseState_FuncMapCacheModeName(objCacheUseStateEx);
+    default:
+      strMsg = Format(
+        '扩展字段:[{0}]在字段值函数映射中不存在!(in {1})',
+        strFldName,
+        strThisFuncName,
+      );
+      console.error(strMsg);
+  }
+}
+
+/**
+ * 排序函数。根据关键字字段的值进行比较
+ * 作者:pyf
+ * 日期:2026-04-18
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByExKey)
+ * @param a:比较的第1个对象
+ * @param  b:比较的第1个对象
+ * @returns 返回两个对象比较的结果
+ */
+export function CacheUseState_SortFunByExKey(strKey: string, AscOrDesc: string) {
+  strKey = strKey.replace('|Ex', '');
+  if (AscOrDesc == 'Asc' || AscOrDesc == '') {
+    switch (strKey) {
+      case clsCacheUseStateENEx.con_CacheModeName:
+        return (a: clsCacheUseStateENEx, b: clsCacheUseStateENEx) => {
+          return a.cacheModeName.localeCompare(b.cacheModeName);
+        };
+      default:
+        return CacheUseState_SortFunByKey(strKey, AscOrDesc);
+    }
+  } else {
+    switch (strKey) {
+      case clsCacheUseStateENEx.con_CacheModeName:
+        return (a: clsCacheUseStateENEx, b: clsCacheUseStateENEx) => {
+          return b.cacheModeName.localeCompare(a.cacheModeName);
+        };
+      default:
+        return CacheUseState_SortFunByKey(strKey, AscOrDesc);
+    }
+  }
+}
+
+/**
+ * 把一个扩展类的部分属性进行函数转换
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FuncMap)
+ * @param objCacheUseStateS:源对象
+ **/
+export async function CacheUseState_FuncMapCacheModeName(objCacheUseState: clsCacheUseStateENEx) {
+  const strThisFuncName = CacheUseState_FuncMapCacheModeName.name;
+  try {
+    if (IsNullOrEmpty(objCacheUseState.cacheModeName) == true) {
+      const CacheModeCacheModeId = objCacheUseState.cacheModeId;
+      const CacheModeCacheModeName = await CacheMode_func(
+        clsCacheModeEN.con_CacheModeId,
+        clsCacheModeEN.con_CacheModeName,
+        CacheModeCacheModeId,
+      );
+      objCacheUseState.cacheModeName = CacheModeCacheModeName;
+    }
+  } catch (e) {
+    const strMsg = Format(
+      '(errid:Watl001313)函数映射表对象数据出错,{0}.(in {1}.{2})',
+      e,
+      cacheUseState_ConstructorName,
+      strThisFuncName,
+    );
+    console.error(strMsg);
+    alert(strMsg);
+  }
+}
+
+/**
  * 根据条件删除记录
  * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_DelMultiRecordByCondAsync)
  * @returns 实际删除记录的个数
@@ -1879,7 +2169,7 @@ export async function CacheUseState_DelCacheUseStatesByCondAsync(
 ): Promise<number> {
   const strThisFuncName = 'DelCacheUseStatesByCondAsync';
   const strAction = 'DelCacheUseStatesByCond';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -1941,7 +2231,7 @@ export async function CacheUseState_AddNewRecordAsync(
   const strThisFuncName = 'AddNewRecordAsync';
   const strAction = 'AddNewRecord';
   //var strJSON = JSON.stringify(objCacheUseStateEN);
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -2115,7 +2405,7 @@ export async function CacheUseState_AddNewRecordWithReturnKeyAsync(
 ): Promise<string> {
   const strThisFuncName = 'AddNewRecordWithReturnKeyAsync';
   const strAction = 'AddNewRecordWithReturnKey';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -2184,7 +2474,7 @@ export async function CacheUseState_UpdateRecordAsync(
     );
     throw strMsg;
   }
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -2253,7 +2543,7 @@ export async function CacheUseState_EditRecordExAsync(
     );
     throw strMsg;
   }
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -2324,7 +2614,7 @@ export async function CacheUseState_UpdateWithConditionAsync(
     );
     throw new Error(strMsg);
   }
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
   objCacheUseStateEN.whereCond = strWhereCond;
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
@@ -2379,30 +2669,21 @@ export async function CacheUseState_UpdateWithConditionAsync(
  * @returns 对象列表子集
  */
 export async function CacheUseState_IsExistRecordCache(
-  objCacheUseStateCond: clsCacheUseStateEN,
+  objCacheUseStateCond: ConditionCollection,
   strUserId: string,
 ) {
   const strThisFuncName = 'IsExistRecordCache';
   const arrCacheUseStateObjLstCache = await CacheUseState_GetObjLstCache(strUserId);
   if (arrCacheUseStateObjLstCache == null) return false;
   let arrCacheUseStateSel = arrCacheUseStateObjLstCache;
-  if (
-    objCacheUseStateCond.sfFldComparisonOp == null ||
-    objCacheUseStateCond.sfFldComparisonOp == ''
-  )
+  if (objCacheUseStateCond.GetConditions().length == 0)
     return arrCacheUseStateSel.length > 0 ? true : false;
-  const dicFldComparisonOp: { [index: string]: string } = JSON.parse(
-    objCacheUseStateCond.sfFldComparisonOp,
-  );
-  //console.log("clsCacheUseStateWApi->GetSubObjLstCache->dicFldComparisonOp:");
-  //console.log(dicFldComparisonOp);
   try {
-    const sstrKeys = GetObjKeys(objCacheUseStateCond);
-    //console.log(sstrKeys);
-    for (const strKey of sstrKeys) {
-      if (Object.prototype.hasOwnProperty.call(dicFldComparisonOp, strKey) == false) continue;
-      const strComparisonOp = dicFldComparisonOp[strKey];
-      const strValue = objCacheUseStateCond.GetFldValue(strKey);
+    for (const objCondition of objCacheUseStateCond.GetConditions()) {
+      if (objCondition == null) continue;
+      const strKey = objCondition.fldName;
+      const strComparisonOp = objCondition.comparison;
+      const strValue = objCondition.fldValue;
       const strType = typeof strValue;
       switch (strType) {
         case 'string':
@@ -2499,7 +2780,7 @@ export async function CacheUseState_IsExistRecordCache(
 export async function CacheUseState_IsExistRecordAsync(strWhereCond: string): Promise<boolean> {
   const strThisFuncName = 'IsExistRecordAsync';
   const strAction = 'IsExistRecord';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -2589,7 +2870,7 @@ export async function CacheUseState_IsExistAsync(lngmId: number): Promise<boolea
   const strThisFuncName = 'IsExistAsync';
   //检测记录是否存在
   const strAction = 'IsExist';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -2648,7 +2929,7 @@ export async function CacheUseState_IsExistAsync(lngmId: number): Promise<boolea
 export async function CacheUseState_GetRecCountByCondAsync(strWhereCond: string): Promise<number> {
   const strThisFuncName = 'GetRecCountByCondAsync';
   const strAction = 'GetRecCountByCond';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -2705,31 +2986,21 @@ export async function CacheUseState_GetRecCountByCondAsync(strWhereCond: string)
  * @returns 对象列表记录数
  */
 export async function CacheUseState_GetRecCountByCondCache(
-  objCacheUseStateCond: clsCacheUseStateEN,
+  objCacheUseStateCond: ConditionCollection,
   strUserId: string,
 ) {
   const strThisFuncName = 'GetRecCountByCondCache';
   const arrCacheUseStateObjLstCache = await CacheUseState_GetObjLstCache(strUserId);
   if (arrCacheUseStateObjLstCache == null) return 0;
   let arrCacheUseStateSel = arrCacheUseStateObjLstCache;
-  if (
-    objCacheUseStateCond.sfFldComparisonOp == null ||
-    objCacheUseStateCond.sfFldComparisonOp == ''
-  )
-    return arrCacheUseStateSel.length;
-  const dicFldComparisonOp: { [index: string]: string } = JSON.parse(
-    objCacheUseStateCond.sfFldComparisonOp,
-  );
-  //console.log("clsCacheUseStateWApi->GetSubObjLstCache->dicFldComparisonOp:");
-  //console.log(dicFldComparisonOp);
+  if (objCacheUseStateCond.GetConditions().length == 0) return arrCacheUseStateSel.length;
   try {
-    const sstrKeys = GetObjKeys(objCacheUseStateCond);
-    //console.log(sstrKeys);
-    for (const strKey of sstrKeys) {
-      if (Object.prototype.hasOwnProperty.call(dicFldComparisonOp, strKey) == false) continue;
+    for (const objCondition of objCacheUseStateCond.GetConditions()) {
+      if (objCondition == null) continue;
+      const strKey = objCondition.fldName;
+      const strComparisonOp = objCondition.comparison;
+      const strValue = objCondition.fldValue;
       arrCacheUseStateSel = arrCacheUseStateSel.filter((x) => x.GetFldValue(strKey) != null);
-      const strComparisonOp = dicFldComparisonOp[strKey];
-      const strValue = objCacheUseStateCond.GetFldValue(strKey);
       const strType = typeof strValue;
       switch (strType) {
         case 'string':
@@ -2830,7 +3101,7 @@ export async function CacheUseState_GetRecCountByCondCache(
 export async function CacheUseState_GetMaxStrIdByPrefix(strPrefix: string) {
   const strThisFuncName = 'GetMaxStrIdByPrefix';
   const strAction = 'GetMaxStrIdByPrefix';
-  const strUrl = GetWebApiUrl(cacheUseState_Controller, strAction);
+  const strUrl = GetWebApiUrl_GP(cacheUseState_Controller, strAction);
 
   const token = Storage.get(ACCESS_TOKEN_KEY);
   //console.error('token:', token);
@@ -2914,7 +3185,7 @@ export function CacheUseState_GetWebApiUrl(strController: string, strAction: str
 export function CacheUseState_ReFreshCache(strUserId: string): void {
   if (IsNullOrEmpty(strUserId) == true) {
     const strMsg = Format(
-      '参数:[strUserId]不能为空!(In clsCacheUseStateWApi.clsCacheUseStateWApi.ReFreshCache)',
+      '参数:[strUserId]不能为空！(In clsCacheUseStateWApi.clsCacheUseStateWApi.ReFreshCache)',
     );
     console.error(strMsg);
     throw strMsg;
@@ -2924,7 +3195,7 @@ export function CacheUseState_ReFreshCache(strUserId: string): void {
   console.trace(strMsg);
   // 静态的对象列表,用于清空相关缓存,针对记录较少,作为参数表可以使用
   const strKey = Format('{0}_{1}', clsCacheUseStateEN._CurrTabName, strUserId);
-  switch (clsCacheUseStateEN.CacheModeId) {
+  switch (clsCacheUseStateEN._CacheModeId) {
     case '04': //sessionStorage
       sessionStorage.removeItem(strKey);
       break;
@@ -2948,14 +3219,14 @@ export function CacheUseState_ReFreshCache(strUserId: string): void {
 export function CacheUseState_ReFreshThisCache(strUserId: string): void {
   if (IsNullOrEmpty(strUserId) == true) {
     const strMsg = Format(
-      '参数:[strUserId]不能为空!(In clsCacheUseStateWApi.CacheUseState_ReFreshThisCache)',
+      '参数:[strUserId]不能为空！(In clsCacheUseStateWApi.CacheUseState_ReFreshThisCache)',
     );
     console.error(strMsg);
     throw strMsg;
   }
   if (clsSysPara4WebApi.spSetRefreshCacheOn == true) {
     const strKey = Format('{0}_{1}', clsCacheUseStateEN._CurrTabName, strUserId);
-    switch (clsCacheUseStateEN.CacheModeId) {
+    switch (clsCacheUseStateEN._CacheModeId) {
       case '04': //sessionStorage
         sessionStorage.removeItem(strKey);
         break;
@@ -2985,72 +3256,8 @@ export function CacheUseState_GetLastRefreshTime(): string {
   if (clsCacheUseStateEN._RefreshTimeLst.length == 0) return '';
   return clsCacheUseStateEN._RefreshTimeLst[clsCacheUseStateEN._RefreshTimeLst.length - 1];
 }
-
-/**
- * 绑定基于Web的下拉框,在某一层下的下拉框
- * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_TabFeature_DdlBindFunctionInDiv)-pyf
- * @param objDDL:需要绑定当前表的下拉框
-
- * @param strUserId:
-*/
-export async function CacheUseState_Cache(
-  objDiv: HTMLDivElement,
-  strDdlName: string,
-  strUserId: string,
-) {
-  if (IsNullOrEmpty(strUserId) == true) {
-    const strMsg = Format('参数:[strUserId]不能为空！(In clsCacheUseStateWApi.)');
-    console.error(strMsg);
-    throw strMsg;
-  }
-
-  const objDdl = document.getElementById(strDdlName);
-  if (objDdl == null) {
-    const strMsg = Format('下拉框：{0} 不存在!(In )', strDdlName);
-    alert(strMsg);
-    console.error(strMsg);
-    throw strMsg;
-  }
-  //为数据源于表的下拉框设置内容
-  //console.log("开始：Cache");
-  const arrObjLstSel = await CacheUseState_GetObjLstCache(strUserId);
-  if (arrObjLstSel == null) return;
-  BindDdl_ObjLstInDivObj(
-    objDiv,
-    strDdlName,
-    arrObjLstSel,
-    clsCacheUseStateEN.con_mId,
-    clsCacheUseStateEN.con_UserId,
-    '缓存使用状态...',
-  );
-}
-
-/**
- * 绑定基于Web的下拉框,在某一层下的下拉框
- * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_TabFeature_GetDdlData)-pyf
- * @param objDDL:需要绑定当前表的下拉框
-
- * @param strUserId:
-*/
-export async function CacheUseState_GetArrCacheUseState(strUserId: string) {
-  if (IsNullOrEmpty(strUserId) == true) {
-    const strMsg = Format('参数:[strUserId]不能为空！(In clsCacheUseStateWApi.)');
-    console.error(strMsg);
-    throw strMsg;
-  }
-
-  //为数据源于表的下拉框设置内容
-  //console.log("开始：Cache");
-  const arrCacheUseState = new Array<clsCacheUseStateEN>();
-  const arrObjLstSel = await CacheUseState_GetObjLstCache(strUserId);
-  if (arrObjLstSel == null) return null;
-  const obj0 = new clsCacheUseStateEN();
-  obj0.mId = 0;
-  obj0.userId = '选缓存使用状态...';
-  arrCacheUseState.push(obj0);
-  arrObjLstSel.forEach((x) => arrCacheUseState.push(x));
-  return arrCacheUseState;
-}
+/* 该表的下拉框功能没有设置,不需要生成下拉框绑定函数。*/
+/* 该表的下拉框功能没有设置,不需要生成下拉框绑定函数。*/
 
 /**
  * 检查对象字段值是否合法,1)检查是否可空;2)检查字段值长度是否超长,如果出错就抛出错误.
@@ -3058,14 +3265,17 @@ export async function CacheUseState_GetArrCacheUseState(strUserId: string) {
  */
 export function CacheUseState_CheckPropertyNew(pobjCacheUseStateEN: clsCacheUseStateEN) {
   //检查字段非空, 即数据表要求非常非空的字段,不能为空!
-  if (IsNullOrEmpty(pobjCacheUseStateEN.userId) === true) {
+  if (
+    IsNullOrEmpty(pobjCacheUseStateEN.userId) === true ||
+    pobjCacheUseStateEN.userId.toString() === '0'
+  ) {
     throw new Error(
       `(errid:Watl000411)字段[用户ID]不能为空(In 缓存使用状态)!(clsCacheUseStateBL:CheckPropertyNew0)`,
     );
   }
   if (IsNullOrEmpty(pobjCacheUseStateEN.cacheModeId) === true) {
     throw new Error(
-      `(errid:Watl000411)字段[缓存方式Id]不能为空(In 缓存使用状态)!(clsCacheUseStateBL:CheckPropertyNew0)`,
+      `(errid:Watl000411)字段[CacheModeId]不能为空(In 缓存使用状态)!(clsCacheUseStateBL:CheckPropertyNew0)`,
     );
   }
   if (IsNullOrEmpty(pobjCacheUseStateEN.cacheKey) === true) {
@@ -3087,7 +3297,7 @@ export function CacheUseState_CheckPropertyNew(pobjCacheUseStateEN: clsCacheUseS
     GetStrLen(pobjCacheUseStateEN.cacheModeId) > 2
   ) {
     throw new Error(
-      `(errid:Watl000413)字段[缓存方式Id(cacheModeId)]的长度不能超过2(In 缓存使用状态(CacheUseState))!值:${pobjCacheUseStateEN.cacheModeId}(clsCacheUseStateBL:CheckPropertyNew)`,
+      `(errid:Watl000413)字段[CacheModeId(cacheModeId)]的长度不能超过2(In 缓存使用状态(CacheUseState))!值:${pobjCacheUseStateEN.cacheModeId}(clsCacheUseStateBL:CheckPropertyNew)`,
     );
   }
   if (
@@ -3100,10 +3310,10 @@ export function CacheUseState_CheckPropertyNew(pobjCacheUseStateEN: clsCacheUseS
   }
   if (
     IsNullOrEmpty(pobjCacheUseStateEN.useDate) == false &&
-    GetStrLen(pobjCacheUseStateEN.useDate) > 50
+    GetStrLen(pobjCacheUseStateEN.useDate) > 20
   ) {
     throw new Error(
-      `(errid:Watl000413)字段[使用日期(useDate)]的长度不能超过50(In 缓存使用状态(CacheUseState))!值:${pobjCacheUseStateEN.useDate}(clsCacheUseStateBL:CheckPropertyNew)`,
+      `(errid:Watl000413)字段[使用日期(useDate)]的长度不能超过20(In 缓存使用状态(CacheUseState))!值:${pobjCacheUseStateEN.useDate}(clsCacheUseStateBL:CheckPropertyNew)`,
     );
   }
   if (
@@ -3121,7 +3331,7 @@ export function CacheUseState_CheckPropertyNew(pobjCacheUseStateEN: clsCacheUseS
     tzDataType.isNumber(pobjCacheUseStateEN.mId) === false
   ) {
     throw new Error(
-      `(errid:Watl000414)字段[mId(mId)]的值:[${pobjCacheUseStateEN.mId}], 非法,应该为数值型(In 缓存使用状态(CacheUseState))!(clsCacheUseStateBL:CheckPropertyNew0)`,
+      `(errid:Watl000414)字段[流水号(mId)]的值:[${pobjCacheUseStateEN.mId}], 非法,应该为数值型(In 缓存使用状态(CacheUseState))!(clsCacheUseStateBL:CheckPropertyNew0)`,
     );
   }
   if (
@@ -3139,7 +3349,7 @@ export function CacheUseState_CheckPropertyNew(pobjCacheUseStateEN: clsCacheUseS
     tzDataType.isString(pobjCacheUseStateEN.cacheModeId) === false
   ) {
     throw new Error(
-      `(errid:Watl000414)字段[缓存方式Id(cacheModeId)]的值:[${pobjCacheUseStateEN.cacheModeId}], 非法,应该为字符型(In 缓存使用状态(CacheUseState))!(clsCacheUseStateBL:CheckPropertyNew0)`,
+      `(errid:Watl000414)字段[CacheModeId(cacheModeId)]的值:[${pobjCacheUseStateEN.cacheModeId}], 非法,应该为字符型(In 缓存使用状态(CacheUseState))!(clsCacheUseStateBL:CheckPropertyNew0)`,
     );
   }
   if (
@@ -3201,7 +3411,7 @@ export function CacheUseState_CheckProperty4Update(pobjCacheUseStateEN: clsCache
     GetStrLen(pobjCacheUseStateEN.cacheModeId) > 2
   ) {
     throw new Error(
-      `(errid:Watl000416)字段[缓存方式Id(cacheModeId)]的长度不能超过2(In 缓存使用状态(CacheUseState))!值:${pobjCacheUseStateEN.cacheModeId}(clsCacheUseStateBL:CheckProperty4Update)`,
+      `(errid:Watl000416)字段[CacheModeId(cacheModeId)]的长度不能超过2(In 缓存使用状态(CacheUseState))!值:${pobjCacheUseStateEN.cacheModeId}(clsCacheUseStateBL:CheckProperty4Update)`,
     );
   }
   if (
@@ -3214,10 +3424,10 @@ export function CacheUseState_CheckProperty4Update(pobjCacheUseStateEN: clsCache
   }
   if (
     IsNullOrEmpty(pobjCacheUseStateEN.useDate) == false &&
-    GetStrLen(pobjCacheUseStateEN.useDate) > 50
+    GetStrLen(pobjCacheUseStateEN.useDate) > 20
   ) {
     throw new Error(
-      `(errid:Watl000416)字段[使用日期(useDate)]的长度不能超过50(In 缓存使用状态(CacheUseState))!值:${pobjCacheUseStateEN.useDate}(clsCacheUseStateBL:CheckProperty4Update)`,
+      `(errid:Watl000416)字段[使用日期(useDate)]的长度不能超过20(In 缓存使用状态(CacheUseState))!值:${pobjCacheUseStateEN.useDate}(clsCacheUseStateBL:CheckProperty4Update)`,
     );
   }
   if (
@@ -3235,7 +3445,7 @@ export function CacheUseState_CheckProperty4Update(pobjCacheUseStateEN: clsCache
     tzDataType.isNumber(pobjCacheUseStateEN.mId) === false
   ) {
     throw new Error(
-      `(errid:Watl000417)字段[mId(mId)]的值:[${pobjCacheUseStateEN.mId}], 非法,应该为数值型(In 缓存使用状态(CacheUseState))!(clsCacheUseStateBL:CheckProperty4Update)`,
+      `(errid:Watl000417)字段[流水号(mId)]的值:[${pobjCacheUseStateEN.mId}], 非法,应该为数值型(In 缓存使用状态(CacheUseState))!(clsCacheUseStateBL:CheckProperty4Update)`,
     );
   }
   if (
@@ -3253,7 +3463,7 @@ export function CacheUseState_CheckProperty4Update(pobjCacheUseStateEN: clsCache
     tzDataType.isString(pobjCacheUseStateEN.cacheModeId) === false
   ) {
     throw new Error(
-      `(errid:Watl000417)字段[缓存方式Id(cacheModeId)]的值:[${pobjCacheUseStateEN.cacheModeId}], 非法,应该为字符型(In 缓存使用状态(CacheUseState))!(clsCacheUseStateBL:CheckProperty4Update)`,
+      `(errid:Watl000417)字段[CacheModeId(cacheModeId)]的值:[${pobjCacheUseStateEN.cacheModeId}], 非法,应该为字符型(In 缓存使用状态(CacheUseState))!(clsCacheUseStateBL:CheckProperty4Update)`,
     );
   }
   if (
@@ -3298,7 +3508,7 @@ export function CacheUseState_CheckProperty4Update(pobjCacheUseStateEN: clsCache
     (pobjCacheUseStateEN.mId != null && pobjCacheUseStateEN.mId.toString() === '')
   ) {
     throw new Error(
-      `(errid:Watl000064)字段[mId]不能为空(In 缓存使用状态)!(clsCacheUseStateBL:CheckProperty4Update)`,
+      `(errid:Watl000064)字段[流水号]不能为空(In 缓存使用状态)!(clsCacheUseStateBL:CheckProperty4Update)`,
     );
   }
   //检查外键, 作为外键应该和主键的字段长度是一样的, 若不一样,即非法!
@@ -3307,7 +3517,7 @@ export function CacheUseState_CheckProperty4Update(pobjCacheUseStateEN: clsCache
 /**
  * 把一个对象转化为一个JSON串
  * 作者:pyf
- * 日期:2025-02-27
+ * 日期:2026-04-18
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -3328,7 +3538,7 @@ export function CacheUseState_GetJSONStrByObj(pobjCacheUseStateEN: clsCacheUseSt
 /**
  * 把一个JSON串转化为一个对象列表
  * 作者:pyf
- * 日期:2025-02-27
+ * 日期:2026-04-18
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象列表
@@ -3349,7 +3559,7 @@ export function CacheUseState_GetObjLstByJSONStr(strJSON: string): Array<clsCach
 /**
  * 把一个JSON对象列表转化为一个实体对象列表
  * 作者:pyf
- * 日期:2025-02-27
+ * 日期:2026-04-18
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
  * @param arrCacheUseStateObjLstS:需要转化的JSON对象列表
  * @returns 返回一个生成的对象列表
@@ -3369,7 +3579,7 @@ export function CacheUseState_GetObjLstByJSONObjLst(
 /**
  * 把一个JSON串转化为一个对象
  * 作者:pyf
- * 日期:2025-02-27
+ * 日期:2026-04-18
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
  * @param strJSON:需要转化的JSON串
  * @returns 返回一个生成的对象
@@ -3510,54 +3720,34 @@ export function CacheUseState_GetCombineCondition(
 /**
  *获取唯一性条件串(Uniqueness)--CacheUseState(缓存使用状态),根据唯一约束条件来生成
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_GetUniquenessConditionString)
- * @param strUserId: 用户ID(要求唯一的字段)
- * @param strCacheModeId: 缓存方式Id(要求唯一的字段)
+ * @param strCacheModeId: CacheModeId(要求唯一的字段)
  * @param strCacheKey: 缓存关键字(要求唯一的字段)
+ * @param strUserId: 用户ID(要求唯一的字段)
  * @returns 条件串(strWhereCond)
  **/
 export function CacheUseState_GetUniCondStr(objCacheUseStateEN: clsCacheUseStateEN): string {
   let strWhereCond = ' 1 = 1 ';
-  strWhereCond += Format(" and UserId = '{0}'", objCacheUseStateEN.userId);
   strWhereCond += Format(" and CacheModeId = '{0}'", objCacheUseStateEN.cacheModeId);
   strWhereCond += Format(" and CacheKey = '{0}'", objCacheUseStateEN.cacheKey);
+  strWhereCond += Format(" and UserId = '{0}'", objCacheUseStateEN.userId);
   return strWhereCond;
 }
 
 /**
  *获取唯一性条件串(Uniqueness)--CacheUseState(缓存使用状态),根据唯一约束条件来生成
  * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_GetUniquenessConditionString4Update)
- * @param strUserId: 用户ID(要求唯一的字段)
- * @param strCacheModeId: 缓存方式Id(要求唯一的字段)
+ * @param strCacheModeId: CacheModeId(要求唯一的字段)
  * @param strCacheKey: 缓存关键字(要求唯一的字段)
+ * @param strUserId: 用户ID(要求唯一的字段)
  * @returns 条件串(strWhereCond)
  **/
 export function CacheUseState_GetUniCondStr4Update(objCacheUseStateEN: clsCacheUseStateEN): string {
   let strWhereCond = ' 1 = 1 ';
   strWhereCond += Format(" and mId <> '{0}'", objCacheUseStateEN.mId);
-  strWhereCond += Format(" and UserId = '{0}'", objCacheUseStateEN.userId);
   strWhereCond += Format(" and CacheModeId = '{0}'", objCacheUseStateEN.cacheModeId);
   strWhereCond += Format(" and CacheKey = '{0}'", objCacheUseStateEN.cacheKey);
+  strWhereCond += Format(" and UserId = '{0}'", objCacheUseStateEN.userId);
   return strWhereCond;
-}
-
-/**
- * 把同一个类的对象,复制到另一个对象
- * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_CopyObjTo)
- * @param objCacheUseStateENS:源对象
- * @param objCacheUseStateENT:目标对象
- */
-export function CacheUseState_CopyObjTo(
-  objCacheUseStateENS: clsCacheUseStateEN,
-  objCacheUseStateENT: clsCacheUseStateEN,
-): void {
-  objCacheUseStateENT.mId = objCacheUseStateENS.mId; //mId
-  objCacheUseStateENT.userId = objCacheUseStateENS.userId; //用户ID
-  objCacheUseStateENT.cacheModeId = objCacheUseStateENS.cacheModeId; //缓存方式Id
-  objCacheUseStateENT.cacheKey = objCacheUseStateENS.cacheKey; //缓存关键字
-  objCacheUseStateENT.cacheSize = objCacheUseStateENS.cacheSize; //缓存大小
-  objCacheUseStateENT.useDate = objCacheUseStateENS.useDate; //使用日期
-  objCacheUseStateENT.memo = objCacheUseStateENS.memo; //备注
-  objCacheUseStateENT.sfUpdFldSetStr = objCacheUseStateENS.updFldString; //sfUpdFldSetStr
 }
 
 /**

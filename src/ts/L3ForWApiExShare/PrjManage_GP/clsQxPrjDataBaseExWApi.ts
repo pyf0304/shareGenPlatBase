@@ -26,7 +26,6 @@
 import { ObjectAssign, GetSortExpressInfo, GetObjKeys } from '@/ts/PubFun/clsCommFunc4Web';
 import {
   QxPrjDataBase_GetObjLstCache,
-  QxPrjDataBase_GetObjLstByPagerAsync,
   QxPrjDataBase_SortFunByKey,
 } from '@/ts/L3ForWApi/PrjManage_GP/clsQxPrjDataBaseWApi';
 import { stuPagerPara } from '@/ts/PubFun/stuPagerPara';
@@ -91,48 +90,6 @@ export function QxPrjDataBaseEx_CopyToEx(
     alert(strMsg);
     return objQxPrjDataBaseENT;
   }
-}
-
-/**
- * 根据分页条件从缓存中获取分页对象列表,只获取一页.
- * (AutoGCLib.WA_AccessEx4TypeScript:Gen_4WAEx_Ts_GetObjExLstByPagerAsync)
- * @param objPagerPara:分页参数结构
- * @returns 对象列表
- */
-export async function QxPrjDataBaseEx_GetObjExLstByPagerAsync(
-  objPagerPara: stuPagerPara,
-): Promise<Array<clsQxPrjDataBaseENEx>> {
-  const strThisFuncName = 'GetObjExLstByPagerAsync';
-  const arrQxPrjDataBaseObjLst = await QxPrjDataBase_GetObjLstByPagerAsync(objPagerPara);
-  const arrQxPrjDataBaseExObjLst = arrQxPrjDataBaseObjLst.map(QxPrjDataBaseEx_CopyToEx);
-  if (arrQxPrjDataBaseExObjLst.length == 0) return arrQxPrjDataBaseExObjLst;
-  let arrQxPrjDataBaseSel: Array<clsQxPrjDataBaseENEx> = arrQxPrjDataBaseExObjLst;
-  try {
-    if (objPagerPara.orderBy != null && objPagerPara.orderBy.length > 0) {
-      const sstrSplit: string[] = objPagerPara.orderBy.split(' ');
-      let strSortType = 'asc';
-      const strSortFld = sstrSplit[0];
-      if (sstrSplit.length > 1) strSortType = sstrSplit[1];
-      arrQxPrjDataBaseSel = arrQxPrjDataBaseSel.sort(
-        QxPrjDataBaseEx_SortFunByKey(strSortFld, strSortType),
-      );
-    } else {
-      //如果排序字段名[OrderBy]为空,就调用排序函数
-      arrQxPrjDataBaseSel = arrQxPrjDataBaseSel.sort(objPagerPara.sortFun);
-    }
-    return arrQxPrjDataBaseSel;
-  } catch (e) {
-    const strMsg = Format(
-      '错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})',
-      e,
-      objPagerPara.whereCond,
-      qxPrjDataBaseEx_ConstructorName,
-      strThisFuncName,
-    );
-    console.error(strMsg);
-    throw new Error(strMsg);
-  }
-  return new Array<clsQxPrjDataBaseENEx>();
 }
 
 /**
